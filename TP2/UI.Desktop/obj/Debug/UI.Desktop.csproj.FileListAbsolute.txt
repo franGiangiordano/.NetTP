@@ -1,0 +1,9 @@
+C:\NET\TP2\UI.Desktop\bin\Debug\UI.Desktop.exe.config
+C:\NET\TP2\UI.Desktop\bin\Debug\UI.Desktop.exe
+C:\NET\TP2\UI.Desktop\bin\Debug\UI.Desktop.pdb
+C:\NET\TP2\UI.Desktop\obj\Debug\UI.Desktop.csproj.AssemblyReference.cache
+C:\NET\TP2\UI.Desktop\obj\Debug\UI.Desktop.Properties.Resources.resources
+C:\NET\TP2\UI.Desktop\obj\Debug\UI.Desktop.csproj.GenerateResource.cache
+C:\NET\TP2\UI.Desktop\obj\Debug\UI.Desktop.csproj.CoreCompileInputs.cache
+C:\NET\TP2\UI.Desktop\obj\Debug\UI.Desktop.exe
+C:\NET\TP2\UI.Desktop\obj\Debug\UI.Desktop.pdb
