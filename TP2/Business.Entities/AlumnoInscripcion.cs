@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Business.Entities
 {
     public class AlumnoInscripcion:BusinessEntity
@@ -12,6 +13,8 @@ namespace Business.Entities
         private int _IDAlumno;
         private int _IDCurso;
         private int _Nota;
+
+       
 
         public string Condicion { get => _Condicion; set => _Condicion = value; }
         public int IDAlumno { get => _IDAlumno; set => _IDAlumno = value; }

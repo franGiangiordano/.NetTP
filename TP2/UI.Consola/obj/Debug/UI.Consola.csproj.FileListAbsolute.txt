@@ -1,0 +1,15 @@
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Consola\obj\Debug\UI.Consola.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Consola\obj\Debug\UI.Consola.csproj.SuggestedBindingRedirects.cache
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Consola\obj\Debug\UI.Consola.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Consola\bin\Debug\UI.Consola.exe.config
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Consola\bin\Debug\UI.Consola.exe
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Consola\bin\Debug\UI.Consola.pdb
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Consola\bin\Debug\Business.Entities.dll
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Consola\bin\Debug\Business.Logic.dll
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Consola\bin\Debug\Data.Database.dll
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Consola\bin\Debug\Business.Entities.pdb
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Consola\bin\Debug\Business.Logic.pdb
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Consola\bin\Debug\Data.Database.pdb
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Consola\obj\Debug\UI.Consola.csproj.CopyComplete
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Consola\obj\Debug\UI.Consola.exe
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Consola\obj\Debug\UI.Consola.pdb

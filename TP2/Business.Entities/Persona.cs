@@ -15,8 +15,14 @@ namespace Business.Entities
         private int _IDPlan;
         private int _Legajo;
         private DateTime _FechaNacimiento;
-        // private TipoPersonas _TipoPersona
-        private string _Email;
+        public enum TipoPersonas
+        {           
+            Alumno,
+            Docente,
+            Administrativo
+        }        
+
+    private string _Email;
 
         public string Telefono { get => _Telefono; set => _Telefono = value; }
         public string Nombre { get => _Nombre; set => _Nombre = value; }

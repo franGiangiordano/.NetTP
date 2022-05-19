@@ -1,6 +1,6 @@
-C:\NET\TP2\Business.Entities\bin\Debug\Business.Entities.dll
-C:\NET\TP2\Business.Entities\bin\Debug\Business.Entities.pdb
-C:\NET\TP2\Business.Entities\obj\Debug\Business.Entities.csproj.AssemblyReference.cache
-C:\NET\TP2\Business.Entities\obj\Debug\Business.Entities.csproj.CoreCompileInputs.cache
-C:\NET\TP2\Business.Entities\obj\Debug\Business.Entities.dll
-C:\NET\TP2\Business.Entities\obj\Debug\Business.Entities.pdb
+C:\Users\user\Desktop\Nueva carpeta\TP2\Business.Entities\bin\Debug\Business.Entities.dll
+C:\Users\user\Desktop\Nueva carpeta\TP2\Business.Entities\bin\Debug\Business.Entities.pdb
+C:\Users\user\Desktop\Nueva carpeta\TP2\Business.Entities\obj\Debug\Business.Entities.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\Nueva carpeta\TP2\Business.Entities\obj\Debug\Business.Entities.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\Nueva carpeta\TP2\Business.Entities\obj\Debug\Business.Entities.dll
+C:\Users\user\Desktop\Nueva carpeta\TP2\Business.Entities\obj\Debug\Business.Entities.pdb

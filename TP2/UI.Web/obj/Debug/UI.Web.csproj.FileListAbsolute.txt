@@ -1,0 +1,16 @@
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Web\obj\Debug\UI.Web.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Web\obj\Debug\UI.Web.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Web\bin\UI.Web.dll.config
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Web\bin\UI.Web.dll
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Web\bin\UI.Web.pdb
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Web\bin\Business.Entities.dll
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Web\bin\Business.Logic.dll
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Web\bin\Data.Database.dll
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Web\bin\Business.Entities.pdb
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Web\bin\Business.Logic.pdb
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Web\bin\Data.Database.pdb
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Web\obj\Debug\UI.Web.csproj.CopyComplete
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Web\obj\Debug\UI.Web.dll
+C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Web\obj\Debug\UI.Web.pdb
