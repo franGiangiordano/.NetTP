@@ -1,20 +1,3 @@
-C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Desktop\obj\Debug\UI.Desktop.csproj.AssemblyReference.cache
-C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Desktop\obj\Debug\UI.Desktop.csproj.SuggestedBindingRedirects.cache
-C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Desktop\obj\Debug\UI.Desktop.Properties.Resources.resources
-C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Desktop\obj\Debug\UI.Desktop.csproj.GenerateResource.cache
-C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Desktop\obj\Debug\UI.Desktop.csproj.CoreCompileInputs.cache
-C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Desktop\bin\Debug\UI.Desktop.exe.config
-C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Desktop\bin\Debug\UI.Desktop.exe
-C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Desktop\bin\Debug\UI.Desktop.pdb
-C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Desktop\bin\Debug\Business.Entities.dll
-C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Desktop\bin\Debug\Business.Logic.dll
-C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Desktop\bin\Debug\Data.Database.dll
-C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Desktop\bin\Debug\Business.Entities.pdb
-C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Desktop\bin\Debug\Business.Logic.pdb
-C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Desktop\bin\Debug\Data.Database.pdb
-C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Desktop\obj\Debug\UI.Desktop.csproj.CopyComplete
-C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Desktop\obj\Debug\UI.Desktop.exe
-C:\Users\user\Desktop\Nueva carpeta\TP2\UI.Desktop\obj\Debug\UI.Desktop.pdb
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\bin\Debug\UI.Desktop.exe.config
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\bin\Debug\UI.Desktop.exe
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\bin\Debug\UI.Desktop.pdb
@@ -25,9 +8,11 @@ C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\bin\Debug\Business
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\bin\Debug\Business.Logic.pdb
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\bin\Debug\Data.Database.pdb
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.csproj.AssemblyReference.cache
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.formLogin.resources
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Properties.Resources.resources
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.csproj.GenerateResource.cache
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.csproj.CoreCompileInputs.cache
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.csproj.CopyComplete
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.exe
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.pdb
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.formMain.resources
