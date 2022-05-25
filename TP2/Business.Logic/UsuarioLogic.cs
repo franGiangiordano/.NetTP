@@ -21,7 +21,7 @@ namespace Business.Logic
             return _UsuarioData.GetAll();
         }
 
-        public Usuario GetOne(int id)
+        public Business.Entities.Usuario GetOne(int id)
         {
             return _UsuarioData.GetOne(id);
         }
@@ -32,7 +32,7 @@ namespace Business.Logic
             return;
         }
 
-        public void Save(Usuario u)
+        public void Save(Business.Entities.Usuario u)
         {
             _UsuarioData.Save(u);
             return;

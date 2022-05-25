@@ -9,3 +9,14 @@ C:\Users\user\Desktop\Nueva carpeta\TP2\Business.Logic\bin\Debug\Data.Database.p
 C:\Users\user\Desktop\Nueva carpeta\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.CopyComplete
 C:\Users\user\Desktop\Nueva carpeta\TP2\Business.Logic\obj\Debug\Business.Logic.dll
 C:\Users\user\Desktop\Nueva carpeta\TP2\Business.Logic\obj\Debug\Business.Logic.pdb
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Business.Logic\bin\Debug\Business.Logic.dll
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Business.Logic\bin\Debug\Business.Logic.pdb
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Business.Logic\bin\Debug\Business.Entities.dll
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Business.Logic\bin\Debug\Data.Database.dll
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Business.Logic\bin\Debug\Business.Entities.pdb
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Business.Logic\bin\Debug\Data.Database.pdb
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.AssemblyReference.cache
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.CoreCompileInputs.cache
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.CopyComplete
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Business.Logic\obj\Debug\Business.Logic.dll
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Business.Logic\obj\Debug\Business.Logic.pdb
