@@ -16,3 +16,6 @@ C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Deskt
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.exe
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.pdb
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.formMain.resources
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\bin\Debug\Negocio.dll
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\bin\Debug\Negocio.pdb
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.formListaUsuarios.resources

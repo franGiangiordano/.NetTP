@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="formListaUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formListaUsuarios.Designer.cs">
+      <DependentUpon>formListaUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="formLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="formListaUsuarios.resx">
+      <DependentUpon>formListaUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formLogin.resx">
       <DependentUpon>formLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -96,6 +105,10 @@
     <ProjectReference Include="..\Business.Logic\Business.Logic.csproj">
       <Project>{31c05954-1800-42bb-8fcc-fd8caa8085c9}</Project>
       <Name>Business.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Negocio\Negocio.csproj">
+      <Project>{d3c577f0-ca21-4591-a5bb-43c3c69b6865}</Project>
+      <Name>Negocio</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
