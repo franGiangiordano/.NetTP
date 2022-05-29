@@ -67,6 +67,7 @@ namespace UI.Desktop
             this.dgvUsuarios.Name = "dgvUsuarios";
             this.dgvUsuarios.Size = new System.Drawing.Size(735, 262);
             this.dgvUsuarios.TabIndex = 1;
+            this.dgvUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellContentClick);
             // 
             // apellido
             // 

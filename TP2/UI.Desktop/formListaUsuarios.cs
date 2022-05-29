@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//Este formulario fue hecho para un laboratorio, con una base de datos que no tiene relacion con el trabajo
+//Se podrá usar como referencia pero no forma parte de la entrega final
 
 namespace UI.Desktop
 {
@@ -147,6 +149,11 @@ namespace UI.Desktop
             dtTiposDoc.Rows.Add(new object[] { 4, "Libreta Cívica" });
             dtTiposDoc.Rows.Add(new object[] { 5, "Libreta Enrolamiento" });
             return dtTiposDoc;
+        }
+
+        private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

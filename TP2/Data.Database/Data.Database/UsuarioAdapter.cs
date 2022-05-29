@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Business.Entities;
 
+//Se trata de una clase de prueba con una DB hardcodeada por lo tanto no formará parte del TP, sin embargo,
+//resulta útil para tener como referencia
+
 namespace Data.Database
 {
     public class UsuarioAdapter:Adapter

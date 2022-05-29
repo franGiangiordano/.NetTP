@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//Este formulario fue hecho para un laboratorio pero sirve también para el TP2
+
+
 namespace UI.Desktop
 {
     public partial class formLogin : Form
@@ -39,6 +42,11 @@ namespace UI.Desktop
             {
                 MessageBox.Show("Es Ud. un usuario muy descuidado, haga memoria", "Olvidé mi contraseña",
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }        
+            }
+
+        private void formLogin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

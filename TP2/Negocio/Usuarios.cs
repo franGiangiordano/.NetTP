@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 
+//Esta capa no forma parte del TP original sino que fue hecha para un laboratorio, por lo tanto, probablemente
+//no forme parte de la entrega final pero sirve como referencia para cuanto tengamos que conectarnos a una DB
+
 namespace Negocio
 {
     public class Usuarios

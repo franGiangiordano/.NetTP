@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Business.Entities;
 using Business.Logic;
 
+//Esta clase fue hecha para un laboratorio, si bien no forma parte del TP, puede ser utilizada como referencia
+
 namespace UI.Consola
 {
     public class Usuarios

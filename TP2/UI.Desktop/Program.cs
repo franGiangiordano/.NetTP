@@ -18,7 +18,8 @@ namespace UI.Desktop
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new formLogin());
             //Application.Run(new formMain());
-            Application.Run(new formListaUsuarios());
+            //Application.Run(new formListaUsuarios());
+            Application.Run(new Usuarios());
         }
     }
 }

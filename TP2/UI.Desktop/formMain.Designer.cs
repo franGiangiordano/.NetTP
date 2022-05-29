@@ -56,7 +56,7 @@ namespace UI.Desktop
             // mnuSalir
             // 
             this.mnuSalir.Name = "mnuSalir";
-            this.mnuSalir.Size = new System.Drawing.Size(180, 22);
+            this.mnuSalir.Size = new System.Drawing.Size(96, 22);
             this.mnuSalir.Text = "Salir";
             this.mnuSalir.Click += new System.EventHandler(this.mnuSalir_Click);
             // 
@@ -71,6 +71,7 @@ namespace UI.Desktop
             this.Name = "formMain";
             this.Text = "Academia";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.formMain_Load);
             this.Shown += new System.EventHandler(this.formMain_Shown);
             this.mnsPrincipal.ResumeLayout(false);
             this.mnsPrincipal.PerformLayout();

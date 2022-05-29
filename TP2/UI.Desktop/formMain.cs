@@ -8,6 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//Este formulario fue hecho para un laboratorio pero podría ser útil como formulario principal de la aplicacion
+//de escritorio 
+
+
+
 namespace UI.Desktop
 {
     public partial class formMain : Form
@@ -29,6 +34,11 @@ namespace UI.Desktop
             {
                 this.Dispose();
             }        
+        }
+
+        private void formMain_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
