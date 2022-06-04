@@ -1,0 +1,11 @@
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Business.Entities\bin\Debug\Business.Entities.dll
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Business.Entities\bin\Debug\Business.Entities.pdb
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Business.Entities\obj\Debug\Business.Entities.csproj.AssemblyReference.cache
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Business.Entities\obj\Debug\Business.Entities.csproj.CoreCompileInputs.cache
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Business.Entities\obj\Debug\Business.Entities.dll
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Business.Entities\obj\Debug\Business.Entities.pdb
+C:\Users\ALUMNO\Downloads\TP2\Business.Entities\bin\Debug\Business.Entities.dll
+C:\Users\ALUMNO\Downloads\TP2\Business.Entities\bin\Debug\Business.Entities.pdb
+C:\Users\ALUMNO\Downloads\TP2\Business.Entities\obj\Debug\Business.Entities.csproj.CoreCompileInputs.cache
+C:\Users\ALUMNO\Downloads\TP2\Business.Entities\obj\Debug\Business.Entities.dll
+C:\Users\ALUMNO\Downloads\TP2\Business.Entities\obj\Debug\Business.Entities.pdb
