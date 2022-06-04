@@ -21,7 +21,7 @@ namespace UI.Desktop
         public Usuarios()
         {
             InitializeComponent();
-            dgvUsuarios.AutoGenerateColumns = true;
+            dgvUsuarios.AutoGenerateColumns = false;
             Listar();
             
         }
@@ -77,5 +77,9 @@ namespace UI.Desktop
             this.Listar();
         }
 
+        private void tcUsuarios_TopToolStripPanel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
