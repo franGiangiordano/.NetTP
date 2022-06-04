@@ -29,7 +29,21 @@ namespace UI.Desktop
         public void Listar() {
 
             PersonaLogic ul = new PersonaLogic();
-            this.dgvPersonas.DataSource = ul.GetAll();            
+            this.dgvPersonas.DataSource = ul.GetAll();
+            //Este es un artilugio para asociar el id de plan al nombre
+            //Es temporal hasta que se integre a una DB
+            for (int i = 0; i < this.dgvPersonas.Rows.Count; i++) {
+                if (dgvPersonas.Rows[i].Cells[10].Value.ToString().Equals("0"))
+                {
+                    this.dgvPersonas.Rows[i].Cells[10].Value = "1996";
+                }
+                else if (dgvPersonas.Rows[i].Cells[10].Value.ToString().Equals("1"))
+                {
+                    this.dgvPersonas.Rows[i].Cells[10].Value = "2008";
+                }
+            }
+            
+            
         }
 
         private void button1_Click(object sender, EventArgs e)

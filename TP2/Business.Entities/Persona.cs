@@ -16,14 +16,17 @@ namespace Business.Entities
         private int _Legajo;
         private DateTime _FechaNacimiento;
         private TipoPersonas tipo;
+        
+
         public enum TipoPersonas
         {           
             Alumno,
             Docente,
             Administrativo
-        }        
+        }
 
-    private string _Email;
+       
+        private string _Email;
 
         
         public string Telefono { get => _Telefono; set => _Telefono = value; }
@@ -35,5 +38,6 @@ namespace Business.Entities
         public DateTime FechaNacimiento { get => _FechaNacimiento; set => _FechaNacimiento = value; }
         public string Email { get => _Email; set => _Email = value; }
         public TipoPersonas Tipo { get => tipo; set => tipo = value; }
+       
     }
 }

@@ -20,21 +20,21 @@ namespace UI.Desktop
 
         public PersonaDesktop()
         {
-            InitializeComponent();
+            InitializeComponent();                        
             this.cmbTipo.SelectedIndex = 1;
-
+            
         }
 
         public PersonaDesktop(ApplicationForm.ModoForm modo) : this()
         {
             Modo = (ApplicationForm.ModoForm)modo;
-            InitializeComponent();            
+            //InitializeComponent();            
         }
 
         
         public PersonaDesktop(int ID, ApplicationForm.ModoForm modo) : this()
         {
-            InitializeComponent();
+          //  InitializeComponent();
             Modo = (ApplicationForm.ModoForm)modo;
             PersonaLogic pl = new PersonaLogic();
             _PersonaActual = pl.GetOne(ID);
@@ -55,7 +55,15 @@ namespace UI.Desktop
             this.txtDirec.Text = this._PersonaActual.Direccion;            
             this.txtTel.Text = this._PersonaActual.Telefono;
             this.txtLeg.Text = this._PersonaActual.Legajo.ToString();
-            this.txtPlan.Text = this._PersonaActual.IDPlan.ToString();
+            if (this._PersonaActual.IDPlan == 0)
+            {
+                this.cmbPlan.Text = "1996";
+            }
+            else if (this._PersonaActual.IDPlan == 1)
+            {
+                this.cmbPlan.Text = "2008";
+            }
+            
             this.txtFechaNac.Text = this._PersonaActual.FechaNacimiento.ToString();
             this.cmbTipo.Text = this._PersonaActual.Tipo.ToString();
 
@@ -91,7 +99,13 @@ namespace UI.Desktop
                     _PersonaActual.Direccion = txtDirec.Text;
                     _PersonaActual.Telefono = txtTel.Text;
                     _PersonaActual.FechaNacimiento = DateTime.ParseExact(txtFechaNac.Text, "MM/dd/yyyy", CultureInfo.CreateSpecificCulture("en-US"));
-                    _PersonaActual.IDPlan = Int32.Parse(txtPlan.Text);
+                    if (cmbPlan.Text.Equals(1996))
+                    {
+                        _PersonaActual.IDPlan = 0;
+                    }
+                    else if (cmbPlan.Text.Equals(2008)) {
+                        _PersonaActual.IDPlan = 1;
+                    }
                     _PersonaActual.Legajo = Int32.Parse(txtLeg.Text);                    
                     _PersonaActual.Tipo = (Persona.TipoPersonas)Enum.Parse(typeof(Persona.TipoPersonas), cmbTipo.SelectedItem.ToString());                    
                     _PersonaActual.State = Usuario.States.New;
@@ -104,9 +118,16 @@ namespace UI.Desktop
                     _PersonaActual.Direccion = txtDirec.Text;
                     _PersonaActual.Telefono = txtTel.Text;
                     _PersonaActual.FechaNacimiento = DateTime.ParseExact(txtFechaNac.Text, "dd/MM/yyyy", null);
-                    _PersonaActual.IDPlan = Int32.Parse(txtPlan.Text);
+                    if (cmbPlan.Text.Equals(1996))
+                    {
+                        _PersonaActual.IDPlan = 0;
+                    }
+                    else if (cmbPlan.Text.Equals(2008))
+                    {
+                        _PersonaActual.IDPlan = 1;
+                    }
                     _PersonaActual.Legajo = Int32.Parse(txtLeg.Text);
-                    _PersonaActual.Tipo = (Persona.TipoPersonas)cmbTipo.SelectedItem;
+                    _PersonaActual.Tipo = (Persona.TipoPersonas)Enum.Parse(typeof(Persona.TipoPersonas), cmbTipo.SelectedItem.ToString());
                     _PersonaActual.State = Usuario.States.Modified;
                     break;
 
@@ -143,13 +164,13 @@ namespace UI.Desktop
             if (String.IsNullOrEmpty(this.txtNombre.Text)
             || String.IsNullOrEmpty(this.txtApe.Text) || String.IsNullOrEmpty(this.txtDirec.Text)
             || (!this.txtFechaNac.MaskFull) || String.IsNullOrEmpty(this.txtTel.Text)
-            || String.IsNullOrEmpty(this.txtEmail.Text) || String.IsNullOrEmpty(this.txtPlan.Text)
-            || String.IsNullOrEmpty(this.txtLeg.Text) || (!(this.cmbTipo.SelectedIndex >= 0))
+            || String.IsNullOrEmpty(this.txtEmail.Text) || String.IsNullOrEmpty(this.cmbPlan.Text)
+            || String.IsNullOrEmpty(this.txtLeg.Text) || String.IsNullOrEmpty(this.cmbTipo.Text)
              )
             {
                 this.Notificar("Campos Obligatorios Vacios", "Existen uno o mas campos vacios, rellenelos antes de continuar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                //MessageBox.Show();
-                MessageBox.Show(this.cmbTipo.SelectedIndex.ToString());
+                MessageBox.Show(this.txtFechaNac.MaskFull.ToString());
+                
                 return false;
             }            
             else if (ValidarMail(txtEmail.Text) == false)

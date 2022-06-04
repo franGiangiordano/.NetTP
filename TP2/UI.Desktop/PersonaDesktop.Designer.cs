@@ -30,7 +30,6 @@ namespace UI.Desktop
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtPlan = new System.Windows.Forms.TextBox();
             this.txtLeg = new System.Windows.Forms.TextBox();
             this.txtTel = new System.Windows.Forms.TextBox();
             this.lblId = new System.Windows.Forms.Label();
@@ -41,7 +40,7 @@ namespace UI.Desktop
             this.lblTel = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblLeg = new System.Windows.Forms.Label();
-            this.lblIdPlan = new System.Windows.Forms.Label();
+            this.lblPlan = new System.Windows.Forms.Label();
             this.lblTipo = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -52,6 +51,7 @@ namespace UI.Desktop
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.cmbTipo = new System.Windows.Forms.ComboBox();
+            this.cmbPlan = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +62,6 @@ namespace UI.Desktop
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 198F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 191F));
-            this.tableLayoutPanel1.Controls.Add(this.txtPlan, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.txtLeg, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtTel, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblId, 0, 0);
@@ -73,7 +72,7 @@ namespace UI.Desktop
             this.tableLayoutPanel1.Controls.Add(this.lblTel, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblFecha, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblLeg, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.lblIdPlan, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblPlan, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.lblTipo, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.txtId, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtNombre, 1, 1);
@@ -84,6 +83,7 @@ namespace UI.Desktop
             this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 2, 5);
             this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.cmbTipo, 3, 4);
+            this.tableLayoutPanel1.Controls.Add(this.cmbPlan, 3, 3);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 28);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
@@ -95,13 +95,6 @@ namespace UI.Desktop
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(739, 304);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // txtPlan
-            // 
-            this.txtPlan.Location = new System.Drawing.Point(551, 170);
-            this.txtPlan.Name = "txtPlan";
-            this.txtPlan.Size = new System.Drawing.Size(122, 20);
-            this.txtPlan.TabIndex = 19;
             // 
             // txtLeg
             // 
@@ -189,14 +182,14 @@ namespace UI.Desktop
             this.lblLeg.TabIndex = 7;
             this.lblLeg.Text = "Legajo";
             // 
-            // lblIdPlan
+            // lblPlan
             // 
-            this.lblIdPlan.AutoSize = true;
-            this.lblIdPlan.Location = new System.Drawing.Point(353, 167);
-            this.lblIdPlan.Name = "lblIdPlan";
-            this.lblIdPlan.Size = new System.Drawing.Size(42, 13);
-            this.lblIdPlan.TabIndex = 8;
-            this.lblIdPlan.Text = "ID Plan";
+            this.lblPlan.AutoSize = true;
+            this.lblPlan.Location = new System.Drawing.Point(353, 167);
+            this.lblPlan.Name = "lblPlan";
+            this.lblPlan.Size = new System.Drawing.Size(28, 13);
+            this.lblPlan.TabIndex = 8;
+            this.lblPlan.Text = "Plan";
             // 
             // lblTipo
             // 
@@ -284,6 +277,17 @@ namespace UI.Desktop
             this.cmbTipo.Size = new System.Drawing.Size(121, 21);
             this.cmbTipo.TabIndex = 23;
             // 
+            // cmbPlan
+            // 
+            this.cmbPlan.FormattingEnabled = true;
+            this.cmbPlan.Items.AddRange(new object[] {
+            "1996",
+            "2008"});
+            this.cmbPlan.Location = new System.Drawing.Point(551, 170);
+            this.cmbPlan.Name = "cmbPlan";
+            this.cmbPlan.Size = new System.Drawing.Size(121, 21);
+            this.cmbPlan.TabIndex = 24;
+            // 
             // PersonaDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -310,7 +314,7 @@ namespace UI.Desktop
         private System.Windows.Forms.Label lblTel;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label lblLeg;
-        private System.Windows.Forms.Label lblIdPlan;
+        private System.Windows.Forms.Label lblPlan;
         private System.Windows.Forms.Label lblTipo;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.TextBox txtLeg;
@@ -320,9 +324,9 @@ namespace UI.Desktop
         private System.Windows.Forms.TextBox txtDirec;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.MaskedTextBox txtFechaNac;
-        private System.Windows.Forms.TextBox txtPlan;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ComboBox cmbTipo;
+        private System.Windows.Forms.ComboBox cmbPlan;
     }
 }

@@ -49,6 +49,7 @@ namespace UI.Desktop
             this.fecha_nac = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombrePlan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tcPersonas.ContentPanel.SuspendLayout();
             this.tcPersonas.TopToolStripPanel.SuspendLayout();
             this.tcPersonas.SuspendLayout();
@@ -108,12 +109,15 @@ namespace UI.Desktop
             this.legajo,
             this.fecha_nac,
             this.email,
-            this.tipo});
+            this.tipo,
+            this.NombrePlan});
             this.tlPersonas.SetColumnSpan(this.dgvPersonas, 2);
             this.dgvPersonas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPersonas.Location = new System.Drawing.Point(3, 3);
+            this.dgvPersonas.MultiSelect = false;
             this.dgvPersonas.Name = "dgvPersonas";
             this.dgvPersonas.ReadOnly = true;
+            this.dgvPersonas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPersonas.Size = new System.Drawing.Size(892, 390);
             this.dgvPersonas.TabIndex = 0;
             // 
@@ -250,6 +254,13 @@ namespace UI.Desktop
             this.tipo.Name = "tipo";
             this.tipo.ReadOnly = true;
             // 
+            // NombrePlan
+            // 
+            this.NombrePlan.DataPropertyName = "IDPlan";
+            this.NombrePlan.HeaderText = "nombrePlan";
+            this.NombrePlan.Name = "NombrePlan";
+            this.NombrePlan.ReadOnly = true;
+            // 
             // Personas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -293,5 +304,6 @@ namespace UI.Desktop
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha_nac;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombrePlan;
     }
 }
