@@ -21,8 +21,9 @@ namespace UI.Desktop
             //Application.Run(new formListaUsuarios());
             //Application.Run(new Usuarios());
             //Application.Run(new PersonaDesktop());
-            Application.Run(new Personas());
-            //Application.Run(new Materias());
+            // Application.Run(new Personas());
+            // Application.Run(new Materias());
+            Application.Run(new ApplicationForm());
         }
     }
 }

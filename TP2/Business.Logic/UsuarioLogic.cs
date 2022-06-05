@@ -37,5 +37,21 @@ namespace Business.Logic
             _UsuarioData.Save(u);
             return;
         }
+
+        public bool IsValidMailAddress1(string mail)
+        {
+            try
+            {
+                System.Net.Mail.MailAddress mailAddress = new System.Net.Mail.MailAddress(mail);
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
     }
 }

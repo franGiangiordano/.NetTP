@@ -17,7 +17,9 @@ namespace UI.Desktop
         public Business.Entities.Materia _MateriaActual;
         public MateriaDesktop()
         {
-            InitializeComponent();
+            PlanLogic pl = new PlanLogic();
+            InitializeComponent();            
+            this.cmbPlan.DataSource = (from plan in pl.GetAll() select plan.Descripcion).ToList();
             this.cmbPlan.SelectedIndex = 1;
         }
 
@@ -49,14 +51,7 @@ namespace UI.Desktop
             this.txtDescripcion.Text = this._MateriaActual.Descripcion;
             this.txtHsSemanales.Text = this._MateriaActual.HSSemanales.ToString();
             this.txtHsTotales.Text = this._MateriaActual.HSTotales.ToString();
-            if (this._MateriaActual.IDPlan == 0)
-            {
-                this.cmbPlan.Text = "1996";
-            }
-            else if (this._MateriaActual.IDPlan == 1)
-            {
-                this.cmbPlan.Text = "2008";
-            }
+            this.cmbPlan.SelectedIndex = this._MateriaActual.IDPlan;
 
             switch (Modo)
             {
@@ -85,14 +80,8 @@ namespace UI.Desktop
                     _MateriaActual.Descripcion = txtDescripcion.Text;
                     _MateriaActual.HSSemanales = Int32.Parse(txtHsSemanales.Text);
                     _MateriaActual.HSTotales = Int32.Parse(txtHsTotales.Text);
-                    if (cmbPlan.Text.Equals("1996"))
-                    {
-                        _MateriaActual.IDPlan = 0;
-                    }
-                    else if (cmbPlan.Text.Equals("2008"))
-                    {
-                        _MateriaActual.IDPlan = 1;
-                    }
+                    _MateriaActual.IDPlan = cmbPlan.SelectedIndex;
+                  
                     _MateriaActual.State = Usuario.States.New;
                     break;
 

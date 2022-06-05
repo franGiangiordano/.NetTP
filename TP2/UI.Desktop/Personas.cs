@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
 
+
 namespace UI.Desktop
 {
     public partial class Personas : Form
@@ -27,31 +28,31 @@ namespace UI.Desktop
         }
 
         public void Listar() {
-
-            PersonaLogic ul = new PersonaLogic();
             
+            PersonaLogic ul = new PersonaLogic();
+            List<Persona> l1 = ul.GetAll();
+
             PlanLogic pl = new PlanLogic();
-            List<object> objectList = ul.GetAll().Cast<object>()
-             .Concat(pl.GetAll())
-             .ToList();
-            //this.dgvPersonas.DataSource = ul.GetAll().AddRange(pl.GetAll());
+            List<Plan> l2 = pl.GetAll();
+
+            DataTable dt1 = new DataTable();
+            dt1.Columns.Add("ID", typeof(int)); //los nombres de las columnas tienen que coincidir con los definidos en el Smart Tag
+            dt1.Columns.Add("Nombre", typeof(string));
+            dt1.Columns.Add("Apellido", typeof(string));
+            dt1.Columns.Add("Telefono", typeof(string));
+            dt1.Columns.Add("Direccion", typeof(string));
+            dt1.Columns.Add("Legajo", typeof(int));
+            dt1.Columns.Add("FechaNacimiento", typeof(DateTime));
+            dt1.Columns.Add("Email", typeof(string));
+            dt1.Columns.Add("Tipo", typeof(Persona.TipoPersonas));
+            dt1.Columns.Add("Descripcion", typeof(string));
 
 
-            //Este es un artilugio para asociar el id de plan al nombre
-            //Es temporal hasta que se integre a una DB
-            //for (int i = 0; i < this.dgvPersonas.Rows.Count; i++) {
-            //    if (dgvPersonas.Rows[i].Cells[10].Value.ToString().Equals("0"))
-            //    {
-            //        this.dgvPersonas.Rows[i].Cells[10].Value = "1996";
-            //    }
-            //    else if (dgvPersonas.Rows[i].Cells[10].Value.ToString().Equals("1"))
-            //    {
-            //        this.dgvPersonas.Rows[i].Cells[10].Value = "2008";
-            //    }
-            //}
-
-
-
+            foreach (var per in l1) {                    
+                    dt1.Rows.Add(per.ID,per.Nombre,per.Apellido,per.Telefono,per.Direccion,per.Legajo,per.FechaNacimiento,per.Email,per.Tipo,l2[per.IDPlan].Descripcion);
+            }
+            this.dgvPersonas.DataSource = dt1;
+                       
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -78,7 +79,8 @@ namespace UI.Desktop
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
-            int ID = ((Business.Entities.Persona)this.dgvPersonas.SelectedRows[0].DataBoundItem).ID;
+            //int ID = ((Business.Entities.Persona)this.dgvPersonas.SelectedRows[0].DataBoundItem).ID;
+            int ID = Convert.ToInt32(dgvPersonas.Rows[dgvPersonas.CurrentRow.Index].Cells[0].Value);
             PersonaDesktop formPersonas = new PersonaDesktop(ID, ApplicationForm.ModoForm.Modificacion);
             formPersonas.ShowDialog();
             this.Listar();
@@ -86,10 +88,16 @@ namespace UI.Desktop
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
-            int ID = ((Business.Entities.Persona)this.dgvPersonas.SelectedRows[0].DataBoundItem).ID;
+            //int ID = ((Business.Entities.Persona)this.dgvPersonas.SelectedRows[0].DataBoundItem).ID;
+            int ID = Convert.ToInt32(dgvPersonas.Rows[dgvPersonas.CurrentRow.Index].Cells[0].Value);
             PersonaDesktop formPersonas = new PersonaDesktop(ID, ApplicationForm.ModoForm.Baja);
             formPersonas.ShowDialog();
             this.Listar();
+        }
+
+        private void dgvPersonas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

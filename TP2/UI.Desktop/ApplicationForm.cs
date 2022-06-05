@@ -41,5 +41,23 @@ namespace UI.Desktop
         {
             this.Notificar(this.Text, mensaje, botones, icono);
         }
+
+        private void btnPersonas_Click(object sender, EventArgs e)
+        {
+            Personas formPersona = new Personas();
+            formPersona.ShowDialog();
+        }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            Usuarios formUsuarios = new Usuarios();
+            formUsuarios.ShowDialog();
+        }
+
+        private void btnMaterias_Click(object sender, EventArgs e)
+        {
+            Materias formMaterias = new Materias();
+            formMaterias.ShowDialog();
+        }
     }
 }

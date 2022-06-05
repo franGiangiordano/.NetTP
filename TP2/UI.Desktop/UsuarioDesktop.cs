@@ -112,31 +112,7 @@ namespace UI.Desktop
                     break;
             }
         }
-        //este es el que hicimos en el lab
-        //public virtual void MapearADatos() {
-        //    Business.Entities.Usuario usu = new Usuario();
-        //    usu = _UsuarioActual;
-
-        //    if (((ApplicationForm.ModoForm)ModoForm.Alta == Modo))
-        //    {
-        //        usu.Nombre = this.txtNombre.Text;
-        //        usu.Apellido = this.txtApe.Text;
-        //        usu.Email = this.txtEmail.Text;
-        //        usu.NombreUsuario = this.txtUsu.Text;
-        //        usu.Clave = this.txtClave.Text;
-        //        usu.Habilitado = this.checkHab.Checked;
-        //    } else if (((ApplicationForm.ModoForm)ModoForm.Modificacion == Modo)) {
-        //        usu.ID = Int32.Parse(this.txtId.Text);
-        //        usu.Nombre = this.txtNombre.Text;
-        //        usu.Apellido = this.txtApe.Text;
-        //        usu.Email = this.txtEmail.Text;
-        //        usu.NombreUsuario = this.txtUsu.Text;
-        //        usu.Clave = this.txtClave.Text;
-        //        usu.Habilitado = this.checkHab.Checked;
-        //    }
-
-        //    _UsuarioActual.State = (BusinessEntity.States)Modo;
-        //}
+        
         public virtual void GuardarCambios()
         {
             MapearADatos();
@@ -146,6 +122,7 @@ namespace UI.Desktop
 
         public virtual bool Validar()
         {
+            UsuarioLogic ul = new UsuarioLogic();
             if ( String.IsNullOrEmpty(this.txtNombre.Text)
             || String.IsNullOrEmpty(this.txtApe.Text) || String.IsNullOrEmpty(this.txtClave.Text)
             || String.IsNullOrEmpty(this.txtConfirm.Text) || String.IsNullOrEmpty(this.txtUsu.Text)
@@ -165,14 +142,14 @@ namespace UI.Desktop
                 this.Notificar("Confirmar Clave y clave no coinciden", "Los campos de clave no coinciden, verifiquelos e intente nuevamente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
-            else if (ValidarMail(txtEmail.Text) == false)
+            else if (ul.IsValidMailAddress1(txtEmail.Text) == false)
             {
                 this.Notificar("Mail Invalido", "El Email ingresado es invalido", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
             else return true;
         }
-
+        /*
         private bool ValidarMail(string Email)
         {
             bool arrobaFlag = false;
@@ -197,45 +174,8 @@ namespace UI.Desktop
                 return true;
             else
                 return false;
-        }
+        }*/
 
-        // este es el que hicimos en el lab
-        //public virtual bool Validar()
-        //{
-        //    if (String.IsNullOrEmpty(this.txtId.Text) || String.IsNullOrEmpty(this.txtNombre.Text)
-        //     || String.IsNullOrEmpty(this.txtApe.Text) || String.IsNullOrEmpty(this.txtClave.Text)
-        //     || String.IsNullOrEmpty(this.txtConfirm.Text) || String.IsNullOrEmpty(this.txtUsu.Text)
-        //     || String.IsNullOrEmpty(this.txtEmail.Text)
-        //     )
-        //    {
-        //        MessageBox.Show("Uno o mas campos estan vacios", "Error"
-        //        , MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        return false;
-        //    }
-
-        //    if (this.txtClave.Text.Equals(this.txtConfirm.Text))
-        //    {
-        //        MessageBox.Show("Las contraseñas no coinciden", "Error"
-        //        , MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        return false;
-        //    }
-
-        //    if (this.txtClave.Text.Length < 8)
-        //    {
-        //        MessageBox.Show("La contraseña debe tener al menos 8 caracteres", "Error"
-        //         , MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        return false;
-        //    }
-        //    //new System.Net.Mail.MailAddress(unMail); item 17
-        //    // ATENCION! - ver si esta alternativa de mail esta ok 
-        //    var addr = new System.Net.Mail.MailAddress(this.txtEmail.Text);
-        //    if(addr.Address != this.txtEmail.Text)
-        //    {
-        //        return false;
-        //    }
-
-        //    return true;
-        //}
 
 
         public void Notificar(string titulo, string mensaje, MessageBoxButtons

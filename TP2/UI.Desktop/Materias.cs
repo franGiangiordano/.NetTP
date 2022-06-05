@@ -29,20 +29,23 @@ namespace UI.Desktop
         public void Listar()
         {
             MateriaLogic ml = new MateriaLogic();
-            this.dgvMaterias.DataSource = ml.GetAll();
-            //Este es un artilugio para asociar el id de plan al nombre
-            //Es temporal hasta que se integre a una DB
-            for (int i = 0; i < this.dgvMaterias.Rows.Count; i++)
+            List<Materia> l1 = ml.GetAll();
+
+            PlanLogic pl = new PlanLogic();
+            List<Plan> l2 = pl.GetAll();
+
+            DataTable dt1 = new DataTable();
+            dt1.Columns.Add("ID", typeof(int)); //los nombres de las columnas tienen que coincidir con los definidos en el Smart Tag
+            dt1.Columns.Add("Descripcion", typeof(string));
+            dt1.Columns.Add("HSSemanales", typeof(string));
+            dt1.Columns.Add("HSTotales", typeof(string));
+            dt1.Columns.Add("IdPlan", typeof(string));
+
+            foreach (var mat in l1)
             {
-                if (dgvMaterias.Rows[i].Cells[4].Value.ToString().Equals("0"))
-                {
-                    this.dgvMaterias.Rows[i].Cells[4].Value = "1996";
-                }
-                else if (dgvMaterias.Rows[i].Cells[4].Value.ToString().Equals("1"))
-                {
-                    this.dgvMaterias.Rows[i].Cells[4].Value = "2008";
-                }
+                dt1.Rows.Add(mat.ID, mat.Descripcion, mat.HSSemanales,mat.HSTotales, l2[mat.IDPlan].Descripcion);
             }
+            this.dgvMaterias.DataSource = dt1;
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -64,7 +67,8 @@ namespace UI.Desktop
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
-            int ID = ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
+            // int ID = ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
+            int ID = Convert.ToInt32(dgvMaterias.Rows[dgvMaterias.CurrentRow.Index].Cells[0].Value);
             MateriaDesktop formMateria = new MateriaDesktop(ID,ApplicationForm.ModoForm.Modificacion);
             formMateria.ShowDialog();
             this.Listar();
@@ -72,7 +76,8 @@ namespace UI.Desktop
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
-            int ID = ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
+            // int ID = ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
+            int ID = Convert.ToInt32(dgvMaterias.Rows[dgvMaterias.CurrentRow.Index].Cells[0].Value);
             MateriaDesktop formMateria = new MateriaDesktop(ID,ApplicationForm.ModoForm.Baja);
             formMateria.ShowDialog();
             this.Listar();

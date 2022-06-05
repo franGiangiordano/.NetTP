@@ -20,7 +20,9 @@ namespace UI.Desktop
 
         public PersonaDesktop()
         {
-            InitializeComponent();                        
+            PlanLogic pl = new PlanLogic();            
+            InitializeComponent();
+            this.cmbPlan.DataSource = (from plan in pl.GetAll() select plan.Descripcion).ToList() ;            
             this.cmbTipo.SelectedIndex = 1;
             
         }
@@ -56,14 +58,6 @@ namespace UI.Desktop
             this.txtTel.Text = this._PersonaActual.Telefono;
             this.txtLeg.Text = this._PersonaActual.Legajo.ToString();
             this.cmbPlan.SelectedIndex = this._PersonaActual.IDPlan;
-            //if (this._PersonaActual.IDPlan == 0)
-            //{
-            //    this.cmbPlan.Text = "1996";
-            //}
-            //else if (this._PersonaActual.IDPlan == 1)
-            //{
-            //    this.cmbPlan.Text = "2008";
-            //}
             
             this.txtFechaNac.Text = this._PersonaActual.FechaNacimiento.ToString();
             this.cmbTipo.Text = this._PersonaActual.Tipo.ToString();
@@ -101,13 +95,7 @@ namespace UI.Desktop
                     _PersonaActual.Telefono = txtTel.Text;
                     _PersonaActual.FechaNacimiento = DateTime.ParseExact(txtFechaNac.Text, "MM/dd/yyyy", CultureInfo.CreateSpecificCulture("en-US"));
                     _PersonaActual.IDPlan = cmbPlan.SelectedIndex;
-                    //if (cmbPlan.Text.Equals("1996"))
-                    //{
-                    //    _PersonaActual.IDPlan = 0;
-                    //}
-                    //else if (cmbPlan.Text.Equals("2008")) {
-                    //    _PersonaActual.IDPlan = 1;
-                    //}
+                    
                     _PersonaActual.Legajo = Int32.Parse(txtLeg.Text);                    
                     _PersonaActual.Tipo = (Persona.TipoPersonas)Enum.Parse(typeof(Persona.TipoPersonas), cmbTipo.SelectedItem.ToString());                    
                     _PersonaActual.State = Usuario.States.New;
@@ -121,14 +109,7 @@ namespace UI.Desktop
                     _PersonaActual.Telefono = txtTel.Text;
                     _PersonaActual.FechaNacimiento = DateTime.ParseExact(txtFechaNac.Text, "dd/MM/yyyy", null);
                     _PersonaActual.IDPlan = cmbPlan.SelectedIndex;
-                    //if (cmbPlan.Text.Equals("1996"))
-                    //{
-                    //    _PersonaActual.IDPlan = 0;
-                    //}
-                    //else if (cmbPlan.Text.Equals("2008"))
-                    //{
-                    //    _PersonaActual.IDPlan = 1;
-                    //}
+                    
                     _PersonaActual.Legajo = Int32.Parse(txtLeg.Text);
                     _PersonaActual.Tipo = (Persona.TipoPersonas)Enum.Parse(typeof(Persona.TipoPersonas), cmbTipo.SelectedItem.ToString());
                     _PersonaActual.State = Usuario.States.Modified;
@@ -164,6 +145,7 @@ namespace UI.Desktop
 
         public virtual bool Validar()
         {
+            PersonaLogic pl = new PersonaLogic();
             if (String.IsNullOrEmpty(this.txtNombre.Text)
             || String.IsNullOrEmpty(this.txtApe.Text) || String.IsNullOrEmpty(this.txtDirec.Text)
             || (!this.txtFechaNac.MaskFull) || String.IsNullOrEmpty(this.txtTel.Text)
@@ -176,7 +158,7 @@ namespace UI.Desktop
                 
                 return false;
             }            
-            else if (ValidarMail(txtEmail.Text) == false)
+            else if (pl.IsValidMailAddress1(txtEmail.Text) == false)
             {
                 this.Notificar("Mail Invalido", "El Email ingresado es invalido", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
@@ -184,7 +166,7 @@ namespace UI.Desktop
             else return true;
             
         }
-
+        /*
         private bool ValidarMail(string Email)
         {
             bool arrobaFlag = false;
@@ -209,8 +191,9 @@ namespace UI.Desktop
                 return true;
             else
                 return false;
-        }
+        }*/
 
+        
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (Validar())
