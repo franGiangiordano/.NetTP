@@ -55,14 +55,15 @@ namespace UI.Desktop
             this.txtDirec.Text = this._PersonaActual.Direccion;            
             this.txtTel.Text = this._PersonaActual.Telefono;
             this.txtLeg.Text = this._PersonaActual.Legajo.ToString();
-            if (this._PersonaActual.IDPlan == 0)
-            {
-                this.cmbPlan.Text = "1996";
-            }
-            else if (this._PersonaActual.IDPlan == 1)
-            {
-                this.cmbPlan.Text = "2008";
-            }
+            this.cmbPlan.SelectedIndex = this._PersonaActual.IDPlan;
+            //if (this._PersonaActual.IDPlan == 0)
+            //{
+            //    this.cmbPlan.Text = "1996";
+            //}
+            //else if (this._PersonaActual.IDPlan == 1)
+            //{
+            //    this.cmbPlan.Text = "2008";
+            //}
             
             this.txtFechaNac.Text = this._PersonaActual.FechaNacimiento.ToString();
             this.cmbTipo.Text = this._PersonaActual.Tipo.ToString();
@@ -99,13 +100,14 @@ namespace UI.Desktop
                     _PersonaActual.Direccion = txtDirec.Text;
                     _PersonaActual.Telefono = txtTel.Text;
                     _PersonaActual.FechaNacimiento = DateTime.ParseExact(txtFechaNac.Text, "MM/dd/yyyy", CultureInfo.CreateSpecificCulture("en-US"));
-                    if (cmbPlan.Text.Equals(1996))
-                    {
-                        _PersonaActual.IDPlan = 0;
-                    }
-                    else if (cmbPlan.Text.Equals(2008)) {
-                        _PersonaActual.IDPlan = 1;
-                    }
+                    _PersonaActual.IDPlan = cmbPlan.SelectedIndex;
+                    //if (cmbPlan.Text.Equals("1996"))
+                    //{
+                    //    _PersonaActual.IDPlan = 0;
+                    //}
+                    //else if (cmbPlan.Text.Equals("2008")) {
+                    //    _PersonaActual.IDPlan = 1;
+                    //}
                     _PersonaActual.Legajo = Int32.Parse(txtLeg.Text);                    
                     _PersonaActual.Tipo = (Persona.TipoPersonas)Enum.Parse(typeof(Persona.TipoPersonas), cmbTipo.SelectedItem.ToString());                    
                     _PersonaActual.State = Usuario.States.New;
@@ -118,14 +120,15 @@ namespace UI.Desktop
                     _PersonaActual.Direccion = txtDirec.Text;
                     _PersonaActual.Telefono = txtTel.Text;
                     _PersonaActual.FechaNacimiento = DateTime.ParseExact(txtFechaNac.Text, "dd/MM/yyyy", null);
-                    if (cmbPlan.Text.Equals(1996))
-                    {
-                        _PersonaActual.IDPlan = 0;
-                    }
-                    else if (cmbPlan.Text.Equals(2008))
-                    {
-                        _PersonaActual.IDPlan = 1;
-                    }
+                    _PersonaActual.IDPlan = cmbPlan.SelectedIndex;
+                    //if (cmbPlan.Text.Equals("1996"))
+                    //{
+                    //    _PersonaActual.IDPlan = 0;
+                    //}
+                    //else if (cmbPlan.Text.Equals("2008"))
+                    //{
+                    //    _PersonaActual.IDPlan = 1;
+                    //}
                     _PersonaActual.Legajo = Int32.Parse(txtLeg.Text);
                     _PersonaActual.Tipo = (Persona.TipoPersonas)Enum.Parse(typeof(Persona.TipoPersonas), cmbTipo.SelectedItem.ToString());
                     _PersonaActual.State = Usuario.States.Modified;
