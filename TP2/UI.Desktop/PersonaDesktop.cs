@@ -57,8 +57,7 @@ namespace UI.Desktop
             this.txtDirec.Text = this._PersonaActual.Direccion;            
             this.txtTel.Text = this._PersonaActual.Telefono;
             this.txtLeg.Text = this._PersonaActual.Legajo.ToString();
-            this.cmbPlan.SelectedIndex = this._PersonaActual.IDPlan;
-            
+            this.cmbPlan.SelectedIndex = this._PersonaActual.IDPlan;            
             this.txtFechaNac.Text = this._PersonaActual.FechaNacimiento.ToString();
             this.cmbTipo.Text = this._PersonaActual.Tipo.ToString();
 
