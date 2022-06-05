@@ -89,14 +89,7 @@ namespace UI.Desktop
                     _MateriaActual.Descripcion = txtDescripcion.Text;
                     _MateriaActual.HSSemanales = Int32.Parse(txtHsSemanales.Text);
                     _MateriaActual.HSTotales = Int32.Parse(txtHsTotales.Text);
-                    if (cmbPlan.Text.Equals("1996"))
-                    {
-                        _MateriaActual.IDPlan = 0;
-                    }
-                    else if (cmbPlan.Text.Equals("2008"))
-                    {
-                        _MateriaActual.IDPlan = 1;
-                    }
+                    _MateriaActual.IDPlan = cmbPlan.SelectedIndex;
                     _MateriaActual.State = Usuario.States.Modified;
                     break;
 
