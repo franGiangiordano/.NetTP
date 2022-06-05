@@ -23,7 +23,8 @@ namespace UI.Desktop
             //Application.Run(new PersonaDesktop());
             // Application.Run(new Personas());
             // Application.Run(new Materias());
-            Application.Run(new ApplicationForm());
+            //Application.Run(new ApplicationForm());
+            Application.Run(new Principal());
         }
     }
 }

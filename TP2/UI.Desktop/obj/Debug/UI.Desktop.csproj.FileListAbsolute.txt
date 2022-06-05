@@ -79,3 +79,4 @@ C:\Users\user\Documents\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Materi
 C:\Users\user\Documents\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.MateriaDesktop.resources
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.MateriaDesktop.resources
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Materias.resources
+C:\Users\user\Documents\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Principal.resources
