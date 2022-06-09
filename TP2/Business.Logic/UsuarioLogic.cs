@@ -52,6 +52,26 @@ namespace Business.Logic
             }
         }
 
+        public string validarClave(string clave1, string clave2)
+        {
+            if (clave1 != clave2)
+            {
+                return "Los campos de clave no coinciden, verifiquelos e intente nuevamente\n";
+            }
+            return "";
+        }
 
-    }
+        public string validarLongitud(string clave1)
+        {
+            if (clave1.Length < 8)
+            {
+                return "La contraseña debe tener al menos 8 caracteres\n";
+            }
+            return "";
+        }
+
+        
+
+
+}
 }

@@ -31,3 +31,14 @@ C:\Users\user\Documents\GitHub\.NetTP\TP2\Business.Logic\obj\Debug\Business.Logi
 C:\Users\user\Documents\GitHub\.NetTP\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.CopyComplete
 C:\Users\user\Documents\GitHub\.NetTP\TP2\Business.Logic\obj\Debug\Business.Logic.dll
 C:\Users\user\Documents\GitHub\.NetTP\TP2\Business.Logic\obj\Debug\Business.Logic.pdb
+F:\TP2\Business.Logic\bin\Debug\Business.Logic.dll
+F:\TP2\Business.Logic\bin\Debug\Business.Logic.pdb
+F:\TP2\Business.Logic\bin\Debug\Business.Entities.dll
+F:\TP2\Business.Logic\bin\Debug\Data.Database.dll
+F:\TP2\Business.Logic\bin\Debug\Business.Entities.pdb
+F:\TP2\Business.Logic\bin\Debug\Data.Database.pdb
+F:\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.AssemblyReference.cache
+F:\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.CoreCompileInputs.cache
+F:\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.CopyComplete
+F:\TP2\Business.Logic\obj\Debug\Business.Logic.dll
+F:\TP2\Business.Logic\obj\Debug\Business.Logic.pdb

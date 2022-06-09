@@ -37,15 +37,14 @@ namespace UI.Desktop
             MapearDeDatos();
         }
 
-        public enum ModoForm { Alta, Baja, Modificacion, Consulta };
-
+       
         
         private void MateriaDesktop_Load(object sender, EventArgs e)
         {
 
         }
 
-        public virtual void MapearDeDatos() 
+        public override void MapearDeDatos() 
         {
             this.txtId.Text = this._MateriaActual.ID.ToString();
             this.txtDescripcion.Text = this._MateriaActual.Descripcion;
@@ -70,7 +69,7 @@ namespace UI.Desktop
             }
         }
 
-        public virtual void MapearADatos() 
+        public override void MapearADatos() 
         {
             switch (Modo)
             {
@@ -103,46 +102,68 @@ namespace UI.Desktop
             }
         }
 
-        public virtual void GuardarCambios() 
+        public override void GuardarCambios() 
         {
             MapearADatos();
             MateriaLogic ml = new MateriaLogic();
             ml.Save(_MateriaActual);
         }
-        public virtual bool Validar()
+        public override bool Validar()
         {
+            MateriaLogic ml = new MateriaLogic();
+            int n;
+            string errores = "";
             if (String.IsNullOrEmpty(this.txtDescripcion.Text)
             || String.IsNullOrEmpty(this.txtHsSemanales.Text) || String.IsNullOrEmpty(this.txtHsTotales.Text)
             || String.IsNullOrEmpty(this.cmbPlan.Text) 
              )
             {
-                this.Notificar("Campos Obligatorios Vacios", "Existen uno o mas campos vacios, rellenelos antes de continuar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
+                errores += "Existen uno o mas campos vacios, rellenelos antes de continuar\n";
             }
-            else if (Int32.Parse(txtHsSemanales.Text) < 0)
+
+            if (!String.IsNullOrEmpty(this.txtHsSemanales.Text))
             {
-                this.Notificar("HsSemanales Invalida", "Las horas semanales deben ser mayores a 0", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
+                if(Int32.Parse(txtHsSemanales.Text) < 0){
+                    errores += "Las horas semanales deben ser mayores a 0\n";
+                }             
             }
-            else if (Int32.Parse(txtHsTotales.Text) < 0)
+
+            if (!String.IsNullOrEmpty(this.txtHsTotales.Text))
             {
-                this.Notificar("HsTotales Invalida", "Las horas totales deben ser mayores a 0", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
+                if (Int32.Parse(txtHsTotales.Text) < 0)
+                {
+                    errores += "Las horas totales deben ser mayores a 0\n";
+                }
             }
-            else if (Int32.Parse(txtHsSemanales.Text) > Int32.Parse(txtHsTotales.Text))
+            errores += ml.ValidarHs(this.txtHsSemanales.Text, this.txtHsTotales.Text);
+            
+            if (!int.TryParse(this.txtHsSemanales.Text, out n))
             {
-                this.Notificar("Cantidad invalida", "La cantidad de hs Totales debe ser superior a las semanales", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                errores += "El campo Horas Semanales solo puede contener numeros\n";
+            }
+            if (!int.TryParse(this.txtHsTotales.Text, out n))
+            {
+                errores += "El campo Horas Totales solo puede contener numeros\n";
+            }
+            
+            if (!errores.Equals(""))
+            {
+                this.Notificar(errores, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
-            else return true;
+            else
+            {
+                return true;
+            }
+
         }
 
-        public void Notificar(string titulo, string mensaje, MessageBoxButtons
+        public override void Notificar(string titulo, string mensaje, MessageBoxButtons
             botones, MessageBoxIcon icono)
         {
             MessageBox.Show(mensaje, titulo, botones, icono);
         }
-        public void Notificar(string mensaje, MessageBoxButtons botones,
+        public override void Notificar(string mensaje, MessageBoxButtons botones,
         MessageBoxIcon icono)
         {
             this.Notificar(this.Text, mensaje, botones, icono);
@@ -167,6 +188,11 @@ namespace UI.Desktop
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void tlMaterias_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

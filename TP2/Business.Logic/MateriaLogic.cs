@@ -37,5 +37,15 @@ namespace Business.Logic
             _MateriaData.Save(m);
             return;
         }
+
+        public string ValidarHs(string HsSemanales, string HsTotales)
+        {
+
+            if (!String.IsNullOrEmpty(HsSemanales) && !String.IsNullOrEmpty(HsTotales) && Int32.Parse(HsSemanales) > Int32.Parse(HsTotales))
+            {
+                return "La cantidad de hs Totales debe ser superior a las semanales\n";
+            }
+            return "";
+        }
     }
 }

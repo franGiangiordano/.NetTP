@@ -40,14 +40,12 @@ namespace UI.Desktop
         {
         }
 
-        public enum ModoForm { Alta, Baja, Modificacion, Consulta };
-
         private void UsuarioDesktop_Load(object sender, EventArgs e)
         {
 
         }
 
-        public virtual void MapearDeDatos()
+        public override void MapearDeDatos()
         {
             this.txtId.Text = this._UsuarioActual.ID.ToString();
             this.checkHab.Checked = this._UsuarioActual.Habilitado;
@@ -113,15 +111,16 @@ namespace UI.Desktop
             }
         }
         
-        public virtual void GuardarCambios()
+        public override void GuardarCambios()
         {
             MapearADatos();
             UsuarioLogic ul = new UsuarioLogic();
             ul.Save(_UsuarioActual);
         }
 
-        public virtual bool Validar()
+        public override bool Validar()
         {
+            string errores = "";
             UsuarioLogic ul = new UsuarioLogic();
             if ( String.IsNullOrEmpty(this.txtNombre.Text)
             || String.IsNullOrEmpty(this.txtApe.Text) || String.IsNullOrEmpty(this.txtClave.Text)
@@ -129,25 +128,32 @@ namespace UI.Desktop
             || String.IsNullOrEmpty(this.txtEmail.Text)
              )
             {
-                this.Notificar("Campos Obligatorios Vacios", "Existen uno o mas campos vacios, rellenelos antes de continuar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
+                errores += "Existen uno o mas campos vacios, rellenelos antes de continuar\n";
             }
-            else if (txtClave.Text.Length < 8)
+            errores += ul.validarLongitud(txtClave.Text);
+            errores += ul.validarClave(txtClave.Text, txtConfirm.Text);
+            
+            if (ul.IsValidMailAddress1(txtEmail.Text) == false)
             {
-                this.Notificar("Contraseña Invalida", "La contraseña debe tener al menos 8 caracteres", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
+                errores += "El Email ingresado es invalido\n";               
             }
-            else if (txtClave.Text != txtConfirm.Text)
+            if (!this.txtNombre.Text.All(Char.IsLetter))
             {
-                this.Notificar("Confirmar Clave y clave no coinciden", "Los campos de clave no coinciden, verifiquelos e intente nuevamente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
+                errores += "El campo nombre solo puede contener letras\n";
             }
-            else if (ul.IsValidMailAddress1(txtEmail.Text) == false)
+            if (!this.txtApe.Text.All(Char.IsLetter))
             {
-                this.Notificar("Mail Invalido", "El Email ingresado es invalido", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                errores += "El campo apellido solo puede contener letras\n";
+            }
+            if (!errores.Equals(""))
+            {
+                this.Notificar(errores, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
-            else return true;
+            else
+            {
+                return true;
+            }
         }
         /*
         private bool ValidarMail(string Email)
@@ -178,12 +184,12 @@ namespace UI.Desktop
 
 
 
-        public void Notificar(string titulo, string mensaje, MessageBoxButtons
+        public override void Notificar(string titulo, string mensaje, MessageBoxButtons
             botones, MessageBoxIcon icono)
         {
             MessageBox.Show(mensaje, titulo, botones, icono);
         }
-        public void Notificar(string mensaje, MessageBoxButtons botones,
+        public override void Notificar(string mensaje, MessageBoxButtons botones,
         MessageBoxIcon icono)
         {
             this.Notificar(this.Text, mensaje, botones, icono);

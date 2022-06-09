@@ -16,8 +16,7 @@ namespace UI.Desktop
     public partial class PersonaDesktop : ApplicationForm
     {
         public Business.Entities.Persona _PersonaActual;
-        public enum ModoForm { Alta, Baja, Modificacion, Consulta };
-
+      
         public PersonaDesktop()
         {
             PlanLogic pl = new PlanLogic();            
@@ -49,7 +48,7 @@ namespace UI.Desktop
 
         }
 
-        public virtual void MapearDeDatos() {
+        public override void MapearDeDatos() {
             this.txtId.Text = this._PersonaActual.ID.ToString();            
             this.txtNombre.Text = this._PersonaActual.Nombre;
             this.txtApe.Text = this._PersonaActual.Apellido;
@@ -81,7 +80,7 @@ namespace UI.Desktop
 
 
         }
-        public virtual void MapearADatos() {
+        public override void MapearADatos() {
             switch (Modo)
             {
                 case (ApplicationForm.ModoForm)ModoForm.Alta:
@@ -124,26 +123,28 @@ namespace UI.Desktop
             }
 
         }
-        public virtual void GuardarCambios() {
+        public override void GuardarCambios() {
             MapearADatos();
             PersonaLogic pl = new PersonaLogic();
             pl.Save(_PersonaActual);
 
         }        
-        public void Notificar(string titulo, string mensaje, MessageBoxButtons
+        public override void Notificar(string titulo, string mensaje, MessageBoxButtons
             botones, MessageBoxIcon icono)
         {
             MessageBox.Show(mensaje, titulo, botones, icono);
         }
-        public void Notificar(string mensaje, MessageBoxButtons botones,
+        public override void Notificar(string mensaje, MessageBoxButtons botones,
         MessageBoxIcon icono)
         {
             this.Notificar(this.Text, mensaje, botones, icono);
         }
 
 
-        public virtual bool Validar()
+        public override bool Validar()
         {
+            int n;
+            string errores = "";
             PersonaLogic pl = new PersonaLogic();
             if (String.IsNullOrEmpty(this.txtNombre.Text)
             || String.IsNullOrEmpty(this.txtApe.Text) || String.IsNullOrEmpty(this.txtDirec.Text)
@@ -152,18 +153,46 @@ namespace UI.Desktop
             || String.IsNullOrEmpty(this.txtLeg.Text) || String.IsNullOrEmpty(this.cmbTipo.Text)
              )
             {
-                this.Notificar("Campos Obligatorios Vacios", "Existen uno o mas campos vacios, rellenelos antes de continuar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                MessageBox.Show(this.txtFechaNac.MaskFull.ToString());
-                
-                return false;
+                errores += "Existen uno o mas campos vacios, rellenelos antes de continuar\n";
+                //this.Notificar("Campos Obligatorios Vacios", "Existen uno o mas campos vacios, rellenelos antes de continuar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //MessageBox.Show(this.txtFechaNac.MaskFull.ToString());              
             }            
-            else if (pl.IsValidMailAddress1(txtEmail.Text) == false)
+            if (pl.IsValidMailAddress1(txtEmail.Text) == false)
             {
-                this.Notificar("Mail Invalido", "El Email ingresado es invalido", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
+                 errores += "El Email ingresado es invalido\n";
+                if (!errores.Equals(""))
+                {
+                    //this.Notificar(errores, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                }
+                //this.Notificar("Mail Invalido", "El Email ingresado es invalido", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+              
             }
-            else return true;
-            
+            if (!int.TryParse(this.txtTel.Text, out n))
+            {
+                errores += "El campo telefono solo puede contener numeros\n";
+            }
+            if (!int.TryParse(this.txtLeg.Text, out n))
+            {
+                errores += "El campo legajo solo puede contener numeros\n";
+            }
+            if (!this.txtNombre.Text.All(Char.IsLetter))
+            {
+                errores += "El campo nombre solo puede contener letras\n";
+            }
+            if (!this.txtApe.Text.All(Char.IsLetter))
+            {
+                errores += "El campo apellido solo puede contener letras\n";
+            }
+
+            if (!errores.Equals(""))
+            {
+                this.Notificar(errores, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }else
+            {
+                return true;
+            }
         }
         /*
         private bool ValidarMail(string Email)
@@ -192,7 +221,7 @@ namespace UI.Desktop
                 return false;
         }*/
 
-        
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (Validar())
@@ -205,6 +234,11 @@ namespace UI.Desktop
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

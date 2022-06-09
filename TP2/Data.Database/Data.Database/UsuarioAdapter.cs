@@ -64,7 +64,7 @@ namespace Data.Database
 
         public List<Usuario> GetAll()
         {
-            return new List<Usuario>(Usuarios);
+            return new List<Usuario>(Usuarios); //llamar a open , hacer select, exeecute reader
         }
 
         public Business.Entities.Usuario GetOne(int ID)
