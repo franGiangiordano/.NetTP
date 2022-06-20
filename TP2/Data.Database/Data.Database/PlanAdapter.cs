@@ -4,72 +4,160 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Business.Entities;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Data.Database
 {
     public class PlanAdapter : Adapter
     {
-        #region DatosEnMemoria
-        // Esta región solo se usa en esta etapa donde los datos se mantienen en memoria.
-        // Al modificar este proyecto para que acceda a la base de datos esta será eliminada
-        private static List<Plan> _Planes;
-
-        private static List<Plan> Planes
-        {
-            get
-            {
-                if (_Planes == null)
-                {
-                    _Planes = new List<Business.Entities.Plan>();
-                    Business.Entities.Plan p;
-                    p = new Business.Entities.Plan();
-                    p.ID = 0;
-                    p.State = Business.Entities.BusinessEntity.States.Unmodified;
-                    p.Descripcion = "plan viejo";
-                    p.IDEspecialidad = 2;
-                    _Planes.Add(p);
-
-                    p = new Business.Entities.Plan();
-                    p.ID = 1;
-                    p.State = Business.Entities.BusinessEntity.States.Unmodified;
-                    p.Descripcion = "plan nuevo";
-                    p.IDEspecialidad = 3;
-                    _Planes.Add(p);
-                }
-                return _Planes;
-            }
-        }
-        #endregion
-
         public List<Plan> GetAll()
         {
-            return new List<Plan>(Planes);
+            List<Plan> planes = new List<Plan>();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdPlanes = new SqlCommand("select * from planes", sqlconn);
+
+                SqlDataReader drPlanes = cmdPlanes.ExecuteReader();
+
+                while (drPlanes.Read())
+                {
+                    Business.Entities.Plan plan;
+                    plan = new Business.Entities.Plan();
+                    plan.ID = (int)drPlanes["id_plan"];
+                    plan.Descripcion = (string)drPlanes["desc_plan"]; ;
+                    plan.IDEspecialidad = (int)drPlanes["id_especialidad"];
+                    planes.Add(plan);
+                }
+                drPlanes.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de planes", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+
+            return planes;
         }
 
         public Business.Entities.Plan GetOne(int ID)
         {
-            return Planes.Find(delegate (Plan p) { return p.ID == ID; });
+            Business.Entities.Plan plan;
+            plan = new Business.Entities.Plan();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdPlanes = new SqlCommand("select * from planes where id_plan=@id", sqlconn);
+                cmdPlanes.Parameters.Add("@id", SqlDbType.Int).Value = ID;
+                SqlDataReader drPlanes = cmdPlanes.ExecuteReader();
+
+                if (drPlanes.Read())
+                {
+                    plan.ID = (int)drPlanes["id_plan"];
+                    plan.Descripcion = (string)drPlanes["desc_plan"]; ;
+                    plan.IDEspecialidad = (int)drPlanes["id_especialidad"];
+                }
+                drPlanes.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar plan", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+
+            return plan;
         }
 
         public void Delete(int ID)
         {
-            Planes.Remove(this.GetOne(ID));
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdDelete = new SqlCommand("delete planes where id_plan=@id", sqlconn);
+                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
+                cmdDelete.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al eliminar plan", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+        }
+
+        protected void Update(Plan plan)
+        {
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdSave = new SqlCommand("update planes set desc_plan = @desc_plan, " +
+                    "id_especialidad = @id_especialidad where id_plan = @id", sqlconn);
+                cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = plan.ID;
+                cmdSave.Parameters.Add("@desc_plan", SqlDbType.VarChar, 50).Value = plan.Descripcion;
+                cmdSave.Parameters.Add("@id_especialidad", SqlDbType.Int).Value = plan.IDEspecialidad;
+                cmdSave.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al modificar datos del plan", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+        }
+
+        protected void Insert(Plan plan)
+        {
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdSave = new SqlCommand("insert into planes (desc_plan,id_especialidad) " +
+                    "values (@desc_plan,@id_especialidad) " +
+                    "select @@identity", sqlconn);
+                cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = plan.ID;
+                cmdSave.Parameters.Add("@desc_plan", SqlDbType.VarChar, 50).Value = plan.Descripcion;
+                cmdSave.Parameters.Add("@id_especialidad", SqlDbType.Int).Value = plan.IDEspecialidad;
+                plan.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al crear el plan", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
         }
 
         public void Save(Plan plan)
         {
             if (plan.State == BusinessEntity.States.New)
             {
-                int NextID = 0;
-                foreach (Plan p in Planes)
-                {
-                    if (p.ID > NextID)
-                    {
-                        NextID = p.ID;
-                    }
-                }
-                plan.ID = NextID + 1;
-                Planes.Add(plan);
+                this.Insert(plan);
             }
             else if (plan.State == BusinessEntity.States.Deleted)
             {
@@ -77,7 +165,7 @@ namespace Data.Database
             }
             else if (plan.State == BusinessEntity.States.Modified)
             {
-                Planes[Planes.FindIndex(delegate (Plan p) { return p.ID == plan.ID; })] = plan;
+                this.Update(plan);
             }
             plan.State = BusinessEntity.States.Unmodified;
         }

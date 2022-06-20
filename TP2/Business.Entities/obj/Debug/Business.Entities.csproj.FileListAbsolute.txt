@@ -15,3 +15,8 @@ C:\Users\user\Documents\GitHub\.NetTP\TP2\Business.Entities\obj\Debug\Business.E
 C:\Users\user\Documents\GitHub\.NetTP\TP2\Business.Entities\obj\Debug\Business.Entities.dll
 C:\Users\user\Documents\GitHub\.NetTP\TP2\Business.Entities\obj\Debug\Business.Entities.pdb
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Business.Entities\obj\Debug\Business.Entities.csproj.AssemblyReference.cache
+F:\TP2\Business.Entities\bin\Debug\Business.Entities.dll
+F:\TP2\Business.Entities\bin\Debug\Business.Entities.pdb
+F:\TP2\Business.Entities\obj\Debug\Business.Entities.csproj.CoreCompileInputs.cache
+F:\TP2\Business.Entities\obj\Debug\Business.Entities.dll
+F:\TP2\Business.Entities\obj\Debug\Business.Entities.pdb

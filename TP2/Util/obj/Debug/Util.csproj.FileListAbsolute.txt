@@ -1,0 +1,6 @@
+C:\Users\user\Documents\GitHub\.NetTP\TP2\Util\bin\Debug\Util.dll
+C:\Users\user\Documents\GitHub\.NetTP\TP2\Util\bin\Debug\Util.pdb
+C:\Users\user\Documents\GitHub\.NetTP\TP2\Util\obj\Debug\Util.csproj.AssemblyReference.cache
+C:\Users\user\Documents\GitHub\.NetTP\TP2\Util\obj\Debug\Util.csproj.CoreCompileInputs.cache
+C:\Users\user\Documents\GitHub\.NetTP\TP2\Util\obj\Debug\Util.dll
+C:\Users\user\Documents\GitHub\.NetTP\TP2\Util\obj\Debug\Util.pdb
