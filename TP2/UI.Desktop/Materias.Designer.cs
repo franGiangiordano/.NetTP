@@ -57,11 +57,11 @@
             // tcMaterias.ContentPanel
             // 
             this.tcMaterias.ContentPanel.Controls.Add(this.tlMaterias);
-            this.tcMaterias.ContentPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tcMaterias.ContentPanel.Margin = new System.Windows.Forms.Padding(2);
             this.tcMaterias.ContentPanel.Size = new System.Drawing.Size(914, 373);
             this.tcMaterias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcMaterias.Location = new System.Drawing.Point(0, 0);
-            this.tcMaterias.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tcMaterias.Margin = new System.Windows.Forms.Padding(2);
             this.tcMaterias.Name = "tcMaterias";
             this.tcMaterias.Size = new System.Drawing.Size(914, 400);
             this.tcMaterias.TabIndex = 0;
@@ -70,6 +70,7 @@
             // tcMaterias.TopToolStripPanel
             // 
             this.tcMaterias.TopToolStripPanel.Controls.Add(this.tsMaterias);
+            this.tcMaterias.TopToolStripPanel.Click += new System.EventHandler(this.tcMaterias_TopToolStripPanel_Click);
             // 
             // tlMaterias
             // 
@@ -81,7 +82,7 @@
             this.tlMaterias.Controls.Add(this.btnSalir, 1, 1);
             this.tlMaterias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlMaterias.Location = new System.Drawing.Point(0, 0);
-            this.tlMaterias.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tlMaterias.Margin = new System.Windows.Forms.Padding(2);
             this.tlMaterias.Name = "tlMaterias";
             this.tlMaterias.RowCount = 2;
             this.tlMaterias.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -103,7 +104,7 @@
             this.tlMaterias.SetColumnSpan(this.dgvMaterias, 2);
             this.dgvMaterias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMaterias.Location = new System.Drawing.Point(2, 2);
-            this.dgvMaterias.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvMaterias.Margin = new System.Windows.Forms.Padding(2);
             this.dgvMaterias.MultiSelect = false;
             this.dgvMaterias.Name = "dgvMaterias";
             this.dgvMaterias.ReadOnly = true;
@@ -162,7 +163,7 @@
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnActualizar.Location = new System.Drawing.Point(796, 352);
-            this.btnActualizar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnActualizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(56, 19);
             this.btnActualizar.TabIndex = 1;
@@ -173,7 +174,7 @@
             // btnSalir
             // 
             this.btnSalir.Location = new System.Drawing.Point(856, 352);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(56, 19);
             this.btnSalir.TabIndex = 2;
@@ -230,7 +231,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 400);
             this.Controls.Add(this.tcMaterias);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Materias";
             this.Text = "Materias";
             this.Load += new System.EventHandler(this.Materias_Load);

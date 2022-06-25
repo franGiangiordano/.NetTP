@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Business.Entities;
+using Business.Logic;
+
 
 //Este formulario fue hecho para un laboratorio pero sirve también para el TP2
 
@@ -25,11 +28,23 @@ namespace UI.Desktop
            valide si su contraseña coincide con la ingresada en txtPass*/
         private void btnIngresar_Click(object sender, EventArgs e)
         {
+            List<Usuario> usuarios = Listar();
+            List<Usuario> usuario = (from usu in usuarios where usu.NombreUsuario == txtUsuario.Text && usu.Clave == txtPass.Text select usu).ToList();
+
+            if (String.IsNullOrEmpty(txtUsuario.Text) || String.IsNullOrEmpty(txtPass.Text)){
+
+                //MessageBox.Show(mensaje, titulo, botones, icono);
+
+               // "Existen uno o mas campos vacios, rellenelos antes de continuar\n"
+
+
+            }
 
             //la propiedad Text de los TextBox contiene el texto escrito en ellos
-            if (this.txtUsuario.Text == "Admin" && this.txtPass.Text == "admin")
+                if (usuario.Any())
             {
-                this.DialogResult = DialogResult.OK;
+                Principal formPrincipal = new Principal();
+                formPrincipal.ShowDialog();
             }
             else
             {
@@ -48,5 +63,18 @@ namespace UI.Desktop
         {
 
         }
+
+        public List<Usuario> Listar()
+        {
+            UsuarioLogic ul = new UsuarioLogic();
+            return ul.GetAll();
+        }
+        /*
+        public override void Notificar(string mensaje, MessageBoxButtons botones,
+        MessageBoxIcon icono)
+        {
+            this.Notificar(this.Text, mensaje, botones, icono);
+        }*/
+
     }
 }

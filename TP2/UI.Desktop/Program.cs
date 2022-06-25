@@ -16,7 +16,7 @@ namespace UI.Desktop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new formLogin());
+            Application.Run(new formLogin());
             //Application.Run(new formMain());
             //Application.Run(new formListaUsuarios());
             //Application.Run(new Usuarios());
@@ -24,7 +24,7 @@ namespace UI.Desktop
             // Application.Run(new Personas());
             // Application.Run(new Materias());
             //Application.Run(new ApplicationForm());
-            Application.Run(new Principal());
+            //Application.Run(new Principal());
         }
     }
 }

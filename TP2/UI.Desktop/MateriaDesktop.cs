@@ -15,12 +15,18 @@ namespace UI.Desktop
     public partial class MateriaDesktop : ApplicationForm
     {
         public Business.Entities.Materia _MateriaActual;
-        public MateriaDesktop()
-        {
+        //public MateriaDesktop()
+        //{
+        //    PlanLogic pl = new PlanLogic();
+        //    InitializeComponent();            
+        //    this.cmbPlan.DataSource = (from plan in pl.GetAll() select plan.Descripcion).ToList();
+        //    this.cmbPlan.SelectedIndex = 1;
+        //}
+
+        public MateriaDesktop() {
             PlanLogic pl = new PlanLogic();
-            InitializeComponent();            
-            this.cmbPlan.DataSource = (from plan in pl.GetAll() select plan.Descripcion).ToList();
-            this.cmbPlan.SelectedIndex = 1;
+            InitializeComponent();
+            this.cmbPlan.DataSource = (from plan in pl.GetAll() select plan.Descripcion).ToList();            
         }
 
         public MateriaDesktop(ApplicationForm.ModoForm modo) : this()
@@ -46,11 +52,17 @@ namespace UI.Desktop
 
         public override void MapearDeDatos() 
         {
+            PlanLogic pl = new PlanLogic();
+
             this.txtId.Text = this._MateriaActual.ID.ToString();
             this.txtDescripcion.Text = this._MateriaActual.Descripcion;
             this.txtHsSemanales.Text = this._MateriaActual.HSSemanales.ToString();
             this.txtHsTotales.Text = this._MateriaActual.HSTotales.ToString();
-            this.cmbPlan.SelectedIndex = this._MateriaActual.IDPlan;
+
+            //Esta linea sirve para obtener el indice de un Plan            
+            this.cmbPlan.SelectedIndex = this.cmbPlan.FindString((from plan in pl.GetAll() where plan.ID == this._MateriaActual.IDPlan select plan.Descripcion).ToList()[0]);
+            
+
 
             switch (Modo)
             {
@@ -71,6 +83,7 @@ namespace UI.Desktop
 
         public override void MapearADatos() 
         {
+            PlanLogic pl = new PlanLogic();
             switch (Modo)
             {
                 case (ApplicationForm.ModoForm)ModoForm.Alta:
@@ -78,9 +91,12 @@ namespace UI.Desktop
                     _MateriaActual = mat;
                     _MateriaActual.Descripcion = txtDescripcion.Text;
                     _MateriaActual.HSSemanales = Int32.Parse(txtHsSemanales.Text);
-                    _MateriaActual.HSTotales = Int32.Parse(txtHsTotales.Text);
-                    _MateriaActual.IDPlan = cmbPlan.SelectedIndex;
-                  
+                    _MateriaActual.HSTotales = Int32.Parse(txtHsTotales.Text);                    
+                     
+                    //En esta linea hacemos un mapeo entre el comboBox y el Plan
+                    _MateriaActual.IDPlan =  (from plan in pl.GetAll() where cmbPlan.SelectedItem.ToString() == plan.Descripcion select plan.ID).ToList()[0];
+
+
                     _MateriaActual.State = Usuario.States.New;
                     break;
 

@@ -165,9 +165,6 @@
             // cmbPlan
             // 
             this.cmbPlan.FormattingEnabled = true;
-            this.cmbPlan.Items.AddRange(new object[] {
-            "1996",
-            "2008"});
             this.cmbPlan.Location = new System.Drawing.Point(482, 138);
             this.cmbPlan.Margin = new System.Windows.Forms.Padding(2);
             this.cmbPlan.Name = "cmbPlan";

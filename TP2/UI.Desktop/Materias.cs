@@ -41,9 +41,11 @@ namespace UI.Desktop
             dt1.Columns.Add("HSTotales", typeof(string));
             dt1.Columns.Add("IdPlan", typeof(string));
 
+            
+
             foreach (var mat in l1)
-            {
-                dt1.Rows.Add(mat.ID, mat.Descripcion, mat.HSSemanales,mat.HSTotales, l2[mat.IDPlan].Descripcion);
+            {             
+                dt1.Rows.Add(mat.ID, mat.Descripcion, mat.HSSemanales,mat.HSTotales, l2.Find(x => x.ID == mat.IDPlan).Descripcion);
             }
             this.dgvMaterias.DataSource = dt1;
         }
@@ -81,6 +83,11 @@ namespace UI.Desktop
             MateriaDesktop formMateria = new MateriaDesktop(ID,ApplicationForm.ModoForm.Baja);
             formMateria.ShowDialog();
             this.Listar();
+        }
+
+        private void tcMaterias_TopToolStripPanel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

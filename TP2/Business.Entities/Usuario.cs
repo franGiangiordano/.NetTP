@@ -15,6 +15,7 @@ namespace Business.Entities
         private string _Email;
         private bool _Habilitado;
 
+
         public string NombreUsuario { get => _NombreUsuario; set => _NombreUsuario = value; }
         public string Clave { get => _Clave; set => _Clave = value; }
         public string Nombre { get => _Nombre; set => _Nombre = value; }
