@@ -49,7 +49,7 @@ namespace UI.Desktop
 
 
             foreach (var per in l1) {                    
-                    dt1.Rows.Add(per.ID,per.Nombre,per.Apellido,per.Telefono,per.Direccion,per.Legajo,per.FechaNacimiento.Date,per.Email,per.Tipo,l2[per.IDPlan].Descripcion);
+                    dt1.Rows.Add(per.ID,per.Nombre,per.Apellido,per.Telefono,per.Direccion,per.Legajo,per.FechaNacimiento.Date,per.Email,per.Tipo, l2.Find(x => x.ID == per.IDPlan).Descripcion);
             }
             this.dgvPersonas.DataSource = dt1;
                        

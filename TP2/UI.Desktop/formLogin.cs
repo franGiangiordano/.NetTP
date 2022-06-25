@@ -28,29 +28,26 @@ namespace UI.Desktop
            valide si su contraseña coincide con la ingresada en txtPass*/
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            List<Usuario> usuarios = Listar();
-            List<Usuario> usuario = (from usu in usuarios where usu.NombreUsuario == txtUsuario.Text && usu.Clave == txtPass.Text select usu).ToList();
 
-            if (String.IsNullOrEmpty(txtUsuario.Text) || String.IsNullOrEmpty(txtPass.Text)){
-
-                //MessageBox.Show(mensaje, titulo, botones, icono);
-
-               // "Existen uno o mas campos vacios, rellenelos antes de continuar\n"
-
-
+            if (String.IsNullOrEmpty(txtUsuario.Text) || String.IsNullOrEmpty(txtPass.Text))
+            {
+                Notificar("Login", "Existen uno o mas campos vacios, rellenelos antes de continuar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else {
 
-            //la propiedad Text de los TextBox contiene el texto escrito en ellos
+                List<Usuario> usuarios = Listar();
+                List<Usuario> usuario = (from usu in usuarios where usu.NombreUsuario == txtUsuario.Text && usu.Clave == txtPass.Text select usu).ToList();
+                //la propiedad Text de los TextBox contiene el texto escrito en ellos
                 if (usuario.Any())
-            {
-                Principal formPrincipal = new Principal();
-                formPrincipal.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Usuario y/o contraseña incorrectos", "Login"
-                , MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                {
+                    Principal formPrincipal = new Principal();
+                    formPrincipal.ShowDialog();
+                }
+                else
+                {
+                    Notificar("Login", "Usuario y/o contraseña incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }            
         }
 
            private void lnkOlvidaPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -69,12 +66,12 @@ namespace UI.Desktop
             UsuarioLogic ul = new UsuarioLogic();
             return ul.GetAll();
         }
-        /*
-        public override void Notificar(string mensaje, MessageBoxButtons botones,
-        MessageBoxIcon icono)
+
+        public void Notificar(string titulo, string mensaje, MessageBoxButtons
+            botones, MessageBoxIcon icono)
         {
-            this.Notificar(this.Text, mensaje, botones, icono);
-        }*/
+            MessageBox.Show(mensaje, titulo, botones, icono);
+        }
 
     }
 }

@@ -4,6 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/*DUDAS
+ ¿Persona debería tener mail? (Usuario ya tiene uno)
+ Al momento de dar de alta un usuario ¿Deberiamos mostrar un combobox con los nombres de las personas?
+ ¿Deberiamos crear metodos adicionales para buscar por nombre o descripcion en la capa de datos? ¿o podemos usar Linq con un getAll?
+*/
+
 namespace UI.Desktop
 {
     static class Program

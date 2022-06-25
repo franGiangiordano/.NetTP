@@ -49,6 +49,9 @@ namespace UI.Desktop
         }
 
         public override void MapearDeDatos() {
+
+            PlanLogic pl = new PlanLogic();
+
             this.txtId.Text = this._PersonaActual.ID.ToString();            
             this.txtNombre.Text = this._PersonaActual.Nombre;
             this.txtApe.Text = this._PersonaActual.Apellido;
@@ -56,7 +59,9 @@ namespace UI.Desktop
             this.txtDirec.Text = this._PersonaActual.Direccion;            
             this.txtTel.Text = this._PersonaActual.Telefono;
             this.txtLeg.Text = this._PersonaActual.Legajo.ToString();
-            this.cmbPlan.SelectedIndex = this._PersonaActual.IDPlan;            
+
+            //Esta linea sirve para obtener el indice de un Plan            
+            this.cmbPlan.SelectedIndex = this.cmbPlan.FindString((from plan in pl.GetAll() where plan.ID == this._PersonaActual.IDPlan select plan.Descripcion).ToList()[0]);            
             this.txtFechaNac.Text = this._PersonaActual.FechaNacimiento.ToString();
             this.cmbTipo.Text = this._PersonaActual.Tipo.ToString();
 
@@ -81,6 +86,7 @@ namespace UI.Desktop
 
         }
         public override void MapearADatos() {
+            PlanLogic pl = new PlanLogic();
             switch (Modo)
             {
                 case (ApplicationForm.ModoForm)ModoForm.Alta:
@@ -92,7 +98,9 @@ namespace UI.Desktop
                     _PersonaActual.Direccion = txtDirec.Text;
                     _PersonaActual.Telefono = txtTel.Text;
                     _PersonaActual.FechaNacimiento = DateTime.ParseExact(txtFechaNac.Text, "MM/dd/yyyy", CultureInfo.CreateSpecificCulture("en-US"));
-                    _PersonaActual.IDPlan = cmbPlan.SelectedIndex;
+
+
+                    _PersonaActual.IDPlan = (from plan in pl.GetAll() where cmbPlan.SelectedItem.ToString() == plan.Descripcion select plan.ID).ToList()[0];                    
                     
                     _PersonaActual.Legajo = Int32.Parse(txtLeg.Text);                    
                     _PersonaActual.Tipo = (Persona.TipoPersonas)Enum.Parse(typeof(Persona.TipoPersonas), cmbTipo.SelectedItem.ToString());                    

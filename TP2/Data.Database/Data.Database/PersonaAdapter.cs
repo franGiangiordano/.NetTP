@@ -2,77 +2,196 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Business.Entities;
+using System.Data;
+using System.Data.SqlClient;
+
 
 //Se trata de una clase de prueba con una DB hardcodeada por lo tanto no formará parte del TP, sin embargo,
 //resulta útil para tener como referencia
 
 namespace Data.Database
 {
-    public class PersonaAdapter:Adapter
+    public class PersonaAdapter : Adapter
     {
         #region DatosEnMemoria
         // Esta región solo se usa en esta etapa donde los datos se mantienen en memoria.
         // Al modificar este proyecto para que acceda a la base de datos esta será eliminada
         private static List<Persona> _Personas;
 
-        private static List<Persona> Personas
-        {
-            get
-            {
-                if (_Personas == null)
-                {
-                    _Personas = new List<Business.Entities.Persona>();
-                    Business.Entities.Persona usr;
-                    usr = new Business.Entities.Persona();
-                    usr.ID = 1;
-                    usr.State = Business.Entities.BusinessEntity.States.Unmodified;
-                    usr.Nombre = "Casimiro";
-                    usr.Apellido = "Cegado";
-                    usr.Telefono = "213112331";
-                    usr.Email = "casimirocegado@gmail.com";
-                    usr.Direccion = "asdad";
-                    usr.IDPlan = 1;
-                    usr.Tipo = (Persona.TipoPersonas)1;
-                    usr.Legajo = 123123;
-                    usr.FechaNacimiento = DateTime.Now;
-                    _Personas.Add(usr);
-
-                    
-                }
-                return _Personas;
-            }            
-         }
-        #endregion
-
         public List<Persona> GetAll()
         {
-            return new List<Persona>(Personas);
+            List<Persona> personas = new List<Persona>();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdPersonas = new SqlCommand("select * from personas", sqlconn);
+
+                SqlDataReader drPersonas = cmdPersonas.ExecuteReader();
+
+                while (drPersonas.Read())
+                {
+                    Business.Entities.Persona per;
+                    per = new Business.Entities.Persona();
+                    per.ID = (int)drPersonas["id_persona"];
+                    per.Nombre = (string)drPersonas["nombre"]; ;
+                    per.Apellido = (string)drPersonas["apellido"];
+                    per.Telefono = (string)drPersonas["telefono"];
+                    per.Direccion = (string)drPersonas["direccion"];
+                    per.Legajo = (int)drPersonas["legajo"];
+                    per.FechaNacimiento = (DateTime)drPersonas["fecha_nac"];
+                    per.Tipo = (Persona.TipoPersonas)drPersonas["tipo_persona"];
+                    per.IDPlan = (int)drPersonas["id_plan"];
+
+                    personas.Add(per);
+                }
+                drPersonas.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de personas", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+
+            return personas; //llamar a open , hacer select, exeecute reader
+
         }
 
         public Business.Entities.Persona GetOne(int ID)
         {
-            return Personas.Find(delegate(Persona u) { return u.ID == ID; });
+            Business.Entities.Persona per;
+            per = new Business.Entities.Persona();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdPersonas = new SqlCommand("select * from personas where id_persona=@id", sqlconn);
+                cmdPersonas.Parameters.Add("@id", SqlDbType.Int).Value = ID;
+                SqlDataReader drPersonas = cmdPersonas.ExecuteReader();
+
+                if (drPersonas.Read())
+                {
+                    per.ID = (int)drPersonas["id_persona"];
+                    per.Nombre = (string)drPersonas["nombre"]; ;
+                    per.Apellido = (string)drPersonas["apellido"];
+                    per.Telefono = (string)drPersonas["telefono"];
+                    per.Direccion = (string)drPersonas["direccion"];
+                    per.Legajo = (int)drPersonas["legajo"];
+                    per.FechaNacimiento = (DateTime)drPersonas["fecha_nac"];
+                    per.Tipo = (Persona.TipoPersonas)drPersonas["tipo_persona"];
+                    per.IDPlan = (int)drPersonas["id_plan"];
+                }
+                drPersonas.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar persona", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+
+            return per;
         }
 
         public void Delete(int ID)
         {
-            Personas.Remove(this.GetOne(ID));
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdDelete = new SqlCommand("delete personas where id_persona=@id", sqlconn);
+                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
+                cmdDelete.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al eliminar personas", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
         }
+
+        protected void Update(Persona persona)
+        {
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdSave = new SqlCommand("update personas set nombre = @nombre, " +
+                    "apellido = @apellido, direccion = @direccion, telefono = @telefono, fecha_nac = @fecha_nac, legajo = @legajo, tipo_persona = @tipo_persona, id_plan = @id_plan   where id_persona = @id", sqlconn);
+                cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = persona.ID;
+                cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = persona.Nombre;
+                cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = persona.Apellido;
+                cmdSave.Parameters.Add("@direccion", SqlDbType.VarChar, 50).Value = persona.Direccion;
+                cmdSave.Parameters.Add("@telefono", SqlDbType.VarChar, 50).Value = persona.Telefono;
+                cmdSave.Parameters.Add("@fecha_nac", SqlDbType.DateTime, 50).Value = persona.FechaNacimiento;
+                cmdSave.Parameters.Add("@legajo", SqlDbType.Int).Value = persona.Legajo;
+                cmdSave.Parameters.Add("@tipo_persona", SqlDbType.Int).Value = persona.Tipo;
+                cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = persona.IDPlan;
+                cmdSave.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al modificar datos de la persona", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+        }
+
+        protected void Insert(Persona persona)
+        {
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdSave = new SqlCommand("insert into personas (nombre, apellido, direccion, telefono, fecha_nac, legajo, tipo_persona, id_plan) " +
+                    "values (@nombre ,@apellido,@direccion,@telefono,@fecha_nac,@legajo,@tipo_persona,@id_plan) " +
+                    "select @@identity", sqlconn);
+                cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = persona.ID;
+                cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = persona.Nombre;
+                cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = persona.Apellido;
+                cmdSave.Parameters.Add("@direccion", SqlDbType.VarChar, 50).Value = persona.Direccion;
+                cmdSave.Parameters.Add("@telefono", SqlDbType.VarChar, 50).Value = persona.Telefono;
+                cmdSave.Parameters.Add("@fecha_nac", SqlDbType.DateTime, 50).Value = persona.FechaNacimiento;
+                cmdSave.Parameters.Add("@legajo", SqlDbType.Int).Value = persona.Legajo;
+                cmdSave.Parameters.Add("@tipo_persona", SqlDbType.Int).Value = persona.Tipo;
+                cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = persona.IDPlan;
+                persona.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al crear persona", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+        }
+
 
         public void Save(Persona persona)
         {
             if (persona.State == BusinessEntity.States.New)
             {
-                int NextID = 0;
-                foreach (Persona usr in Personas)
-                {
-                    if (usr.ID > NextID)
-                    {
-                        NextID = usr.ID;
-                    }
-                }
-                persona.ID = NextID + 1;
-                Personas.Add(persona);
+                this.Insert(persona);
             }
             else if (persona.State == BusinessEntity.States.Deleted)
             {
@@ -80,9 +199,10 @@ namespace Data.Database
             }
             else if (persona.State == BusinessEntity.States.Modified)
             {
-                Personas[Personas.FindIndex(delegate(Persona u) { return u.ID == persona.ID; })]=persona;
+                this.Update(persona);
             }
-            persona.State = BusinessEntity.States.Unmodified;            
+            persona.State = BusinessEntity.States.Unmodified;
         }
     }
 }
+#endregion
