@@ -70,8 +70,13 @@ namespace Business.Logic
             return "";
         }
 
-        
+        // este metodo retorna el usuario validado del login
+        public Usuario GetUsuarioLogin(string user, string pass)
+        {
+            return _UsuarioData.GetUsuarioLogin(user, pass);
+        }
 
 
-}
+
+    }
 }

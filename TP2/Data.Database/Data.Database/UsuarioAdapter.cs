@@ -194,5 +194,41 @@ namespace Data.Database
             }
             usuario.State = BusinessEntity.States.Unmodified;            
         }
+
+        //este metodo es para recuperar y validar que el usuario del login es correcto
+        public Usuario GetUsuarioLogin(string user, string pass)
+        {
+            Usuario usr = new Usuario();
+            try
+            {
+                OpenConnection();
+                SqlCommand cmdBuscarUsuario = new SqlCommand("select * from usuarios where nombre_usuario = @user and clave = @pass", sqlconn);
+                cmdBuscarUsuario.Parameters.Add("@user", SqlDbType.VarChar, 50).Value = user;
+                cmdBuscarUsuario.Parameters.Add("@pass", SqlDbType.VarChar, 50).Value = pass;
+                SqlDataReader drUsuarios = cmdBuscarUsuario.ExecuteReader();
+                if (drUsuarios.Read())
+                {
+                    usr.ID = (int)drUsuarios["id_usuario"];
+                    usr.Nombre = (string)drUsuarios["nombre"]; ;
+                    usr.Apellido = (string)drUsuarios["apellido"];
+                    usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
+                    usr.Clave = (string)drUsuarios["clave"];
+                    usr.Email = (string)drUsuarios["email"];
+                    usr.Habilitado = (bool)drUsuarios["habilitado"];
+                    usr.IDPersona = (int)drUsuarios["id_persona"];
+                }
+                drUsuarios.Close();
+            }
+            catch (Exception ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error buscar el usuario en el Login");
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return usr;
+        }
     }
 }

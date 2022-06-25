@@ -22,6 +22,7 @@ namespace Business.Entities
         public string Apellido { get => _Apellido; set => _Apellido = value; }
         public string Email { get => _Email; set => _Email = value; }
         public bool Habilitado { get => _Habilitado; set => _Habilitado = value; }
+        public int IDPersona { get; set; }
     }
 
 }

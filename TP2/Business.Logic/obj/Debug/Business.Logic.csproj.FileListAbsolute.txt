@@ -42,3 +42,14 @@ F:\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.CoreCompileInputs.cache
 F:\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.CopyComplete
 F:\TP2\Business.Logic\obj\Debug\Business.Logic.dll
 F:\TP2\Business.Logic\obj\Debug\Business.Logic.pdb
+C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Business.Logic\bin\Debug\Business.Logic.dll
+C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Business.Logic\bin\Debug\Business.Logic.pdb
+C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Business.Logic\bin\Debug\Business.Entities.dll
+C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Business.Logic\bin\Debug\Data.Database.dll
+C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Business.Logic\bin\Debug\Business.Entities.pdb
+C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Business.Logic\bin\Debug\Data.Database.pdb
+C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.AssemblyReference.cache
+C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.CoreCompileInputs.cache
+C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.CopyComplete
+C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Business.Logic\obj\Debug\Business.Logic.dll
+C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Business.Logic\obj\Debug\Business.Logic.pdb
