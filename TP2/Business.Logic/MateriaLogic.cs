@@ -47,5 +47,10 @@ namespace Business.Logic
             }
             return "";
         }
+
+        public List<Materia> GetMateriasPlan(int idPlan)
+        {
+            return _MateriaData.GetMateriasPlan(idPlan);
+        }
     }
 }

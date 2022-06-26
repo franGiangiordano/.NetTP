@@ -21,3 +21,9 @@ F:\TP2\Negocio\bin\Debug\Negocio.pdb
 F:\TP2\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
 F:\TP2\Negocio\obj\Debug\Negocio.dll
 F:\TP2\Negocio\obj\Debug\Negocio.pdb
+C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Negocio\bin\Debug\Negocio.dll
+C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Negocio\bin\Debug\Negocio.pdb
+C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Negocio\obj\Debug\Negocio.dll
+C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Negocio\obj\Debug\Negocio.pdb

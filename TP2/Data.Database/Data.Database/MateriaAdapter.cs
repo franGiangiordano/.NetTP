@@ -176,5 +176,45 @@ namespace Data.Database
             }
             materia.State = BusinessEntity.States.Unmodified;
         }
+
+        public List<Materia> GetMateriasPlan(int idPlan)
+        {
+            List<Materia> materias = new List<Materia>();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdMaterias = new SqlCommand("select * from materias where id_plan = @idPlan", sqlconn);
+                cmdMaterias.Parameters.Add("@id", SqlDbType.Int).Value = idPlan;
+                SqlDataReader drMaterias = cmdMaterias.ExecuteReader();
+
+                while (drMaterias.Read())
+                {
+                    Business.Entities.Materia mat;
+                    mat = new Business.Entities.Materia();
+                    mat.ID = (int)drMaterias["id_materia"];
+                    mat.Descripcion = (string)drMaterias["desc_materia"]; ;
+                    mat.HSSemanales = (int)drMaterias["hs_semanales"];
+                    mat.HSTotales = (int)drMaterias["hs_totales"];
+                    mat.IDPlan = (int)drMaterias["id_plan"];
+                    materias.Add(mat);
+                }
+                drMaterias.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de materias", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+
+            return materias;
+        }
+
+
     }
 }

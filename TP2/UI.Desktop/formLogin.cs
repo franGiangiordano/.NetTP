@@ -37,57 +37,57 @@ namespace UI.Desktop
 
                 //otra alternativa para validar y retornar el usuario del login usando @Query a la BD
 
-                //UsuarioLogic ul = new UsuarioLogic();
-                //Usuario usuarioEncontrado = ul.GetUsuarioLogin(txtUsuario.Text, txtPass.Text);
-                //if (usuarioEncontrado.NombreUsuario != null)
-                //{
-                //    //Principal formPrincipal = new Principal();
-                //    //formPrincipal.ShowDialog();
-
-                //    PersonaLogic pl = new PersonaLogic();
-                //    Business.Entities.Persona personaEncontrada = pl.GetOne(usuarioEncontrado.IDPersona);
-                //    switch (personaEncontrada.Tipo)
-                //    {
-                //        case Business.Entities.Persona.TipoPersonas.Administrativo:
-                //            //aca hay que colocar la ventana correspondiente a cada tipo de usuario, estas son de prueba con las que ya existen
-                //            Principal formPrincipal = new Principal();
-                //            formPrincipal.ShowDialog();
-                //            break;
-
-                //        case Business.Entities.Persona.TipoPersonas.Alumno:
-                //            //aca hay que colocar la ventana correspondiente a cada tipo de usuario, estas son de prueba con las que ya existen
-                //            Personas Personas = new Personas();
-                //            Personas.ShowDialog();
-                //            break;
-
-                //        case Business.Entities.Persona.TipoPersonas.Docente:
-                //            //aca hay que colocar la ventana correspondiente a cada tipo de usuario, estas son de prueba con las que ya existen
-                //            Usuarios usuarios = new Usuarios();
-                //            usuarios.ShowDialog();
-                //            break;
-                //    }
-                //}
-                //else
-                //{
-                //    Notificar("Login", "Usuario y/o contraseña incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
-
-
-
-                //otra alternativa para validar y retornar el usuario del login usando linq
-
-                List<Usuario> usuarios = Listar();
-                List<Usuario> usuario = (from usu in usuarios where usu.NombreUsuario == txtUsuario.Text && usu.Clave == txtPass.Text select usu).ToList();
-                //la propiedad Text de los TextBox contiene el texto escrito en ellos
-                if (usuario.Any())
+                UsuarioLogic ul = new UsuarioLogic();
+                Usuario usuarioEncontrado = ul.GetUsuarioLogin(txtUsuario.Text, txtPass.Text);
+                if (usuarioEncontrado.NombreUsuario != null)
                 {
-                    Principal formPrincipal = new Principal();
-                    formPrincipal.ShowDialog();
+                    //Principal formPrincipal = new Principal();
+                    //formPrincipal.ShowDialog();
+
+                    PersonaLogic pl = new PersonaLogic();
+                    Business.Entities.Persona personaEncontrada = pl.GetOne(usuarioEncontrado.IDPersona);
+                    switch (personaEncontrada.Tipo)
+                    {
+                        case Business.Entities.Persona.TipoPersonas.Administrativo:
+                            //aca hay que colocar la ventana correspondiente a cada tipo de usuario, estas son de prueba con las que ya existen
+                            Principal formPrincipal = new Principal();
+                            formPrincipal.ShowDialog();
+                            break;
+
+                        case Business.Entities.Persona.TipoPersonas.Alumno:
+                            //aca hay que colocar la ventana correspondiente a cada tipo de usuario, estas son de prueba con las que ya existen
+                            Personas Personas = new Personas();
+                            Personas.ShowDialog();
+                            break;
+
+                        case Business.Entities.Persona.TipoPersonas.Docente:
+                            //aca hay que colocar la ventana correspondiente a cada tipo de usuario, estas son de prueba con las que ya existen
+                            Usuarios usuarios = new Usuarios();
+                            usuarios.ShowDialog();
+                            break;
+                    }
                 }
                 else
                 {
                     Notificar("Login", "Usuario y/o contraseña incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
+
+
+                ////otra alternativa para validar y retornar el usuario del login usando linq
+
+                //List<Usuario> usuarios = Listar();
+                //List<Usuario> usuario = (from usu in usuarios where usu.NombreUsuario == txtUsuario.Text && usu.Clave == txtPass.Text select usu).ToList();
+                ////la propiedad Text de los TextBox contiene el texto escrito en ellos
+                //if (usuario.Any())
+                //{
+                //    Principal formPrincipal = new Principal();
+                //    formPrincipal.ShowDialog();
+                //}
+                //else
+                //{
+                //    Notificar("Login", "Usuario y/o contraseña incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
             }
         }
 
