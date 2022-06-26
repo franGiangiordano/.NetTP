@@ -39,5 +39,11 @@ namespace UI.Desktop
             Materias formMaterias = new Materias();
             formMaterias.ShowDialog();
         }
+
+        private void btnCurso_Click(object sender, EventArgs e)
+        {
+            Cursos formCursos = new Cursos();
+            formCursos.ShowDialog();
+        }
     }
 }
