@@ -12,9 +12,20 @@ namespace UI.Desktop
 {
     public partial class AlumnoInscripciones : Form
     {
+        int id;
+
         public AlumnoInscripciones(int idPersona)
         {
             InitializeComponent();
+            id = idPersona;
+        }
+
+        
+        private void tsbNuevo_Click(object sender, EventArgs e)
+        {
+            AlumnoInscripcionDesktop alumnoInscripcionDesktop = new AlumnoInscripcionDesktop(id);
+            alumnoInscripcionDesktop.ShowDialog();
+
         }
     }
 }

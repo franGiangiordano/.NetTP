@@ -30,20 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AlumnoInscripciones));
             this.tcAlumosInscripciones = new System.Windows.Forms.ToolStripContainer();
-            this.tscAlumnosInscripciones = new System.Windows.Forms.ToolStrip();
             this.tlAlumnosInscripciones = new System.Windows.Forms.TableLayoutPanel();
             this.dgvAlumnosInscripciones = new System.Windows.Forms.DataGridView();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.tscAlumnosInscripciones = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.tcAlumosInscripciones.ContentPanel.SuspendLayout();
             this.tcAlumosInscripciones.TopToolStripPanel.SuspendLayout();
             this.tcAlumosInscripciones.SuspendLayout();
-            this.tscAlumnosInscripciones.SuspendLayout();
             this.tlAlumnosInscripciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnosInscripciones)).BeginInit();
+            this.tscAlumnosInscripciones.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcAlumosInscripciones
@@ -63,18 +63,6 @@
             // tcAlumosInscripciones.TopToolStripPanel
             // 
             this.tcAlumosInscripciones.TopToolStripPanel.Controls.Add(this.tscAlumnosInscripciones);
-            // 
-            // tscAlumnosInscripciones
-            // 
-            this.tscAlumnosInscripciones.Dock = System.Windows.Forms.DockStyle.None;
-            this.tscAlumnosInscripciones.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbNuevo,
-            this.tsbEditar,
-            this.tsbEliminar});
-            this.tscAlumnosInscripciones.Location = new System.Drawing.Point(3, 0);
-            this.tscAlumnosInscripciones.Name = "tscAlumnosInscripciones";
-            this.tscAlumnosInscripciones.Size = new System.Drawing.Size(81, 25);
-            this.tscAlumnosInscripciones.TabIndex = 0;
             // 
             // tlAlumnosInscripciones
             // 
@@ -125,6 +113,18 @@
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             // 
+            // tscAlumnosInscripciones
+            // 
+            this.tscAlumnosInscripciones.Dock = System.Windows.Forms.DockStyle.None;
+            this.tscAlumnosInscripciones.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbNuevo,
+            this.tsbEditar,
+            this.tsbEliminar});
+            this.tscAlumnosInscripciones.Location = new System.Drawing.Point(3, 0);
+            this.tscAlumnosInscripciones.Name = "tscAlumnosInscripciones";
+            this.tscAlumnosInscripciones.Size = new System.Drawing.Size(112, 25);
+            this.tscAlumnosInscripciones.TabIndex = 0;
+            // 
             // tsbNuevo
             // 
             this.tsbNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -133,6 +133,7 @@
             this.tsbNuevo.Name = "tsbNuevo";
             this.tsbNuevo.Size = new System.Drawing.Size(23, 22);
             this.tsbNuevo.Text = "Nuevo";
+            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
             // 
             // tsbEditar
             // 
@@ -165,10 +166,10 @@
             this.tcAlumosInscripciones.TopToolStripPanel.PerformLayout();
             this.tcAlumosInscripciones.ResumeLayout(false);
             this.tcAlumosInscripciones.PerformLayout();
-            this.tscAlumnosInscripciones.ResumeLayout(false);
-            this.tscAlumnosInscripciones.PerformLayout();
             this.tlAlumnosInscripciones.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnosInscripciones)).EndInit();
+            this.tscAlumnosInscripciones.ResumeLayout(false);
+            this.tscAlumnosInscripciones.PerformLayout();
             this.ResumeLayout(false);
 
         }

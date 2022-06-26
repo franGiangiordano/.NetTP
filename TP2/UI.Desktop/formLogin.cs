@@ -56,8 +56,10 @@ namespace UI.Desktop
 
                         case Business.Entities.Persona.TipoPersonas.Alumno:
                             //aca hay que colocar la ventana correspondiente a cada tipo de usuario, estas son de prueba con las que ya existen
-                            Personas Personas = new Personas();
-                            Personas.ShowDialog();
+                            //Personas Personas = new Personas();
+                            //Personas.ShowDialog();
+                            AlumnoInscripciones alumnoInscripciones = new AlumnoInscripciones(personaEncontrada.ID);
+                            alumnoInscripciones.ShowDialog();
                             break;
 
                         case Business.Entities.Persona.TipoPersonas.Docente:

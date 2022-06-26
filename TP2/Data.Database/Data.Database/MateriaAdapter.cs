@@ -185,7 +185,7 @@ namespace Data.Database
                 this.OpenConnection();
 
                 SqlCommand cmdMaterias = new SqlCommand("select * from materias where id_plan = @idPlan", sqlconn);
-                cmdMaterias.Parameters.Add("@id", SqlDbType.Int).Value = idPlan;
+                cmdMaterias.Parameters.Add("@idPlan", SqlDbType.Int).Value = idPlan;
                 SqlDataReader drMaterias = cmdMaterias.ExecuteReader();
 
                 while (drMaterias.Read())
