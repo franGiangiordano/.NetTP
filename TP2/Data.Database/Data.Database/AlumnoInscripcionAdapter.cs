@@ -30,7 +30,15 @@ namespace Data.Database
                     ins.IDAlumno = (int)drInscripciones["id_alumno"]; ;
                     ins.IDCurso = (int)drInscripciones["id_curso"];
                     ins.Condicion = (string)drInscripciones["condicion"];
-                    ins.Nota = (int)drInscripciones["nota"];
+
+
+                    if (!drInscripciones.IsDBNull(4)) {
+                        ins.Nota = (int)drInscripciones["nota"];
+                    }
+                    else {
+                        ins.Nota = -1;
+                    }
+                                                                
                     inscripciones.Add(ins);
                 }
                 drInscripciones.Close();

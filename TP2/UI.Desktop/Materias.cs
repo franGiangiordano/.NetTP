@@ -69,20 +69,25 @@ namespace UI.Desktop
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
-            // int ID = ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
-            int ID = Convert.ToInt32(dgvMaterias.Rows[dgvMaterias.CurrentRow.Index].Cells[0].Value);
-            MateriaDesktop formMateria = new MateriaDesktop(ID,ApplicationForm.ModoForm.Modificacion);
-            formMateria.ShowDialog();
-            this.Listar();
+            if (dgvMaterias.Rows.Count != 0) {
+                // int ID = ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
+                int ID = Convert.ToInt32(dgvMaterias.Rows[dgvMaterias.CurrentRow.Index].Cells[0].Value);
+                MateriaDesktop formMateria = new MateriaDesktop(ID, ApplicationForm.ModoForm.Modificacion);
+                formMateria.ShowDialog();
+                this.Listar();
+            }            
         }
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
-            // int ID = ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
-            int ID = Convert.ToInt32(dgvMaterias.Rows[dgvMaterias.CurrentRow.Index].Cells[0].Value);
-            MateriaDesktop formMateria = new MateriaDesktop(ID,ApplicationForm.ModoForm.Baja);
-            formMateria.ShowDialog();
-            this.Listar();
+
+            if (dgvMaterias.Rows.Count != 0) {
+                // int ID = ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
+                int ID = Convert.ToInt32(dgvMaterias.Rows[dgvMaterias.CurrentRow.Index].Cells[0].Value);
+                MateriaDesktop formMateria = new MateriaDesktop(ID, ApplicationForm.ModoForm.Baja);
+                formMateria.ShowDialog();
+                this.Listar();
+            }            
         }
 
         private void tcMaterias_TopToolStripPanel_Click(object sender, EventArgs e)

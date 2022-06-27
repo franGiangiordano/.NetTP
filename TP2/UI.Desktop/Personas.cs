@@ -79,20 +79,25 @@ namespace UI.Desktop
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
-            //int ID = ((Business.Entities.Persona)this.dgvPersonas.SelectedRows[0].DataBoundItem).ID;
-            int ID = Convert.ToInt32(dgvPersonas.Rows[dgvPersonas.CurrentRow.Index].Cells[0].Value);
-            PersonaDesktop formPersonas = new PersonaDesktop(ID, ApplicationForm.ModoForm.Modificacion);
-            formPersonas.ShowDialog();
-            this.Listar();
+            if (dgvPersonas.Rows.Count != 0) {
+                //int ID = ((Business.Entities.Persona)this.dgvPersonas.SelectedRows[0].DataBoundItem).ID;
+                int ID = Convert.ToInt32(dgvPersonas.Rows[dgvPersonas.CurrentRow.Index].Cells[0].Value);
+                PersonaDesktop formPersonas = new PersonaDesktop(ID, ApplicationForm.ModoForm.Modificacion);
+                formPersonas.ShowDialog();
+                this.Listar();
+            }               
         }
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
-            //int ID = ((Business.Entities.Persona)this.dgvPersonas.SelectedRows[0].DataBoundItem).ID;
-            int ID = Convert.ToInt32(dgvPersonas.Rows[dgvPersonas.CurrentRow.Index].Cells[0].Value);
-            PersonaDesktop formPersonas = new PersonaDesktop(ID, ApplicationForm.ModoForm.Baja);
-            formPersonas.ShowDialog();
-            this.Listar();
+            if (dgvPersonas.Rows.Count != 0)
+            {
+                //int ID = ((Business.Entities.Persona)this.dgvPersonas.SelectedRows[0].DataBoundItem).ID;
+                int ID = Convert.ToInt32(dgvPersonas.Rows[dgvPersonas.CurrentRow.Index].Cells[0].Value);
+                PersonaDesktop formPersonas = new PersonaDesktop(ID, ApplicationForm.ModoForm.Baja);
+                formPersonas.ShowDialog();
+                this.Listar();
+            }            
         }
 
         private void dgvPersonas_CellContentClick(object sender, DataGridViewCellEventArgs e)
