@@ -75,7 +75,15 @@ namespace Data.Database
                     ins.IDAlumno = (int)drInscripciones["id_alumno"]; ;
                     ins.IDCurso = (int)drInscripciones["id_curso"];
                     ins.Condicion = (string)drInscripciones["condicion"];
-                    ins.Nota = (int)drInscripciones["nota"];
+                    
+                    if (!drInscripciones.IsDBNull(4))
+                    {
+                        ins.Nota = (int)drInscripciones["nota"];
+                    }
+                    else
+                    {
+                        ins.Nota = -1;
+                    }
                 }
                 drInscripciones.Close();
             }
@@ -147,14 +155,15 @@ namespace Data.Database
                 {
                     this.OpenConnection();
 
-                    SqlCommand cmdSave = new SqlCommand("insert into alumnos_inscripciones (id_alumno,id_curso,condicion,nota) " +
-                        "values (@id_alumno,@id_curso,@condicion,@nota) " +
+                    SqlCommand cmdSave = new SqlCommand("insert into alumnos_inscripciones (id_alumno,id_curso,condicion) " +
+                        "values (@id_alumno,@id_curso,@condicion) " +
                         "select @@identity", sqlconn);
                     cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = inscripcion.ID;
                     cmdSave.Parameters.Add("@id_alumno", SqlDbType.Int, 50).Value = inscripcion.IDAlumno;
                     cmdSave.Parameters.Add("@id_curso", SqlDbType.Int, 50).Value = inscripcion.IDCurso;
                     cmdSave.Parameters.Add("@condicion", SqlDbType.VarChar).Value = inscripcion.Condicion;
-                    cmdSave.Parameters.Add("@nota", SqlDbType.Int, 50).Value = inscripcion.Nota;
+                   // cmdSave.Parameters.Add("@nota", SqlDbType.Int, 50).Value = inscripcion.Nota;
+                   //Siempre que se de alta una inscripcion no se deberia incluir la nota
                     inscripcion.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
                 }
                 catch (Exception Ex)

@@ -211,6 +211,40 @@ namespace Data.Database
             return comisiones;
         }
 
+        public Business.Entities.Comision GetPorDescripcion(string desc)
+        {
+            Business.Entities.Comision com;
+            com = new Business.Entities.Comision();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdComisiones = new SqlCommand("select * from comisiones where desc_comision=@desc_comision", sqlconn);
+                cmdComisiones.Parameters.Add("@desc_comision", SqlDbType.VarChar).Value = desc;
+                SqlDataReader drComisiones = cmdComisiones.ExecuteReader();
+
+                if (drComisiones.Read())
+                {
+                    com.ID = (int)drComisiones["id_comision"];
+                    com.Descripcion = (string)drComisiones["desc_comision"]; ;
+                    com.AnioEspecialidad = (int)drComisiones["anio_especialidad"];
+                    com.IDPlan = (int)drComisiones["id_plan"];
+                }
+                drComisiones.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar comision", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+
+            return com;
+        }
 
     }
 }

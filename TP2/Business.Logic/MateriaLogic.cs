@@ -52,5 +52,11 @@ namespace Business.Logic
         {
             return _MateriaData.GetMateriasPlan(idPlan);
         }
+
+        public Business.Entities.Materia GetPorDescripcion(string desc)
+        {
+            return _MateriaData.GetPorDescripcion(desc);
+        }
+
     }
 }

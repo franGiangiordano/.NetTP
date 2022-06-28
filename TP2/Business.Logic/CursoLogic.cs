@@ -38,5 +38,10 @@ namespace Business.Logic
             _CursoData.Save(c);
             return;
         }
+
+        public Business.Entities.Curso GetCurso(int idMat, int idCom)
+        {
+            return _CursoData.GetCurso(idMat,idCom);
+        }
     }
 }

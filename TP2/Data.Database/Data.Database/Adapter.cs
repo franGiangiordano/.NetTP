@@ -32,7 +32,7 @@ namespace Data.Database
 
             //Nota: con este sqlconn nos deberia conectar a la DB desde nuestras casas
             //sqlconn.ConnectionString = ConfigurationManager.ConnectionStrings[consKeyDefaultCnnString].ConnectionString;
-            sqlconn.ConnectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=Academia;Integrated Security=SSPI;";
+            sqlconn.ConnectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=academia;Integrated Security=SSPI;";
             sqlconn.Open();
         }
 

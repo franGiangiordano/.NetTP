@@ -11,6 +11,13 @@ using Business.Entities;
 using Business.Logic;
 
 
+//Faltaria agregar más info al formulario Por ejemplo: los horarios de cursado en esa comisión
+//Tenemos que descontar un cupo una vez se inscribe el alumno
+//Falta hacer las validaciones de negocio como por ejemplo: Que haya cupo, que la materia que aparece en
+//el combo no sea una a la que ya esté inscripto o ya esté aprobada
+//Habría que ver cómo manejar el tema de las correlatividades
+//Tambien se podrian mostrar mas campos en el listado de inscripciones
+
 namespace UI.Desktop
 {
     public partial class AlumnoInscripciones : Form
@@ -64,7 +71,7 @@ namespace UI.Desktop
         {
             AlumnoInscripcionDesktop alumnoInscripcionDesktop = new AlumnoInscripcionDesktop(idAlumno);
             alumnoInscripcionDesktop.ShowDialog();
-
+            this.Listar();
         }
 
         private void tsbEditar_Click(object sender, EventArgs e)

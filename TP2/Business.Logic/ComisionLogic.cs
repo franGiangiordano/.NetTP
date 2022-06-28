@@ -43,6 +43,10 @@ namespace Business.Logic
             return _PlanComision.GetComisionesPlan(idPlan);
         }
 
+        public Business.Entities.Comision GetPorDescripcion(string desc)
+        {
+            return _PlanComision.GetPorDescripcion(desc);
+        }
 
     }
 }

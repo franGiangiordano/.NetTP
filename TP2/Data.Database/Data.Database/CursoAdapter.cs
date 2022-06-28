@@ -160,5 +160,39 @@ namespace Data.Database
             }
             curso.State = BusinessEntity.States.Unmodified;
         }
+
+        public Curso GetCurso(int idMat, int idCom)
+        {
+            Curso curso = new Curso();
+            try
+            {
+                OpenConnection();
+                SqlCommand cmdCurso = new SqlCommand("select * from cursos where id_materia = @id_materia and id_comision = @id_comision and anio_calendario=@anio_calendario", sqlconn);
+                cmdCurso.Parameters.Add("@id_materia", SqlDbType.Int).Value = idMat;
+                cmdCurso.Parameters.Add("@id_comision", SqlDbType.Int).Value = idCom;
+                cmdCurso.Parameters.Add("@anio_calendario", SqlDbType.Int).Value = DateTime.Now.Year;
+                SqlDataReader drCurso = cmdCurso.ExecuteReader();
+                while (drCurso.Read())
+                {
+                    curso.ID = (int)drCurso["id_curso"];
+                    curso.IDMateria = (int)drCurso["id_materia"];
+                    curso.IDComision = (int)drCurso["id_comision"];
+                    curso.AnioCalendario = (int)drCurso["anio_calendario"];
+                    curso.Cupo = (int)drCurso["cupo"];
+                }
+                drCurso.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar curso", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return curso;
+        }
+
     }
 }

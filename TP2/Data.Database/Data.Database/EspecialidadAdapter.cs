@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace Data.Database
 {
-    class EspecialidadAdapter : Adapter
+     public class EspecialidadAdapter : Adapter
     {
         public List<Especialidad> GetAll()
         {
@@ -163,6 +163,8 @@ namespace Data.Database
             }
             especialidad.State = BusinessEntity.States.Unmodified;
         }
+
+        
     }
 
 }

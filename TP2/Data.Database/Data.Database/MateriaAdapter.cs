@@ -215,6 +215,40 @@ namespace Data.Database
             return materias;
         }
 
+        public Business.Entities.Materia GetPorDescripcion(string desc)
+        {
+            Business.Entities.Materia mat;
+            mat = new Business.Entities.Materia();
+            try
+            {
+                this.OpenConnection();
 
+                SqlCommand cmdMaterias = new SqlCommand("select * from materias where desc_materia=@desc_materia", sqlconn);
+                cmdMaterias.Parameters.Add("@desc_materia", SqlDbType.VarChar).Value = desc;
+                SqlDataReader drMaterias = cmdMaterias.ExecuteReader();
+
+                if (drMaterias.Read())
+                {
+                    mat.ID = (int)drMaterias["id_materia"];
+                    mat.Descripcion = (string)drMaterias["desc_materia"]; ;
+                    mat.HSSemanales = (int)drMaterias["hs_semanales"];
+                    mat.HSTotales = (int)drMaterias["hs_totales"];
+                    mat.IDPlan = (int)drMaterias["id_plan"]; 
+                }
+                drMaterias.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar materia", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+
+            return mat;
+        }
     }
 }
