@@ -233,5 +233,68 @@ namespace Data.Database
             }
             return usr;
         }
+
+        public List<Usuario> BusquedaUsuario(int cmbCriterio, string criterio)
+        {
+            List<Usuario> usuarios = new List<Usuario>();
+            try
+            {
+                this.OpenConnection();
+                if (cmbCriterio == 0)
+                {
+                    SqlCommand cmdUsuariosID = new SqlCommand("select * from usuarios where id_usuario=@id", sqlconn);
+                    cmdUsuariosID.Parameters.Add("@id", SqlDbType.Int).Value = Int32.Parse(criterio);
+                    SqlDataReader drUsuariosID = cmdUsuariosID.ExecuteReader();
+
+                    while (drUsuariosID.Read())
+                    {
+                        Business.Entities.Usuario usr;
+                        usr = new Business.Entities.Usuario();
+                        usr.ID = (int)drUsuariosID["id_usuario"];
+                        usr.Nombre = (string)drUsuariosID["nombre"]; ;
+                        usr.Apellido = (string)drUsuariosID["apellido"];
+                        usr.NombreUsuario = (string)drUsuariosID["nombre_usuario"];
+                        usr.Clave = (string)drUsuariosID["clave"];
+                        usr.Email = (string)drUsuariosID["email"];
+                        usr.Habilitado = (bool)drUsuariosID["habilitado"];
+                        usuarios.Add(usr);
+                    }
+                    drUsuariosID.Close();
+                }
+                if (cmbCriterio == 1)
+                {
+                    SqlCommand cmdUsuariosNombreUsr = new SqlCommand("select * from usuarios where nombre_usuario=@nombre_usuario", sqlconn);
+                    cmdUsuariosNombreUsr.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = criterio;
+                    SqlDataReader drUsuariosNombreUsr = cmdUsuariosNombreUsr.ExecuteReader();
+
+                    while (drUsuariosNombreUsr.Read())
+                    {
+                        Business.Entities.Usuario usr;
+                        usr = new Business.Entities.Usuario();
+                        usr.ID = (int)drUsuariosNombreUsr["id_usuario"];
+                        usr.Nombre = (string)drUsuariosNombreUsr["nombre"]; ;
+                        usr.Apellido = (string)drUsuariosNombreUsr["apellido"];
+                        usr.NombreUsuario = (string)drUsuariosNombreUsr["nombre_usuario"];
+                        usr.Clave = (string)drUsuariosNombreUsr["clave"];
+                        usr.Email = (string)drUsuariosNombreUsr["email"];
+                        usr.Habilitado = (bool)drUsuariosNombreUsr["habilitado"];
+                        usuarios.Add(usr);
+                    }
+                    drUsuariosNombreUsr.Close();
+                }
+                
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar usuario", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+           
+            return usuarios;
+        }
     }
 }

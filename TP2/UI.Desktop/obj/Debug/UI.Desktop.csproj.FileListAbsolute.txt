@@ -148,3 +148,8 @@ C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Deskt
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.AlumnoInscripciones.resources
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.CursoDesktop.resources
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Cursos.resources
+C:\Users\user\Documents\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.AlumnoInscripcionDesktop.resources
+C:\Users\user\Documents\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.AlumnoInscripciones.resources
+C:\Users\user\Documents\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.CursoDesktop.resources
+C:\Users\user\Documents\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Cursos.resources
+C:\Users\user\Documents\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Busqueda.resources

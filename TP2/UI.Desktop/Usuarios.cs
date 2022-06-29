@@ -87,5 +87,12 @@ namespace UI.Desktop
         {
 
         }
+
+        private void tsbBuscar_Click(object sender, EventArgs e)
+        {
+            Busqueda formBusqueda = new Busqueda();
+            formBusqueda.ShowDialog();
+            this.Listar();
+        }
     }
 }

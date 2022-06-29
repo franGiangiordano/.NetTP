@@ -76,6 +76,10 @@ namespace Business.Logic
             return _UsuarioData.GetUsuarioLogin(user, pass);
         }
 
+        public List<Usuario> BusquedaUsuario(int cmbCriterio, string criterio)
+        {
+            return _UsuarioData.BusquedaUsuario(cmbCriterio,criterio);
+        }
 
 
     }
