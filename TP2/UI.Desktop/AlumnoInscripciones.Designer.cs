@@ -45,6 +45,8 @@
             this.nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.anio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.materia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tcAlumosInscripciones.ContentPanel.SuspendLayout();
             this.tcAlumosInscripciones.TopToolStripPanel.SuspendLayout();
             this.tcAlumosInscripciones.SuspendLayout();
@@ -100,7 +102,9 @@
             this.condicion,
             this.nota,
             this.anio,
-            this.materia});
+            this.materia,
+            this.Comision,
+            this.Especialidad});
             this.tlAlumnosInscripciones.SetColumnSpan(this.dgvAlumnosInscripciones, 2);
             this.dgvAlumnosInscripciones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvAlumnosInscripciones.Location = new System.Drawing.Point(3, 3);
@@ -222,6 +226,20 @@
             this.materia.Name = "materia";
             this.materia.ReadOnly = true;
             // 
+            // Comision
+            // 
+            this.Comision.DataPropertyName = "comision";
+            this.Comision.HeaderText = "Comision";
+            this.Comision.Name = "Comision";
+            this.Comision.ReadOnly = true;
+            // 
+            // Especialidad
+            // 
+            this.Especialidad.DataPropertyName = "especialidad";
+            this.Especialidad.HeaderText = "Especialidad";
+            this.Especialidad.Name = "Especialidad";
+            this.Especialidad.ReadOnly = true;
+            // 
             // AlumnoInscripciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -261,5 +279,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nota;
         private System.Windows.Forms.DataGridViewTextBoxColumn anio;
         private System.Windows.Forms.DataGridViewTextBoxColumn materia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Comision;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Especialidad;
     }
 }

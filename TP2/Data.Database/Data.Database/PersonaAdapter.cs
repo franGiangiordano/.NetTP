@@ -203,6 +203,46 @@ namespace Data.Database
             }
             persona.State = BusinessEntity.States.Unmodified;
         }
+
+        public Business.Entities.Persona GetOnePorLejago(int legajo)
+        {
+            Business.Entities.Persona per;
+            per = new Business.Entities.Persona();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdPersonas = new SqlCommand("select * from personas where legajo=@legajo", sqlconn);
+                cmdPersonas.Parameters.Add("@legajo", SqlDbType.Int).Value = legajo;
+                SqlDataReader drPersonas = cmdPersonas.ExecuteReader();
+
+                if (drPersonas.Read())
+                {
+                    per.ID = (int)drPersonas["id_persona"];
+                    per.Nombre = (string)drPersonas["nombre"]; ;
+                    per.Apellido = (string)drPersonas["apellido"];
+                    per.Telefono = (string)drPersonas["telefono"];
+                    per.Direccion = (string)drPersonas["direccion"];
+                    per.Legajo = (int)drPersonas["legajo"];
+                    per.FechaNacimiento = (DateTime)drPersonas["fecha_nac"];
+                    per.Tipo = (Persona.TipoPersonas)drPersonas["tipo_persona"];
+                    per.IDPlan = (int)drPersonas["id_plan"];
+                }
+                drPersonas.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar persona", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+
+            return per;
+        }
     }
 }
 #endregion

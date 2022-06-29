@@ -36,7 +36,8 @@ namespace Business.Logic
         {
             _AlumnoInscripcionData.Save(i);
             return;
-        }   
+        }
 
+       
     }
 }

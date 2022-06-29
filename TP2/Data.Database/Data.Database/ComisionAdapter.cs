@@ -246,5 +246,36 @@ namespace Data.Database
             return com;
         }
 
+        public List<String> GetComisionesDeMateria(String desc_materia)
+        {
+            List<String> comisiones = new List<String>();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdComisiones = new SqlCommand("select co.desc_comision from comisiones co join planes pl on co.id_plan=pl.id_plan join materias ma on ma.id_plan=pl.id_plan where ma.desc_materia=@desc_materia", sqlconn);
+                cmdComisiones.Parameters.Add("@desc_materia", SqlDbType.VarChar).Value = desc_materia;
+                SqlDataReader drComisiones = cmdComisiones.ExecuteReader();
+
+                while (drComisiones.Read())
+                {                    
+                    comisiones.Add((string)drComisiones["desc_comision"]);
+                }
+                drComisiones.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de comisiones de la materia", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+
+            return comisiones;
+        }
+
     }
 }

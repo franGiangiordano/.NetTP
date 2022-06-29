@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 /*DUDAS
- ¿Persona debería tener mail? (Usuario ya tiene uno)
- Al momento de dar de alta un usuario ¿Deberiamos mostrar un combobox con los nombres de las personas?
+ ¿Persona debería tener mail? (Usuario ya tiene uno) 
  ¿Deberiamos crear metodos adicionales para buscar por nombre o descripcion en la capa de datos? ¿o podemos usar Linq con un getAll?
  ¿Cómo mantener información del usuario a lo largo de la ejecución de la aplicación? (Algo similar a las sesiones en aplicaciones web)
  ¿Que datos mostrar en el listado de inscripciones?
+ ¿Horarios de cursado?
+  ¿Qué deberíamos registrar en las tablas módulos y módulos_usuarios?
+  ¿No faltaria una tabla materias_comisiones?
 */
 
 namespace UI.Desktop

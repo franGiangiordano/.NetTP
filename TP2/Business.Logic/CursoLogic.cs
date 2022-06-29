@@ -33,6 +33,10 @@ namespace Business.Logic
             return;
         }
 
+        public void Update(Curso curso) {
+            _CursoData.Update(curso);
+        }
+
         public void Save(Business.Entities.Curso c)
         {
             _CursoData.Save(c);
@@ -43,5 +47,13 @@ namespace Business.Logic
         {
             return _CursoData.GetCurso(idMat,idCom);
         }
+
+        public Boolean TieneCupo(Curso c) {
+            if (c.Cupo > 0) {
+                return true;
+            }
+            return false;
+        }
+
     }
 }

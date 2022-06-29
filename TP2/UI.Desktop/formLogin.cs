@@ -59,7 +59,7 @@ namespace UI.Desktop
                             //Personas Personas = new Personas();
                             //Personas.ShowDialog();
                             AlumnoInscripciones alumnoInscripciones = new AlumnoInscripciones(personaEncontrada.ID);
-                            alumnoInscripciones.ShowDialog();
+                            alumnoInscripciones.ShowDialog();                            
                             break;
 
                         case Business.Entities.Persona.TipoPersonas.Docente:

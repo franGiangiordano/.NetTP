@@ -12,11 +12,8 @@ using Business.Logic;
 
 
 //Faltaria agregar más info al formulario Por ejemplo: los horarios de cursado en esa comisión
-//Tenemos que descontar un cupo una vez se inscribe el alumno
-//Falta hacer las validaciones de negocio como por ejemplo: Que haya cupo, que la materia que aparece en
-//el combo no sea una a la que ya esté inscripto o ya esté aprobada
+//el combo de comisiones dependa del combo de materias
 //Habría que ver cómo manejar el tema de las correlatividades
-//Tambien se podrian mostrar mas campos en el listado de inscripciones
 
 namespace UI.Desktop
 {
@@ -45,6 +42,9 @@ namespace UI.Desktop
             PersonaLogic pl = new PersonaLogic();
             CursoLogic cl = new CursoLogic();
             MateriaLogic ml = new MateriaLogic();
+            ComisionLogic coml = new ComisionLogic();
+            EspecialidadLogic espl = new EspecialidadLogic();
+            PlanLogic planl = new PlanLogic();
 
 
             DataTable dt1 = new DataTable();
@@ -55,21 +55,27 @@ namespace UI.Desktop
             dt1.Columns.Add("nota", typeof(string));
             dt1.Columns.Add("anio", typeof(int));
             dt1.Columns.Add("materia", typeof(string));
+            dt1.Columns.Add("comision", typeof(string));
+            dt1.Columns.Add("especialidad", typeof(string));
 
             foreach (var ins in l1)
             {
                 Persona al = pl.GetOne(ins.IDAlumno);
                 Curso cur = cl.GetOne(ins.IDCurso);
                 Materia mat = ml.GetOne(cur.IDMateria);
+                Comision com = coml.GetOne(cur.IDComision);
+                Plan plan = planl.GetOne(al.IDPlan);
+                Especialidad esp = espl.GetOne(plan.IDEspecialidad);
 
-                dt1.Rows.Add(ins.ID, al.Nombre + ' ' + al.Apellido ,cur.ID, ins.Condicion, ins.Nota != -1 ? ins.Nota.ToString() : null, cur.AnioCalendario, mat.Descripcion);
+
+                dt1.Rows.Add(ins.ID, al.Nombre + ' ' + al.Apellido ,cur.ID, ins.Condicion, ins.Nota != -1 ? ins.Nota.ToString() : null, cur.AnioCalendario, mat.Descripcion,com.Descripcion,esp.Descripcion);
             }
             this.dgvAlumnosInscripciones.DataSource = dt1;
         }
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            AlumnoInscripcionDesktop alumnoInscripcionDesktop = new AlumnoInscripcionDesktop(idAlumno);
+            AlumnoInscripcionDesktop alumnoInscripcionDesktop = new AlumnoInscripcionDesktop(idAlumno);            
             alumnoInscripcionDesktop.ShowDialog();
             this.Listar();
         }

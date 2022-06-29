@@ -22,8 +22,7 @@ namespace Business.Entities
         {           
             Alumno,
             Docente,
-            Administrativo,
-            Admin
+            Administrativo,         
         }
 
        

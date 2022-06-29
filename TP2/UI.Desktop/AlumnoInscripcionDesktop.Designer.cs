@@ -35,10 +35,10 @@
             this.cmbMateria = new System.Windows.Forms.ComboBox();
             this.cmbComision = new System.Windows.Forms.ComboBox();
             this.txtIDInscripcion = new System.Windows.Forms.TextBox();
+            this.cmbCondicion = new System.Windows.Forms.ComboBox();
+            this.lblCondicion = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.lblCondicion = new System.Windows.Forms.Label();
-            this.cmbCondicion = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,24 +48,25 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.37653F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.62347F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 146F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 148F));
             this.tableLayoutPanel1.Controls.Add(this.txtID, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lbCurso, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.lbComision, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.cmbMateria, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.cmbComision, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtIDInscripcion, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.cmbCondicion, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblCondicion, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 2, 4);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 98F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 77F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 93F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(726, 406);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -81,7 +82,7 @@
             // lbCurso
             // 
             this.lbCurso.AutoSize = true;
-            this.lbCurso.Location = new System.Drawing.Point(3, 112);
+            this.lbCurso.Location = new System.Drawing.Point(3, 92);
             this.lbCurso.Name = "lbCurso";
             this.lbCurso.Size = new System.Drawing.Size(42, 13);
             this.lbCurso.TabIndex = 1;
@@ -90,7 +91,7 @@
             // lbComision
             // 
             this.lbComision.AutoSize = true;
-            this.lbComision.Location = new System.Drawing.Point(3, 231);
+            this.lbComision.Location = new System.Drawing.Point(3, 211);
             this.lbComision.Name = "lbComision";
             this.lbComision.Size = new System.Drawing.Size(49, 13);
             this.lbComision.TabIndex = 2;
@@ -99,7 +100,7 @@
             // cmbMateria
             // 
             this.cmbMateria.FormattingEnabled = true;
-            this.cmbMateria.Location = new System.Drawing.Point(157, 115);
+            this.cmbMateria.Location = new System.Drawing.Point(156, 95);
             this.cmbMateria.Name = "cmbMateria";
             this.cmbMateria.Size = new System.Drawing.Size(121, 21);
             this.cmbMateria.TabIndex = 3;
@@ -107,48 +108,18 @@
             // cmbComision
             // 
             this.cmbComision.FormattingEnabled = true;
-            this.cmbComision.Location = new System.Drawing.Point(157, 234);
+            this.cmbComision.Location = new System.Drawing.Point(156, 214);
             this.cmbComision.Name = "cmbComision";
             this.cmbComision.Size = new System.Drawing.Size(121, 21);
             this.cmbComision.TabIndex = 4;
             // 
             // txtIDInscripcion
             // 
-            this.txtIDInscripcion.Location = new System.Drawing.Point(157, 3);
+            this.txtIDInscripcion.Location = new System.Drawing.Point(156, 3);
             this.txtIDInscripcion.Name = "txtIDInscripcion";
             this.txtIDInscripcion.ReadOnly = true;
             this.txtIDInscripcion.Size = new System.Drawing.Size(100, 20);
             this.txtIDInscripcion.TabIndex = 5;
-            // 
-            // btnAceptar
-            // 
-            this.btnAceptar.Location = new System.Drawing.Point(157, 332);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 6;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
-            this.btnAceptar.Click += new System.EventHandler(this.bntAceptar_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(439, 332);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 7;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // lblCondicion
-            // 
-            this.lblCondicion.AutoSize = true;
-            this.lblCondicion.Location = new System.Drawing.Point(439, 112);
-            this.lblCondicion.Name = "lblCondicion";
-            this.lblCondicion.Size = new System.Drawing.Size(54, 13);
-            this.lblCondicion.TabIndex = 9;
-            this.lblCondicion.Text = "Condicion";
-            this.lblCondicion.Click += new System.EventHandler(this.label1_Click);
             // 
             // cmbCondicion
             // 
@@ -158,10 +129,40 @@
             "Regular",
             "Aprobado",
             "Libre"});
-            this.cmbCondicion.Location = new System.Drawing.Point(582, 115);
+            this.cmbCondicion.Location = new System.Drawing.Point(580, 95);
             this.cmbCondicion.Name = "cmbCondicion";
             this.cmbCondicion.Size = new System.Drawing.Size(121, 21);
             this.cmbCondicion.TabIndex = 8;
+            // 
+            // lblCondicion
+            // 
+            this.lblCondicion.AutoSize = true;
+            this.lblCondicion.Location = new System.Drawing.Point(437, 92);
+            this.lblCondicion.Name = "lblCondicion";
+            this.lblCondicion.Size = new System.Drawing.Size(54, 13);
+            this.lblCondicion.TabIndex = 9;
+            this.lblCondicion.Text = "Condicion";
+            this.lblCondicion.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // btnAceptar
+            // 
+            this.btnAceptar.Location = new System.Drawing.Point(156, 353);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptar.TabIndex = 6;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.bntAceptar_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(437, 353);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 7;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // AlumnoInscripcionDesktop
             // 

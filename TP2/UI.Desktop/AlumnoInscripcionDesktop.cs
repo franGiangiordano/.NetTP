@@ -10,12 +10,14 @@ using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
 
+//Falta validar que los combos no estén vacíos al inscribirse
+
 namespace UI.Desktop
 {
     public partial class AlumnoInscripcionDesktop : ApplicationForm
     {
         public Business.Entities.AlumnoInscripcion _AlumnoInscripcionActual;
-        // public event EventHandler SelectedIndexChanged; //evento para controlar cuando se elige una materia del combo
+        public event EventHandler SelectedIndexChanged; //evento para controlar cuando se elige una materia del combo
 
         int idAlumno;
 
@@ -32,7 +34,7 @@ namespace UI.Desktop
 
             //Bloqueamos el combo de condicion salvo que sea admin
             PersonaLogic pl = new PersonaLogic();
-            if (!(((pl.GetOne(idAlumno)).Tipo.ToString()).Equals("Admin")))
+            if (!(((pl.GetOne(idAlumno)).Tipo.ToString()).Equals("Administrador")))
             {
                 this.cmbCondicion.Enabled = false;
             }
@@ -57,12 +59,15 @@ namespace UI.Desktop
         public void cargarComboMaterias(int idPersona)
         {
             PersonaLogic pl = new PersonaLogic();
-            Persona personaActual = pl.GetOne(idPersona);
+            CursoLogic cl = new CursoLogic();
+            Persona personaActual = pl.GetOne(idPersona);            
 
             MateriaLogic ml = new MateriaLogic();
-            List<Materia> materias = ml.GetMateriasPlan(personaActual.IDPlan);            
-            this.cmbMateria.DataSource = (from mat in materias select mat.Descripcion).ToList();
-           // this.cmbMateria.SelectedIndexChanged += new System.EventHandler(ComboBox1_SelectedIndexChanged); //asociamos el evento al combo            
+            List<Materia> materias = ml.GetMateriasPlan(personaActual.IDPlan);  //obtenemos listado de materias
+            List<Materia> materiasNoDisponibles = ml.GetMateriasAlumno(idPersona); //obtenemos listado de materias inscriptas o aprobadas            
+            this.cmbMateria.DataSource = (from mat in materias.Where(item => !materiasNoDisponibles.Any(e => item.ID == e.ID)).ToList() select mat.Descripcion).ToList();  //calculamos la diferencia
+            //this.cmbMateria.DataSource = (from mat in materias select mat.Descripcion).ToList();
+            this.cmbMateria.SelectedIndexChanged += new System.EventHandler(ComboBox1_SelectedIndexChanged); //asociamos el evento al combo            
         }
 
         private void cargarComboComisiones(int idPersona)
@@ -92,7 +97,7 @@ namespace UI.Desktop
             
 
             //Bloqueamos el combo de condicion salvo que sea admin
-            if (!(((pl.GetOne(_AlumnoInscripcionActual.IDAlumno)).Tipo.ToString()).Equals("Admin")))
+            if (!(((pl.GetOne(_AlumnoInscripcionActual.IDAlumno)).Tipo.ToString()).Equals("Administrador")))
             {
                 this.cmbCondicion.Enabled = false;
             }
@@ -123,19 +128,25 @@ namespace UI.Desktop
             ComisionLogic col = new ComisionLogic();
             switch (Modo)
             {
-                case (ApplicationForm.ModoForm)ModoForm.Alta:
-                    AlumnoInscripcion ai = new AlumnoInscripcion();
-                    _AlumnoInscripcionActual = ai;
-                    _AlumnoInscripcionActual.Condicion = "Inscripto";
-
-                    int  idMat = ml.GetPorDescripcion(cmbMateria.SelectedItem.ToString()).ID;
+                case (ApplicationForm.ModoForm)ModoForm.Alta:                    
+                    int idMat = ml.GetPorDescripcion(cmbMateria.SelectedItem.ToString()).ID;
                     int idComision = col.GetPorDescripcion(cmbComision.SelectedItem.ToString()).ID;
                     Curso cu = cl.GetCurso(idMat,idComision);
 
-                    _AlumnoInscripcionActual.IDCurso = cu.ID;
-                    _AlumnoInscripcionActual.IDAlumno = idAlumno;
-
-                    _AlumnoInscripcionActual.State = Usuario.States.New;
+                    if (cl.TieneCupo(cu))
+                    {
+                        cu.Cupo -= 1;
+                        cl.Update(cu);   
+                        AlumnoInscripcion ai = new AlumnoInscripcion();
+                        _AlumnoInscripcionActual = ai;
+                        _AlumnoInscripcionActual.Condicion = "Inscripto";
+                        _AlumnoInscripcionActual.IDCurso = cu.ID;
+                        _AlumnoInscripcionActual.IDAlumno = idAlumno;
+                        _AlumnoInscripcionActual.State = Usuario.States.New;
+                    }
+                    else {
+                        this.Notificar("El curso no tiene cupo disponible", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }                    
                     break;
 
                 case (ApplicationForm.ModoForm)ModoForm.Modificacion:
@@ -185,13 +196,28 @@ namespace UI.Desktop
 
         }
 
-        
-        ////Con este metodo modificamos el combo de comisiones en funcion del combo de materias
-        //private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e) {
-        //    ComboBox senderComboBox = (ComboBox)sender;
-        //    MessageBox.Show("holaa", "asad", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        private void label1_Click_1(object sender, EventArgs e)
+        {
 
-        //}
+        }
+
+        public override void Notificar(string titulo, string mensaje, MessageBoxButtons
+            botones, MessageBoxIcon icono)
+        {
+            MessageBox.Show(mensaje, titulo, botones, icono);
+        }
+
+
+        ////Con este metodo modificamos el combo de comisiones en funcion del combo de materias
+        ///El objetivo de este metodo es obtener las comisiones para una materia dada
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e) {
+            ComisionLogic cl = new ComisionLogic();
+            //ComboBox senderComboBox = (ComboBox)sender;
+
+            //senderComboBox.DataSource = cl.GetComisionesDeMateria(cmbMateria.SelectedItem.ToString());
+            cmbComision.DataSource = cl.GetComisionesDeMateria(cmbMateria.SelectedItem.ToString());
+           
+        }
 
 
 

@@ -51,5 +51,9 @@ namespace Business.Logic
             }
         }
 
+        public Business.Entities.Persona GetOnePorLejago(int legajo)
+        {
+            return _PersonaData.GetOnePorLejago(legajo);
+        }
     }
 }

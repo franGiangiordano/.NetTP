@@ -21,14 +21,23 @@ namespace UI.Desktop
         {
             Modo = (ApplicationForm.ModoForm)modo;
             InitializeComponent();
+            cargarComboLegajos();
         }
         public UsuarioDesktop(int ID, ApplicationForm.ModoForm modo) : this()
         {
             InitializeComponent();
+            cargarComboLegajos();
             Modo = (ApplicationForm.ModoForm)modo;
             UsuarioLogic ul = new UsuarioLogic();
             _UsuarioActual = ul.GetOne(ID);
-            MapearDeDatos();
+            MapearDeDatos();            
+        }
+
+        private void cargarComboLegajos()
+        {
+            PersonaLogic pl = new PersonaLogic();            
+            List<String> legajos = (from persona in pl.GetAll() select persona.Legajo.ToString()).ToList();
+            this.cmbLegajos.DataSource = legajos.OrderBy(x => x).ToList();
         }
 
         //public UsuarioDesktop(ApplicationForm.ModoForm alta)
@@ -47,6 +56,8 @@ namespace UI.Desktop
 
         public override void MapearDeDatos()
         {
+            PersonaLogic pl = new PersonaLogic();
+
             this.txtId.Text = this._UsuarioActual.ID.ToString();
             this.checkHab.Checked = this._UsuarioActual.Habilitado;
             this.txtNombre.Text = this._UsuarioActual.Nombre;
@@ -55,7 +66,7 @@ namespace UI.Desktop
             this.txtUsu.Text = this._UsuarioActual.NombreUsuario;
             this.txtClave.Text = this._UsuarioActual.Clave;
             this.txtConfirm.Text = this._UsuarioActual.Clave;
-
+            this.cmbLegajos.SelectedIndex =this.cmbLegajos.FindString(pl.GetOne(this._UsuarioActual.IDPersona).Legajo.ToString());            
             switch (Modo)
             {
                 case (ApplicationForm.ModoForm)ModoForm.Alta:
@@ -77,6 +88,8 @@ namespace UI.Desktop
 
         public override void MapearADatos()
         {
+            PersonaLogic pl = new PersonaLogic();
+
             switch (Modo)
             {
                 case (ApplicationForm.ModoForm)ModoForm.Alta:
@@ -87,7 +100,8 @@ namespace UI.Desktop
                     _UsuarioActual.Clave = txtClave.Text;
                     _UsuarioActual.Habilitado = checkHab.Checked;
                     _UsuarioActual.Apellido = txtApe.Text;
-                    _UsuarioActual.NombreUsuario = txtUsu.Text;
+                    _UsuarioActual.NombreUsuario = txtUsu.Text;                    
+                    _UsuarioActual.IDPersona = (pl.GetOnePorLejago(Int32.Parse(cmbLegajos.SelectedItem.ToString()))).ID;                    
                     _UsuarioActual.State = Usuario.States.New;
                     break;
 
@@ -98,6 +112,7 @@ namespace UI.Desktop
                     _UsuarioActual.Habilitado = checkHab.Checked;
                     _UsuarioActual.Apellido = txtApe.Text;
                     _UsuarioActual.NombreUsuario = txtUsu.Text;
+                    _UsuarioActual.IDPersona = (pl.GetOnePorLejago(Int32.Parse(cmbLegajos.SelectedItem.ToString()))).ID;
                     _UsuarioActual.State = Usuario.States.Modified;
                     break;
 
