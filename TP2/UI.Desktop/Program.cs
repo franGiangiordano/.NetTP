@@ -5,13 +5,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 /*DUDAS
- ¿Persona debería tener mail? (Usuario ya tiene uno) 
- ¿Deberiamos crear metodos adicionales para buscar por nombre o descripcion en la capa de datos? ¿o podemos usar Linq con un getAll?
  ¿Cómo mantener información del usuario a lo largo de la ejecución de la aplicación? (Algo similar a las sesiones en aplicaciones web)
- ¿Que datos mostrar en el listado de inscripciones?
- ¿Horarios de cursado?
+    Usar una propiedad global en el formulario principal
   ¿Qué deberíamos registrar en las tablas módulos y módulos_usuarios?
-  ¿No faltaria una tabla materias_comisiones?
+   modulos_usuarios seria el formulario, esa tabla tiene cols para c/accion en ese form
+   sirve para consultar si el usuario tiene permiso para realizar tal operacion en el form 
+   Arreglar los comboboxes de todos los formularios
+   Agregar propiedades a los atributos
+   Ver el tema de reportes
 */
 
 namespace UI.Desktop

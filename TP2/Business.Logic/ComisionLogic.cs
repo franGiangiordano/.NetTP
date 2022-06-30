@@ -38,9 +38,9 @@ namespace Business.Logic
             return;
         }
 
-        public List<Comision> GetComisionesPlan(int idPlan)
+        public List<Comision> GetComisionesPlan(int idPlan, int idMateria)
         {
-            return _PlanComision.GetComisionesPlan(idPlan);
+            return _PlanComision.GetComisionesPlan(idPlan, idMateria);
         }
 
         public Business.Entities.Comision GetPorDescripcion(string desc)

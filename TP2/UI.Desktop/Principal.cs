@@ -12,7 +12,14 @@ namespace UI.Desktop
 {
     public partial class Principal : ApplicationForm
     {
+        int id;
+
         public Principal()
+        {
+            InitializeComponent();
+        }
+
+        public Principal(int idUsuario)
         {
             InitializeComponent();
         }

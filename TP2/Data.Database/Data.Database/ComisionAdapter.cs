@@ -174,15 +174,16 @@ namespace Data.Database
             com.State = BusinessEntity.States.Unmodified;
         }
 
-        public List<Comision> GetComisionesPlan(int idPlan)
+        public List<Comision> GetComisionesPlan(int idPlan, int idMateria)
         {
             List<Comision> comisiones = new List<Comision>();
             try
             {
                 this.OpenConnection();
 
-                SqlCommand cmdComisiones = new SqlCommand("select * from comisiones where id_plan = @idPlan", sqlconn);
+                SqlCommand cmdComisiones = new SqlCommand("select * from comisiones co join cursos c on co.id_comision = c.id_comision where co.id_plan = @idPlan and c.id_materia = @idMateria and c.anio_calendario = YEAR(CURRENT_TIMESTAMP)", sqlconn);
                 cmdComisiones.Parameters.Add("@idPlan", SqlDbType.Int).Value = idPlan;
+                cmdComisiones.Parameters.Add("@idMateria", SqlDbType.Int).Value = idMateria;
                 SqlDataReader drComisiones = cmdComisiones.ExecuteReader();
 
                 while (drComisiones.Read())
@@ -253,7 +254,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
 
-                SqlCommand cmdComisiones = new SqlCommand("select co.desc_comision from comisiones co join planes pl on co.id_plan=pl.id_plan join materias ma on ma.id_plan=pl.id_plan where ma.desc_materia=@desc_materia", sqlconn);
+                SqlCommand cmdComisiones = new SqlCommand("select desc_comision from cursos c join comisiones com on c.id_comision=com.id_comision join materias mat on mat.id_materia=c.id_materia where mat.desc_materia=@desc_materia", sqlconn);
                 cmdComisiones.Parameters.Add("@desc_materia", SqlDbType.VarChar).Value = desc_materia;
                 SqlDataReader drComisiones = cmdComisiones.ExecuteReader();
 

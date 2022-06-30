@@ -16,29 +16,32 @@ namespace UI.Desktop
     public partial class UsuarioDesktop : ApplicationForm
     {
 
-        public Business.Entities.Usuario _UsuarioActual;
+        private Business.Entities.Usuario usuarioActual;
+
+        public Usuario UsuarioActual { get => usuarioActual; set => usuarioActual = value; }
+
         public UsuarioDesktop(ApplicationForm.ModoForm modo) : this()
         {
             Modo = (ApplicationForm.ModoForm)modo;
             InitializeComponent();
-            cargarComboLegajos();
+            //cargarComboLegajos();
         }
         public UsuarioDesktop(int ID, ApplicationForm.ModoForm modo) : this()
         {
             InitializeComponent();
-            cargarComboLegajos();
+            //cargarComboLegajos();
             Modo = (ApplicationForm.ModoForm)modo;
             UsuarioLogic ul = new UsuarioLogic();
-            _UsuarioActual = ul.GetOne(ID);
+            UsuarioActual = ul.GetOne(ID);
             MapearDeDatos();            
         }
 
-        private void cargarComboLegajos()
-        {
-            PersonaLogic pl = new PersonaLogic();            
-            List<String> legajos = (from persona in pl.GetAll() select persona.Legajo.ToString()).ToList();
-            this.cmbLegajos.DataSource = legajos.OrderBy(x => x).ToList();
-        }
+        //private void cargarComboLegajos()
+        //{
+        //    PersonaLogic pl = new PersonaLogic();            
+        //    List<String> legajos = (from persona in pl.GetAll() select persona.Legajo.ToString()).ToList();
+        //    this.cmbLegajos.DataSource = legajos.OrderBy(x => x).ToList();
+        //}
 
         //public UsuarioDesktop(ApplicationForm.ModoForm alta)
         //{
@@ -58,15 +61,15 @@ namespace UI.Desktop
         {
             PersonaLogic pl = new PersonaLogic();
 
-            this.txtId.Text = this._UsuarioActual.ID.ToString();
-            this.checkHab.Checked = this._UsuarioActual.Habilitado;
-            this.txtNombre.Text = this._UsuarioActual.Nombre;
-            this.txtApe.Text = this._UsuarioActual.Apellido;
-            this.txtEmail.Text = this._UsuarioActual.Email;
-            this.txtUsu.Text = this._UsuarioActual.NombreUsuario;
-            this.txtClave.Text = this._UsuarioActual.Clave;
-            this.txtConfirm.Text = this._UsuarioActual.Clave;
-            this.cmbLegajos.SelectedIndex =this.cmbLegajos.FindString(pl.GetOne(this._UsuarioActual.IDPersona).Legajo.ToString());            
+            this.txtId.Text = this.UsuarioActual.ID.ToString();
+            this.checkHab.Checked = this.UsuarioActual.Habilitado;
+            this.txtNombre.Text = this.UsuarioActual.Nombre;
+            this.txtApe.Text = this.UsuarioActual.Apellido;
+            this.txtEmail.Text = this.UsuarioActual.Email;
+            this.txtUsu.Text = this.UsuarioActual.NombreUsuario;
+            this.txtClave.Text = this.UsuarioActual.Clave;
+            this.txtConfirm.Text = this.UsuarioActual.Clave;
+            //this.cmbLegajos.SelectedIndex =this.cmbLegajos.FindString(pl.GetOne(this.UsuarioActual.IDPersona).Legajo.ToString());            
             switch (Modo)
             {
                 case (ApplicationForm.ModoForm)ModoForm.Alta:
@@ -94,34 +97,34 @@ namespace UI.Desktop
             {
                 case (ApplicationForm.ModoForm)ModoForm.Alta:
                     Usuario usu = new Usuario();
-                    _UsuarioActual = usu;
-                    _UsuarioActual.Nombre = txtNombre.Text;
-                    _UsuarioActual.Email = txtEmail.Text;
-                    _UsuarioActual.Clave = txtClave.Text;
-                    _UsuarioActual.Habilitado = checkHab.Checked;
-                    _UsuarioActual.Apellido = txtApe.Text;
-                    _UsuarioActual.NombreUsuario = txtUsu.Text;                    
-                    _UsuarioActual.IDPersona = (pl.GetOnePorLejago(Int32.Parse(cmbLegajos.SelectedItem.ToString()))).ID;                    
-                    _UsuarioActual.State = Usuario.States.New;
+                    UsuarioActual = usu;
+                    UsuarioActual.Nombre = txtNombre.Text;
+                    UsuarioActual.Email = txtEmail.Text;
+                    UsuarioActual.Clave = txtClave.Text;
+                    UsuarioActual.Habilitado = checkHab.Checked;
+                    UsuarioActual.Apellido = txtApe.Text;
+                    UsuarioActual.NombreUsuario = txtUsu.Text;                    
+                    //_UsuarioActual.IDPersona = (pl.GetOnePorLejago(Int32.Parse(cmbLegajos.SelectedItem.ToString()))).ID;                    
+                    UsuarioActual.State = Usuario.States.New;
                     break;
 
                 case (ApplicationForm.ModoForm)ModoForm.Modificacion:
-                    _UsuarioActual.Nombre = txtNombre.Text;
-                    _UsuarioActual.Email = txtEmail.Text;
-                    _UsuarioActual.Clave = txtClave.Text;
-                    _UsuarioActual.Habilitado = checkHab.Checked;
-                    _UsuarioActual.Apellido = txtApe.Text;
-                    _UsuarioActual.NombreUsuario = txtUsu.Text;
-                    _UsuarioActual.IDPersona = (pl.GetOnePorLejago(Int32.Parse(cmbLegajos.SelectedItem.ToString()))).ID;
-                    _UsuarioActual.State = Usuario.States.Modified;
+                    UsuarioActual.Nombre = txtNombre.Text;
+                    UsuarioActual.Email = txtEmail.Text;
+                    UsuarioActual.Clave = txtClave.Text;
+                    UsuarioActual.Habilitado = checkHab.Checked;
+                    UsuarioActual.Apellido = txtApe.Text;
+                    UsuarioActual.NombreUsuario = txtUsu.Text;
+                    //_UsuarioActual.IDPersona = (pl.GetOnePorLejago(Int32.Parse(cmbLegajos.SelectedItem.ToString()))).ID;
+                    UsuarioActual.State = Usuario.States.Modified;
                     break;
 
                 case (ApplicationForm.ModoForm)ModoForm.Baja:
-                    _UsuarioActual.State = Usuario.States.Deleted;
+                    UsuarioActual.State = Usuario.States.Deleted;
                     break;
 
                 case (ApplicationForm.ModoForm)ModoForm.Consulta:
-                    _UsuarioActual.State = Usuario.States.Modified;
+                    UsuarioActual.State = Usuario.States.Modified;
                     break;
             }
         }
@@ -130,7 +133,7 @@ namespace UI.Desktop
         {
             MapearADatos();
             UsuarioLogic ul = new UsuarioLogic();
-            ul.Save(_UsuarioActual);
+            ul.Save(UsuarioActual);
         }
 
         public override bool Validar()
@@ -140,7 +143,6 @@ namespace UI.Desktop
             if ( String.IsNullOrEmpty(this.txtNombre.Text)
             || String.IsNullOrEmpty(this.txtApe.Text) || String.IsNullOrEmpty(this.txtClave.Text)
             || String.IsNullOrEmpty(this.txtConfirm.Text) || String.IsNullOrEmpty(this.txtUsu.Text)
-            || String.IsNullOrEmpty(this.txtEmail.Text)
              )
             {
                 errores += "Existen uno o mas campos vacios, rellenelos antes de continuar\n";

@@ -17,10 +17,10 @@ namespace Data.Database
         //private SqlConnection sqlConnection = new SqlConnection("ConnectionString;");
 
         //Nota: el string que aparece debajo es para conectarnos en los laboratorios de UTN
-        //const string consKeyDefaultCnnString = "ConnStringLocal"; 
+       //const string consKeyDefaultCnnString = "ConnStringLocal"; 
 
         //Nota: con este string nos deberia conectar a la DB desde nuestras casas
-        const string consKeyDefaultCnnString = "ConnStringLocalCasa";
+       const string consKeyDefaultCnnString = "ConnStringLocalCasa";
 
         public SqlConnection sqlconn;
         protected void OpenConnection()

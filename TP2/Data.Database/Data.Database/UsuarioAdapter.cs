@@ -80,7 +80,7 @@ namespace Data.Database
                     usr.Clave = (string)drUsuarios["clave"];
                     usr.Email = (string)drUsuarios["email"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
-                    usr.IDPersona = (int)drUsuarios["id_persona"];
+                    //usr.IDPersona = (int)drUsuarios["id_persona"];
                 }
                 drUsuarios.Close();
             }
@@ -127,7 +127,7 @@ namespace Data.Database
                 this.OpenConnection();
 
                 SqlCommand cmdSave = new SqlCommand("update usuarios set nombre_usuario = @nombre_usuario, " +
-                    "clave = @clave, habilitado = @habilitado, nombre = @nombre, apellido = @apellido, email = @email, id_persona=@id_persona where id_usuario = @id", sqlconn);
+                    "clave = @clave, habilitado = @habilitado, nombre = @nombre, apellido = @apellido, email = @email where id_usuario = @id", sqlconn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = usuario.ID;
                 cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar,50).Value = usuario.NombreUsuario;
                 cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
@@ -135,7 +135,7 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Nombre;
                 cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
                 cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.Email;
-                cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IDPersona;
+                //cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IDPersona;
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -156,8 +156,8 @@ namespace Data.Database
             {
                 this.OpenConnection();
 
-                SqlCommand cmdSave = new SqlCommand("insert into usuarios (nombre_usuario,clave,habilitado,nombre,apellido,email,id_persona) " +
-                    "values (@nombre_usuario,@clave,@habilitado,@nombre,@apellido,@email,@id_persona) " +
+                SqlCommand cmdSave = new SqlCommand("insert into usuarios (nombre_usuario,clave,habilitado,nombre,apellido,email) " +
+                    "values (@nombre_usuario,@clave,@habilitado,@nombre,@apellido,@email) " +
                     "select @@identity", sqlconn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = usuario.ID;
                 cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
@@ -166,7 +166,7 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Nombre;
                 cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
                 cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.Email;
-                cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IDPersona;
+                //cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IDPersona;
                 usuario.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
             }
             catch (Exception Ex)
@@ -218,7 +218,7 @@ namespace Data.Database
                     usr.Clave = (string)drUsuarios["clave"];
                     usr.Email = (string)drUsuarios["email"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
-                    usr.IDPersona = (int)drUsuarios["id_persona"];
+                    //usr.IDPersona = (int)drUsuarios["id_persona"];
                 }
                 drUsuarios.Close();
             }

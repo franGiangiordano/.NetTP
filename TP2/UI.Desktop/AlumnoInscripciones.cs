@@ -11,9 +11,9 @@ using Business.Entities;
 using Business.Logic;
 
 
-//Faltaria agregar más info al formulario Por ejemplo: los horarios de cursado en esa comisión
-//el combo de comisiones dependa del combo de materias
-//Habría que ver cómo manejar el tema de las correlatividades
+
+//ver como manejar el tema de los permisos
+//agregar parametro global al form principal
 
 namespace UI.Desktop
 {

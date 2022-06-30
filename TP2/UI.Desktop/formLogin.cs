@@ -42,58 +42,61 @@ namespace UI.Desktop
                 if (usuarioEncontrado.NombreUsuario != null)
                 {
                     //Principal formPrincipal = new Principal();
+                    //this.Hide();
                     //formPrincipal.ShowDialog();
+                    //this.Show();
 
-                    PersonaLogic pl = new PersonaLogic();
-                    Business.Entities.Persona personaEncontrada = pl.GetOne(usuarioEncontrado.IDPersona);
-                    switch (personaEncontrada.Tipo)
-                    {
-                        case Business.Entities.Persona.TipoPersonas.Administrativo:
-                            //aca hay que colocar la ventana correspondiente a cada tipo de usuario, estas son de prueba con las que ya existen
-                            Principal formPrincipal = new Principal();
-                            formPrincipal.ShowDialog();
-                            break;
-
-                        case Business.Entities.Persona.TipoPersonas.Alumno:
-                            //aca hay que colocar la ventana correspondiente a cada tipo de usuario, estas son de prueba con las que ya existen
-                            //Personas Personas = new Personas();
-                            //Personas.ShowDialog();
-                            AlumnoInscripciones alumnoInscripciones = new AlumnoInscripciones(personaEncontrada.ID);
-                            alumnoInscripciones.ShowDialog();                            
-                            break;
-
-                        case Business.Entities.Persona.TipoPersonas.Docente:
-                            //aca hay que colocar la ventana correspondiente a cada tipo de usuario, estas son de prueba con las que ya existen
-                            Usuarios usuarios = new Usuarios();
-                            usuarios.ShowDialog();
-                            break;
-                    }
+                    AlumnoInscripciones alumnoInscripciones = new AlumnoInscripciones(4);
+                    alumnoInscripciones.ShowDialog();
                 }
                 else
-                {
-                    Notificar("Login", "Usuario y/o contraseña incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-
-
-                ////otra alternativa para validar y retornar el usuario del login usando linq
-
-                //List<Usuario> usuarios = Listar();
-                //List<Usuario> usuario = (from usu in usuarios where usu.NombreUsuario == txtUsuario.Text && usu.Clave == txtPass.Text select usu).ToList();
-                ////la propiedad Text de los TextBox contiene el texto escrito en ellos
-                //if (usuario.Any())
-                //{
-                //    Principal formPrincipal = new Principal();
-                //    formPrincipal.ShowDialog();
-                //}
-                //else
-                //{
-                //    Notificar("Login", "Usuario y/o contraseña incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
+                    {
+                        Notificar("Login", "Usuario y/o contraseña incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
             }
         }
+        /* switch (personaEncontrada.Tipo)
+         {
+             case Business.Entities.Persona.TipoPersonas.Administrativo:
+                 //aca hay que colocar la ventana correspondiente a cada tipo de usuario, estas son de prueba con las que ya existen
+                 Principal formPrincipal = new Principal();
+                 formPrincipal.ShowDialog();
+                 break;
 
-           private void lnkOlvidaPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+             case Business.Entities.Persona.TipoPersonas.Alumno:
+                 //aca hay que colocar la ventana correspondiente a cada tipo de usuario, estas son de prueba con las que ya existen
+                 //Personas Personas = new Personas();
+                 //Personas.ShowDialog();
+                 AlumnoInscripciones alumnoInscripciones = new AlumnoInscripciones(personaEncontrada.ID);
+                 alumnoInscripciones.ShowDialog();                            
+                 break;
+
+             case Business.Entities.Persona.TipoPersonas.Docente:
+                 //aca hay que colocar la ventana correspondiente a cada tipo de usuario, estas son de prueba con las que ya existen
+                 Usuarios usuarios = new Usuarios();
+                 usuarios.ShowDialog();
+                 break;
+         }
+     }*/
+
+
+
+        ////otra alternativa para validar y retornar el usuario del login usando linq
+
+        //List<Usuario> usuarios = Listar();
+        //List<Usuario> usuario = (from usu in usuarios where usu.NombreUsuario == txtUsuario.Text && usu.Clave == txtPass.Text select usu).ToList();
+        ////la propiedad Text de los TextBox contiene el texto escrito en ellos
+        //if (usuario.Any())
+        //{
+        //    Principal formPrincipal = new Principal();
+        //    formPrincipal.ShowDialog();
+        //}
+        //else
+        //{
+        //    Notificar("Login", "Usuario y/o contraseña incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //}
+
+        private void lnkOlvidaPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
             {
                 MessageBox.Show("Es Ud. un usuario muy descuidado, haga memoria", "Olvidé mi contraseña",
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -116,5 +119,6 @@ namespace UI.Desktop
             MessageBox.Show(mensaje, titulo, botones, icono);
         }
 
-    }
+    
+ }
 }

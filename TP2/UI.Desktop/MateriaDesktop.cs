@@ -14,19 +14,17 @@ namespace UI.Desktop
 {
     public partial class MateriaDesktop : ApplicationForm
     {
-        public Business.Entities.Materia _MateriaActual;
-        //public MateriaDesktop()
-        //{
-        //    PlanLogic pl = new PlanLogic();
-        //    InitializeComponent();            
-        //    this.cmbPlan.DataSource = (from plan in pl.GetAll() select plan.Descripcion).ToList();
-        //    this.cmbPlan.SelectedIndex = 1;
-        //}
+        private Business.Entities.Materia materiaActual;
+
+        public Materia MateriaActual { get => materiaActual; set => materiaActual = value; }
 
         public MateriaDesktop() {
             PlanLogic pl = new PlanLogic();
             InitializeComponent();
-            this.cmbPlan.DataSource = (from plan in pl.GetAll() select plan.Descripcion).ToList();            
+            //this.cmbPlan.DataSource = (from plan in pl.GetAll() select plan.Descripcion).ToList();
+            this.cmbPlan.DataSource = pl.GetAll();
+            this.cmbPlan.DisplayMember = "Descripcion";
+            this.cmbPlan.ValueMember = "ID";
         }
 
         public MateriaDesktop(ApplicationForm.ModoForm modo) : this()
@@ -39,7 +37,7 @@ namespace UI.Desktop
             //InitializeComponent();
             Modo = (ApplicationForm.ModoForm)modo;
             MateriaLogic ml = new MateriaLogic();
-            _MateriaActual = ml.GetOne(ID);
+            MateriaActual = ml.GetOne(ID);
             MapearDeDatos();
         }
 
@@ -54,14 +52,14 @@ namespace UI.Desktop
         {
             PlanLogic pl = new PlanLogic();
 
-            this.txtId.Text = this._MateriaActual.ID.ToString();
-            this.txtDescripcion.Text = this._MateriaActual.Descripcion;
-            this.txtHsSemanales.Text = this._MateriaActual.HSSemanales.ToString();
-            this.txtHsTotales.Text = this._MateriaActual.HSTotales.ToString();
+            this.txtId.Text = this.MateriaActual.ID.ToString();
+            this.txtDescripcion.Text = this.MateriaActual.Descripcion;
+            this.txtHsSemanales.Text = this.MateriaActual.HSSemanales.ToString();
+            this.txtHsTotales.Text = this.MateriaActual.HSTotales.ToString();
 
             //Esta linea sirve para obtener el indice de un Plan            
-            this.cmbPlan.SelectedIndex = this.cmbPlan.FindString((from plan in pl.GetAll() where plan.ID == this._MateriaActual.IDPlan select plan.Descripcion).ToList()[0]);
-            
+            //this.cmbPlan.SelectedIndex = this.cmbPlan.FindString((from plan in pl.GetAll() where plan.ID == this._MateriaActual.IDPlan select plan.Descripcion).ToList()[0]);
+            this.cmbPlan.SelectedValue = this.MateriaActual.IDPlan;
 
 
             switch (Modo)
@@ -88,32 +86,32 @@ namespace UI.Desktop
             {
                 case (ApplicationForm.ModoForm)ModoForm.Alta:
                     Materia mat = new Materia();
-                    _MateriaActual = mat;
-                    _MateriaActual.Descripcion = txtDescripcion.Text;
-                    _MateriaActual.HSSemanales = Int32.Parse(txtHsSemanales.Text);
-                    _MateriaActual.HSTotales = Int32.Parse(txtHsTotales.Text);                    
-                     
+                    MateriaActual = mat;
+                    MateriaActual.Descripcion = txtDescripcion.Text;
+                    MateriaActual.HSSemanales = Int32.Parse(txtHsSemanales.Text);
+                    MateriaActual.HSTotales = Int32.Parse(txtHsTotales.Text);
+
                     //En esta linea hacemos un mapeo entre el comboBox y el Plan
-                    _MateriaActual.IDPlan =  (from plan in pl.GetAll() where cmbPlan.SelectedItem.ToString() == plan.Descripcion select plan.ID).ToList()[0];
+                    //MateriaActual.IDPlan =  (from plan in pl.GetAll() where cmbPlan.SelectedItem.ToString() == plan.Descripcion select plan.ID).ToList()[0];
+                    MateriaActual.IDPlan = (int)cmbPlan.SelectedValue;
 
-
-                    _MateriaActual.State = Usuario.States.New;
+                    MateriaActual.State = Usuario.States.New;
                     break;
 
                 case (ApplicationForm.ModoForm)ModoForm.Modificacion:
-                    _MateriaActual.Descripcion = txtDescripcion.Text;
-                    _MateriaActual.HSSemanales = Int32.Parse(txtHsSemanales.Text);
-                    _MateriaActual.HSTotales = Int32.Parse(txtHsTotales.Text);
-                    _MateriaActual.IDPlan = cmbPlan.SelectedIndex;
-                    _MateriaActual.State = Usuario.States.Modified;
+                    MateriaActual.Descripcion = txtDescripcion.Text;
+                    MateriaActual.HSSemanales = Int32.Parse(txtHsSemanales.Text);
+                    MateriaActual.HSTotales = Int32.Parse(txtHsTotales.Text);
+                    MateriaActual.IDPlan = (int)cmbPlan.SelectedValue;
+                    MateriaActual.State = Usuario.States.Modified;
                     break;
 
                 case (ApplicationForm.ModoForm)ModoForm.Baja:
-                    _MateriaActual.State = Usuario.States.Deleted;
+                    MateriaActual.State = Usuario.States.Deleted;
                     break;
 
                 case (ApplicationForm.ModoForm)ModoForm.Consulta:
-                    _MateriaActual.State = Usuario.States.Modified;
+                    MateriaActual.State = Usuario.States.Modified;
                     break;
             }
         }
@@ -122,7 +120,7 @@ namespace UI.Desktop
         {
             MapearADatos();
             MateriaLogic ml = new MateriaLogic();
-            ml.Save(_MateriaActual);
+            ml.Save(MateriaActual);
         }
         public override bool Validar()
         {

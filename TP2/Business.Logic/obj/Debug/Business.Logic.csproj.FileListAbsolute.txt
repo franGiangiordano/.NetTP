@@ -53,3 +53,14 @@ C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Business.Logic\obj\Debug\Bus
 C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.CopyComplete
 C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Business.Logic\obj\Debug\Business.Logic.dll
 C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Business.Logic\obj\Debug\Business.Logic.pdb
+F:\.NetTP\TP2\Business.Logic\bin\Debug\Business.Logic.dll
+F:\.NetTP\TP2\Business.Logic\bin\Debug\Business.Logic.pdb
+F:\.NetTP\TP2\Business.Logic\bin\Debug\Business.Entities.dll
+F:\.NetTP\TP2\Business.Logic\bin\Debug\Data.Database.dll
+F:\.NetTP\TP2\Business.Logic\bin\Debug\Business.Entities.pdb
+F:\.NetTP\TP2\Business.Logic\bin\Debug\Data.Database.pdb
+F:\.NetTP\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.AssemblyReference.cache
+F:\.NetTP\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.CoreCompileInputs.cache
+F:\.NetTP\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.CopyComplete
+F:\.NetTP\TP2\Business.Logic\obj\Debug\Business.Logic.dll
+F:\.NetTP\TP2\Business.Logic\obj\Debug\Business.Logic.pdb
