@@ -39,12 +39,13 @@ namespace UI.Desktop
 
                 UsuarioLogic ul = new UsuarioLogic();
                 Usuario usuarioEncontrado = ul.GetUsuarioLogin(txtUsuario.Text, txtPass.Text);
-                if (usuarioEncontrado.NombreUsuario != null)
+                if (usuarioEncontrado!= null)
                 {
-                    Principal formPrincipal = new Principal();
+                    Principal formPrincipal = new Principal(usuarioEncontrado.ID);
                     this.Hide();
                     formPrincipal.ShowDialog();
                     this.Show();
+                    
 
                     //AlumnoInscripciones alumnoInscripciones = new AlumnoInscripciones(4);
                     // alumnoInscripciones.ShowDialog();

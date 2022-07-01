@@ -263,7 +263,7 @@ namespace Data.Database
                 }
                 if (cmbCriterio == 1)
                 {
-                    SqlCommand cmdUsuariosNombreUsr = new SqlCommand("select * from usuarios where nombre_usuario=@nombre_usuario", sqlconn);
+                    SqlCommand cmdUsuariosNombreUsr = new SqlCommand("select * from usuarios where nombre_usuario like '%' + @nombre_usuario + '%' order by nombre_usuario", sqlconn);
                     cmdUsuariosNombreUsr.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = criterio;
                     SqlDataReader drUsuariosNombreUsr = cmdUsuariosNombreUsr.ExecuteReader();
 

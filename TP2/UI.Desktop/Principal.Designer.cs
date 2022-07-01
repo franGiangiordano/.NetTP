@@ -47,9 +47,18 @@
             this.btnPersona = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.btnCurso = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.txtNombreUsuario = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pListado.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // bntPersonas
@@ -65,7 +74,7 @@
             this.bntPersonas.Location = new System.Drawing.Point(163, 315);
             this.bntPersonas.Margin = new System.Windows.Forms.Padding(15);
             this.bntPersonas.Name = "bntPersonas";
-            this.bntPersonas.Size = new System.Drawing.Size(0, 66);
+            this.bntPersonas.Size = new System.Drawing.Size(0, 0);
             this.bntPersonas.TabIndex = 0;
             this.bntPersonas.Text = "Personas";
             this.bntPersonas.UseVisualStyleBackColor = false;
@@ -91,7 +100,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(232)))), ((int)(((byte)(241)))));
-            this.panel2.Location = new System.Drawing.Point(287, 75);
+            this.panel2.Location = new System.Drawing.Point(418, 74);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(180, 5);
             this.panel2.TabIndex = 5;
@@ -99,7 +108,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(232)))), ((int)(((byte)(241)))));
-            this.panel4.Location = new System.Drawing.Point(687, 75);
+            this.panel4.Location = new System.Drawing.Point(818, 74);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(180, 5);
             this.panel4.TabIndex = 4;
@@ -107,7 +116,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(232)))), ((int)(((byte)(241)))));
-            this.panel3.Location = new System.Drawing.Point(487, 75);
+            this.panel3.Location = new System.Drawing.Point(618, 74);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(180, 5);
             this.panel3.TabIndex = 4;
@@ -123,7 +132,7 @@
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.button5.ForeColor = System.Drawing.SystemColors.Control;
-            this.button5.Location = new System.Drawing.Point(687, 38);
+            this.button5.Location = new System.Drawing.Point(818, 37);
             this.button5.Margin = new System.Windows.Forms.Padding(15);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(180, 35);
@@ -136,7 +145,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(23, 58);
+            this.label1.Location = new System.Drawing.Point(73, 58);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 23);
             this.label1.TabIndex = 3;
@@ -153,7 +162,7 @@
             this.btnInscripcion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInscripcion.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.btnInscripcion.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnInscripcion.Location = new System.Drawing.Point(487, 38);
+            this.btnInscripcion.Location = new System.Drawing.Point(618, 37);
             this.btnInscripcion.Margin = new System.Windows.Forms.Padding(15);
             this.btnInscripcion.Name = "btnInscripcion";
             this.btnInscripcion.Size = new System.Drawing.Size(180, 35);
@@ -173,7 +182,7 @@
             this.btnListados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnListados.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.btnListados.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnListados.Location = new System.Drawing.Point(287, 38);
+            this.btnListados.Location = new System.Drawing.Point(418, 37);
             this.btnListados.Margin = new System.Windows.Forms.Padding(15);
             this.btnListados.Name = "btnListados";
             this.btnListados.Size = new System.Drawing.Size(180, 35);
@@ -185,7 +194,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(46, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(96, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(50, 44);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -222,7 +231,7 @@
             this.pListado.Controls.Add(this.button7);
             this.pListado.Controls.Add(this.btnCurso);
             this.pListado.Controls.Add(this.btnUsuario);
-            this.pListado.Location = new System.Drawing.Point(287, 91);
+            this.pListado.Location = new System.Drawing.Point(418, 90);
             this.pListado.Name = "pListado";
             this.pListado.Size = new System.Drawing.Size(180, 245);
             this.pListado.TabIndex = 9;
@@ -345,20 +354,96 @@
             this.btnCurso.UseVisualStyleBackColor = false;
             this.btnCurso.Click += new System.EventHandler(this.btnCurso_Click_1);
             // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.panel5.Controls.Add(this.label3);
+            this.panel5.Controls.Add(this.pictureBox2);
+            this.panel5.Controls.Add(this.txtNombreUsuario);
+            this.panel5.Controls.Add(this.label2);
+            this.panel5.Location = new System.Drawing.Point(0, 90);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(261, 415);
+            this.panel5.TabIndex = 10;
+            // 
+            // txtNombreUsuario
+            // 
+            this.txtNombreUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.txtNombreUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNombreUsuario.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombreUsuario.ForeColor = System.Drawing.SystemColors.Info;
+            this.txtNombreUsuario.Location = new System.Drawing.Point(34, 305);
+            this.txtNombreUsuario.Name = "txtNombreUsuario";
+            this.txtNombreUsuario.ReadOnly = true;
+            this.txtNombreUsuario.Size = new System.Drawing.Size(170, 29);
+            this.txtNombreUsuario.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(30, 266);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(170, 23);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Nombre Usuario:";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(58, 49);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(127, 105);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 11;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.Control;
+            this.label3.Location = new System.Drawing.Point(27, 202);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(196, 37);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "¡Bienvenido!";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(593, 195);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(234, 198);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 12;
+            this.pictureBox4.TabStop = false;
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(1135, 579);
+            this.ClientSize = new System.Drawing.Size(1135, 505);
+            this.Controls.Add(this.panel5);
             this.Controls.Add(this.pListado);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.bntPersonas);
+            this.Controls.Add(this.pictureBox4);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Principal";
             this.Text = "Academia";
+            this.Load += new System.EventHandler(this.Principal_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pListado.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -386,5 +471,11 @@
         private System.Windows.Forms.Button btnMateria;
         private System.Windows.Forms.Button btnPersona;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtNombreUsuario;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox4;
     }
 }

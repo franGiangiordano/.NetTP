@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Business.Entities;
+using Business.Logic;
 
 namespace UI.Desktop
 {
     public partial class Principal : ApplicationForm
     {
         int id;
+
 
         public Principal()
         {
@@ -22,6 +25,7 @@ namespace UI.Desktop
         public Principal(int idUsuario)
         {
             InitializeComponent();
+            id = idUsuario;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -85,6 +89,21 @@ namespace UI.Desktop
         {
             AlumnoInscripciones alumnoInscripciones = new AlumnoInscripciones(4);
             alumnoInscripciones.ShowDialog();
+        }
+
+        public void DatosUsuario(int idUsuario)
+        {
+            Usuario usuario = new Usuario();
+            txtNombreUsuario.Text = usuario.NombreUsuario.ToString();
+
+            
+        }
+
+        private void Principal_Load(object sender, EventArgs e)
+        {
+            UsuarioLogic ul = new UsuarioLogic();
+            Usuario us = ul.GetOne(id);
+            this.txtNombreUsuario.Text = us.NombreUsuario.ToString();
         }
     }
 }
