@@ -222,7 +222,6 @@ namespace UI.Desktop
         ///El objetivo de este metodo es obtener las comisiones para una materia dada
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e) {
             cargarComboComisiones(idAlumno);
-            MessageBox.Show("cambia combo"); //para verificar
             //ComboBox senderComboBox = (ComboBox)sender;
 
             //senderComboBox.DataSource = cl.GetComisionesDeMateria(cmbMateria.SelectedItem.ToString());
