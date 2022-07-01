@@ -108,7 +108,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
 
-                SqlCommand cmdSave = new SqlCommand("update especialides set desc_especialidad = @desc_especialidad where id_especialidad = @id", sqlconn);
+                SqlCommand cmdSave = new SqlCommand("update especialidades set desc_especialidad = @desc_especialidad where id_especialidad = @id", sqlconn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = especialidad.ID;
                 cmdSave.Parameters.Add("@desc_especialidad", SqlDbType.VarChar, 50).Value = especialidad.Descripcion;
                 cmdSave.ExecuteNonQuery();
@@ -133,7 +133,8 @@ namespace Data.Database
 
                 SqlCommand cmdSave = new SqlCommand("insert into especialidades (desc_especialidad) values (@desc_especialidad) select @@identity", sqlconn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = especialidad.ID;
-                cmdSave.Parameters.Add("@desc_especialidad", SqlDbType.VarChar, 50).Value = especialidad.Descripcion;                
+                cmdSave.Parameters.Add("@desc_especialidad", SqlDbType.VarChar, 50).Value = especialidad.Descripcion;
+                especialidad.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
             }
             catch (Exception Ex)
             {

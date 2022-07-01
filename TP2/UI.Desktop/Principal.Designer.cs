@@ -42,16 +42,16 @@
             this.btnUsuario = new System.Windows.Forms.Button();
             this.pListado = new System.Windows.Forms.Panel();
             this.button11 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
+            this.btnEspecialidades = new System.Windows.Forms.Button();
             this.btnMateria = new System.Windows.Forms.Button();
             this.btnPersona = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.btnCurso = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtNombreUsuario = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -225,7 +225,7 @@
             // 
             this.pListado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
             this.pListado.Controls.Add(this.button11);
-            this.pListado.Controls.Add(this.button10);
+            this.pListado.Controls.Add(this.btnEspecialidades);
             this.pListado.Controls.Add(this.btnMateria);
             this.pListado.Controls.Add(this.btnPersona);
             this.pListado.Controls.Add(this.button7);
@@ -256,24 +256,25 @@
             this.button11.Text = "Comisiones";
             this.button11.UseVisualStyleBackColor = false;
             // 
-            // button10
+            // btnEspecialidades
             // 
-            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnEspecialidades.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button10.FlatAppearance.BorderSize = 0;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.button10.ForeColor = System.Drawing.SystemColors.Control;
-            this.button10.Location = new System.Drawing.Point(0, 175);
-            this.button10.Margin = new System.Windows.Forms.Padding(15);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(180, 35);
-            this.button10.TabIndex = 13;
-            this.button10.Text = "Especialidades";
-            this.button10.UseVisualStyleBackColor = false;
+            this.btnEspecialidades.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnEspecialidades.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEspecialidades.FlatAppearance.BorderSize = 0;
+            this.btnEspecialidades.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEspecialidades.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.btnEspecialidades.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnEspecialidades.Location = new System.Drawing.Point(0, 175);
+            this.btnEspecialidades.Margin = new System.Windows.Forms.Padding(15);
+            this.btnEspecialidades.Name = "btnEspecialidades";
+            this.btnEspecialidades.Size = new System.Drawing.Size(180, 35);
+            this.btnEspecialidades.TabIndex = 13;
+            this.btnEspecialidades.Text = "Especialidades";
+            this.btnEspecialidades.UseVisualStyleBackColor = false;
+            this.btnEspecialidades.Click += new System.EventHandler(this.btnEspecialidades_Click);
             // 
             // btnMateria
             // 
@@ -366,6 +367,27 @@
             this.panel5.Size = new System.Drawing.Size(261, 415);
             this.panel5.TabIndex = 10;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.Control;
+            this.label3.Location = new System.Drawing.Point(27, 202);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(196, 37);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "¡Bienvenido!";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(58, 49);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(127, 105);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 11;
+            this.pictureBox2.TabStop = false;
+            // 
             // txtNombreUsuario
             // 
             this.txtNombreUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
@@ -388,27 +410,6 @@
             this.label2.Size = new System.Drawing.Size(170, 23);
             this.label2.TabIndex = 0;
             this.label2.Text = "Nombre Usuario:";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(58, 49);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(127, 105);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 11;
-            this.pictureBox2.TabStop = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(27, 202);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(196, 37);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "¡Bienvenido!";
             // 
             // pictureBox4
             // 
@@ -467,7 +468,7 @@
         private System.Windows.Forms.Panel pListado;
         private System.Windows.Forms.Button btnCurso;
         private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button btnEspecialidades;
         private System.Windows.Forms.Button btnMateria;
         private System.Windows.Forms.Button btnPersona;
         private System.Windows.Forms.Button button7;

@@ -105,5 +105,11 @@ namespace UI.Desktop
             Usuario us = ul.GetOne(id);
             this.txtNombreUsuario.Text = us.NombreUsuario.ToString();
         }
+
+        private void btnEspecialidades_Click(object sender, EventArgs e)
+        {
+            Especialidades formEspecialidades = new Especialidades();
+            formEspecialidades.ShowDialog();
+        }
     }
 }

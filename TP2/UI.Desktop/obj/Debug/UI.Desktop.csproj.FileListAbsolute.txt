@@ -187,3 +187,5 @@ F:\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.csproj.CoreCompileInputs.cache
 F:\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.csproj.CopyComplete
 F:\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.exe
 F:\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.pdb
+C:\Users\user\Documents\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Especialidades.resources
+C:\Users\user\Documents\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.EspecialidadDesktop.resources
