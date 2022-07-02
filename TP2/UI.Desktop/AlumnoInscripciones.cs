@@ -27,6 +27,23 @@ namespace UI.Desktop
             dgvAlumnosInscripciones.AutoGenerateColumns = false;
             idAlumno = idPersona;
             Listar();
+            validarPermisos();
+        }
+
+        private void validarPermisos()
+        {
+            ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+            int idModulo = mul.GetIdModulo("AlumnoInscripciones");
+            ModuloUsuario mu = mul.GetModuloUsuario(idModulo, Principal.Id);
+
+            if (!mu.PermiteAlta) //es Docente
+            {
+                this.tsbNuevo.Enabled = false;
+                this.tsbEliminar.Enabled = false;
+            } else if (!mu.PermiteModificacion) { //es Alumno 
+                this.tsbEditar.Enabled = false;                
+            } 
+
         }
 
         private void AlumnoInscripciones_Load(object sender, EventArgs e)

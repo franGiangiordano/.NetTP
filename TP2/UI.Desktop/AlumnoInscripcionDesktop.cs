@@ -11,6 +11,7 @@ using Business.Entities;
 using Business.Logic;
 
 //Falta validar que los combos no estén vacíos al inscribirse
+//Falta agregar textbox para la nota
 
 namespace UI.Desktop
 {
@@ -29,34 +30,59 @@ namespace UI.Desktop
 
         public AlumnoInscripcionDesktop(int idPersona)
         {
-            InitializeComponent();
+            InitializeComponent();           
+            idAlumno = idPersona;
             cargarComboMaterias(idPersona);
             cargarComboComisiones(idPersona);
-            idAlumno = idPersona;
-
-            //Bloqueamos el combo de condicion salvo que sea admin
-            PersonaLogic pl = new PersonaLogic();
-            if (!(((pl.GetOne(idAlumno)).Tipo.ToString()).Equals("Administrador")))
-            {
-                this.cmbCondicion.Enabled = false;
-            }
-
+            validarPermisos(idPersona);           
         }
 
         public AlumnoInscripcionDesktop(int idPersona, int ID, ApplicationForm.ModoForm modo) : this()
         {
            // InitializeComponent();
             Modo = (ApplicationForm.ModoForm)modo;
-            cargarComboMaterias(idPersona);
-            cargarComboComisiones(idPersona);
+            
             idAlumno = idPersona;
             AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
             AlumnoInscripcionActual = ail.GetOne(ID);
             MapearDeDatos();
+            validarPermisos(idPersona);
+        }
 
+        private Boolean esDocente() {
+            ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+            int idModulo = mul.GetIdModulo("AlumnoInscripcionDesktop");
+            ModuloUsuario mu = mul.GetModuloUsuario(idModulo, Principal.Id);
+            return !mu.PermiteAlta;
         }
 
 
+        private void validarPermisos(int idPersona)
+        {
+            ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+            int idModulo = mul.GetIdModulo("AlumnoInscripcionDesktop");
+            ModuloUsuario mu = mul.GetModuloUsuario(idModulo, Principal.Id);
+
+            if (!mu.PermiteAlta) //es Docente
+            {
+                cmbMateria.Enabled = false;
+                cmbComision.Enabled = false;
+                cmbCondicion.Enabled = true;
+            }
+            else if (!mu.PermiteModificacion)
+            { //es Alumno 
+                cmbCondicion.Enabled = false;
+                cargarComboMaterias(idPersona);
+                cargarComboComisiones(idPersona);
+            }
+            else { //Para el admin habría que modificar la forma de cargar las inscripciones
+                   //Tendriamos que agregar un combo correspondiente al alumno y en funcion de ese alumno
+                   //cargar las materias y comisiones o algo x el estilo
+                cargarComboMaterias(idPersona);
+                cargarComboComisiones(idPersona);
+            }
+
+        }
 
         public void cargarComboMaterias(int idPersona)
         {
@@ -95,7 +121,7 @@ namespace UI.Desktop
             ComisionLogic col = new ComisionLogic();
             PersonaLogic pl = new PersonaLogic();
 
-            this.txtID.Text = this.AlumnoInscripcionActual.ID.ToString();
+            this.txtIDInscripcion.Text = this.AlumnoInscripcionActual.ID.ToString();
 
             //Esta linea sirve para obtener el indice de una Materia
             
@@ -103,7 +129,7 @@ namespace UI.Desktop
             //this.cmbMateria.SelectedValue = (int)this.cmbMateria.FindString(ml.GetOne((cl.GetOne(AlumnoInscripcionActual.IDCurso).IDMateria)).Descripcion);
             this.cmbComision.SelectedValue = cl.GetOne(AlumnoInscripcionActual.IDCurso).IDComision;
             //this.cmbComision.SelectedValue = this.cmbComision.FindString((col.GetOne((cl.GetOne(AlumnoInscripcionActual.IDCurso).IDComision)).Descripcion));
-            this.cmbCondicion.SelectedValue = this.cmbCondicion.FindString(AlumnoInscripcionActual.Condicion);
+            this.cmbCondicion.SelectedIndex = this.cmbCondicion.FindString(AlumnoInscripcionActual.Condicion);
             
 
             //Bloqueamos el combo de condicion salvo que sea admin
@@ -161,14 +187,20 @@ namespace UI.Desktop
 
                 case (ApplicationForm.ModoForm)ModoForm.Modificacion:
                     //falta inhabilitar el combo a los usuarios no admin
-                    AlumnoInscripcionActual.Condicion = cmbCondicion.SelectedItem.ToString(); 
-                    idMat = ml.GetPorDescripcion(cmbMateria.SelectedItem.ToString()).ID;
-                    idComision = col.GetPorDescripcion(cmbComision.SelectedItem.ToString()).ID;
-                    cu = cl.GetCurso(idMat, idComision);
+                    AlumnoInscripcionActual.Condicion = cmbCondicion.SelectedItem.ToString();
+                    if (esDocente()) 
+                    {
+                        idMat = cl.GetOne(AlumnoInscripcionActual.IDCurso).IDMateria;
+                        idComision = cl.GetOne(AlumnoInscripcionActual.IDCurso).IDComision;
+                    }
+                    else {
+                        idMat = ml.GetPorDescripcion(cmbMateria.SelectedItem.ToString()).ID;
+                        idComision = col.GetPorDescripcion(cmbComision.SelectedItem.ToString()).ID;                        
+                    }
 
+                    cu = cl.GetCurso(idMat, idComision);
                     AlumnoInscripcionActual.IDCurso = cu.ID;
                     AlumnoInscripcionActual.IDAlumno = idAlumno;
-
                     AlumnoInscripcionActual.State = Usuario.States.Modified;
                     break;
 

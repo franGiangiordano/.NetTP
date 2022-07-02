@@ -14,18 +14,34 @@ namespace UI.Desktop
 {
     public partial class Principal : ApplicationForm
     {
-        int id;
+        public static int id;
 
+        public static int Id { get => id; set => id = value; }
 
         public Principal()
         {
-            InitializeComponent();
+            InitializeComponent();            
+        }
+
+        private void validarPermisos()
+        {
+            ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+            int idModulo = mul.GetIdModulo("Principal");
+            ModuloUsuario mu = mul.GetModuloUsuario(idModulo, Id);
+
+            if (!mu.PermiteAlta) {
+                //pListado.Controls.Remove(btnPersona); //si bien permite removerlo, queda un hueco vacío que no supe eliminar
+                this.btnPersona.Enabled = false; //Esta opcion lo desactiva pero sigue siendo visible
+                this.btnUsuario.Enabled = false;
+            }
+
         }
 
         public Principal(int idUsuario)
         {
             InitializeComponent();
-            id = idUsuario;
+            Id = idUsuario;
+            validarPermisos();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -102,7 +118,7 @@ namespace UI.Desktop
         private void Principal_Load(object sender, EventArgs e)
         {
             UsuarioLogic ul = new UsuarioLogic();
-            Usuario us = ul.GetOne(id);
+            Usuario us = ul.GetOne(Id);
             this.txtNombreUsuario.Text = us.NombreUsuario.ToString();
         }
 

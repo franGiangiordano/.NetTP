@@ -19,6 +19,22 @@ namespace UI.Desktop
             InitializeComponent();
             dgvMaterias.AutoGenerateColumns = false;
             Listar();
+            validarPermisos();
+        }
+
+        private void validarPermisos()
+        {
+            ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+            int idModulo = mul.GetIdModulo("Materias");
+            ModuloUsuario mu = mul.GetModuloUsuario(idModulo, Principal.Id);
+
+            if (!mu.PermiteAlta)
+            {
+                this.tsbNuevo.Enabled = false; //Esta opcion lo desactiva pero sigue siendo visible
+                this.tsbEditar.Enabled = false;
+                this.tsbEliminar.Enabled = false;
+            }
+
         }
 
         private void Materias_Load(object sender, EventArgs e)

@@ -18,6 +18,8 @@ namespace Business.Logic
            return md.GetIdModulo(desc);
         }
 
-        //public GetModuloUsuario(int idModulo, int idUsuario)
+        public ModuloUsuario GetModuloUsuario(int idModulo, int idUsuario) {
+            return md.GetModuloUsuario(idModulo, idUsuario);
+        }
     }
 }

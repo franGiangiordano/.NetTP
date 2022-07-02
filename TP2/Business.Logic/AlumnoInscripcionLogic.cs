@@ -32,6 +32,8 @@ namespace Business.Logic
             return;
         }
 
+        
+
         public void Save(Business.Entities.AlumnoInscripcion i)
         {
             _AlumnoInscripcionData.Save(i);

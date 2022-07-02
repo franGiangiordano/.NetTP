@@ -195,6 +195,6 @@ namespace Data.Database
             inscripcion.State = BusinessEntity.States.Unmodified;
         }
 
-       
+        
     }
 }

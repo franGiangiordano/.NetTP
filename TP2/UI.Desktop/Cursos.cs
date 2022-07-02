@@ -19,6 +19,22 @@ namespace UI.Desktop
             InitializeComponent();
             dgvCursos.AutoGenerateColumns = false;
             Listar();
+            validarPermisos();
+        }
+
+        private void validarPermisos()
+        {
+            ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+            int idModulo = mul.GetIdModulo("Cursos");
+            ModuloUsuario mu = mul.GetModuloUsuario(idModulo, Principal.Id);
+
+            if (!mu.PermiteAlta)
+            {                
+                this.tsbNuevo.Enabled = false; //Esta opcion lo desactiva pero sigue siendo visible
+                this.tsbEditar.Enabled = false;
+                this.tsbEliminar.Enabled = false;
+            }
+
         }
 
         public void Listar()
