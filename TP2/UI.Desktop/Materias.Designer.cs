@@ -43,6 +43,7 @@
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tcMaterias.ContentPanel.SuspendLayout();
             this.tcMaterias.TopToolStripPanel.SuspendLayout();
             this.tcMaterias.SuspendLayout();
@@ -57,13 +58,13 @@
             // tcMaterias.ContentPanel
             // 
             this.tcMaterias.ContentPanel.Controls.Add(this.tlMaterias);
-            this.tcMaterias.ContentPanel.Margin = new System.Windows.Forms.Padding(2);
-            this.tcMaterias.ContentPanel.Size = new System.Drawing.Size(914, 373);
+            this.tcMaterias.ContentPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tcMaterias.ContentPanel.Size = new System.Drawing.Size(912, 461);
             this.tcMaterias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcMaterias.Location = new System.Drawing.Point(0, 0);
-            this.tcMaterias.Margin = new System.Windows.Forms.Padding(2);
+            this.tcMaterias.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tcMaterias.Name = "tcMaterias";
-            this.tcMaterias.Size = new System.Drawing.Size(914, 400);
+            this.tcMaterias.Size = new System.Drawing.Size(912, 492);
             this.tcMaterias.TabIndex = 0;
             this.tcMaterias.Text = "toolStripContainer1";
             // 
@@ -82,12 +83,12 @@
             this.tlMaterias.Controls.Add(this.btnSalir, 1, 1);
             this.tlMaterias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlMaterias.Location = new System.Drawing.Point(0, 0);
-            this.tlMaterias.Margin = new System.Windows.Forms.Padding(2);
+            this.tlMaterias.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tlMaterias.Name = "tlMaterias";
             this.tlMaterias.RowCount = 2;
             this.tlMaterias.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlMaterias.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlMaterias.Size = new System.Drawing.Size(914, 373);
+            this.tlMaterias.Size = new System.Drawing.Size(912, 461);
             this.tlMaterias.TabIndex = 0;
             // 
             // dgvMaterias
@@ -103,15 +104,15 @@
             this.nombrePlan});
             this.tlMaterias.SetColumnSpan(this.dgvMaterias, 2);
             this.dgvMaterias.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvMaterias.Location = new System.Drawing.Point(2, 2);
-            this.dgvMaterias.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvMaterias.Location = new System.Drawing.Point(3, 2);
+            this.dgvMaterias.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvMaterias.MultiSelect = false;
             this.dgvMaterias.Name = "dgvMaterias";
             this.dgvMaterias.ReadOnly = true;
             this.dgvMaterias.RowHeadersWidth = 51;
             this.dgvMaterias.RowTemplate.Height = 24;
             this.dgvMaterias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMaterias.Size = new System.Drawing.Size(910, 346);
+            this.dgvMaterias.Size = new System.Drawing.Size(906, 430);
             this.dgvMaterias.TabIndex = 0;
             // 
             // id
@@ -162,10 +163,10 @@
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(796, 352);
-            this.btnActualizar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnActualizar.Location = new System.Drawing.Point(753, 436);
+            this.btnActualizar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(56, 19);
+            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 1;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
@@ -173,10 +174,10 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(856, 352);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSalir.Location = new System.Drawing.Point(834, 436);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(56, 19);
+            this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 2;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -189,10 +190,11 @@
             this.tsMaterias.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbNuevo,
             this.tsbEditar,
-            this.tsbEliminar});
+            this.tsbEliminar,
+            this.toolStripLabel1});
             this.tsMaterias.Location = new System.Drawing.Point(4, 0);
             this.tsMaterias.Name = "tsMaterias";
-            this.tsMaterias.Size = new System.Drawing.Size(84, 27);
+            this.tsMaterias.Size = new System.Drawing.Size(306, 31);
             this.tsMaterias.TabIndex = 0;
             // 
             // tsbNuevo
@@ -201,7 +203,7 @@
             this.tsbNuevo.Image = ((System.Drawing.Image)(resources.GetObject("tsbNuevo.Image")));
             this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNuevo.Name = "tsbNuevo";
-            this.tsbNuevo.Size = new System.Drawing.Size(24, 24);
+            this.tsbNuevo.Size = new System.Drawing.Size(29, 28);
             this.tsbNuevo.Text = "Nuevo";
             this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
             // 
@@ -211,7 +213,7 @@
             this.tsbEditar.Image = ((System.Drawing.Image)(resources.GetObject("tsbEditar.Image")));
             this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEditar.Name = "tsbEditar";
-            this.tsbEditar.Size = new System.Drawing.Size(24, 24);
+            this.tsbEditar.Size = new System.Drawing.Size(29, 28);
             this.tsbEditar.Text = "Editar";
             this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
             // 
@@ -221,17 +223,24 @@
             this.tsbEliminar.Image = ((System.Drawing.Image)(resources.GetObject("tsbEliminar.Image")));
             this.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEliminar.Name = "tsbEliminar";
-            this.tsbEliminar.Size = new System.Drawing.Size(24, 24);
+            this.tsbEliminar.Size = new System.Drawing.Size(29, 28);
             this.tsbEliminar.Text = "Eliminar";
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Font = new System.Drawing.Font("Arial", 10.8F);
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(167, 28);
+            this.toolStripLabel1.Text = "Listado de Materias";
+            // 
             // Materias
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 400);
+            this.ClientSize = new System.Drawing.Size(912, 492);
             this.Controls.Add(this.tcMaterias);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Materias";
             this.Text = "Materias";
             this.Load += new System.EventHandler(this.Materias_Load);
@@ -264,5 +273,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn hsSemanales;
         private System.Windows.Forms.DataGridViewTextBoxColumn hsTotales;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombrePlan;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
     }
 }

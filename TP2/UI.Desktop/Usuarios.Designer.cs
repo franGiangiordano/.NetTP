@@ -46,6 +46,7 @@ namespace UI.Desktop
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tcUsuarios.ContentPanel.SuspendLayout();
             this.tcUsuarios.TopToolStripPanel.SuspendLayout();
             this.tcUsuarios.SuspendLayout();
@@ -61,7 +62,7 @@ namespace UI.Desktop
             // 
             this.tcUsuarios.ContentPanel.Controls.Add(this.TableLayoutPanel);
             this.tcUsuarios.ContentPanel.Margin = new System.Windows.Forms.Padding(4);
-            this.tcUsuarios.ContentPanel.Size = new System.Drawing.Size(1163, 523);
+            this.tcUsuarios.ContentPanel.Size = new System.Drawing.Size(1188, 523);
             this.tcUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcUsuarios.Location = new System.Drawing.Point(0, 0);
             this.tcUsuarios.Margin = new System.Windows.Forms.Padding(4);
@@ -89,7 +90,7 @@ namespace UI.Desktop
             this.TableLayoutPanel.RowCount = 2;
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.TableLayoutPanel.Size = new System.Drawing.Size(1163, 523);
+            this.TableLayoutPanel.Size = new System.Drawing.Size(1188, 523);
             this.TableLayoutPanel.TabIndex = 0;
             // 
             // dgvUsuarios
@@ -113,7 +114,7 @@ namespace UI.Desktop
             this.dgvUsuarios.ReadOnly = true;
             this.dgvUsuarios.RowHeadersWidth = 51;
             this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsuarios.Size = new System.Drawing.Size(1155, 479);
+            this.dgvUsuarios.Size = new System.Drawing.Size(1180, 479);
             this.dgvUsuarios.TabIndex = 0;
             this.dgvUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellContentClick);
             // 
@@ -174,7 +175,7 @@ namespace UI.Desktop
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(951, 491);
+            this.btnActualizar.Location = new System.Drawing.Point(976, 491);
             this.btnActualizar.Margin = new System.Windows.Forms.Padding(4);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(100, 28);
@@ -185,7 +186,7 @@ namespace UI.Desktop
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(1059, 491);
+            this.btnSalir.Location = new System.Drawing.Point(1084, 491);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(4);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(100, 28);
@@ -202,10 +203,11 @@ namespace UI.Desktop
             this.tsbNuevo,
             this.tsbEditar,
             this.tsbEliminar,
-            this.tsbBuscar});
+            this.tsbBuscar,
+            this.toolStripLabel1});
             this.tsUsuarios.Location = new System.Drawing.Point(4, 0);
             this.tsUsuarios.Name = "tsUsuarios";
-            this.tsUsuarios.Size = new System.Drawing.Size(168, 31);
+            this.tsUsuarios.Size = new System.Drawing.Size(337, 31);
             this.tsUsuarios.TabIndex = 0;
             // 
             // tsbNuevo
@@ -224,7 +226,7 @@ namespace UI.Desktop
             this.tsbEditar.Image = ((System.Drawing.Image)(resources.GetObject("tsbEditar.Image")));
             this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEditar.Name = "tsbEditar";
-            this.tsbEditar.Size = new System.Drawing.Size(29, 24);
+            this.tsbEditar.Size = new System.Drawing.Size(29, 28);
             this.tsbEditar.Text = "Editar";
             this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
             // 
@@ -234,7 +236,7 @@ namespace UI.Desktop
             this.tsbEliminar.Image = ((System.Drawing.Image)(resources.GetObject("tsbEliminar.Image")));
             this.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEliminar.Name = "tsbEliminar";
-            this.tsbEliminar.Size = new System.Drawing.Size(29, 24);
+            this.tsbEliminar.Size = new System.Drawing.Size(29, 28);
             this.tsbEliminar.Text = "Eliminar";
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
@@ -247,6 +249,13 @@ namespace UI.Desktop
             this.tsbBuscar.Size = new System.Drawing.Size(29, 28);
             this.tsbBuscar.Text = "Buscar";
             this.tsbBuscar.Click += new System.EventHandler(this.tsbBuscar_Click);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Font = new System.Drawing.Font("Arial", 10.8F);
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(169, 28);
+            this.toolStripLabel1.Text = "Listado de Usuarios";
             // 
             // Usuarios
             // 
@@ -289,5 +298,6 @@ namespace UI.Desktop
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
         private System.Windows.Forms.DataGridViewCheckBoxColumn habilitado;
         private System.Windows.Forms.ToolStripButton tsbBuscar;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
     }
 }

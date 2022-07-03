@@ -30,9 +30,10 @@ namespace UI.Desktop
 
             if (!mu.PermiteAlta)
             {
-                this.tsbNuevo.Enabled = false; //Esta opcion lo desactiva pero sigue siendo visible
-                this.tsbEditar.Enabled = false;
-                this.tsbEliminar.Enabled = false;
+                //ocultamos los btn alta, editar y eliminar
+                this.tsbEditar.Visible = false;
+                this.tsbNuevo.Visible = false;
+                this.tsbEliminar.Visible = false;
             }
 
         }

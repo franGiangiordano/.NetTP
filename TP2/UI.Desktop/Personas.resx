@@ -154,7 +154,7 @@
   <data name="tsbNuevo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAC4OSURBVHhe7d0LvL7lnO9xnc9npVQkiSjMmGEyg0ZhmjDj
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAC4OSURBVHhe7d0LvL7lnO9xnc9npVQkiSjMmGEyg0ZhmjDj
         EINJwh50cIzNZIxIyKmRPRjtlJm2GkVIB8wku93BqbILOeZUaUrq3/m09/crIb5r/dfzrGc9z++67s/7
         9fq8Xl74r//63/d1Xc9az3Pf1303AE1bUz1EPVE9W71I7a/epN6jDlfHqpPVGep89X11hbrpV/k/+7/z
         /+b/j/+//jP+s/4a/lr+mv7a/jv8d/nv9N8NAACWyApqS7WL2lcdpj6rfqhuV/9vRvnv9vfg78Xfk783
@@ -357,7 +357,7 @@
   <data name="tsbEditar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAACBnSURBVHhe7d0LjHZrVdhxOCA3ERWp11agYNFiURG8QRUR
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAACBnSURBVHhe7d0LjHZrVdhxOCA3ERWp11agYNFiURG8QRUR
         BKnQNkiwiSG9RHpRSmKtoE2aUysFSoIQxJhIFW3UVk/TViIXqVosF2nTSgtWY0Q4oNwvUoQjAqddjziF
         85013zcz395rP2vv3y/5J0YPOPO879lrve/seecWALBTt4keGD0hek704ui3ot+L3hP93+iD0bui10e/
         Fv3r6J9Gj4k+JwIAGrh79L3Rr0RjuI8hfzX9dvSj0cOjW0cAwCTuEP396JXRjVE2yJfoHdFzoy+OAICN
@@ -502,7 +502,7 @@
   <data name="tsbEliminar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAACfuSURBVHhe7d13tLVlfeZxqo3YwII6iahhoo6dYF2gg0ms
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAACfuSURBVHhe7d13tLVlfeZxqo3YwII6iahhoo6dYF2gg0ms
         sUUdwTgmY3BiF8dYxxDU0XF0xV4noI69RsXecDQaCypERYlgB8UCKNKkzFw/kdyA1/2W8/6eez/P/n0/
         a31X8h+eve/znOs9Z+9nbwcUt726gbqjOkAdpP6nerX6gPqSOkGdo/4fLaIz1XfUZ9W71avUM9Qj1X3V
         Pur3FACgmF3UvdSh6kfK/RCh9e8Y9RwVg2BHBQBYQ/Evvoer+Ff9Wcr9QKC6/Uy9Xv0ndUUFAFiwK6uD
