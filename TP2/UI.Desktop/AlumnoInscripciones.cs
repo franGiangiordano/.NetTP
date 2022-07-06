@@ -38,10 +38,10 @@ namespace UI.Desktop
 
             if (!mu.PermiteAlta) //es Docente
             {
-                this.tsbNuevo.Enabled = false;
-                this.tsbEliminar.Enabled = false;
+                this.tsbNuevo.Visible = false;
+                this.tsbEliminar.Visible = false;
             } else if (!mu.PermiteModificacion) { //es Alumno 
-                this.tsbEditar.Enabled = false;                
+                this.tsbEditar.Visible = false;                
             } 
 
         }

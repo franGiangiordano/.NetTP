@@ -58,7 +58,22 @@ namespace UI.Desktop
                 this.btnMateria.Size = new Size(135, 34);
                 this.btnEspecialidades.Size = new Size(135, 34);
                 this.button11.Size = new Size(135, 34); // este es el bton de Comisiones
+            
+             // lo que esta aca es para mostrar el rol en el formPrincipal para los usuarios de acuerdo al permiso 
+             // ver una manera de distinguir al alumno del docente puesto que en el formPrincipal tienen los 
+             //mismos permisos, una forma es colocar en la tabla modulo_usuarios que el docecente pueda modificar
+             //en el principal y asi distinguirlo en el ultimo if y no cambiaria el funcionamiento
 
+
+                this.txtRol.Text = "Alumno"; //esto es para mostrar el rol del usuario Logueado
+            }
+            if (mu.PermiteAlta && mu.PermiteModificacion && mu.PermiteBaja)
+            {
+                this.txtRol.Text = "Administrador"; //esto es para mostrar el rol del usuario Logueado
+            }
+            if (mu.PermiteModificacion)
+            {
+                this.txtRol.Text = "Docente"; //esto es para mostrar el rol del usuario Logueado
             }
 
         }
@@ -133,13 +148,13 @@ namespace UI.Desktop
             alumnoInscripciones.ShowDialog();
         }
 
-        public void DatosUsuario(int idUsuario)
-        {
-            Usuario usuario = new Usuario();
-            txtNombreUsuario.Text = usuario.NombreUsuario.ToString();
+        //public void DatosUsuario(int idUsuario)
+        //{
+        //    Usuario usuario = new Usuario();
+        //    txtNombreUsuario.Text = usuario.NombreUsuario.ToString();
 
             
-        }
+        //}
 
         private void Principal_Load(object sender, EventArgs e)
         {
