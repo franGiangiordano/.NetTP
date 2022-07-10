@@ -168,7 +168,6 @@ F:\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.csproj.AssemblyReference.cache
 F:\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.AlumnoInscripcionDesktop.resources
 F:\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.AlumnoInscripciones.resources
 F:\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.ApplicationForm.resources
-F:\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Busqueda.resources
 F:\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.CursoDesktop.resources
 F:\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Cursos.resources
 F:\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.MateriaDesktop.resources
@@ -192,3 +191,7 @@ C:\Users\user\Documents\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Especi
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Busqueda.resources
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.EspecialidadDesktop.resources
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Especialidades.resources
+F:\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.EspecialidadDesktop.resources
+F:\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Especialidades.resources
+C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.EspecialidadDesktop.resources
+C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Especialidades.resources

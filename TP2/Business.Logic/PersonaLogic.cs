@@ -55,5 +55,12 @@ namespace Business.Logic
         {
             return _PersonaData.GetOnePorLejago(legajo);
         }
+
+        public List<Persona> GetLegajos()
+        {
+            return _PersonaData.GetLegajos();
+        }
+
+
     }
 }

@@ -41,7 +41,20 @@ namespace Data.Database
                     usr.Clave = (string)drUsuarios["clave"];
                     usr.Email = (string)drUsuarios["email"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
+
                     usr.IdPersona = (int)drUsuarios["id_persona"];
+
+
+                    if (!drUsuarios.IsDBNull(8))
+                    {
+                        usr.IdPersona = (int)drUsuarios["id_persona"];
+                    }
+                    else
+                    {
+                        usr.IdPersona = -1;
+                    }
+
+                   
                     usuarios.Add(usr);
                 }
                 drUsuarios.Close();
@@ -83,6 +96,15 @@ namespace Data.Database
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
                     usr.IdPersona = (int)drUsuarios["id_persona"];
                     //usr.IDPersona = (int)drUsuarios["id_persona"];
+                    if (!drUsuarios.IsDBNull(8))
+                    {
+                        usr.IdPersona = (int)drUsuarios["id_persona"];
+                    }
+                    else
+                    {
+                        usr.IdPersona = -1;
+                    }
+
                 }
                 drUsuarios.Close();
             }
@@ -129,7 +151,7 @@ namespace Data.Database
                 this.OpenConnection();
 
                 SqlCommand cmdSave = new SqlCommand("update usuarios set nombre_usuario = @nombre_usuario, " +
-                    "clave = @clave, habilitado = @habilitado, nombre = @nombre, apellido = @apellido, email = @email where id_usuario = @id", sqlconn);
+                    "clave = @clave, habilitado = @habilitado, nombre = @nombre, apellido = @apellido, email = @email, id_persona=@id_persona where id_usuario = @id", sqlconn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = usuario.ID;
                 cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar,50).Value = usuario.NombreUsuario;
                 cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
@@ -137,7 +159,11 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Nombre;
                 cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
                 cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.Email;
+
                 cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IdPersona;
+
+                cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IdPersona;
+
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -158,8 +184,8 @@ namespace Data.Database
             {
                 this.OpenConnection();
 
-                SqlCommand cmdSave = new SqlCommand("insert into usuarios (nombre_usuario,clave,habilitado,nombre,apellido,email) " +
-                    "values (@nombre_usuario,@clave,@habilitado,@nombre,@apellido,@email) " +
+                SqlCommand cmdSave = new SqlCommand("insert into usuarios (nombre_usuario,clave,habilitado,nombre,apellido,email,id_persona) " +
+                    "values (@nombre_usuario,@clave,@habilitado,@nombre,@apellido,@email,@id_persona) " +
                     "select @@identity", sqlconn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = usuario.ID;
                 cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
@@ -168,7 +194,11 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Nombre;
                 cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
                 cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.Email;
+
                 cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IdPersona;
+
+                cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IdPersona;
+
                 usuario.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
             }
             catch (Exception Ex)
@@ -220,8 +250,19 @@ namespace Data.Database
                     usr.Clave = (string)drUsuarios["clave"];
                     usr.Email = (string)drUsuarios["email"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
+
                     usr.IdPersona = (int)drUsuarios["id_persona"];
                     //usr.IDPersona = (int)drUsuarios["id_persona"];
+
+                    if (!drUsuarios.IsDBNull(8))
+                    {
+                        usr.IdPersona = (int)drUsuarios["id_persona"];
+                    }
+                    else
+                    {
+                        usr.IdPersona = -1;
+                    }
+
                 }
                 drUsuarios.Close();
             }
@@ -260,7 +301,18 @@ namespace Data.Database
                         usr.Clave = (string)drUsuariosID["clave"];
                         usr.Email = (string)drUsuariosID["email"];
                         usr.Habilitado = (bool)drUsuariosID["habilitado"];
+
                         usr.IdPersona = (int)drUsuariosID["id_persona"];
+
+                        if (!drUsuariosID.IsDBNull(8))
+                        {
+                            usr.IdPersona = (int)drUsuariosID["id_persona"];
+                        }
+                        else
+                        {
+                            usr.IdPersona = -1;
+                        }
+
                         usuarios.Add(usr);
                     }
                     drUsuariosID.Close();
@@ -282,7 +334,17 @@ namespace Data.Database
                         usr.Clave = (string)drUsuariosNombreUsr["clave"];
                         usr.Email = (string)drUsuariosNombreUsr["email"];
                         usr.Habilitado = (bool)drUsuariosNombreUsr["habilitado"];
+
                         usr.IdPersona = (int)drUsuariosNombreUsr["id_persona"];
+
+                        if (!drUsuariosNombreUsr.IsDBNull(4))
+                        {
+                            usr.IdPersona = (int)drUsuariosNombreUsr["id_persona"];
+                        }
+                        else
+                        {
+                            usr.IdPersona = -1;
+                        }
                         usuarios.Add(usr);
                     }
                     drUsuariosNombreUsr.Close();
@@ -301,5 +363,7 @@ namespace Data.Database
            
             return usuarios;
         }
+
+       
     }
 }

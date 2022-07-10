@@ -24,24 +24,26 @@ namespace UI.Desktop
         {
             Modo = (ApplicationForm.ModoForm)modo;
             InitializeComponent();
-            //cargarComboLegajos();
+            cargarComboLegajos();
         }
         public UsuarioDesktop(int ID, ApplicationForm.ModoForm modo) : this()
         {
             InitializeComponent();
-            //cargarComboLegajos();
+            cargarComboLegajos();
             Modo = (ApplicationForm.ModoForm)modo;
             UsuarioLogic ul = new UsuarioLogic();
             UsuarioActual = ul.GetOne(ID);
             MapearDeDatos();            
         }
 
-        //private void cargarComboLegajos()
-        //{
-        //    PersonaLogic pl = new PersonaLogic();            
-        //    List<String> legajos = (from persona in pl.GetAll() select persona.Legajo.ToString()).ToList();
-        //    this.cmbLegajos.DataSource = legajos.OrderBy(x => x).ToList();
-        //}
+        private void cargarComboLegajos()
+        {
+            PersonaLogic pl = new PersonaLogic();
+            List <Persona> legajos = pl.GetLegajos();            
+            this.cmbLegajos.DataSource = legajos;
+            this.cmbLegajos.DisplayMember = "Legajo";
+            this.cmbLegajos.ValueMember = "ID";
+        }
 
         //public UsuarioDesktop(ApplicationForm.ModoForm alta)
         //{
@@ -69,7 +71,8 @@ namespace UI.Desktop
             this.txtUsu.Text = this.UsuarioActual.NombreUsuario;
             this.txtClave.Text = this.UsuarioActual.Clave;
             this.txtConfirm.Text = this.UsuarioActual.Clave;
-            //this.cmbLegajos.SelectedIndex =this.cmbLegajos.FindString(pl.GetOne(this.UsuarioActual.IDPersona).Legajo.ToString());            
+            
+            this.cmbLegajos.SelectedValue = this.UsuarioActual.IdPersona;
             switch (Modo)
             {
                 case (ApplicationForm.ModoForm)ModoForm.Alta:
@@ -103,8 +106,13 @@ namespace UI.Desktop
                     UsuarioActual.Clave = txtClave.Text;
                     UsuarioActual.Habilitado = checkHab.Checked;
                     UsuarioActual.Apellido = txtApe.Text;
-                    UsuarioActual.NombreUsuario = txtUsu.Text;                    
+                    UsuarioActual.NombreUsuario = txtUsu.Text;
                     //_UsuarioActual.IDPersona = (pl.GetOnePorLejago(Int32.Parse(cmbLegajos.SelectedItem.ToString()))).ID;                    
+                    if ((int)this.cmbLegajos.SelectedValue != 1)
+                    {
+                        UsuarioActual.IdPersona = (int)this.cmbLegajos.SelectedValue;
+                    }
+                   
                     UsuarioActual.State = Usuario.States.New;
                     break;
 
@@ -116,6 +124,10 @@ namespace UI.Desktop
                     UsuarioActual.Apellido = txtApe.Text;
                     UsuarioActual.NombreUsuario = txtUsu.Text;
                     //_UsuarioActual.IDPersona = (pl.GetOnePorLejago(Int32.Parse(cmbLegajos.SelectedItem.ToString()))).ID;
+                    if ((int)this.cmbLegajos.SelectedValue!=1)
+                    {
+                        UsuarioActual.IdPersona = (int)this.cmbLegajos.SelectedValue;
+                    }
                     UsuarioActual.State = Usuario.States.Modified;
                     break;
 

@@ -21,6 +21,8 @@ namespace UI.Desktop
         public Usuarios()
         {
             InitializeComponent();
+            cmbCriterio.Items.Add("ID Usuario");
+            cmbCriterio.Items.Add("Nombre Usuario");
             dgvUsuarios.AutoGenerateColumns = false;
             Listar();
             
@@ -31,6 +33,12 @@ namespace UI.Desktop
         {
             UsuarioLogic ul = new UsuarioLogic();
             this.dgvUsuarios.DataSource = ul.GetAll();            
+        }
+
+        public void ListarBusqueda()
+        {
+            UsuarioLogic ul = new UsuarioLogic();
+            this.dgvUsuarios.DataSource = ul.BusquedaUsuario(cmbCriterio.SelectedIndex, txtBusqueda.Text);
         }
 
         private void Usuarios_Load(object sender, EventArgs e)
@@ -90,9 +98,19 @@ namespace UI.Desktop
 
         private void tsbBuscar_Click(object sender, EventArgs e)
         {
-            Busqueda formBusqueda = new Busqueda();
-            formBusqueda.ShowDialog();
-            this.Listar();
+            //Busqueda formBusqueda = new Busqueda();
+            //formBusqueda.ShowDialog();
+
+            if (String.IsNullOrEmpty(this.txtBusqueda.Text))
+            {
+                MessageBox.Show("Existen uno o mas campos vacios, rellenelos antes de continuar\n");
+            }
+            else
+            {
+                
+                this.ListarBusqueda();
+
+            }
         }
     }
 }

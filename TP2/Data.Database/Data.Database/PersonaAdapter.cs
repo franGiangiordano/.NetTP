@@ -274,6 +274,41 @@ namespace Data.Database
 
             return per;
         }
+
+        public List<Persona> GetLegajos()
+        {
+            List<Persona> personas = new List<Persona>();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdLegajos = new SqlCommand("select id_persona, legajo from personas where tipo_persona=0  or tipo_persona=1 order by legajo desc", sqlconn);
+
+                SqlDataReader drLegajos = cmdLegajos.ExecuteReader();
+
+                while (drLegajos.Read())
+                {
+                    Business.Entities.Persona per;
+                    per = new Business.Entities.Persona();
+                    per.ID = (int)drLegajos["id_persona"];
+                    per.Legajo = (int)drLegajos["legajo"];
+                    personas.Add(per);
+                }
+                drLegajos.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de legajos", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+
+            return personas; 
+        }
     }
 }
 #endregion

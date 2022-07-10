@@ -20,7 +20,10 @@ namespace Data.Database
        //const string consKeyDefaultCnnString = "ConnStringLocal"; 
 
         //Nota: con este string nos deberia conectar a la DB desde nuestras casas
-       //const string consKeyDefaultCnnString = "ConnStringLocalCasa";
+
+       const string consKeyDefaultCnnString = "ConnStringLocalCasa";
+
+      // const string consKeyDefaultCnnString = "ConnStringLocalCasa";
 
         public SqlConnection sqlconn;
         protected void OpenConnection()
@@ -28,11 +31,14 @@ namespace Data.Database
             sqlconn = new SqlConnection();
 
             //Nota: el sqlconn que aparece abajo es para conectarnos en los laboratios de UTN
-            //sqlconn.ConnectionString = @"Server=.\SQLEXPRESS;Database=Academia;Integrated Security = false; User = net; Password = net;";
+          //sqlconn.ConnectionString = @"Server=.\SQLEXPRESS;Database=Academia;Integrated Security = false; User = net; Password = net;";
 
             //Nota: con este sqlconn nos deberia conectar a la DB desde nuestras casas
-            //sqlconn.ConnectionString = ConfigurationManager.ConnectionStrings[consKeyDefaultCnnString].ConnectionString;
-            sqlconn.ConnectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=academia;Integrated Security=SSPI;";
+            sqlconn.ConnectionString = ConfigurationManager.ConnectionStrings[consKeyDefaultCnnString].ConnectionString;
+
+            //sqlconn.ConnectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=academia;Integrated Security=SSPI;";
+
+           // sqlconn.ConnectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=academia;Integrated Security=SSPI;";
             sqlconn.Open();
         }
 
