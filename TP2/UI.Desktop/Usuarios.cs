@@ -44,6 +44,7 @@ namespace UI.Desktop
         private void Usuarios_Load(object sender, EventArgs e)
         {
             Listar();
+            txtBusqueda.Text = "Buscar"; //esto es para el placeholder
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -98,19 +99,62 @@ namespace UI.Desktop
 
         private void tsbBuscar_Click(object sender, EventArgs e)
         {
-            //Busqueda formBusqueda = new Busqueda();
-            //formBusqueda.ShowDialog();
-
-            if (String.IsNullOrEmpty(this.txtBusqueda.Text))
+            //validamos los campos para la bsuqueda
+            int n;
+            if (String.IsNullOrEmpty(this.txtBusqueda.Text) || cmbCriterio.SelectedIndex.Equals(-1))
             {
-                MessageBox.Show("Existen uno o mas campos vacios, rellenelos antes de continuar\n");
+                this.Notificar("Existe campo vacio o no se selecciono un criterio de busqueda\n Rellenelos antes de continuar\n", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else
+            if (cmbCriterio.SelectedIndex.Equals(0))
             {
-                
-                this.ListarBusqueda();
-
+                if (!int.TryParse(this.txtBusqueda.Text, out n))
+                {
+                    this.Notificar("El campo de busqueda por ID de Usuario no admite letras, solo numeros\n", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    this.ListarBusqueda();
+                }
             }
+            if (cmbCriterio.SelectedIndex.Equals(1))
+            {
+                if (!this.txtBusqueda.Text.All(Char.IsLetter))
+                {
+                    this.Notificar("El campo de busqueda por Nombre de Usuario no admite numeros, solo letras\n", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    this.ListarBusqueda();
+                }
+            }
+            
+        }
+         //esto es para el placeholder
+        private void txtBusqueda_Enter(object sender, EventArgs e)
+        {
+            if (txtBusqueda.Text == "Buscar");
+            {
+                txtBusqueda.Text = "";
+            }
+        }
+        //esto es para el placeholder
+        private void txtBusqueda_Leave(object sender, EventArgs e)
+        {
+            if (txtBusqueda.Text == "")
+            {
+                txtBusqueda.Text = "Buscar";
+            }
+        }
+
+        public  void Notificar(string titulo, string mensaje, MessageBoxButtons
+            botones, MessageBoxIcon icono)
+        {
+            MessageBox.Show(mensaje, titulo, botones, icono);
+        }
+        public  void Notificar(string mensaje, MessageBoxButtons botones,
+        MessageBoxIcon icono)
+        {
+            this.Notificar(this.Text, mensaje, botones, icono);
         }
     }
 }
