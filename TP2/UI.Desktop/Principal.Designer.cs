@@ -41,11 +41,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnUsuario = new System.Windows.Forms.Button();
             this.pListado = new System.Windows.Forms.Panel();
-            this.button11 = new System.Windows.Forms.Button();
+            this.btnComision = new System.Windows.Forms.Button();
             this.btnEspecialidades = new System.Windows.Forms.Button();
             this.btnMateria = new System.Windows.Forms.Button();
             this.btnPersona = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnPlan = new System.Windows.Forms.Button();
             this.btnCurso = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.txtRol = new System.Windows.Forms.TextBox();
@@ -73,8 +73,8 @@
             this.bntPersonas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bntPersonas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.bntPersonas.ForeColor = System.Drawing.SystemColors.Control;
-            this.bntPersonas.Location = new System.Drawing.Point(163, 315);
-            this.bntPersonas.Margin = new System.Windows.Forms.Padding(15);
+            this.bntPersonas.Location = new System.Drawing.Point(122, 256);
+            this.bntPersonas.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.bntPersonas.Name = "bntPersonas";
             this.bntPersonas.Size = new System.Drawing.Size(0, 0);
             this.bntPersonas.TabIndex = 0;
@@ -95,36 +95,36 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1135, 92);
+            this.panel1.Size = new System.Drawing.Size(851, 75);
             this.panel1.TabIndex = 2;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(232)))), ((int)(((byte)(241)))));
-            this.panel2.Location = new System.Drawing.Point(419, 74);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Location = new System.Drawing.Point(314, 60);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(180, 5);
+            this.panel2.Size = new System.Drawing.Size(135, 4);
             this.panel2.TabIndex = 5;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(232)))), ((int)(((byte)(241)))));
-            this.panel4.Location = new System.Drawing.Point(819, 74);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel4.Location = new System.Drawing.Point(614, 60);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(180, 5);
+            this.panel4.Size = new System.Drawing.Size(135, 4);
             this.panel4.TabIndex = 4;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(232)))), ((int)(((byte)(241)))));
-            this.panel3.Location = new System.Drawing.Point(619, 74);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Location = new System.Drawing.Point(464, 60);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(180, 5);
+            this.panel3.Size = new System.Drawing.Size(135, 4);
             this.panel3.TabIndex = 4;
             // 
             // button5
@@ -138,10 +138,10 @@
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.button5.ForeColor = System.Drawing.SystemColors.Control;
-            this.button5.Location = new System.Drawing.Point(819, 37);
-            this.button5.Margin = new System.Windows.Forms.Padding(15);
+            this.button5.Location = new System.Drawing.Point(614, 30);
+            this.button5.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(180, 34);
+            this.button5.Size = new System.Drawing.Size(135, 28);
             this.button5.TabIndex = 6;
             this.button5.Text = "Reportes";
             this.button5.UseVisualStyleBackColor = false;
@@ -151,9 +151,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(73, 58);
+            this.label1.Location = new System.Drawing.Point(55, 47);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 25);
+            this.label1.Size = new System.Drawing.Size(80, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "Academia";
             // 
@@ -168,10 +169,10 @@
             this.btnInscripcion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInscripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnInscripcion.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnInscripcion.Location = new System.Drawing.Point(619, 37);
-            this.btnInscripcion.Margin = new System.Windows.Forms.Padding(15);
+            this.btnInscripcion.Location = new System.Drawing.Point(464, 30);
+            this.btnInscripcion.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.btnInscripcion.Name = "btnInscripcion";
-            this.btnInscripcion.Size = new System.Drawing.Size(180, 34);
+            this.btnInscripcion.Size = new System.Drawing.Size(135, 28);
             this.btnInscripcion.TabIndex = 5;
             this.btnInscripcion.Text = "Inscripciones";
             this.btnInscripcion.UseVisualStyleBackColor = false;
@@ -188,10 +189,10 @@
             this.btnListados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnListados.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnListados.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnListados.Location = new System.Drawing.Point(419, 37);
-            this.btnListados.Margin = new System.Windows.Forms.Padding(15);
+            this.btnListados.Location = new System.Drawing.Point(314, 30);
+            this.btnListados.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.btnListados.Name = "btnListados";
-            this.btnListados.Size = new System.Drawing.Size(180, 34);
+            this.btnListados.Size = new System.Drawing.Size(135, 28);
             this.btnListados.TabIndex = 7;
             this.btnListados.Text = "Listados";
             this.btnListados.UseVisualStyleBackColor = false;
@@ -200,10 +201,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(96, 12);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(72, 10);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(51, 44);
+            this.pictureBox1.Size = new System.Drawing.Size(38, 36);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -220,9 +221,9 @@
             this.btnUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnUsuario.ForeColor = System.Drawing.SystemColors.Control;
             this.btnUsuario.Location = new System.Drawing.Point(0, 0);
-            this.btnUsuario.Margin = new System.Windows.Forms.Padding(15);
+            this.btnUsuario.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.btnUsuario.Name = "btnUsuario";
-            this.btnUsuario.Size = new System.Drawing.Size(180, 34);
+            this.btnUsuario.Size = new System.Drawing.Size(135, 28);
             this.btnUsuario.TabIndex = 8;
             this.btnUsuario.Text = "Usuarios";
             this.btnUsuario.UseVisualStyleBackColor = false;
@@ -231,38 +232,38 @@
             // pListado
             // 
             this.pListado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.pListado.Controls.Add(this.button11);
+            this.pListado.Controls.Add(this.btnComision);
             this.pListado.Controls.Add(this.btnEspecialidades);
             this.pListado.Controls.Add(this.btnMateria);
             this.pListado.Controls.Add(this.btnPersona);
-            this.pListado.Controls.Add(this.button7);
+            this.pListado.Controls.Add(this.btnPlan);
             this.pListado.Controls.Add(this.btnCurso);
             this.pListado.Controls.Add(this.btnUsuario);
-            this.pListado.Location = new System.Drawing.Point(419, 90);
-            this.pListado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pListado.Location = new System.Drawing.Point(314, 73);
+            this.pListado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pListado.Name = "pListado";
-            this.pListado.Size = new System.Drawing.Size(180, 245);
+            this.pListado.Size = new System.Drawing.Size(135, 199);
             this.pListado.TabIndex = 9;
             this.pListado.Visible = false;
             // 
-            // button11
+            // btnComision
             // 
-            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnComision.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.button11.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button11.ForeColor = System.Drawing.SystemColors.Control;
-            this.button11.Location = new System.Drawing.Point(0, 211);
-            this.button11.Margin = new System.Windows.Forms.Padding(15);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(180, 34);
-            this.button11.TabIndex = 14;
-            this.button11.Text = "Comisiones";
-            this.button11.UseVisualStyleBackColor = false;
+            this.btnComision.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnComision.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnComision.FlatAppearance.BorderSize = 0;
+            this.btnComision.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnComision.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnComision.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnComision.Location = new System.Drawing.Point(0, 171);
+            this.btnComision.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
+            this.btnComision.Name = "btnComision";
+            this.btnComision.Size = new System.Drawing.Size(135, 28);
+            this.btnComision.TabIndex = 14;
+            this.btnComision.Text = "Comisiones";
+            this.btnComision.UseVisualStyleBackColor = false;
             // 
             // btnEspecialidades
             // 
@@ -275,10 +276,10 @@
             this.btnEspecialidades.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEspecialidades.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnEspecialidades.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnEspecialidades.Location = new System.Drawing.Point(0, 175);
-            this.btnEspecialidades.Margin = new System.Windows.Forms.Padding(15);
+            this.btnEspecialidades.Location = new System.Drawing.Point(0, 142);
+            this.btnEspecialidades.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.btnEspecialidades.Name = "btnEspecialidades";
-            this.btnEspecialidades.Size = new System.Drawing.Size(180, 34);
+            this.btnEspecialidades.Size = new System.Drawing.Size(135, 28);
             this.btnEspecialidades.TabIndex = 13;
             this.btnEspecialidades.Text = "Especialidades";
             this.btnEspecialidades.UseVisualStyleBackColor = false;
@@ -295,10 +296,10 @@
             this.btnMateria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMateria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnMateria.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnMateria.Location = new System.Drawing.Point(0, 140);
-            this.btnMateria.Margin = new System.Windows.Forms.Padding(15);
+            this.btnMateria.Location = new System.Drawing.Point(0, 114);
+            this.btnMateria.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.btnMateria.Name = "btnMateria";
-            this.btnMateria.Size = new System.Drawing.Size(180, 34);
+            this.btnMateria.Size = new System.Drawing.Size(135, 28);
             this.btnMateria.TabIndex = 12;
             this.btnMateria.Text = "Materias";
             this.btnMateria.UseVisualStyleBackColor = false;
@@ -315,33 +316,33 @@
             this.btnPersona.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPersona.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnPersona.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnPersona.Location = new System.Drawing.Point(0, 105);
-            this.btnPersona.Margin = new System.Windows.Forms.Padding(15);
+            this.btnPersona.Location = new System.Drawing.Point(0, 85);
+            this.btnPersona.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.btnPersona.Name = "btnPersona";
-            this.btnPersona.Size = new System.Drawing.Size(180, 34);
+            this.btnPersona.Size = new System.Drawing.Size(135, 28);
             this.btnPersona.TabIndex = 11;
             this.btnPersona.Text = "Personas";
             this.btnPersona.UseVisualStyleBackColor = false;
             this.btnPersona.Click += new System.EventHandler(this.btnPersona_Click);
             // 
-            // button7
+            // btnPlan
             // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnPlan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.button7.ForeColor = System.Drawing.SystemColors.Control;
-            this.button7.Location = new System.Drawing.Point(0, 70);
-            this.button7.Margin = new System.Windows.Forms.Padding(15);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(180, 34);
-            this.button7.TabIndex = 10;
-            this.button7.Text = "Planes";
-            this.button7.UseVisualStyleBackColor = false;
+            this.btnPlan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnPlan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPlan.FlatAppearance.BorderSize = 0;
+            this.btnPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPlan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnPlan.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnPlan.Location = new System.Drawing.Point(0, 57);
+            this.btnPlan.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
+            this.btnPlan.Name = "btnPlan";
+            this.btnPlan.Size = new System.Drawing.Size(135, 28);
+            this.btnPlan.TabIndex = 10;
+            this.btnPlan.Text = "Planes";
+            this.btnPlan.UseVisualStyleBackColor = false;
             // 
             // btnCurso
             // 
@@ -354,10 +355,10 @@
             this.btnCurso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCurso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnCurso.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCurso.Location = new System.Drawing.Point(0, 34);
-            this.btnCurso.Margin = new System.Windows.Forms.Padding(15);
+            this.btnCurso.Location = new System.Drawing.Point(0, 28);
+            this.btnCurso.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.btnCurso.Name = "btnCurso";
-            this.btnCurso.Size = new System.Drawing.Size(180, 34);
+            this.btnCurso.Size = new System.Drawing.Size(135, 28);
             this.btnCurso.TabIndex = 9;
             this.btnCurso.Text = "Cursos";
             this.btnCurso.UseVisualStyleBackColor = false;
@@ -372,10 +373,10 @@
             this.panel5.Controls.Add(this.pictureBox2);
             this.panel5.Controls.Add(this.txtNombreUsuario);
             this.panel5.Controls.Add(this.label2);
-            this.panel5.Location = new System.Drawing.Point(0, 90);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel5.Location = new System.Drawing.Point(0, 73);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(261, 415);
+            this.panel5.Size = new System.Drawing.Size(196, 337);
             this.panel5.TabIndex = 10;
             // 
             // txtRol
@@ -384,11 +385,11 @@
             this.txtRol.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRol.ForeColor = System.Drawing.SystemColors.Info;
-            this.txtRol.Location = new System.Drawing.Point(37, 353);
-            this.txtRol.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtRol.Location = new System.Drawing.Point(28, 287);
+            this.txtRol.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtRol.Name = "txtRol";
             this.txtRol.ReadOnly = true;
-            this.txtRol.Size = new System.Drawing.Size(171, 23);
+            this.txtRol.Size = new System.Drawing.Size(128, 19);
             this.txtRol.TabIndex = 14;
             // 
             // label4
@@ -396,9 +397,10 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(31, 314);
+            this.label4.Location = new System.Drawing.Point(23, 255);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 25);
+            this.label4.Size = new System.Drawing.Size(37, 20);
             this.label4.TabIndex = 13;
             this.label4.Text = "Rol:";
             // 
@@ -407,19 +409,20 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(31, 171);
+            this.label3.Location = new System.Drawing.Point(23, 139);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(182, 36);
+            this.label3.Size = new System.Drawing.Size(146, 29);
             this.label3.TabIndex = 12;
             this.label3.Text = "¡Bienvenido!";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(62, 34);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(46, 28);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(127, 105);
+            this.pictureBox2.Size = new System.Drawing.Size(95, 85);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
@@ -430,11 +433,11 @@
             this.txtNombreUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombreUsuario.ForeColor = System.Drawing.SystemColors.Info;
-            this.txtNombreUsuario.Location = new System.Drawing.Point(36, 275);
-            this.txtNombreUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNombreUsuario.Location = new System.Drawing.Point(27, 223);
+            this.txtNombreUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.ReadOnly = true;
-            this.txtNombreUsuario.Size = new System.Drawing.Size(171, 23);
+            this.txtNombreUsuario.Size = new System.Drawing.Size(128, 19);
             this.txtNombreUsuario.TabIndex = 1;
             // 
             // label2
@@ -442,9 +445,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(30, 236);
+            this.label2.Location = new System.Drawing.Point(22, 192);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(159, 25);
+            this.label2.Size = new System.Drawing.Size(128, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "Nombre Usuario:";
             // 
@@ -454,24 +458,24 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(593, 194);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox4.Location = new System.Drawing.Point(445, 158);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(235, 198);
+            this.pictureBox4.Size = new System.Drawing.Size(176, 161);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 12;
             this.pictureBox4.TabStop = false;
             // 
             // Principal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(1135, 505);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(851, 410);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.pListado);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.bntPersonas);
             this.Controls.Add(this.pictureBox4);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Principal";
             this.Text = "Academia";
             this.Load += new System.EventHandler(this.Principal_Load);
@@ -505,11 +509,11 @@
         private System.Windows.Forms.Button btnUsuario;
         private System.Windows.Forms.Panel pListado;
         private System.Windows.Forms.Button btnCurso;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button btnComision;
         private System.Windows.Forms.Button btnEspecialidades;
         private System.Windows.Forms.Button btnMateria;
         private System.Windows.Forms.Button btnPersona;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnPlan;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNombreUsuario;
