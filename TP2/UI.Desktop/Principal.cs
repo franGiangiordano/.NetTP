@@ -149,7 +149,7 @@ namespace UI.Desktop
 
         private void btnInscripcion_Click(object sender, EventArgs e)
         {            
-            AlumnoInscripciones alumnoInscripciones = new AlumnoInscripciones(4);
+            AlumnoInscripciones alumnoInscripciones = new AlumnoInscripciones();
             alumnoInscripciones.ShowDialog();
         }
 

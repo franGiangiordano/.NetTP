@@ -19,14 +19,16 @@ namespace UI.Desktop
 {
     public partial class AlumnoInscripciones : Form
     {
-        int idAlumno;
+        int idPersona;
 
-        public AlumnoInscripciones(int idPersona)
-        {
+        public AlumnoInscripciones()
+        {            
             InitializeComponent();
             dgvAlumnosInscripciones.AutoGenerateColumns = false;
-            idAlumno = idPersona;
-            Listar();
+
+            UsuarioLogic ul = new UsuarioLogic();
+            idPersona  = ul.GetOne(Principal.Id).IdPersona;
+            Listar();            
             validarPermisos();
         }
 
@@ -53,10 +55,28 @@ namespace UI.Desktop
 
         public void Listar()
         {
-            AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
-            List<AlumnoInscripcion> l1 = ail.GetAll();
+            
 
+            AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
             PersonaLogic pl = new PersonaLogic();
+            Persona per = pl.GetOne(idPersona);
+            List<AlumnoInscripcion> l1 = new List<AlumnoInscripcion>();
+
+            if ((int)per.Tipo == 2)
+            {  // es Admin, con lo cual debemos mostrar todas las inscripciones
+                l1 = ail.GetAll();
+            }
+            else if ((int)per.Tipo == 0) //es Alumno, con lo cual debemos mostrar todas sus inscripciones 
+            {
+                l1 = ail.GetInscripcionesAlumno(idPersona);
+            }
+            else {  //es docente
+                l1 = null;
+            }
+
+            
+
+            
             CursoLogic cl = new CursoLogic();
             MateriaLogic ml = new MateriaLogic();
             ComisionLogic coml = new ComisionLogic();
@@ -92,7 +112,7 @@ namespace UI.Desktop
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            AlumnoInscripcionDesktop alumnoInscripcionDesktop = new AlumnoInscripcionDesktop(idAlumno);            
+            AlumnoInscripcionDesktop alumnoInscripcionDesktop = new AlumnoInscripcionDesktop(idPersona);            
             alumnoInscripcionDesktop.ShowDialog();
             this.Listar();
         }
@@ -102,7 +122,7 @@ namespace UI.Desktop
             if (dgvAlumnosInscripciones.Rows.Count != 0) {
                 // int ID = ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
                 int ID = Convert.ToInt32(dgvAlumnosInscripciones.Rows[dgvAlumnosInscripciones.CurrentRow.Index].Cells[0].Value);
-                AlumnoInscripcionDesktop formAlumnoInscripcion = new AlumnoInscripcionDesktop(idAlumno, ID, ApplicationForm.ModoForm.Modificacion);
+                AlumnoInscripcionDesktop formAlumnoInscripcion = new AlumnoInscripcionDesktop(idPersona, ID, ApplicationForm.ModoForm.Modificacion);
                 formAlumnoInscripcion.ShowDialog();
                 this.Listar();
             }            
@@ -128,7 +148,7 @@ namespace UI.Desktop
             if (dgvAlumnosInscripciones.Rows.Count != 0) {
                 // int ID = ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
                 int ID = Convert.ToInt32(dgvAlumnosInscripciones.Rows[dgvAlumnosInscripciones.CurrentRow.Index].Cells[0].Value);
-                AlumnoInscripcionDesktop formAlumnoInscripcion = new AlumnoInscripcionDesktop(idAlumno, ID, ApplicationForm.ModoForm.Baja);
+                AlumnoInscripcionDesktop formAlumnoInscripcion = new AlumnoInscripcionDesktop(idPersona, ID, ApplicationForm.ModoForm.Baja);
                 formAlumnoInscripcion.ShowDialog();
                 this.Listar();
             }            

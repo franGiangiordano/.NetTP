@@ -41,6 +41,7 @@ namespace Data.Database
                     usr.Clave = (string)drUsuarios["clave"];
                     usr.Email = (string)drUsuarios["email"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
+                    usr.IdPersona = (int)drUsuarios["id_persona"];
                     usuarios.Add(usr);
                 }
                 drUsuarios.Close();
@@ -80,6 +81,7 @@ namespace Data.Database
                     usr.Clave = (string)drUsuarios["clave"];
                     usr.Email = (string)drUsuarios["email"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
+                    usr.IdPersona = (int)drUsuarios["id_persona"];
                     //usr.IDPersona = (int)drUsuarios["id_persona"];
                 }
                 drUsuarios.Close();
@@ -135,7 +137,7 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Nombre;
                 cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
                 cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.Email;
-                //cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IDPersona;
+                cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IdPersona;
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -166,7 +168,7 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Nombre;
                 cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
                 cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = usuario.Email;
-                //cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IDPersona;
+                cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IdPersona;
                 usuario.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
             }
             catch (Exception Ex)
@@ -218,6 +220,7 @@ namespace Data.Database
                     usr.Clave = (string)drUsuarios["clave"];
                     usr.Email = (string)drUsuarios["email"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
+                    usr.IdPersona = (int)drUsuarios["id_persona"];
                     //usr.IDPersona = (int)drUsuarios["id_persona"];
                 }
                 drUsuarios.Close();
@@ -257,6 +260,7 @@ namespace Data.Database
                         usr.Clave = (string)drUsuariosID["clave"];
                         usr.Email = (string)drUsuariosID["email"];
                         usr.Habilitado = (bool)drUsuariosID["habilitado"];
+                        usr.IdPersona = (int)drUsuariosID["id_persona"];
                         usuarios.Add(usr);
                     }
                     drUsuariosID.Close();
@@ -278,6 +282,7 @@ namespace Data.Database
                         usr.Clave = (string)drUsuariosNombreUsr["clave"];
                         usr.Email = (string)drUsuariosNombreUsr["email"];
                         usr.Habilitado = (bool)drUsuariosNombreUsr["habilitado"];
+                        usr.IdPersona = (int)drUsuariosNombreUsr["id_persona"];
                         usuarios.Add(usr);
                     }
                     drUsuariosNombreUsr.Close();

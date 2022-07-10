@@ -195,6 +195,53 @@ namespace Data.Database
             inscripcion.State = BusinessEntity.States.Unmodified;
         }
 
-        
+
+        public List<AlumnoInscripcion> GetInscripcionesAlumno(int idAlumno)
+        {
+            List<AlumnoInscripcion> inscripciones = new List<AlumnoInscripcion>();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdInscripciones = new SqlCommand("select * from alumnos_inscripciones where id_alumno=@idAlumno", sqlconn);
+                cmdInscripciones.Parameters.Add("@idAlumno", SqlDbType.Int).Value = idAlumno;
+                SqlDataReader drInscripciones = cmdInscripciones.ExecuteReader();
+
+                while (drInscripciones.Read())
+                {
+                    Business.Entities.AlumnoInscripcion ins;
+                    ins = new Business.Entities.AlumnoInscripcion();
+                    ins.ID = (int)drInscripciones["id_inscripcion"];
+                    ins.IDAlumno = (int)drInscripciones["id_alumno"]; ;
+                    ins.IDCurso = (int)drInscripciones["id_curso"];
+                    ins.Condicion = (string)drInscripciones["condicion"];
+
+
+                    if (!drInscripciones.IsDBNull(4))
+                    {
+                        ins.Nota = (int)drInscripciones["nota"];
+                    }
+                    else
+                    {
+                        ins.Nota = -1;
+                    }
+
+                    inscripciones.Add(ins);
+                }
+                drInscripciones.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de inscripciones", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+            return inscripciones;
+        }
+
     }
 }

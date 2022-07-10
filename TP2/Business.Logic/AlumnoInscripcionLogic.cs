@@ -40,6 +40,11 @@ namespace Business.Logic
             return;
         }
 
-       
+
+        public List<AlumnoInscripcion> GetInscripcionesAlumno(int idAlumno)
+        {
+            return _AlumnoInscripcionData.GetInscripcionesAlumno(idAlumno);
+        }
+
     }
 }
