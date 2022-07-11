@@ -173,5 +173,13 @@ namespace UI.Desktop
             Especialidades formEspecialidades = new Especialidades();
             formEspecialidades.ShowDialog();
         }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Esta seguro que desea Cerrar Sesion?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
     }
 }
