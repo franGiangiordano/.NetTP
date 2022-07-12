@@ -17,7 +17,8 @@ namespace UI.Desktop
         public Cursos()
         {
             InitializeComponent();
-            dgvCursos.AutoGenerateColumns = false;
+            dgvCursos.CellClick += dgvCursos_CellClick; //Asociamos el evento del boton Ver Detalles al formulario
+            dgvCursos.AutoGenerateColumns = false; 
             Listar();
             validarPermisos();
         }
@@ -41,7 +42,42 @@ namespace UI.Desktop
         public void Listar()
         {
             CursoLogic cl = new CursoLogic();
-            this.dgvCursos.DataSource = cl.GetAll();
+            List<Curso> l1 = cl.GetAll();
+
+            DataTable dt1 = new DataTable();
+            dt1.Columns.Add("ID", typeof(int)); //los nombres de las columnas tienen que coincidir con los definidos en el Smart Tag
+            dt1.Columns.Add("Comision", typeof(string));
+            dt1.Columns.Add("Materia", typeof(string));
+            dt1.Columns.Add("Anio Calendario", typeof(string));
+            dt1.Columns.Add("Cupo", typeof(int));
+
+            //Esto es para agregar el boton al DatGridView
+            DataGridViewButtonColumn botonDocentes = new DataGridViewButtonColumn();
+            botonDocentes.Name = "Docentes";
+            botonDocentes.Text = "Ver Detalles";
+            botonDocentes.UseColumnTextForButtonValue = true; //IMPORTANTE! Para que muestre el texto en el boton
+            int columnIndex = 5;
+            if (dgvCursos.Columns["Docentes"] == null)
+            {
+                dgvCursos.Columns.Insert(columnIndex, botonDocentes);
+            }            
+
+
+
+            foreach (var cu in l1)
+            {
+                MateriaLogic ml = new MateriaLogic();
+                Materia materia = ml.GetOne(cu.IDMateria);
+
+                ComisionLogic coml = new ComisionLogic();
+                Comision comision = coml.GetOne(cu.IDComision);
+
+
+                dt1.Rows.Add(cu.ID, materia.Descripcion , comision.Descripcion, cu.AnioCalendario, cu.Cupo);
+            }
+            this.dgvCursos.DataSource = dt1;
+
+            
         }
 
         private void Cursos_Load(object sender, EventArgs e)
@@ -58,5 +94,46 @@ namespace UI.Desktop
         {
             this.Close();
         }
+
+        private void tsbNuevo_Click(object sender, EventArgs e)
+        {
+            CursoDesktop formCursoDesktop = new CursoDesktop(ApplicationForm.ModoForm.Alta);
+            formCursoDesktop.ShowDialog();
+            this.Listar();
+        }
+
+        private void tsbEditar_Click(object sender, EventArgs e)
+        {
+            if (dgvCursos.Rows.Count != 0)
+            {
+                // int ID = ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
+                int ID = Convert.ToInt32(dgvCursos.Rows[dgvCursos.CurrentRow.Index].Cells[0].Value);
+                CursoDesktop formCurso = new CursoDesktop(ID, ApplicationForm.ModoForm.Modificacion);
+                formCurso.ShowDialog();
+                this.Listar();
+            }
+        }
+
+        private void tsbEliminar_Click(object sender, EventArgs e)
+        {
+            if (dgvCursos.Rows.Count != 0)
+            {
+                // int ID = ((Business.Entities.Materia)this.dgvMaterias.SelectedRows[0].DataBoundItem).ID;
+                int ID = Convert.ToInt32(dgvCursos.Rows[dgvCursos.CurrentRow.Index].Cells[0].Value);
+                CursoDesktop formCurso = new CursoDesktop(ID, ApplicationForm.ModoForm.Baja);
+                formCurso.ShowDialog();
+                this.Listar();
+            }
+        }
+
+
+        private void dgvCursos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvCursos.Columns["Docentes"].Index)
+            {
+                MessageBox.Show("puto");
+            }
+        }
+
     }
 }

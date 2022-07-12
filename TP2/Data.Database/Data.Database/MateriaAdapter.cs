@@ -289,5 +289,41 @@ namespace Data.Database
             return materias;
         }
 
+        public List<Materia> GetDescripciones()
+        {
+            List<Materia> materias = new List<Materia>();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdMaterias = new SqlCommand("select id_materia, desc_materia from materias", sqlconn);
+
+                SqlDataReader drMaterias = cmdMaterias.ExecuteReader();
+
+                while (drMaterias.Read())
+                {
+                    Business.Entities.Materia mat;
+                    mat = new Business.Entities.Materia();
+                    mat.ID = (int)drMaterias["id_materia"];
+                    mat.Descripcion = (string)drMaterias["desc_materia"]; ;                   
+                    materias.Add(mat);
+                }
+                drMaterias.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de materias", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+
+            return materias;
+        }
+
+
     }
 }

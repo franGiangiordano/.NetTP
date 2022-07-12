@@ -233,16 +233,17 @@ namespace Data.Database
         //este metodo es para recuperar y validar que el usuario del login es correcto
         public Usuario GetUsuarioLogin(string user, string pass)
         {
-            Usuario usr = new Usuario();
+            Usuario usr = null;
             try
             {
                 OpenConnection();
-                SqlCommand cmdBuscarUsuario = new SqlCommand("select * from usuarios where nombre_usuario = @user and clave = @pass", sqlconn);
+                SqlCommand cmdBuscarUsuario = new SqlCommand("select * from usuarios where nombre_usuario like @user and clave like @pass", sqlconn);
                 cmdBuscarUsuario.Parameters.Add("@user", SqlDbType.VarChar, 50).Value = user;
                 cmdBuscarUsuario.Parameters.Add("@pass", SqlDbType.VarChar, 50).Value = pass;
                 SqlDataReader drUsuarios = cmdBuscarUsuario.ExecuteReader();
                 if (drUsuarios.Read())
                 {
+                    usr = new Usuario();
                     usr.ID = (int)drUsuarios["id_usuario"];
                     usr.Nombre = (string)drUsuarios["nombre"]; ;
                     usr.Apellido = (string)drUsuarios["apellido"];

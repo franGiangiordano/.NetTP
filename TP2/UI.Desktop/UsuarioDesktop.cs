@@ -11,6 +11,8 @@ using Business.Logic;
 using Business.Entities;
 
 
+//Falta mostrar el ID 1 para administradores
+
 namespace UI.Desktop
 {
     public partial class UsuarioDesktop : ApplicationForm

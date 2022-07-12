@@ -188,7 +188,6 @@ F:\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.exe
 F:\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.pdb
 C:\Users\user\Documents\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Especialidades.resources
 C:\Users\user\Documents\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.EspecialidadDesktop.resources
-C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Busqueda.resources
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.EspecialidadDesktop.resources
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Especialidades.resources
 F:\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.EspecialidadDesktop.resources

@@ -278,5 +278,40 @@ namespace Data.Database
             return comisiones;
         }
 
+        public List<Comision> GetDescripciones()
+        {
+            List<Comision> comisiones = new List<Comision>();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdComisiones = new SqlCommand("select id_comision, desc_comision from comisiones", sqlconn);
+
+                SqlDataReader drComisiones = cmdComisiones.ExecuteReader();
+
+                while (drComisiones.Read())
+                {
+                    Business.Entities.Comision com;
+                    com = new Business.Entities.Comision();
+                    com.ID = (int)drComisiones["id_comision"];
+                    com.Descripcion = (string)drComisiones["desc_comision"]; ;
+                    comisiones.Add(com);
+                }
+                drComisiones.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de comisiones", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+
+            return comisiones;
+        }
+
     }
 }

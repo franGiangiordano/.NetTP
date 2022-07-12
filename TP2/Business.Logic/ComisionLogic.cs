@@ -54,5 +54,10 @@ namespace Business.Logic
             return _PlanComision.GetComisionesDeMateria(desc_materia);
         }
 
+        public List<Comision> GetDescripciones()
+        {
+            return _PlanComision.GetDescripciones();
+        }
+
     }
 }

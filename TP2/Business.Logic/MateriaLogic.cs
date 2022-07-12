@@ -62,6 +62,9 @@ namespace Business.Logic
         {
             return _MateriaData.GetMateriasAlumno(idAlumno);
         }
-
+        public List<Materia> GetDescripciones()
+        {
+            return _MateriaData.GetDescripciones();
+        }
     }
 }

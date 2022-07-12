@@ -194,5 +194,35 @@ namespace Data.Database
             return curso;
         }
 
+        public bool validaCursoExistente(int idMat, int idCom, int anio) {
+            Curso curso = new Curso();
+            try
+            {
+                OpenConnection();
+                SqlCommand cmdCurso = new SqlCommand("select * from cursos where id_materia = @idMat and id_comision=@idCom and anio_calendario=@anio", sqlconn);
+                cmdCurso.Parameters.Add("@idMat", SqlDbType.Int).Value = idMat;
+                cmdCurso.Parameters.Add("@idCom", SqlDbType.Int).Value = idCom;
+                cmdCurso.Parameters.Add("@anio", SqlDbType.Int).Value = anio;
+                SqlDataReader drCurso = cmdCurso.ExecuteReader();
+                while (drCurso.Read())
+                {
+                    return true;
+                }
+                drCurso.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar curso", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return false;
+
+
+        }
+
     }
 }

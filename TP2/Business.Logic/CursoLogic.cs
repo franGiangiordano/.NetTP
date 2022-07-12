@@ -17,6 +17,28 @@ namespace Business.Logic
         {
         }
 
+        public string validaCupo(int cupo) {
+            if (cupo > 0)
+            {
+                return "";
+            }
+            else {
+                return "El cupo tiene que ser un numero positivo\n";
+            }
+        }
+
+        public string validaAnioCalendario(int anio)
+        {
+            if (anio >= DateTime.Now.Year)
+            {
+                return "";
+            }
+            else
+            {
+                return "El año calendario debe ser el actual o posterior\n";
+            }
+        }
+
         public List<Curso> GetAll()
         {
             return _CursoData.GetAll();
@@ -53,6 +75,11 @@ namespace Business.Logic
                 return true;
             }
             return false;
+        }
+
+        public Boolean validaCursoExistente(int idMat, int idCom, int anio)
+        {
+            return _CursoData.validaCursoExistente(idMat, idCom, anio);
         }
 
     }
