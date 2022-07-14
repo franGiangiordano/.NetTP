@@ -110,11 +110,7 @@ namespace UI.Desktop
                     UsuarioActual.Apellido = txtApe.Text;
                     UsuarioActual.NombreUsuario = txtUsu.Text;
                     //_UsuarioActual.IDPersona = (pl.GetOnePorLejago(Int32.Parse(cmbLegajos.SelectedItem.ToString()))).ID;                    
-                    if ((int)this.cmbLegajos.SelectedValue != 1)
-                    {
-                        UsuarioActual.IdPersona = (int)this.cmbLegajos.SelectedValue;
-                    }
-                   
+                    UsuarioActual.IdPersona = (int)this.cmbLegajos.SelectedValue;
                     UsuarioActual.State = Usuario.States.New;
                     break;
 
@@ -126,10 +122,7 @@ namespace UI.Desktop
                     UsuarioActual.Apellido = txtApe.Text;
                     UsuarioActual.NombreUsuario = txtUsu.Text;
                     //_UsuarioActual.IDPersona = (pl.GetOnePorLejago(Int32.Parse(cmbLegajos.SelectedItem.ToString()))).ID;
-                    if ((int)this.cmbLegajos.SelectedValue!=1)
-                    {
-                        UsuarioActual.IdPersona = (int)this.cmbLegajos.SelectedValue;
-                    }
+                    UsuarioActual.IdPersona = (int)this.cmbLegajos.SelectedValue;
                     UsuarioActual.State = Usuario.States.Modified;
                     break;
 

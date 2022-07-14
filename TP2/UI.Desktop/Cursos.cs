@@ -45,7 +45,7 @@ namespace UI.Desktop
             List<Curso> l1 = cl.GetAll();
 
             DataTable dt1 = new DataTable();
-            dt1.Columns.Add("ID", typeof(int)); //los nombres de las columnas tienen que coincidir con los definidos en el Smart Tag
+            dt1.Columns.Add("ID", typeof(int)); 
             dt1.Columns.Add("Comision", typeof(string));
             dt1.Columns.Add("Materia", typeof(string));
             dt1.Columns.Add("Anio Calendario", typeof(string));

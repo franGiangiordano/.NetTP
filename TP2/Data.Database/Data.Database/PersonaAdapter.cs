@@ -282,7 +282,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
 
-                SqlCommand cmdLegajos = new SqlCommand("select id_persona, legajo from personas where tipo_persona=0  or tipo_persona=1 order by legajo desc", sqlconn);
+                SqlCommand cmdLegajos = new SqlCommand("select distinct id_persona, legajo from personas order by legajo desc", sqlconn);
 
                 SqlDataReader drLegajos = cmdLegajos.ExecuteReader();
 

@@ -6,8 +6,6 @@ using System.Data;
 using System.Data.SqlClient;
 
 
-//Se trata de una clase de prueba con una DB hardcodeada por lo tanto no formará parte del TP, sin embargo,
-//resulta útil para tener como referencia
 
 namespace Data.Database
 {
@@ -70,7 +68,7 @@ namespace Data.Database
             }
             
 
-            return usuarios; //llamar a open , hacer select, exeecute reader
+            return usuarios; 
         }
 
         public Business.Entities.Usuario GetOne(int ID)
@@ -197,7 +195,7 @@ namespace Data.Database
 
                 cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IdPersona;
 
-                cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IdPersona;
+                //cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IdPersona;
 
                 usuario.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
             }
@@ -252,8 +250,7 @@ namespace Data.Database
                     usr.Email = (string)drUsuarios["email"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
 
-                    usr.IdPersona = (int)drUsuarios["id_persona"];
-                    //usr.IDPersona = (int)drUsuarios["id_persona"];
+                    usr.IdPersona = (int)drUsuarios["id_persona"];                   
 
                     if (!drUsuarios.IsDBNull(8))
                     {
