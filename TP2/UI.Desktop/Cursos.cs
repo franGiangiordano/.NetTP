@@ -56,6 +56,9 @@ namespace UI.Desktop
             botonDocentes.Name = "Docentes";
             botonDocentes.Text = "Ver Detalles";
             botonDocentes.UseColumnTextForButtonValue = true; //IMPORTANTE! Para que muestre el texto en el boton
+            botonDocentes.FlatStyle = FlatStyle.Popup;
+            botonDocentes.CellTemplate.Style.BackColor = Color.FromArgb(216, 232, 241);
+
             int columnIndex = 5;
             if (dgvCursos.Columns["Docentes"] == null)
             {
@@ -131,7 +134,8 @@ namespace UI.Desktop
         {
             if (e.ColumnIndex == dgvCursos.Columns["Docentes"].Index)
             {
-                MessageBox.Show("puto");
+                DocenteDesktop formDocenteDesktop = new DocenteDesktop();
+                formDocenteDesktop.ShowDialog();
             }
         }
 

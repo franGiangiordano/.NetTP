@@ -61,6 +61,10 @@ namespace Business.Logic
             return _PersonaData.GetLegajos();
         }
 
-
+        public List<Persona> GetLegajosDocentes()
+        {
+            return _PersonaData.GetLegajosDocentes();
+        }
+        
     }
 }
