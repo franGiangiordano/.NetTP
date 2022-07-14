@@ -16,68 +16,87 @@ namespace UI.Desktop
     public partial class DocenteDesktop : ApplicationForm
     {
         private Business.Entities.Persona _docenteActual;
+        public event EventHandler SelectedIndexChanged;
 
         public Persona DocenteActual { get => _docenteActual; set => _docenteActual = value; }
 
         public DocenteDesktop()
         {
-            InitializeComponent();
-            cargarComboDocentes1();
+            InitializeComponent();            
+            cargarComboDocentes();
 
         }
 
-
-
-
-        private void cargarComboDocentes1()
+        private void cargarComboDocentes()
         {
           PersonaLogic pl = new PersonaLogic();
           List<Persona> docentes = pl.GetLegajosDocentes();
           this.cmbDocente1.DataSource = docentes;
           this.cmbDocente1.DisplayMember = "Legajo";
           this.cmbDocente1.ValueMember = "ID";
-            this.cmbDocente1.SelectedIndexChanged += new System.EventHandler(cmbDocente1_SelectedIndexChanged); //asociamos el evento al combo   
-            //esto es para que muestre nombre y apellido del docente sin tocar el combobox
-            //int idSeleccionado = (int)this.cmbDocente1.SelectedValue;
-            Persona docente = pl.GetOne((int)this.cmbDocente1.SelectedValue);
-            this.lblNomApe1.Text = "" + docente.Nombre + " " + docente.Apellido;
+          this.cmbDocente1.SelectedIndexChanged += new System.EventHandler(cmbDocente1_SelectedIndexChanged);
+
+          this.cmbDocente2.DataSource = docentes.Where(x => x.ID != (int)this.cmbDocente1.SelectedValue).ToList(); ;
+          this.cmbDocente2.DisplayMember = "Legajo";
+          this.cmbDocente2.ValueMember = "ID";
+          this.cmbDocente2.SelectedIndexChanged += new System.EventHandler(cmbDocente2_SelectedIndexChanged);
+
+          Persona docente = pl.GetOne((int)this.cmbDocente1.SelectedValue);
+          this.lblNomApe1.Text = "" + docente.Nombre + " " + docente.Apellido;
+
+          Persona docente2 = pl.GetOne((int)this.cmbDocente2.SelectedValue);
+          this.lblNomApe2.Text = "" + docente2.Nombre + " " + docente2.Apellido;
 
         }
-
-        private void cargarComboDocentes2()
-        {
-            PersonaLogic pl = new PersonaLogic();
-            List<Persona> docentes = pl.GetLegajosDocentes();
-            this.cmbDocente2.DataSource = docentes;
-            this.cmbDocente2.DisplayMember = "Legajo";
-            this.cmbDocente2.ValueMember = "ID";
-            this.cmbDocente2.SelectedIndexChanged += new System.EventHandler(cmbDocente2_SelectedIndexChanged); //asociamos el evento al combo
-        }
-
 
         private void cmbDocente1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (this.cmbDocente1.SelectedValue.ToString() != null)
-            {
-                //int idSeleccionado = (int)this.cmbDocente1.SelectedValue;
-                PersonaLogic pl = new PersonaLogic();
-                Persona docente = pl.GetOne((int)this.cmbDocente1.SelectedValue);
-                this.lblNomApe1.Text = "" + docente.Nombre + " " + docente.Apellido;
-                //cargarComboDocentes2();
+        {            
+                if (this.cmbDocente1.SelectedValue.ToString() != null)
+                {                    
+                    int idSeleccionado = (int)this.cmbDocente1.SelectedValue;                                        
+                    PersonaLogic pl = new PersonaLogic();
+                    Persona docente = pl.GetOne((int)this.cmbDocente1.SelectedValue);
+                    this.lblNomApe1.Text = "" + docente.Nombre + " " + docente.Apellido;
+
+                    List<Persona> docentes = pl.GetLegajosDocentes();
+                    this.cmbDocente2.DataSource = docentes.Where(x => x.ID != (int)this.cmbDocente1.SelectedValue).ToList(); ;
+                    this.cmbDocente2.DisplayMember = "Legajo";
+                    this.cmbDocente2.ValueMember = "ID";
 
             }
-
         }
+
 
         private void cmbDocente2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.cmbDocente2.SelectedValue.ToString() != null)
+            if (this.cmbDocente1.SelectedValue.ToString() != null)
             {
-                //int idSeleccionado = (int)this.cmbDocente2.SelectedValue;
+                int idSeleccionado = (int)this.cmbDocente2.SelectedValue;
                 PersonaLogic pl = new PersonaLogic();
                 Persona docente = pl.GetOne((int)this.cmbDocente2.SelectedValue);
-                this.lblNomApe2.Text = "" + docente.Nombre + " " + docente.Apellido;
+                this.lblNomApe2.Text = "" + docente.Nombre + " " + docente.Apellido;                              
             }
+        }
+
+
+
+
+        public bool Validar() {
+            if ((cmbCargo1.SelectedIndex == 0) && (cmbCargo2.SelectedIndex == 0)) {
+                return false;
+            }
+
+            if ((cmbCargo1.SelectedIndex == -1) || (cmbCargo2.SelectedIndex == -1))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(Validar().ToString());
         }
     }
 }

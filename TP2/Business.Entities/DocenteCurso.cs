@@ -17,8 +17,7 @@ namespace Business.Entities
         public enum TiposCargos
         {
             Ayudante,
-            Profesor,
-            Jefe_de_TP
+            Profesor,            
         }        
 
         public int IDCurso { get => _IDCurso; set => _IDCurso = value; }

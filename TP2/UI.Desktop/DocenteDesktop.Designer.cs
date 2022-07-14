@@ -35,6 +35,8 @@
             this.lblNomApe2 = new System.Windows.Forms.Label();
             this.cmbCargo2 = new System.Windows.Forms.ComboBox();
             this.cmbDocente2 = new System.Windows.Forms.ComboBox();
+            this.btnAceptar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmbDocente1
@@ -44,15 +46,13 @@
             this.cmbDocente1.Name = "cmbDocente1";
             this.cmbDocente1.Size = new System.Drawing.Size(150, 21);
             this.cmbDocente1.TabIndex = 1;
-            this.cmbDocente1.SelectedIndexChanged += new System.EventHandler(this.cmbDocente1_SelectedIndexChanged);
             // 
             // cmbCargo1
             // 
             this.cmbCargo1.FormattingEnabled = true;
             this.cmbCargo1.Items.AddRange(new object[] {
             "Ayudante",
-            "Profesor",
-            "Jefe_de_TP"});
+            "Profesor"});
             this.cmbCargo1.Location = new System.Drawing.Point(400, 75);
             this.cmbCargo1.Name = "cmbCargo1";
             this.cmbCargo1.Size = new System.Drawing.Size(150, 21);
@@ -81,8 +81,7 @@
             this.cmbCargo2.FormattingEnabled = true;
             this.cmbCargo2.Items.AddRange(new object[] {
             "Ayudante",
-            "Profesor",
-            "Jefe_de_TP"});
+            "Profesor"});
             this.cmbCargo2.Location = new System.Drawing.Point(400, 129);
             this.cmbCargo2.Name = "cmbCargo2";
             this.cmbCargo2.Size = new System.Drawing.Size(150, 21);
@@ -95,13 +94,33 @@
             this.cmbDocente2.Name = "cmbDocente2";
             this.cmbDocente2.Size = new System.Drawing.Size(150, 21);
             this.cmbDocente2.TabIndex = 4;
-            this.cmbDocente2.SelectedIndexChanged += new System.EventHandler(this.cmbDocente2_SelectedIndexChanged);
+            // 
+            // btnAceptar
+            // 
+            this.btnAceptar.Location = new System.Drawing.Point(400, 286);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptar.TabIndex = 7;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(585, 286);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 8;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // DocenteDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.lblNomApe2);
             this.Controls.Add(this.cmbCargo2);
             this.Controls.Add(this.cmbDocente2);
@@ -122,5 +141,7 @@
         private System.Windows.Forms.Label lblNomApe2;
         private System.Windows.Forms.ComboBox cmbCargo2;
         private System.Windows.Forms.ComboBox cmbDocente2;
+        private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }
