@@ -30,6 +30,8 @@ i:{31c05954-1800-42bb-8fcc-fd8caa8085c9}:c:\users\310m\onedrive\documentos\githu
 i:{31c05954-1800-42bb-8fcc-fd8caa8085c9}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\business.logic\comisionlogic.cs
 ++CursoLogic.cs
 i:{31c05954-1800-42bb-8fcc-fd8caa8085c9}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\business.logic\cursologic.cs
+++DocenteCursoLogic.cs
+i:{31c05954-1800-42bb-8fcc-fd8caa8085c9}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\business.logic\docentecursologic.cs
 ++EspecialidadLogic.cs
 i:{31c05954-1800-42bb-8fcc-fd8caa8085c9}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\business.logic\especialidadlogic.cs
 ++MateriaLogic.cs
@@ -152,6 +154,8 @@ i:{18d1c50f-58e0-4d94-b05b-4a95a146e6bb}:c:\users\310m\onedrive\documentos\githu
 i:{18d1c50f-58e0-4d94-b05b-4a95a146e6bb}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\data.database\data.database\comisionadapter.cs
 ++CursoAdapter.cs
 i:{18d1c50f-58e0-4d94-b05b-4a95a146e6bb}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\data.database\data.database\cursoadapter.cs
+++DocenteCursoAdapter.cs
+i:{18d1c50f-58e0-4d94-b05b-4a95a146e6bb}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\data.database\data.database\docentecursoadapter.cs
 ++EspecialidadAdapter.cs
 i:{18d1c50f-58e0-4d94-b05b-4a95a146e6bb}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\data.database\data.database\especialidadadapter.cs
 ++MateriaAdapter.cs
@@ -201,22 +205,22 @@ i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\githu
 i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\app.config.settings
 ++ApplicationForm.cs
 i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\applicationform.cs
-++ApplicationForm.Designer.cs
-i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\applicationform.designer.cs
-++ApplicationForm.resx
-i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\applicationform.resx
 ++CursoDesktop.cs
 i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\cursodesktop.cs
-++CursoDesktop.Designer.cs
-i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\cursodesktop.designer.cs
-++CursoDesktop.resx
-i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\cursodesktop.resx
 ++Cursos.cs
 i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\cursos.cs
 ++Cursos.Designer.cs
 i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\cursos.designer.cs
 ++Cursos.resx
 i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\cursos.resx
+++DocenteDesktop.cs
+i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\docentedesktop.cs
+++DocenteDesktop.Designer.cs
+i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\docentedesktop.designer.cs
+++DocenteDesktop.resx
+i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\docentedesktop.resx
+++Docentes.cs
+i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\docentes.cs
 ++EspecialidadDesktop.cs
 i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\especialidaddesktop.cs
 ++Especialidades.cs
@@ -225,10 +229,6 @@ i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\githu
 i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\formlistausuarios.cs
 ++formLogin.cs
 i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\formlogin.cs
-++formLogin.Designer.cs
-i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\formlogin.designer.cs
-++formLogin.resx
-i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\formlogin.resx
 ++formMain.cs
 i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\formmain.cs
 ++MateriaDesktop.cs
@@ -253,6 +253,18 @@ i:{bbc75747-6922-431d-b71a-c5dac7214466}:
 i:{bbc75747-6922-431d-b71a-c5dac7214466}:
 ++System.Windows.Forms
 i:{bbc75747-6922-431d-b71a-c5dac7214466}:
+++ApplicationForm.Designer.cs
+i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\applicationform.designer.cs
+++ApplicationForm.resx
+i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\applicationform.resx
+++CursoDesktop.Designer.cs
+i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\cursodesktop.designer.cs
+++CursoDesktop.resx
+i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\cursodesktop.resx
+++Docentes.Designer.cs
+i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\docentes.designer.cs
+++Docentes.resx
+i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\docentes.resx
 ++EspecialidadDesktop.Designer.cs
 i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\especialidaddesktop.designer.cs
 ++EspecialidadDesktop.resx
@@ -265,6 +277,10 @@ i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\githu
 i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\formlistausuarios.designer.cs
 ++formListaUsuarios.resx
 i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\formlistausuarios.resx
+++formLogin.Designer.cs
+i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\formlogin.designer.cs
+++formLogin.resx
+i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\formlogin.resx
 ++formMain.Designer.cs
 i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\formmain.designer.cs
 ++formMain.resx
@@ -301,16 +317,3 @@ i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\githu
 i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\properties\resources.designer.cs
 ++Settings.Designer.cs
 i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\properties\settings.designer.cs
-++Usuarios - Copia.cs
-++Usuarios - Copia.Designer.cs
-++Usuarios - Copia.resx
-++Docentes.cs
-i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\docentes.cs
-++Docentes.Designer.cs
-i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\docentes.designer.cs
-++Docentes.resx
-i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\docentes.resx
-++DocenteCursoAdapter.cs
-i:{18d1c50f-58e0-4d94-b05b-4a95a146e6bb}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\data.database\data.database\docentecursoadapter.cs
-++TiposCargos.cs
-i:{553d62b3-624c-4b27-a096-f9c985990997}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\business.entities\tiposcargos.cs

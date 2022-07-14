@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace Data.Database
 {
-    internal class DocenteCursoAdapter: Adapter
+    public class DocenteCursoAdapter: Adapter
     {
         public List<DocenteCurso> GetDocentesCurso(int idCurso)
         {
@@ -37,7 +37,7 @@ namespace Data.Database
             }
             catch (Exception Ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al recuperar lista de personas", Ex);
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de docentes para el curso", Ex);
                 throw ExcepcionManejada;
             }
             finally

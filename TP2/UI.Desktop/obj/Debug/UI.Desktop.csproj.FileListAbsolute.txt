@@ -195,3 +195,4 @@ F:\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Especialidades.resources
 C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.EspecialidadDesktop.resources
 C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Especialidades.resources
 C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Docentes.resources
+C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.DocenteDesktop.resources

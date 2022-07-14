@@ -40,8 +40,8 @@ namespace UI.Desktop
         
         public void Listar()
         {
-            PersonaLogic ul = new PersonaLogic();
-            this.dgvDocentes.DataSource = ul.GetDocentesCurso();            
+            DocenteCursoLogic ul = new DocenteCursoLogic();
+            this.dgvDocentes.DataSource = ul.GetDocentesCurso(idCurso);            
         }
 
         private void Docentes_Load(object sender, EventArgs e)
@@ -66,10 +66,10 @@ namespace UI.Desktop
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            UsuarioDesktop formUsuario = new UsuarioDesktop(ApplicationForm.ModoForm.Alta);
-                formUsuario.ShowDialog(); 
-                this.Listar(); 
-            
+            DocenteDesktop formDocente = new DocenteDesktop();
+            formDocente.ShowDialog();
+            this.Listar();
+
         }
 
         private void tsbEditar_Click(object sender, EventArgs e)

@@ -141,6 +141,8 @@ namespace UI.Desktop
             this.dgvDocentes.Size = new System.Drawing.Size(885, 388);
             this.dgvDocentes.TabIndex = 0;
             this.dgvDocentes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellContentClick);
+            this.dgvDocentes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDocentes.MultiSelect = false;
             // 
             // btnActualizar
             // 

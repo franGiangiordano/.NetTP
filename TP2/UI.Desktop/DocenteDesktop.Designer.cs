@@ -1,3 +1,4 @@
+﻿
 ﻿namespace UI.Desktop
 {
     partial class DocenteDesktop
@@ -28,34 +29,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cmbDocente = new System.Windows.Forms.ComboBox();
-            this.cmbCargo = new System.Windows.Forms.ComboBox();
+            this.cmbDocente1 = new System.Windows.Forms.ComboBox();
+            this.cmbCargo1 = new System.Windows.Forms.ComboBox();
             this.lblNomApe1 = new System.Windows.Forms.Label();
             this.lblNomApe2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbCargo2 = new System.Windows.Forms.ComboBox();
             this.cmbDocente2 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // cmbDocente
+            // cmbDocente1
             // 
-            this.cmbDocente.FormattingEnabled = true;
-            this.cmbDocente.Location = new System.Drawing.Point(50, 75);
-            this.cmbDocente.Name = "cmbDocente";
-            this.cmbDocente.Size = new System.Drawing.Size(150, 21);
-            this.cmbDocente.TabIndex = 1;
-            this.cmbDocente.SelectedIndexChanged += new System.EventHandler(this.cmbDocente_SelectedIndexChanged);
+            this.cmbDocente1.FormattingEnabled = true;
+            this.cmbDocente1.Location = new System.Drawing.Point(50, 75);
+            this.cmbDocente1.Name = "cmbDocente1";
+            this.cmbDocente1.Size = new System.Drawing.Size(150, 21);
+            this.cmbDocente1.TabIndex = 1;
+            this.cmbDocente1.SelectedIndexChanged += new System.EventHandler(this.cmbDocente1_SelectedIndexChanged);
             // 
-            // cmbCargo
+            // cmbCargo1
             // 
-            this.cmbCargo.FormattingEnabled = true;
-            this.cmbCargo.Items.AddRange(new object[] {
+            this.cmbCargo1.FormattingEnabled = true;
+            this.cmbCargo1.Items.AddRange(new object[] {
             "Ayudante",
             "Profesor",
             "Jefe_de_TP"});
-            this.cmbCargo.Location = new System.Drawing.Point(400, 75);
-            this.cmbCargo.Name = "cmbCargo";
-            this.cmbCargo.Size = new System.Drawing.Size(150, 21);
-            this.cmbCargo.TabIndex = 2;
+            this.cmbCargo1.Location = new System.Drawing.Point(400, 75);
+            this.cmbCargo1.Name = "cmbCargo1";
+            this.cmbCargo1.Size = new System.Drawing.Size(150, 21);
+            this.cmbCargo1.TabIndex = 2;
             // 
             // lblNomApe1
             // 
@@ -75,17 +76,17 @@
             this.lblNomApe2.TabIndex = 6;
             this.lblNomApe2.Text = "label1";
             // 
-            // comboBox1
+            // cmbCargo2
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cmbCargo2.FormattingEnabled = true;
+            this.cmbCargo2.Items.AddRange(new object[] {
             "Ayudante",
             "Profesor",
             "Jefe_de_TP"});
-            this.comboBox1.Location = new System.Drawing.Point(400, 129);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(150, 21);
-            this.comboBox1.TabIndex = 5;
+            this.cmbCargo2.Location = new System.Drawing.Point(400, 129);
+            this.cmbCargo2.Name = "cmbCargo2";
+            this.cmbCargo2.Size = new System.Drawing.Size(150, 21);
+            this.cmbCargo2.TabIndex = 5;
             // 
             // cmbDocente2
             // 
@@ -102,11 +103,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lblNomApe2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbCargo2);
             this.Controls.Add(this.cmbDocente2);
             this.Controls.Add(this.lblNomApe1);
-            this.Controls.Add(this.cmbCargo);
-            this.Controls.Add(this.cmbDocente);
+            this.Controls.Add(this.cmbCargo1);
+            this.Controls.Add(this.cmbDocente1);
             this.Name = "DocenteDesktop";
             this.Text = "DocenteDesktop";
             this.ResumeLayout(false);
@@ -115,11 +116,11 @@
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox cmbDocente;
-        private System.Windows.Forms.ComboBox cmbCargo;
+        private System.Windows.Forms.ComboBox cmbDocente1;
+        private System.Windows.Forms.ComboBox cmbCargo1;
         private System.Windows.Forms.Label lblNomApe1;
         private System.Windows.Forms.Label lblNomApe2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbCargo2;
         private System.Windows.Forms.ComboBox cmbDocente2;
     }
 }

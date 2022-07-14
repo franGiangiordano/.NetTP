@@ -134,7 +134,7 @@ namespace UI.Desktop
         {
             if (e.ColumnIndex == dgvCursos.Columns["Docentes"].Index)
             {
-                int ID = ((Business.Entities.Curso)this.dgvCursos.SelectedRows[0].DataBoundItem).ID;
+                int ID = Convert.ToInt32(dgvCursos.Rows[dgvCursos.CurrentRow.Index].Cells[0].Value);
                 Docentes formDocentes = new Docentes(ID);
                 formDocentes.ShowDialog();
             }
