@@ -301,9 +301,16 @@ i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\githu
 i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\properties\resources.designer.cs
 ++Settings.Designer.cs
 i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\properties\settings.designer.cs
-++DocenteDesktop.cs
-i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\docentedesktop.cs
-++DocenteDesktop.Designer.cs
-i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\docentedesktop.designer.cs
-++DocenteDesktop.resx
-i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\docentedesktop.resx
+++Usuarios - Copia.cs
+++Usuarios - Copia.Designer.cs
+++Usuarios - Copia.resx
+++Docentes.cs
+i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\docentes.cs
+++Docentes.Designer.cs
+i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\docentes.designer.cs
+++Docentes.resx
+i:{bbc75747-6922-431d-b71a-c5dac7214466}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\ui.desktop\docentes.resx
+++DocenteCursoAdapter.cs
+i:{18d1c50f-58e0-4d94-b05b-4a95a146e6bb}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\data.database\data.database\docentecursoadapter.cs
+++TiposCargos.cs
+i:{553d62b3-624c-4b27-a096-f9c985990997}:c:\users\310m\onedrive\documentos\github\.nettp\tp2\business.entities\tiposcargos.cs

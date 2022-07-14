@@ -54,7 +54,7 @@ namespace UI.Desktop
             //Esto es para agregar el boton al DatGridView
             DataGridViewButtonColumn botonDocentes = new DataGridViewButtonColumn();
             botonDocentes.Name = "Docentes";
-            botonDocentes.Text = "Ver Detalles";
+            botonDocentes.Text = "Ver Docentes";
             botonDocentes.UseColumnTextForButtonValue = true; //IMPORTANTE! Para que muestre el texto en el boton
             botonDocentes.FlatStyle = FlatStyle.Popup;
             botonDocentes.CellTemplate.Style.BackColor = Color.FromArgb(216, 232, 241);
@@ -134,8 +134,9 @@ namespace UI.Desktop
         {
             if (e.ColumnIndex == dgvCursos.Columns["Docentes"].Index)
             {
-                DocenteDesktop formDocenteDesktop = new DocenteDesktop();
-                formDocenteDesktop.ShowDialog();
+                int ID = ((Business.Entities.Curso)this.dgvCursos.SelectedRows[0].DataBoundItem).ID;
+                Docentes formDocentes = new Docentes(ID);
+                formDocentes.ShowDialog();
             }
         }
 
