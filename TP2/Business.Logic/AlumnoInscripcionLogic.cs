@@ -46,5 +46,15 @@ namespace Business.Logic
             return _AlumnoInscripcionData.GetInscripcionesAlumno(idAlumno);
         }
 
+        public List<AlumnoInscripcion> GetInscripcionesDocente(int idDocente)
+        {
+            return _AlumnoInscripcionData.GetInscripcionesDocente(idDocente);
+        }
+
+        public List<AlumnoInscripcion> FiltrarPorComision(int idDocente, int idComision, int idMateria)
+        {
+            return _AlumnoInscripcionData.FiltrarPorComision(idDocente, idComision, idMateria);
+        }
+
     }
 }

@@ -48,6 +48,8 @@
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.cmbFiltroComision = new System.Windows.Forms.ToolStripComboBox();
+            this.cmbFiltroMateria = new System.Windows.Forms.ToolStripComboBox();
             this.tcAlumosInscripciones.ContentPanel.SuspendLayout();
             this.tcAlumosInscripciones.TopToolStripPanel.SuspendLayout();
             this.tcAlumosInscripciones.SuspendLayout();
@@ -62,13 +64,11 @@
             // tcAlumosInscripciones.ContentPanel
             // 
             this.tcAlumosInscripciones.ContentPanel.Controls.Add(this.tlAlumnosInscripciones);
-            this.tcAlumosInscripciones.ContentPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tcAlumosInscripciones.ContentPanel.Size = new System.Drawing.Size(1067, 523);
+            this.tcAlumosInscripciones.ContentPanel.Size = new System.Drawing.Size(800, 423);
             this.tcAlumosInscripciones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcAlumosInscripciones.Location = new System.Drawing.Point(0, 0);
-            this.tcAlumosInscripciones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tcAlumosInscripciones.Name = "tcAlumosInscripciones";
-            this.tcAlumosInscripciones.Size = new System.Drawing.Size(1067, 554);
+            this.tcAlumosInscripciones.Size = new System.Drawing.Size(800, 450);
             this.tcAlumosInscripciones.TabIndex = 0;
             this.tcAlumosInscripciones.Text = "toolStripContainer1";
             // 
@@ -86,12 +86,11 @@
             this.tlAlumnosInscripciones.Controls.Add(this.btnSalir, 1, 1);
             this.tlAlumnosInscripciones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlAlumnosInscripciones.Location = new System.Drawing.Point(0, 0);
-            this.tlAlumnosInscripciones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tlAlumnosInscripciones.Name = "tlAlumnosInscripciones";
             this.tlAlumnosInscripciones.RowCount = 2;
             this.tlAlumnosInscripciones.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlAlumnosInscripciones.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlAlumnosInscripciones.Size = new System.Drawing.Size(1067, 523);
+            this.tlAlumnosInscripciones.Size = new System.Drawing.Size(800, 423);
             this.tlAlumnosInscripciones.TabIndex = 0;
             // 
             // dgvAlumnosInscripciones
@@ -111,12 +110,11 @@
             this.Especialidad});
             this.tlAlumnosInscripciones.SetColumnSpan(this.dgvAlumnosInscripciones, 2);
             this.dgvAlumnosInscripciones.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvAlumnosInscripciones.Location = new System.Drawing.Point(4, 4);
-            this.dgvAlumnosInscripciones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvAlumnosInscripciones.Location = new System.Drawing.Point(3, 3);
             this.dgvAlumnosInscripciones.Name = "dgvAlumnosInscripciones";
             this.dgvAlumnosInscripciones.ReadOnly = true;
             this.dgvAlumnosInscripciones.RowHeadersWidth = 51;
-            this.dgvAlumnosInscripciones.Size = new System.Drawing.Size(1059, 479);
+            this.dgvAlumnosInscripciones.Size = new System.Drawing.Size(794, 388);
             this.dgvAlumnosInscripciones.TabIndex = 0;
             this.dgvAlumnosInscripciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAlumnosInscripciones_CellContentClick);
             // 
@@ -204,10 +202,9 @@
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(855, 491);
-            this.btnActualizar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnActualizar.Location = new System.Drawing.Point(641, 397);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(100, 28);
+            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 1;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
@@ -215,10 +212,9 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(963, 491);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSalir.Location = new System.Drawing.Point(722, 397);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(100, 28);
+            this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 2;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -232,10 +228,12 @@
             this.tsbNuevo,
             this.tsbEditar,
             this.tsbEliminar,
-            this.toolStripLabel1});
-            this.tscAlumnosInscripciones.Location = new System.Drawing.Point(4, 0);
+            this.toolStripLabel1,
+            this.cmbFiltroComision,
+            this.cmbFiltroMateria});
+            this.tscAlumnosInscripciones.Location = new System.Drawing.Point(3, 0);
             this.tscAlumnosInscripciones.Name = "tscAlumnosInscripciones";
-            this.tscAlumnosInscripciones.Size = new System.Drawing.Size(341, 31);
+            this.tscAlumnosInscripciones.Size = new System.Drawing.Size(495, 27);
             this.tscAlumnosInscripciones.TabIndex = 0;
             // 
             // tsbNuevo
@@ -244,7 +242,7 @@
             this.tsbNuevo.Image = ((System.Drawing.Image)(resources.GetObject("tsbNuevo.Image")));
             this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNuevo.Name = "tsbNuevo";
-            this.tsbNuevo.Size = new System.Drawing.Size(29, 28);
+            this.tsbNuevo.Size = new System.Drawing.Size(24, 24);
             this.tsbNuevo.Text = "Nuevo";
             this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
             // 
@@ -254,7 +252,7 @@
             this.tsbEditar.Image = ((System.Drawing.Image)(resources.GetObject("tsbEditar.Image")));
             this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEditar.Name = "tsbEditar";
-            this.tsbEditar.Size = new System.Drawing.Size(29, 28);
+            this.tsbEditar.Size = new System.Drawing.Size(24, 24);
             this.tsbEditar.Text = "Editar";
             this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
             // 
@@ -264,7 +262,7 @@
             this.tsbEliminar.Image = ((System.Drawing.Image)(resources.GetObject("tsbEliminar.Image")));
             this.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEliminar.Name = "tsbEliminar";
-            this.tsbEliminar.Size = new System.Drawing.Size(29, 28);
+            this.tsbEliminar.Size = new System.Drawing.Size(24, 24);
             this.tsbEliminar.Text = "Eliminar";
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
@@ -272,16 +270,26 @@
             // 
             this.toolStripLabel1.Font = new System.Drawing.Font("Arial", 10.8F);
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(202, 28);
+            this.toolStripLabel1.Size = new System.Drawing.Size(165, 24);
             this.toolStripLabel1.Text = "Listado de Inscripciones";
+            // 
+            // cmbFiltroComision
+            // 
+            this.cmbFiltroComision.Name = "cmbFiltroComision";
+            this.cmbFiltroComision.Size = new System.Drawing.Size(121, 27);
+            this.cmbFiltroComision.Text = "Comision";
+            // 
+            // cmbFiltroMateria
+            // 
+            this.cmbFiltroMateria.Name = "cmbFiltroMateria";
+            this.cmbFiltroMateria.Size = new System.Drawing.Size(121, 27);
             // 
             // AlumnoInscripciones
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tcAlumosInscripciones);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AlumnoInscripciones";
             this.Text = "AlumnoInscripciones";
             this.tcAlumosInscripciones.ContentPanel.ResumeLayout(false);
@@ -318,5 +326,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Comision;
         private System.Windows.Forms.DataGridViewTextBoxColumn Especialidad;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripComboBox cmbFiltroComision;
+        private System.Windows.Forms.ToolStripComboBox cmbFiltroMateria;
     }
 }

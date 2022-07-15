@@ -11,15 +11,14 @@ using Business.Entities;
 using Business.Logic;
 
 
-
-//ver como manejar el tema de los permisos
-//agregar parametro global al form principal
-
 namespace UI.Desktop
 {
     public partial class AlumnoInscripciones : Form
     {
-        int idPersona;
+        public static int idPersona;
+
+        public static int IdPersona { get => idPersona; set => idPersona = value; }
+        
 
         public AlumnoInscripciones()
         {            
@@ -27,9 +26,26 @@ namespace UI.Desktop
             dgvAlumnosInscripciones.AutoGenerateColumns = false;
 
             UsuarioLogic ul = new UsuarioLogic();
-            idPersona  = ul.GetOne(Principal.Id).IdPersona;
-            Listar();            
+            IdPersona  = ul.GetOne(Principal.Id).IdPersona;
+            Listar();
             validarPermisos();
+            cargarCombos();
+        }
+
+        private void cargarCombos()
+        {            
+           ComisionLogic cl = new ComisionLogic();
+           MateriaLogic ml = new MateriaLogic();
+
+           this.cmbFiltroComision.ComboBox.DataSource = cl.GetDescripciones();
+           this.cmbFiltroComision.ComboBox.DisplayMember = "Descripcion";
+           this.cmbFiltroComision.ComboBox.ValueMember = "ID";
+           this.cmbFiltroComision.ComboBox.SelectedIndexChanged += new System.EventHandler(cmbFiltroComision_SelectedIndexChanged);
+
+            this.cmbFiltroMateria.ComboBox.DataSource = ml.GetDescripciones();
+            this.cmbFiltroMateria.ComboBox.DisplayMember = "Descripcion";
+            this.cmbFiltroMateria.ComboBox.ValueMember = "ID";
+            this.cmbFiltroMateria.ComboBox.SelectedIndexChanged += new System.EventHandler(cmbFiltroComision_SelectedIndexChanged);
         }
 
         private void validarPermisos()
@@ -43,14 +59,16 @@ namespace UI.Desktop
                 this.tsbNuevo.Visible = false;
                 this.tsbEliminar.Visible = false;
             } else if (!mu.PermiteModificacion) { //es Alumno 
-                this.tsbEditar.Visible = false;                
+                this.tsbEditar.Visible = false;
+                this.cmbFiltroComision.ComboBox.Enabled = false;
+                this.cmbFiltroMateria.ComboBox.Enabled = false;
             } 
 
         }
 
         private void AlumnoInscripciones_Load(object sender, EventArgs e)
         {
-            Listar();
+            Listar();            
         }
 
         public void Listar()
@@ -62,7 +80,23 @@ namespace UI.Desktop
             Persona per = pl.GetOne(idPersona);
             List<AlumnoInscripcion> l1 = new List<AlumnoInscripcion>();
 
-            if ((int)per.Tipo == 2)
+            ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+            int idModulo = mul.GetIdModulo("AlumnoInscripciones");
+            ModuloUsuario mu = mul.GetModuloUsuario(idModulo, Principal.Id);            
+
+            if (mu.PermiteAlta && mu.PermiteBaja && mu.PermiteModificacion)
+            {
+                l1 = ail.GetAll();
+            }
+            else if (mu.PermiteAlta)
+            {
+                l1 = ail.GetInscripcionesAlumno(idPersona);
+            }
+            else {
+                l1 = ail.GetInscripcionesDocente(idPersona);
+            }
+
+            /*if ((int)per.Tipo == 2)
             {  // es Admin, con lo cual debemos mostrar todas las inscripciones
                 l1 = ail.GetAll();
             }
@@ -72,7 +106,7 @@ namespace UI.Desktop
             }
             else {  //es docente
                 l1 = null;
-            }
+            }*/
 
             
 
@@ -152,6 +186,49 @@ namespace UI.Desktop
                 formAlumnoInscripcion.ShowDialog();
                 this.Listar();
             }            
+        }
+
+        private void cmbFiltroComision_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            AlumnoInscripcionLogic al = new AlumnoInscripcionLogic();
+            ListarFiltro(al.FiltrarPorComision(idPersona, (int)cmbFiltroComision.ComboBox.SelectedValue, (int)cmbFiltroMateria.ComboBox.SelectedValue));
+        }
+
+
+        private void ListarFiltro(List<AlumnoInscripcion> lista)
+        {
+            PersonaLogic pl = new PersonaLogic();
+            CursoLogic cl = new CursoLogic();
+            MateriaLogic ml = new MateriaLogic();
+            ComisionLogic coml = new ComisionLogic();
+            EspecialidadLogic espl = new EspecialidadLogic();
+            PlanLogic planl = new PlanLogic();
+
+            DataTable dt1 = new DataTable();
+            dt1.Columns.Add("id_inscripcion", typeof(int)); 
+            dt1.Columns.Add("id_alumno", typeof(string));
+            dt1.Columns.Add("id_curso", typeof(string));
+            dt1.Columns.Add("condicion", typeof(string));
+            dt1.Columns.Add("nota", typeof(string));
+            dt1.Columns.Add("anio", typeof(int));
+            dt1.Columns.Add("materia", typeof(string));
+            dt1.Columns.Add("comision", typeof(string));
+            dt1.Columns.Add("especialidad", typeof(string));
+
+            foreach (var ins in lista)
+            {
+                Persona al = pl.GetOne(ins.IDAlumno);
+                Curso cur = cl.GetOne(ins.IDCurso);
+                Materia mat = ml.GetOne(cur.IDMateria);
+                Comision com = coml.GetOne(cur.IDComision);
+                Plan plan = planl.GetOne(al.IDPlan);
+                Especialidad esp = espl.GetOne(plan.IDEspecialidad);
+
+
+                dt1.Rows.Add(ins.ID, al.Nombre + ' ' + al.Apellido, cur.ID, ins.Condicion, ins.Nota != -1 ? ins.Nota.ToString() : null, cur.AnioCalendario, mat.Descripcion, com.Descripcion, esp.Descripcion);
+            }
+            this.dgvAlumnosInscripciones.DataSource = dt1;
         }
     }
 }

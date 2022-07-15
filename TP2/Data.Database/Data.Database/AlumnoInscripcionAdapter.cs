@@ -243,5 +243,104 @@ namespace Data.Database
             return inscripciones;
         }
 
+        public List<AlumnoInscripcion> GetInscripcionesDocente(int idDocente)
+        {
+            List<AlumnoInscripcion> inscripciones = new List<AlumnoInscripcion>();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdInscripciones = new SqlCommand("select ai.id_inscripcion, ai.id_alumno, ai.id_curso, ai.condicion, ai.nota from docentes_cursos dc join alumnos_inscripciones ai on dc.id_curso=ai.id_curso where dc.id_docente=@idDocente", sqlconn);
+                cmdInscripciones.Parameters.Add("@idDocente", SqlDbType.Int).Value = idDocente;
+                SqlDataReader drInscripciones = cmdInscripciones.ExecuteReader();
+
+                while (drInscripciones.Read())
+                {
+                    Business.Entities.AlumnoInscripcion ins;
+                    ins = new Business.Entities.AlumnoInscripcion();
+                    ins.ID = (int)drInscripciones["id_inscripcion"];
+                    ins.IDAlumno = (int)drInscripciones["id_alumno"]; ;
+                    ins.IDCurso = (int)drInscripciones["id_curso"];
+                    ins.Condicion = (string)drInscripciones["condicion"];
+
+
+                    if (!drInscripciones.IsDBNull(4))
+                    {
+                        ins.Nota = (int)drInscripciones["nota"];
+                    }
+                    else
+                    {
+                        ins.Nota = -1;
+                    }
+
+                    inscripciones.Add(ins);
+                }
+                drInscripciones.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de inscripciones", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+            return inscripciones;
+        }
+        public List<AlumnoInscripcion> FiltrarPorComision(int idDocente, int idComision, int idMateria)
+        {
+            List<AlumnoInscripcion> inscripciones = new List<AlumnoInscripcion>();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdInscripciones = new SqlCommand("select ai.id_inscripcion, ai.id_alumno, ai.id_curso, ai.condicion, ai.nota from cursos c join docentes_cursos dc on c.id_curso=dc.id_curso join alumnos_inscripciones ai on dc.id_curso=ai.id_curso where dc.id_docente=@idDocente and c.id_comision=@idComision and c.id_materia=@idMateria", sqlconn);
+                cmdInscripciones.Parameters.Add("@idDocente", SqlDbType.Int).Value = idDocente;
+                cmdInscripciones.Parameters.Add("@idComision", SqlDbType.Int).Value = idComision;
+                cmdInscripciones.Parameters.Add("@idMateria", SqlDbType.Int).Value = idMateria;
+                SqlDataReader drInscripciones = cmdInscripciones.ExecuteReader();
+
+                while (drInscripciones.Read())
+                {
+                    Business.Entities.AlumnoInscripcion ins;
+                    ins = new Business.Entities.AlumnoInscripcion();
+                    ins.ID = (int)drInscripciones["id_inscripcion"];
+                    ins.IDAlumno = (int)drInscripciones["id_alumno"]; ;
+                    ins.IDCurso = (int)drInscripciones["id_curso"];
+                    ins.Condicion = (string)drInscripciones["condicion"];
+
+
+                    if (!drInscripciones.IsDBNull(4))
+                    {
+                        ins.Nota = (int)drInscripciones["nota"];
+                    }
+                    else
+                    {
+                        ins.Nota = -1;
+                    }
+
+                    inscripciones.Add(ins);
+                }
+                drInscripciones.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de inscripciones", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+            return inscripciones;
+        }
+
+
+
+
     }
+
 }
