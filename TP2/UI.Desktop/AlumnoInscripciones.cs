@@ -37,8 +37,8 @@ namespace UI.Desktop
            ComisionLogic cl = new ComisionLogic();
            MateriaLogic ml = new MateriaLogic();
 
-           this.cmbFiltroComision.ComboBox.DataSource = cl.GetDescripciones();
-           this.cmbFiltroComision.ComboBox.DisplayMember = "Descripcion";
+            this.cmbFiltroComision.ComboBox.DataSource = cl.GetDescripciones();
+            this.cmbFiltroComision.ComboBox.DisplayMember = "Descripcion";
            this.cmbFiltroComision.ComboBox.ValueMember = "ID";
            this.cmbFiltroComision.ComboBox.SelectedIndexChanged += new System.EventHandler(cmbFiltroComision_SelectedIndexChanged);
 
@@ -68,8 +68,10 @@ namespace UI.Desktop
 
         private void AlumnoInscripciones_Load(object sender, EventArgs e)
         {
-            Listar();            
+            Listar();
+
         }
+
 
         public void Listar()
         {
@@ -230,5 +232,6 @@ namespace UI.Desktop
             }
             this.dgvAlumnosInscripciones.DataSource = dt1;
         }
+
     }
 }

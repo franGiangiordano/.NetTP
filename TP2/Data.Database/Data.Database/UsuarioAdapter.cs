@@ -160,8 +160,6 @@ namespace Data.Database
 
                 cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IdPersona;
 
-                cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IdPersona;
-
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)
@@ -195,7 +193,6 @@ namespace Data.Database
 
                 cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IdPersona;
 
-                //cmdSave.Parameters.Add("@id_persona", SqlDbType.Int).Value = usuario.IdPersona;
 
                 usuario.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
             }

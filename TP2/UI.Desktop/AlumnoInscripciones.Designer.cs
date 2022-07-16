@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AlumnoInscripciones));
             this.tcAlumosInscripciones = new System.Windows.Forms.ToolStripContainer();
             this.tlAlumnosInscripciones = new System.Windows.Forms.TableLayoutPanel();
@@ -64,11 +67,11 @@
             // tcAlumosInscripciones.ContentPanel
             // 
             this.tcAlumosInscripciones.ContentPanel.Controls.Add(this.tlAlumnosInscripciones);
-            this.tcAlumosInscripciones.ContentPanel.Size = new System.Drawing.Size(800, 423);
+            this.tcAlumosInscripciones.ContentPanel.Size = new System.Drawing.Size(1009, 422);
             this.tcAlumosInscripciones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcAlumosInscripciones.Location = new System.Drawing.Point(0, 0);
             this.tcAlumosInscripciones.Name = "tcAlumosInscripciones";
-            this.tcAlumosInscripciones.Size = new System.Drawing.Size(800, 450);
+            this.tcAlumosInscripciones.Size = new System.Drawing.Size(1009, 450);
             this.tcAlumosInscripciones.TabIndex = 0;
             this.tcAlumosInscripciones.Text = "toolStripContainer1";
             // 
@@ -90,13 +93,26 @@
             this.tlAlumnosInscripciones.RowCount = 2;
             this.tlAlumnosInscripciones.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlAlumnosInscripciones.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlAlumnosInscripciones.Size = new System.Drawing.Size(800, 423);
+            this.tlAlumnosInscripciones.Size = new System.Drawing.Size(1009, 422);
             this.tlAlumnosInscripciones.TabIndex = 0;
             // 
             // dgvAlumnosInscripciones
             // 
             this.dgvAlumnosInscripciones.AllowUserToAddRows = false;
             this.dgvAlumnosInscripciones.AllowUserToDeleteRows = false;
+            this.dgvAlumnosInscripciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvAlumnosInscripciones.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvAlumnosInscripciones.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(232)))), ((int)(((byte)(241)))));
+            this.dgvAlumnosInscripciones.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvAlumnosInscripciones.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAlumnosInscripciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAlumnosInscripciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAlumnosInscripciones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_inscripcion,
@@ -110,11 +126,26 @@
             this.Especialidad});
             this.tlAlumnosInscripciones.SetColumnSpan(this.dgvAlumnosInscripciones, 2);
             this.dgvAlumnosInscripciones.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvAlumnosInscripciones.EnableHeadersVisualStyles = false;
+            this.dgvAlumnosInscripciones.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
             this.dgvAlumnosInscripciones.Location = new System.Drawing.Point(3, 3);
             this.dgvAlumnosInscripciones.Name = "dgvAlumnosInscripciones";
             this.dgvAlumnosInscripciones.ReadOnly = true;
+            this.dgvAlumnosInscripciones.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAlumnosInscripciones.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvAlumnosInscripciones.RowHeadersWidth = 51;
-            this.dgvAlumnosInscripciones.Size = new System.Drawing.Size(794, 388);
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(232)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvAlumnosInscripciones.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvAlumnosInscripciones.Size = new System.Drawing.Size(1003, 384);
             this.dgvAlumnosInscripciones.TabIndex = 0;
             this.dgvAlumnosInscripciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAlumnosInscripciones_CellContentClick);
             // 
@@ -125,7 +156,7 @@
             this.id_inscripcion.MinimumWidth = 6;
             this.id_inscripcion.Name = "id_inscripcion";
             this.id_inscripcion.ReadOnly = true;
-            this.id_inscripcion.Width = 125;
+            this.id_inscripcion.Width = 135;
             // 
             // id_alumno
             // 
@@ -134,7 +165,7 @@
             this.id_alumno.MinimumWidth = 6;
             this.id_alumno.Name = "id_alumno";
             this.id_alumno.ReadOnly = true;
-            this.id_alumno.Width = 125;
+            this.id_alumno.Width = 94;
             // 
             // id_curso
             // 
@@ -143,7 +174,7 @@
             this.id_curso.MinimumWidth = 6;
             this.id_curso.Name = "id_curso";
             this.id_curso.ReadOnly = true;
-            this.id_curso.Width = 125;
+            this.id_curso.Width = 75;
             // 
             // condicion
             // 
@@ -152,7 +183,7 @@
             this.condicion.MinimumWidth = 6;
             this.condicion.Name = "condicion";
             this.condicion.ReadOnly = true;
-            this.condicion.Width = 125;
+            this.condicion.Width = 113;
             // 
             // nota
             // 
@@ -161,7 +192,7 @@
             this.nota.MinimumWidth = 6;
             this.nota.Name = "nota";
             this.nota.ReadOnly = true;
-            this.nota.Width = 125;
+            this.nota.Width = 69;
             // 
             // anio
             // 
@@ -170,7 +201,7 @@
             this.anio.MinimumWidth = 6;
             this.anio.Name = "anio";
             this.anio.ReadOnly = true;
-            this.anio.Width = 125;
+            this.anio.Width = 64;
             // 
             // materia
             // 
@@ -179,7 +210,7 @@
             this.materia.MinimumWidth = 6;
             this.materia.Name = "materia";
             this.materia.ReadOnly = true;
-            this.materia.Width = 125;
+            this.materia.Width = 91;
             // 
             // Comision
             // 
@@ -188,7 +219,7 @@
             this.Comision.MinimumWidth = 6;
             this.Comision.Name = "Comision";
             this.Comision.ReadOnly = true;
-            this.Comision.Width = 125;
+            this.Comision.Width = 104;
             // 
             // Especialidad
             // 
@@ -197,27 +228,31 @@
             this.Especialidad.MinimumWidth = 6;
             this.Especialidad.Name = "Especialidad";
             this.Especialidad.ReadOnly = true;
-            this.Especialidad.Width = 125;
+            this.Especialidad.Width = 133;
             // 
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(641, 397);
+            this.btnActualizar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizar.Location = new System.Drawing.Point(828, 393);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
+            this.btnActualizar.Size = new System.Drawing.Size(86, 26);
             this.btnActualizar.TabIndex = 1;
             this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.UseVisualStyleBackColor = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(722, 397);
+            this.btnSalir.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalir.Location = new System.Drawing.Point(920, 393);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.Size = new System.Drawing.Size(86, 26);
             this.btnSalir.TabIndex = 2;
             this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // tscAlumnosInscripciones
@@ -233,7 +268,7 @@
             this.cmbFiltroMateria});
             this.tscAlumnosInscripciones.Location = new System.Drawing.Point(3, 0);
             this.tscAlumnosInscripciones.Name = "tscAlumnosInscripciones";
-            this.tscAlumnosInscripciones.Size = new System.Drawing.Size(495, 27);
+            this.tscAlumnosInscripciones.Size = new System.Drawing.Size(495, 28);
             this.tscAlumnosInscripciones.TabIndex = 0;
             // 
             // tsbNuevo
@@ -242,7 +277,7 @@
             this.tsbNuevo.Image = ((System.Drawing.Image)(resources.GetObject("tsbNuevo.Image")));
             this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNuevo.Name = "tsbNuevo";
-            this.tsbNuevo.Size = new System.Drawing.Size(24, 24);
+            this.tsbNuevo.Size = new System.Drawing.Size(24, 25);
             this.tsbNuevo.Text = "Nuevo";
             this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
             // 
@@ -252,7 +287,7 @@
             this.tsbEditar.Image = ((System.Drawing.Image)(resources.GetObject("tsbEditar.Image")));
             this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEditar.Name = "tsbEditar";
-            this.tsbEditar.Size = new System.Drawing.Size(24, 24);
+            this.tsbEditar.Size = new System.Drawing.Size(24, 25);
             this.tsbEditar.Text = "Editar";
             this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
             // 
@@ -262,7 +297,7 @@
             this.tsbEliminar.Image = ((System.Drawing.Image)(resources.GetObject("tsbEliminar.Image")));
             this.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEliminar.Name = "tsbEliminar";
-            this.tsbEliminar.Size = new System.Drawing.Size(24, 24);
+            this.tsbEliminar.Size = new System.Drawing.Size(24, 25);
             this.tsbEliminar.Text = "Eliminar";
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
@@ -270,25 +305,26 @@
             // 
             this.toolStripLabel1.Font = new System.Drawing.Font("Arial", 10.8F);
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(165, 24);
+            this.toolStripLabel1.Size = new System.Drawing.Size(165, 25);
             this.toolStripLabel1.Text = "Listado de Inscripciones";
             // 
             // cmbFiltroComision
             // 
             this.cmbFiltroComision.Name = "cmbFiltroComision";
-            this.cmbFiltroComision.Size = new System.Drawing.Size(121, 27);
+            this.cmbFiltroComision.Size = new System.Drawing.Size(121, 28);
             this.cmbFiltroComision.Text = "Comision";
             // 
             // cmbFiltroMateria
             // 
             this.cmbFiltroMateria.Name = "cmbFiltroMateria";
-            this.cmbFiltroMateria.Size = new System.Drawing.Size(121, 27);
+            this.cmbFiltroMateria.Size = new System.Drawing.Size(121, 28);
+            this.cmbFiltroMateria.Text = "Materia";
             // 
             // AlumnoInscripciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1009, 450);
             this.Controls.Add(this.tcAlumosInscripciones);
             this.Name = "AlumnoInscripciones";
             this.Text = "AlumnoInscripciones";

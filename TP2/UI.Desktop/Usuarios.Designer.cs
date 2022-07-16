@@ -48,9 +48,9 @@ namespace UI.Desktop
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
-            this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
             this.cmbCriterio = new System.Windows.Forms.ToolStripComboBox();
             this.txtBusqueda = new System.Windows.Forms.ToolStripTextBox();
+            this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
             this.tcUsuarios.ContentPanel.SuspendLayout();
             this.tcUsuarios.TopToolStripPanel.SuspendLayout();
             this.tcUsuarios.SuspendLayout();
@@ -138,12 +138,12 @@ namespace UI.Desktop
             this.dgvUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvUsuarios.RowHeadersWidth = 51;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(232)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvUsuarios.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsuarios.Size = new System.Drawing.Size(885, 388);
+            this.dgvUsuarios.Size = new System.Drawing.Size(885, 385);
             this.dgvUsuarios.TabIndex = 0;
             this.dgvUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellContentClick);
             // 
@@ -204,22 +204,28 @@ namespace UI.Desktop
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(732, 397);
+            this.btnActualizar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizar.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.btnActualizar.Location = new System.Drawing.Point(712, 394);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
+            this.btnActualizar.Size = new System.Drawing.Size(85, 26);
             this.btnActualizar.TabIndex = 1;
             this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.UseVisualStyleBackColor = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(813, 397);
+            this.btnSalir.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalir.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.btnSalir.Location = new System.Drawing.Point(803, 394);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.Size = new System.Drawing.Size(85, 26);
             this.btnSalir.TabIndex = 2;
             this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // tsUsuarios
@@ -230,12 +236,12 @@ namespace UI.Desktop
             this.tsbNuevo,
             this.tsbEditar,
             this.tsbEliminar,
-            this.tsbBuscar,
             this.cmbCriterio,
-            this.txtBusqueda});
+            this.txtBusqueda,
+            this.tsbBuscar});
             this.tsUsuarios.Location = new System.Drawing.Point(3, 0);
             this.tsUsuarios.Name = "tsUsuarios";
-            this.tsUsuarios.Size = new System.Drawing.Size(443, 27);
+            this.tsUsuarios.Size = new System.Drawing.Size(412, 27);
             this.tsUsuarios.TabIndex = 0;
             // 
             // tsbNuevo
@@ -268,16 +274,6 @@ namespace UI.Desktop
             this.tsbEliminar.Text = "Eliminar";
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
-            // tsbBuscar
-            // 
-            this.tsbBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbBuscar.Image = ((System.Drawing.Image)(resources.GetObject("tsbBuscar.Image")));
-            this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbBuscar.Name = "tsbBuscar";
-            this.tsbBuscar.Size = new System.Drawing.Size(24, 24);
-            this.tsbBuscar.Text = "Buscar";
-            this.tsbBuscar.Click += new System.EventHandler(this.tsbBuscar_Click);
-            // 
             // cmbCriterio
             // 
             this.cmbCriterio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -288,10 +284,21 @@ namespace UI.Desktop
             // 
             // txtBusqueda
             // 
+            this.txtBusqueda.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(140, 27);
             this.txtBusqueda.Enter += new System.EventHandler(this.txtBusqueda_Enter);
             this.txtBusqueda.Leave += new System.EventHandler(this.txtBusqueda_Leave);
+            // 
+            // tsbBuscar
+            // 
+            this.tsbBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbBuscar.Image = ((System.Drawing.Image)(resources.GetObject("tsbBuscar.Image")));
+            this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbBuscar.Name = "tsbBuscar";
+            this.tsbBuscar.Size = new System.Drawing.Size(24, 24);
+            this.tsbBuscar.Text = "Buscar";
+            this.tsbBuscar.Click += new System.EventHandler(this.tsbBuscar_Click);
             // 
             // Usuarios
             // 

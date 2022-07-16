@@ -61,11 +61,11 @@
             // tcMaterias.ContentPanel
             // 
             this.tcMaterias.ContentPanel.Controls.Add(this.tlMaterias);
-            this.tcMaterias.ContentPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tcMaterias.ContentPanel.Margin = new System.Windows.Forms.Padding(2);
             this.tcMaterias.ContentPanel.Size = new System.Drawing.Size(684, 373);
             this.tcMaterias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcMaterias.Location = new System.Drawing.Point(0, 0);
-            this.tcMaterias.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tcMaterias.Margin = new System.Windows.Forms.Padding(2);
             this.tcMaterias.Name = "tcMaterias";
             this.tcMaterias.Size = new System.Drawing.Size(684, 400);
             this.tcMaterias.TabIndex = 0;
@@ -86,7 +86,7 @@
             this.tlMaterias.Controls.Add(this.btnSalir, 1, 1);
             this.tlMaterias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlMaterias.Location = new System.Drawing.Point(0, 0);
-            this.tlMaterias.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tlMaterias.Margin = new System.Windows.Forms.Padding(2);
             this.tlMaterias.Name = "tlMaterias";
             this.tlMaterias.RowCount = 2;
             this.tlMaterias.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -123,7 +123,7 @@
             this.dgvMaterias.EnableHeadersVisualStyles = false;
             this.dgvMaterias.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
             this.dgvMaterias.Location = new System.Drawing.Point(2, 2);
-            this.dgvMaterias.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvMaterias.Margin = new System.Windows.Forms.Padding(2);
             this.dgvMaterias.MultiSelect = false;
             this.dgvMaterias.Name = "dgvMaterias";
             this.dgvMaterias.ReadOnly = true;
@@ -144,7 +144,7 @@
             this.dgvMaterias.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvMaterias.RowTemplate.Height = 24;
             this.dgvMaterias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMaterias.Size = new System.Drawing.Size(680, 346);
+            this.dgvMaterias.Size = new System.Drawing.Size(680, 339);
             this.dgvMaterias.TabIndex = 0;
             // 
             // id
@@ -195,24 +195,30 @@
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(566, 352);
-            this.btnActualizar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnActualizar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizar.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.btnActualizar.Location = new System.Drawing.Point(506, 345);
+            this.btnActualizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(56, 19);
+            this.btnActualizar.Size = new System.Drawing.Size(86, 26);
             this.btnActualizar.TabIndex = 1;
             this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.UseVisualStyleBackColor = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(626, 352);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSalir.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalir.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.btnSalir.Location = new System.Drawing.Point(596, 345);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(56, 19);
+            this.btnSalir.Size = new System.Drawing.Size(86, 26);
             this.btnSalir.TabIndex = 2;
             this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // tsMaterias
@@ -272,7 +278,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 400);
             this.Controls.Add(this.tcMaterias);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Materias";
             this.Text = "Materias";
             this.Load += new System.EventHandler(this.Materias_Load);

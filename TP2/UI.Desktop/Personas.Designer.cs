@@ -36,13 +36,6 @@ namespace UI.Desktop
             this.tcPersonas = new System.Windows.Forms.ToolStripContainer();
             this.tlPersonas = new System.Windows.Forms.TableLayoutPanel();
             this.dgvPersonas = new System.Windows.Forms.DataGridView();
-            this.btnActualizar = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.tsPersonas = new System.Windows.Forms.ToolStrip();
-            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
-            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
-            this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +46,13 @@ namespace UI.Desktop
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombrePlan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.tsPersonas = new System.Windows.Forms.ToolStrip();
+            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
+            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
+            this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tcPersonas.ContentPanel.SuspendLayout();
             this.tcPersonas.TopToolStripPanel.SuspendLayout();
             this.tcPersonas.SuspendLayout();
@@ -67,11 +67,11 @@ namespace UI.Desktop
             // tcPersonas.ContentPanel
             // 
             this.tcPersonas.ContentPanel.Controls.Add(this.tlPersonas);
-            this.tcPersonas.ContentPanel.Size = new System.Drawing.Size(898, 423);
+            this.tcPersonas.ContentPanel.Size = new System.Drawing.Size(1096, 423);
             this.tcPersonas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcPersonas.Location = new System.Drawing.Point(0, 0);
             this.tcPersonas.Name = "tcPersonas";
-            this.tcPersonas.Size = new System.Drawing.Size(898, 450);
+            this.tcPersonas.Size = new System.Drawing.Size(1096, 450);
             this.tcPersonas.TabIndex = 0;
             this.tcPersonas.Text = "toolStripContainer1";
             // 
@@ -94,7 +94,7 @@ namespace UI.Desktop
             this.tlPersonas.RowCount = 2;
             this.tlPersonas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlPersonas.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlPersonas.Size = new System.Drawing.Size(898, 423);
+            this.tlPersonas.Size = new System.Drawing.Size(1096, 423);
             this.tlPersonas.TabIndex = 0;
             // 
             // dgvPersonas
@@ -150,81 +150,9 @@ namespace UI.Desktop
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvPersonas.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPersonas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPersonas.Size = new System.Drawing.Size(892, 388);
+            this.dgvPersonas.Size = new System.Drawing.Size(1090, 385);
             this.dgvPersonas.TabIndex = 0;
             this.dgvPersonas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPersonas_CellContentClick);
-            // 
-            // btnActualizar
-            // 
-            this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(739, 397);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
-            this.btnActualizar.TabIndex = 1;
-            this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.UseVisualStyleBackColor = true;
-            this.btnActualizar.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Location = new System.Drawing.Point(820, 397);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(75, 23);
-            this.btnSalir.TabIndex = 2;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // tsPersonas
-            // 
-            this.tsPersonas.Dock = System.Windows.Forms.DockStyle.None;
-            this.tsPersonas.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.tsPersonas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbNuevo,
-            this.tsbEditar,
-            this.tsbEliminar,
-            this.toolStripLabel1});
-            this.tsPersonas.Location = new System.Drawing.Point(3, 0);
-            this.tsPersonas.Name = "tsPersonas";
-            this.tsPersonas.Size = new System.Drawing.Size(226, 27);
-            this.tsPersonas.TabIndex = 0;
-            // 
-            // tsbNuevo
-            // 
-            this.tsbNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNuevo.Image = ((System.Drawing.Image)(resources.GetObject("tsbNuevo.Image")));
-            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNuevo.Name = "tsbNuevo";
-            this.tsbNuevo.Size = new System.Drawing.Size(24, 24);
-            this.tsbNuevo.Text = "Nuevo";
-            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
-            // 
-            // tsbEditar
-            // 
-            this.tsbEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEditar.Image = ((System.Drawing.Image)(resources.GetObject("tsbEditar.Image")));
-            this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEditar.Name = "tsbEditar";
-            this.tsbEditar.Size = new System.Drawing.Size(24, 24);
-            this.tsbEditar.Text = "Editar";
-            this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
-            // 
-            // tsbEliminar
-            // 
-            this.tsbEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEliminar.Image = ((System.Drawing.Image)(resources.GetObject("tsbEliminar.Image")));
-            this.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEliminar.Name = "tsbEliminar";
-            this.tsbEliminar.Size = new System.Drawing.Size(24, 24);
-            this.tsbEliminar.Text = "Eliminar";
-            this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Font = new System.Drawing.Font("Arial", 10.8F);
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(142, 24);
-            this.toolStripLabel1.Text = "Listado de Personas";
             // 
             // id
             // 
@@ -316,11 +244,89 @@ namespace UI.Desktop
             this.NombrePlan.ReadOnly = true;
             this.NombrePlan.Width = 122;
             // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnActualizar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizar.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.btnActualizar.Location = new System.Drawing.Point(917, 394);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(85, 26);
+            this.btnActualizar.TabIndex = 1;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalir.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.btnSalir.Location = new System.Drawing.Point(1008, 394);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(85, 26);
+            this.btnSalir.TabIndex = 2;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // tsPersonas
+            // 
+            this.tsPersonas.Dock = System.Windows.Forms.DockStyle.None;
+            this.tsPersonas.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.tsPersonas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbNuevo,
+            this.tsbEditar,
+            this.tsbEliminar,
+            this.toolStripLabel1});
+            this.tsPersonas.Location = new System.Drawing.Point(3, 0);
+            this.tsPersonas.Name = "tsPersonas";
+            this.tsPersonas.Size = new System.Drawing.Size(226, 27);
+            this.tsPersonas.TabIndex = 0;
+            // 
+            // tsbNuevo
+            // 
+            this.tsbNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbNuevo.Image = ((System.Drawing.Image)(resources.GetObject("tsbNuevo.Image")));
+            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNuevo.Name = "tsbNuevo";
+            this.tsbNuevo.Size = new System.Drawing.Size(24, 24);
+            this.tsbNuevo.Text = "Nuevo";
+            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
+            // 
+            // tsbEditar
+            // 
+            this.tsbEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbEditar.Image = ((System.Drawing.Image)(resources.GetObject("tsbEditar.Image")));
+            this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEditar.Name = "tsbEditar";
+            this.tsbEditar.Size = new System.Drawing.Size(24, 24);
+            this.tsbEditar.Text = "Editar";
+            this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
+            // 
+            // tsbEliminar
+            // 
+            this.tsbEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbEliminar.Image = ((System.Drawing.Image)(resources.GetObject("tsbEliminar.Image")));
+            this.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEliminar.Name = "tsbEliminar";
+            this.tsbEliminar.Size = new System.Drawing.Size(24, 24);
+            this.tsbEliminar.Text = "Eliminar";
+            this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Font = new System.Drawing.Font("Arial", 10.8F);
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(142, 24);
+            this.toolStripLabel1.Text = "Listado de Personas";
+            // 
             // Personas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(898, 450);
+            this.ClientSize = new System.Drawing.Size(1096, 450);
             this.Controls.Add(this.tcPersonas);
             this.Name = "Personas";
             this.Text = "Personas";

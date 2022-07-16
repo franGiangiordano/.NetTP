@@ -79,24 +79,45 @@ namespace UI.Desktop
         }
 
 
-
-
         public bool Validar() {
-            if ((cmbCargo1.SelectedIndex == 0) && (cmbCargo2.SelectedIndex == 0)) {
-                return false;
-            }
-
+            string errores = "";
             if ((cmbCargo1.SelectedIndex == -1) || (cmbCargo2.SelectedIndex == -1))
             {
+                errores += "Existen uno o mas campos vacios, rellenelos antes de continuar\n";
+            }
+            if ((cmbCargo1.SelectedIndex == 0) && (cmbCargo2.SelectedIndex == 0)) {
+
+                errores += "No se pueden asignar dos ayudantes a un cuso sin al menos un Docente\n";
+            }
+            if (!errores.Equals(""))
+            {
+                this.Notificar(errores, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
-
-            return true;
+            else
+            {
+                return true;
+            }
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(Validar().ToString());
+            if (Validar())
+            {
+                GuardarCambios();
+                Close();
+            }
+        }
+
+        public override void Notificar(string titulo, string mensaje, MessageBoxButtons
+           botones, MessageBoxIcon icono)
+        {
+            MessageBox.Show(mensaje, titulo, botones, icono);
+        }
+        public override void Notificar(string mensaje, MessageBoxButtons botones,
+        MessageBoxIcon icono)
+        {
+            this.Notificar(this.Text, mensaje, botones, icono);
         }
     }
 }

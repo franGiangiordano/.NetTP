@@ -137,7 +137,7 @@
             this.dgvEspecialidades.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvEspecialidades.RowTemplate.Height = 24;
             this.dgvEspecialidades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEspecialidades.Size = new System.Drawing.Size(400, 312);
+            this.dgvEspecialidades.Size = new System.Drawing.Size(400, 305);
             this.dgvEspecialidades.TabIndex = 0;
             // 
             // ID
@@ -161,24 +161,30 @@
             // btnActualizar
             // 
             this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(276, 318);
+            this.btnActualizar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizar.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.btnActualizar.Location = new System.Drawing.Point(226, 311);
             this.btnActualizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(66, 19);
+            this.btnActualizar.Size = new System.Drawing.Size(86, 26);
             this.btnActualizar.TabIndex = 1;
             this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.UseVisualStyleBackColor = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(346, 318);
+            this.btnSalir.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalir.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.btnSalir.Location = new System.Drawing.Point(316, 311);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(56, 19);
+            this.btnSalir.Size = new System.Drawing.Size(86, 26);
             this.btnSalir.TabIndex = 2;
             this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // tsEspecialidades

@@ -41,13 +41,21 @@ namespace UI.Desktop
                 Usuario usuarioEncontrado = ul.GetUsuarioLogin(txtUsuario.Text, txtPass.Text);
                 if (usuarioEncontrado!= null)
                 {
-                    Principal formPrincipal = new Principal(usuarioEncontrado.ID);
-                    //this.Hide();
-                    //formPrincipal.ShowDialog();
-                    formPrincipal.Show();
-                    formPrincipal.FormClosed += Logout;
-                    //this.Show();
-                    this.Hide();
+                    if(usuarioEncontrado.Habilitado != false)
+                    {
+                        Principal formPrincipal = new Principal(usuarioEncontrado.ID);
+                        //this.Hide();
+                        //formPrincipal.ShowDialog();
+                        formPrincipal.Show();
+                        formPrincipal.FormClosed += Logout;
+                        //this.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        Notificar("Login", "Lo sentimos, no puede ingresar al sistema \n Su usuario se encuentra inhabilitado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    
                 }
                 else
                     {
