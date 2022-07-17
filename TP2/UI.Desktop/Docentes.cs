@@ -75,8 +75,8 @@ namespace UI.Desktop
         private void tsbEditar_Click(object sender, EventArgs e)
         {
             if (dgvDocentes.Rows.Count != 0) {
-                int ID = ((Business.Entities.Usuario)this.dgvDocentes.SelectedRows[0].DataBoundItem).ID;
-                UsuarioDesktop formUsuario = new UsuarioDesktop(ID, ApplicationForm.ModoForm.Modificacion);
+                int ID = ((Business.Entities.DocenteCurso)this.dgvDocentes.SelectedRows[0].DataBoundItem).ID;
+                DocenteDesktop formUsuario = new DocenteDesktop(ID, ApplicationForm.ModoForm.Modificacion);
                 formUsuario.ShowDialog();
                 this.Listar();
             }

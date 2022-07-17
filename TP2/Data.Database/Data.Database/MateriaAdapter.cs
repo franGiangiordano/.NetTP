@@ -258,7 +258,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
 
-                SqlCommand cmdMaterias = new SqlCommand("select * from materias m join cursos c on m.id_materia=c.id_materia join alumnos_inscripciones ai on ai.id_curso=c.id_curso where (ai.id_alumno=id_alumno) and (ai.condicion = 'Aprobado' or ai.condicion = 'Regular' or ai.condicion = 'Inscripto') and (c.anio_calendario = YEAR(CURRENT_TIMESTAMP))", sqlconn);
+                SqlCommand cmdMaterias = new SqlCommand("select * from materias m join cursos c on m.id_materia=c.id_materia join alumnos_inscripciones ai on ai.id_curso=c.id_curso where (ai.id_alumno=@id_alumno) and (ai.condicion = 'Aprobado' or ai.condicion = 'Regular' or ai.condicion = 'Inscripto') and (c.anio_calendario = YEAR(CURRENT_TIMESTAMP))", sqlconn);
                 cmdMaterias.Parameters.Add("@id_alumno", SqlDbType.Int).Value = idAlumno;
                 SqlDataReader drMaterias = cmdMaterias.ExecuteReader();
 

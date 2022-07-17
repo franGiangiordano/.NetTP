@@ -31,9 +31,11 @@ namespace UI.Desktop
         {
             InitializeComponent();
             idAlumno = idPersona;
+            cargarComboLegajos();
             cargarComboMaterias(idPersona);
             cargarComboComisiones(idPersona);
-            validarPermisos(idPersona);
+           // validarMateriasDisponibles();            
+            validarPermisos(idPersona);            
         }
 
         public AlumnoInscripcionDesktop(int idPersona, int ID, ApplicationForm.ModoForm modo) : this()
@@ -44,8 +46,10 @@ namespace UI.Desktop
             idAlumno = idPersona;
             AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
             AlumnoInscripcionActual = ail.GetOne(ID);
+            cargarComboLegajos();
             cargarComboMaterias(idPersona);
-            cargarComboComisiones(idPersona);
+            cargarComboComisiones(idPersona);            
+           // validarMateriasDisponibles();
             MapearDeDatos();
             validarPermisos(idPersona);
         }
@@ -56,6 +60,15 @@ namespace UI.Desktop
             ModuloUsuario mu = mul.GetModuloUsuario(idModulo, Principal.Id);
             return !mu.PermiteAlta;
         }
+
+        private Boolean esAdmin()
+        {
+            ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+            int idModulo = mul.GetIdModulo("AlumnoInscripcionDesktop");
+            ModuloUsuario mu = mul.GetModuloUsuario(idModulo, Principal.Id);
+            return (mu.PermiteAlta && mu.PermiteModificacion);
+        }
+
 
         private bool Validar(){
 
@@ -122,12 +135,16 @@ namespace UI.Desktop
 
             if (!mu.PermiteAlta) //es Docente
             {
+                this.lblLegajo.Visible = false;
+                this.cmbLegajo.Visible = false;
                 cmbMateria.Enabled = false;
                 cmbComision.Enabled = false;
                 cmbCondicion.Enabled = true;
             }
             else if (!mu.PermiteModificacion)
             { //es Alumno 
+                this.lblLegajo.Visible = false;
+                this.cmbLegajo.Visible = false;
                 this.lblCondicion.Visible = false;
                 this.lblNota.Visible = false;
                 cmbCondicion.Visible = false;
@@ -154,12 +171,22 @@ namespace UI.Desktop
             CursoLogic cl = new CursoLogic();
             Persona personaActual = pl.GetOne(idPersona);
             MateriaLogic ml = new MateriaLogic();
-            
-            List<Materia> materias = ml.GetMateriasPlan(personaActual.IDPlan);  //obtenemos listado de materias
-            List<Materia> materiasNoDisponibles = ml.GetMateriasAlumno(idPersona); //obtenemos listado de materias inscriptas o aprobadas            
 
-            if ((ApplicationForm.ModoForm)ModoForm.Alta == Modo)
+            List<Materia> materias = null;
+            List<Materia> materiasNoDisponibles = null;
+            if (esAdmin())
             {
+                materias = ml.GetMateriasPlan(pl.GetOne((int)this.cmbLegajo.SelectedValue).IDPlan);  //obtenemos listado de materias
+                materiasNoDisponibles = ml.GetMateriasAlumno((int)this.cmbLegajo.SelectedValue); //obtenemos listado de materias inscriptas o aprobadas            
+            }
+            else {
+                materias = ml.GetMateriasPlan(personaActual.IDPlan);  //obtenemos listado de materias
+                materiasNoDisponibles = ml.GetMateriasAlumno(idPersona); //obtenemos listado de materias inscriptas o aprobadas            
+            }
+            
+            
+            if ((ApplicationForm.ModoForm)ModoForm.Alta == Modo)
+            {                
                 //calculamos la diferencia
                 this.cmbMateria.DataSource = materias.Where(item => !materiasNoDisponibles.Any(e => item.ID == e.ID)).ToList();
             }
@@ -178,13 +205,31 @@ namespace UI.Desktop
         {            
             if (!string.IsNullOrEmpty(this.cmbMateria.Text)) {
                 PersonaLogic pl = new PersonaLogic();
-                Persona personaActual = pl.GetOne(idPersona);
+                Persona personaActual = null;
+                if (esAdmin())
+                {
+                    personaActual = pl.GetOne((int)this.cmbLegajo.SelectedValue);
+                }
+                else {
+                   personaActual = pl.GetOne(idPersona);
+                }
+                
                 ComisionLogic cl = new ComisionLogic();
                 this.cmbComision.DataSource = cl.GetComisionesPlan(personaActual.IDPlan, (int)this.cmbMateria.SelectedValue);
                 this.cmbComision.DisplayMember = "Descripcion";
                 this.cmbComision.ValueMember = "ID";
             }            
         }
+
+        private void cargarComboLegajos()
+       {
+                PersonaLogic pl = new PersonaLogic();
+                List<Persona> legajos = pl.GetLegajosAlumnos();
+                this.cmbLegajo.DataSource = legajos;
+                this.cmbLegajo.DisplayMember = "Legajo";
+                this.cmbLegajo.ValueMember = "ID";            
+        }
+
 
         public override void MapearDeDatos()
         {
@@ -195,6 +240,7 @@ namespace UI.Desktop
 
             this.txtIDInscripcion.Text = this.AlumnoInscripcionActual.ID.ToString();
 
+            this.cmbLegajo.SelectedValue = this.AlumnoInscripcionActual.IDAlumno;
             //Esta linea sirve para obtener el indice de una Materia            
             this.cmbMateria.SelectedValue = cl.GetOne(AlumnoInscripcionActual.IDCurso).IDMateria;
             //this.cmbMateria.SelectedValue = (int)this.cmbMateria.FindString(ml.GetOne((cl.GetOne(AlumnoInscripcionActual.IDCurso).IDMateria)).Descripcion);
@@ -210,6 +256,13 @@ namespace UI.Desktop
                 this.cmbCondicion.Enabled = false;
             }
 
+            if (esDocente()) {
+                this.cmbCondicion.SelectedItem = alumnoInscripcionActual.Condicion.ToString();
+                if (alumnoInscripcionActual.Nota == -1) {
+                    this.txtNota.Text = "";
+                }
+                this.txtNota.Text = alumnoInscripcionActual.Nota.ToString();
+            }
 
             switch (Modo)
             {
@@ -240,7 +293,8 @@ namespace UI.Desktop
 
             switch (Modo)
             {
-                case (ApplicationForm.ModoForm)ModoForm.Alta:                                        
+                case (ApplicationForm.ModoForm)ModoForm.Alta:
+
                     Curso cu = cl.GetCurso((int)this.cmbMateria.SelectedValue, (int)this.cmbComision.SelectedValue);
                     cu.Cupo -= 1;
                     cl.Update(cu);   
@@ -248,17 +302,22 @@ namespace UI.Desktop
                     AlumnoInscripcionActual = ai;
                     AlumnoInscripcionActual.Condicion = "Inscripto";
                     AlumnoInscripcionActual.IDCurso = cu.ID;
-                    AlumnoInscripcionActual.IDAlumno = idAlumno;
+                    if (esAdmin())
+                    {
+                        AlumnoInscripcionActual.IDAlumno = (int)this.cmbLegajo.SelectedValue;
+                    }
+                    else {
+                        AlumnoInscripcionActual.IDAlumno = idAlumno;
+                    }
+                    
                     AlumnoInscripcionActual.State = Usuario.States.New;
                     break;
 
                 case (ApplicationForm.ModoForm)ModoForm.Modificacion:
-                    //falta inhabilitar el combo a los usuarios no admin
-                    AlumnoInscripcionActual.Condicion = cmbCondicion.SelectedItem.ToString();
-
                     //Si es docente, asignamos la materia y comision que estaban antes
                     if (esDocente()) 
                     {
+                        AlumnoInscripcionActual.Condicion = cmbCondicion.SelectedItem.ToString();
                         idMat = cl.GetOne(AlumnoInscripcionActual.IDCurso).IDMateria;
                         idComision = cl.GetOne(AlumnoInscripcionActual.IDCurso).IDComision;
                         
@@ -272,9 +331,17 @@ namespace UI.Desktop
                         idComision = (int)this.cmbComision.SelectedValue;
                     }
 
+                    if (esAdmin())
+                    {
+                        AlumnoInscripcionActual.IDAlumno = (int)this.cmbLegajo.SelectedValue;
+                    }
+                    else
+                    {
+                        AlumnoInscripcionActual.IDAlumno = idAlumno;
+                    }
+
                     cu = cl.GetCurso(idMat, idComision);
-                    AlumnoInscripcionActual.IDCurso = cu.ID;
-                    AlumnoInscripcionActual.IDAlumno = idAlumno;
+                    AlumnoInscripcionActual.IDCurso = cu.ID;                    
                     AlumnoInscripcionActual.State = Usuario.States.Modified;
                     break;
 
@@ -340,13 +407,23 @@ namespace UI.Desktop
 
         }
 
-        private void AlumnoInscripcionDesktop_Load(object sender, EventArgs e)
-        {
-            if (((this.cmbMateria.Items.Count == 0) || (this.cmbCondicion.Items.Count == 0)) && (!esDocente()))
+        private void validarMateriasDisponibles() {
+            if (((this.cmbMateria.Items.Count == 0) || (this.cmbCondicion.Items.Count == 0)) && (!esDocente()) && (!esAdmin()))
             {
                 this.Notificar("No hay ninguna materia disponible para inscrbirse", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 Close();
             }
+
+        }
+
+        private void AlumnoInscripcionDesktop_Load(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

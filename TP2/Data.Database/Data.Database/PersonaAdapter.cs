@@ -345,7 +345,40 @@ namespace Data.Database
             return personas;
         }
 
-        
+        public List<Persona> GetLegajosAlumnos()
+        {
+            List<Persona> personas = new List<Persona>();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdLegajos = new SqlCommand("select id_persona, legajo from personas where tipo_persona=0 order by legajo", sqlconn);
+
+                SqlDataReader drLegajos = cmdLegajos.ExecuteReader();
+
+                while (drLegajos.Read())
+                {
+                    Business.Entities.Persona per;
+                    per = new Business.Entities.Persona();
+                    per.ID = (int)drLegajos["id_persona"];
+                    per.Legajo = (int)drLegajos["legajo"];
+                    personas.Add(per);
+                }
+                drLegajos.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de legajos de docentes", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+
+            return personas;
+        }
 
     }
 }

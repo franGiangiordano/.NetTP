@@ -140,5 +140,9 @@ namespace UI.Desktop
             }
         }
 
+        private void dgvCursos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

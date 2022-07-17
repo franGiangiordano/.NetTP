@@ -21,5 +21,19 @@ namespace Business.Logic
         {
             return _docenteCurso.GetDocentesCurso(idCurso);
         }
+
+        public DocenteCurso GetOne(int id)
+        {
+            return _docenteCurso.GetOne(id);
+        }
+
+
+        public void Save(Business.Entities.DocenteCurso d)
+        {
+            _docenteCurso.Save(d);
+            return;
+        }
+
+
     }
 }
