@@ -70,7 +70,7 @@ namespace Business.Logic
             return _CursoData.GetCurso(idMat,idCom);
         }
 
-        public Boolean TieneCupo(Curso c) {
+        public Boolean TieneCupo(Curso c) {            
             if (c.Cupo > 0) {
                 return true;
             }

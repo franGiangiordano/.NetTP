@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
 
-//Falta validar que los combos no estén vacíos al inscribirse
 //Falta agregar textbox para la nota
 
 namespace UI.Desktop
@@ -24,24 +23,24 @@ namespace UI.Desktop
 
         public AlumnoInscripcion AlumnoInscripcionActual { get => alumnoInscripcionActual; set => alumnoInscripcionActual = value; }
 
-        public AlumnoInscripcionDesktop(){
-            InitializeComponent();            
+        public AlumnoInscripcionDesktop() {
+            InitializeComponent();
         }
 
         public AlumnoInscripcionDesktop(int idPersona)
         {
-            InitializeComponent();           
+            InitializeComponent();
             idAlumno = idPersona;
             cargarComboMaterias(idPersona);
             cargarComboComisiones(idPersona);
-            validarPermisos(idPersona);           
+            validarPermisos(idPersona);
         }
 
         public AlumnoInscripcionDesktop(int idPersona, int ID, ApplicationForm.ModoForm modo) : this()
         {
-           // InitializeComponent();
+            // InitializeComponent();
             Modo = (ApplicationForm.ModoForm)modo;
-            
+
             idAlumno = idPersona;
             AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
             AlumnoInscripcionActual = ail.GetOne(ID);
@@ -56,6 +55,54 @@ namespace UI.Desktop
             return !mu.PermiteAlta;
         }
 
+        private bool Validar(){
+
+            MateriaLogic ml = new MateriaLogic();
+            CursoLogic cl = new CursoLogic();
+            ComisionLogic col = new ComisionLogic();
+
+            ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+            int idModulo = mul.GetIdModulo("AlumnoInscripcionDesktop");
+            ModuloUsuario mu = mul.GetModuloUsuario(idModulo, Principal.Id);
+            string errores = "";
+
+            if ((this.cmbMateria.Items.Count == 0) || (this.cmbCondicion.Items.Count == 0)) {
+                this.Notificar("No hay ninguna materia disponible para inscrbirse", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+
+            if (esDocente())
+            {
+                if ((String.IsNullOrEmpty(this.cmbCondicion.Text).Equals("Aprobado")) && String.IsNullOrEmpty(this.txtNota.Text))
+                {
+                    errores += "El campo nota no puede estar vacio\n";
+                    this.Notificar(errores, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
+            }
+
+            if ((ApplicationForm.ModoForm)ModoForm.Alta == Modo) {
+                Curso cu = cl.GetCurso((int)this.cmbMateria.SelectedValue, (int)this.cmbComision.SelectedValue);                
+                if (cl.TieneCupo(cu))
+                {                    
+                    return true;
+                }
+                else
+                {
+                    errores += "El curso no tiene cupo disponible\n";
+                    this.Notificar(errores, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            
+                return true;    
+            
+        }
+
+        public override void Notificar(string mensaje, MessageBoxButtons botones,
+        MessageBoxIcon icono)
+        {
+            this.Notificar(this.Text, mensaje, botones, icono);
+        }
 
         private void validarPermisos(int idPersona)
         {
@@ -71,13 +118,20 @@ namespace UI.Desktop
             }
             else if (!mu.PermiteModificacion)
             { //es Alumno 
-                cmbCondicion.Enabled = false;
+                this.lblCondicion.Visible = false;
+                this.lblNota.Visible = false;
+                cmbCondicion.Visible = false;
+                txtNota.Visible = false;
                 cargarComboMaterias(idPersona);
                 cargarComboComisiones(idPersona);
             }
             else { //Para el admin habría que modificar la forma de cargar las inscripciones
                    //Tendriamos que agregar un combo correspondiente al alumno y en funcion de ese alumno
                    //cargar las materias y comisiones o algo x el estilo
+                this.lblCondicion.Visible = false;
+                this.lblNota.Visible = false;
+                cmbCondicion.Visible = false;
+                txtNota.Visible = false;
                 cargarComboMaterias(idPersona);
                 cargarComboComisiones(idPersona);
             }
@@ -93,9 +147,16 @@ namespace UI.Desktop
             MateriaLogic ml = new MateriaLogic();
             List<Materia> materias = ml.GetMateriasPlan(personaActual.IDPlan);  //obtenemos listado de materias
             List<Materia> materiasNoDisponibles = ml.GetMateriasAlumno(idPersona); //obtenemos listado de materias inscriptas o aprobadas            
-            //calculamos la diferencia
-            this.cmbMateria.DataSource = materias.Where(item => !materiasNoDisponibles.Any(e => item.ID == e.ID)).ToList();
 
+            if ((ApplicationForm.ModoForm)ModoForm.Alta == Modo)
+            {
+                //calculamos la diferencia
+                this.cmbMateria.DataSource = materias.Where(item => !materiasNoDisponibles.Any(e => item.ID == e.ID)).ToList();
+            }
+            else {
+                this.cmbMateria.DataSource = materias;
+            }
+            
 
             this.cmbMateria.DisplayMember = "Descripcion";
             this.cmbMateria.ValueMember = "ID";
@@ -103,15 +164,15 @@ namespace UI.Desktop
         }
 
         private void cargarComboComisiones(int idPersona)
-        {
-            PersonaLogic pl = new PersonaLogic();
-            Persona personaActual = pl.GetOne(idPersona);
-
-            ComisionLogic cl = new ComisionLogic();
-            this.cmbComision.DataSource = cl.GetComisionesPlan(personaActual.IDPlan, (int)this.cmbMateria.SelectedValue);
-            this.cmbComision.DisplayMember = "Descripcion";
-            this.cmbComision.ValueMember = "ID";
-
+        {            
+            if (!string.IsNullOrEmpty(this.cmbMateria.Text)) {
+                PersonaLogic pl = new PersonaLogic();
+                Persona personaActual = pl.GetOne(idPersona);
+                ComisionLogic cl = new ComisionLogic();
+                this.cmbComision.DataSource = cl.GetComisionesPlan(personaActual.IDPlan, (int)this.cmbMateria.SelectedValue);
+                this.cmbComision.DisplayMember = "Descripcion";
+                this.cmbComision.ValueMember = "ID";
+            }            
         }
 
         public override void MapearDeDatos()
@@ -162,27 +223,22 @@ namespace UI.Desktop
             MateriaLogic ml = new MateriaLogic();
             CursoLogic cl = new CursoLogic();
             ComisionLogic col = new ComisionLogic();
+
+            int idMat;
+            int idComision;
+
             switch (Modo)
             {
-                case (ApplicationForm.ModoForm)ModoForm.Alta:                    
-                    int idMat = ml.GetPorDescripcion(cmbMateria.SelectedItem.ToString()).ID;
-                    int idComision = col.GetPorDescripcion(cmbComision.SelectedItem.ToString()).ID;
-                    Curso cu = cl.GetCurso(idMat,idComision);
-
-                    if (cl.TieneCupo(cu))
-                    {
-                        cu.Cupo -= 1;
-                        cl.Update(cu);   
-                        AlumnoInscripcion ai = new AlumnoInscripcion();
-                        AlumnoInscripcionActual = ai;
-                        AlumnoInscripcionActual.Condicion = "Inscripto";
-                        AlumnoInscripcionActual.IDCurso = cu.ID;
-                        AlumnoInscripcionActual.IDAlumno = idAlumno;
-                        AlumnoInscripcionActual.State = Usuario.States.New;
-                    }
-                    else {
-                        this.Notificar("El curso no tiene cupo disponible", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }                    
+                case (ApplicationForm.ModoForm)ModoForm.Alta:                                        
+                    Curso cu = cl.GetCurso((int)this.cmbMateria.SelectedValue, (int)this.cmbComision.SelectedValue);
+                    cu.Cupo -= 1;
+                    cl.Update(cu);   
+                    AlumnoInscripcion ai = new AlumnoInscripcion();
+                    AlumnoInscripcionActual = ai;
+                    AlumnoInscripcionActual.Condicion = "Inscripto";
+                    AlumnoInscripcionActual.IDCurso = cu.ID;
+                    AlumnoInscripcionActual.IDAlumno = idAlumno;
+                    AlumnoInscripcionActual.State = Usuario.States.New;
                     break;
 
                 case (ApplicationForm.ModoForm)ModoForm.Modificacion:
@@ -194,8 +250,8 @@ namespace UI.Desktop
                         idComision = cl.GetOne(AlumnoInscripcionActual.IDCurso).IDComision;
                     }
                     else {
-                        idMat = ml.GetPorDescripcion(cmbMateria.SelectedItem.ToString()).ID;
-                        idComision = col.GetPorDescripcion(cmbComision.SelectedItem.ToString()).ID;                        
+                        idMat = (int)this.cmbMateria.SelectedValue;
+                        idComision = (int)this.cmbComision.SelectedValue;
                     }
 
                     cu = cl.GetCurso(idMat, idComision);
@@ -211,7 +267,7 @@ namespace UI.Desktop
                 case (ApplicationForm.ModoForm)ModoForm.Consulta:
                     AlumnoInscripcionActual.State = Usuario.States.Modified;
                     break;
-            }
+            }            
         }
 
         public override void GuardarCambios()
@@ -219,6 +275,7 @@ namespace UI.Desktop
             MapearADatos();
             AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
             ail.Save(AlumnoInscripcionActual);
+             
         }
 
 
@@ -228,9 +285,13 @@ namespace UI.Desktop
         }
 
         private void bntAceptar_Click(object sender, EventArgs e)
-        {
-            GuardarCambios();
-            Close();
+        {            
+                if (Validar())
+                {
+                    GuardarCambios();
+                    Close();
+                }           
+            
         }
 
         private void label1_Click(object sender, EventArgs e)

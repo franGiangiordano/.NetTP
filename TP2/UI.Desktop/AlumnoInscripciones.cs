@@ -58,10 +58,16 @@ namespace UI.Desktop
             {
                 this.tsbNuevo.Visible = false;
                 this.tsbEliminar.Visible = false;
-            } else if (!mu.PermiteModificacion) { //es Alumno 
+            }
+            else if (!mu.PermiteModificacion)
+            { //es Alumno 
                 this.tsbEditar.Visible = false;
-                this.cmbFiltroComision.ComboBox.Enabled = false;
-                this.cmbFiltroMateria.ComboBox.Enabled = false;
+                this.cmbFiltroComision.ComboBox.Visible = false;
+                this.cmbFiltroMateria.ComboBox.Visible = false;
+            }
+            else {
+                this.cmbFiltroComision.ComboBox.Visible = false;
+                this.cmbFiltroMateria.ComboBox.Visible = false;
             } 
 
         }

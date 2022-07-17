@@ -38,19 +38,33 @@
             this.txtID = new System.Windows.Forms.Label();
             this.txtIDInscripcion = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
+<<<<<<< Updated upstream
             this.btnAceptar = new System.Windows.Forms.Button();
+=======
+            this.lblNota = new System.Windows.Forms.Label();
+            this.txtNota = new System.Windows.Forms.TextBox();
+>>>>>>> Stashed changes
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 4;
+<<<<<<< Updated upstream
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.97015F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.02985F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 144F));
+=======
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.37653F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.62347F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel1.Controls.Add(this.txtID, 0, 0);
+>>>>>>> Stashed changes
             this.tableLayoutPanel1.Controls.Add(this.lbCurso, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.cmbMateria, 1, 1);
+<<<<<<< Updated upstream
             this.tableLayoutPanel1.Controls.Add(this.lbComision, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.cmbComision, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblCondicion, 2, 0);
@@ -59,6 +73,16 @@
             this.tableLayoutPanel1.Controls.Add(this.txtIDInscripcion, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 2, 2);
+=======
+            this.tableLayoutPanel1.Controls.Add(this.cmbComision, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtIDInscripcion, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cmbCondicion, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblCondicion, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 2, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lblNota, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtNota, 3, 2);
+>>>>>>> Stashed changes
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
@@ -123,13 +147,18 @@
             "Regular",
             "Aprobado",
             "Libre"});
+<<<<<<< Updated upstream
             this.cmbCondicion.Location = new System.Drawing.Point(385, 3);
+=======
+            this.cmbCondicion.Location = new System.Drawing.Point(578, 95);
+>>>>>>> Stashed changes
             this.cmbCondicion.Name = "cmbCondicion";
             this.cmbCondicion.Size = new System.Drawing.Size(121, 21);
             this.cmbCondicion.TabIndex = 8;
             // 
             // txtID
             // 
+<<<<<<< Updated upstream
             this.txtID.AutoSize = true;
             this.txtID.Font = new System.Drawing.Font("Century Gothic", 9F);
             this.txtID.Location = new System.Drawing.Point(254, 55);
@@ -138,6 +167,15 @@
             this.txtID.TabIndex = 0;
             this.txtID.Text = "ID Inscripcion";
             this.txtID.Visible = false;
+=======
+            this.lblCondicion.AutoSize = true;
+            this.lblCondicion.Location = new System.Drawing.Point(435, 92);
+            this.lblCondicion.Name = "lblCondicion";
+            this.lblCondicion.Size = new System.Drawing.Size(54, 13);
+            this.lblCondicion.TabIndex = 9;
+            this.lblCondicion.Text = "Condicion";
+            this.lblCondicion.Click += new System.EventHandler(this.label1_Click);
+>>>>>>> Stashed changes
             // 
             // txtIDInscripcion
             // 
@@ -150,9 +188,13 @@
             // 
             // btnCancelar
             // 
+<<<<<<< Updated upstream
             this.btnCancelar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Location = new System.Drawing.Point(385, 117);
+=======
+            this.btnCancelar.Location = new System.Drawing.Point(435, 353);
+>>>>>>> Stashed changes
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(80, 26);
             this.btnCancelar.TabIndex = 7;
@@ -160,6 +202,7 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+<<<<<<< Updated upstream
             // btnAceptar
             // 
             this.btnAceptar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -171,6 +214,23 @@
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.bntAceptar_Click);
+=======
+            // lblNota
+            // 
+            this.lblNota.AutoSize = true;
+            this.lblNota.Location = new System.Drawing.Point(435, 211);
+            this.lblNota.Name = "lblNota";
+            this.lblNota.Size = new System.Drawing.Size(30, 13);
+            this.lblNota.TabIndex = 10;
+            this.lblNota.Text = "Nota";
+            // 
+            // txtNota
+            // 
+            this.txtNota.Location = new System.Drawing.Point(578, 214);
+            this.txtNota.Name = "txtNota";
+            this.txtNota.Size = new System.Drawing.Size(100, 20);
+            this.txtNota.TabIndex = 11;
+>>>>>>> Stashed changes
             // 
             // AlumnoInscripcionDesktop
             // 
@@ -199,5 +259,7 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ComboBox cmbCondicion;
         private System.Windows.Forms.Label lblCondicion;
+        private System.Windows.Forms.Label lblNota;
+        private System.Windows.Forms.TextBox txtNota;
     }
 }
