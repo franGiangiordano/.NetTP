@@ -38,6 +38,10 @@ namespace Business.Logic
             return;
         }
 
-        
+        public List<Especialidad> GetEspecialidades()
+        {
+            return _EspecialidadData.GetEspecialidades();
+        }
+
     }
 }

@@ -165,7 +165,41 @@ namespace Data.Database
             especialidad.State = BusinessEntity.States.Unmodified;
         }
 
-        
+        public List<Especialidad> GetEspecialidades()
+        {
+            List<Especialidad> especialidades = new List<Especialidad>();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdEspecialidad = new SqlCommand("select distinct id_especialidad, desc_especialidad from especialidades", sqlconn);
+
+                SqlDataReader drEspecialidad = cmdEspecialidad.ExecuteReader();
+
+                while (drEspecialidad.Read())
+                {
+                    Business.Entities.Especialidad es;
+                    es = new Business.Entities.Especialidad();
+                    es.ID = (int)drEspecialidad["id_especialidad"];
+                    es.Descripcion = (string)drEspecialidad["desc_especialidad"];
+                    especialidades.Add(es);
+                }
+                drEspecialidad.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de especialidades", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+
+            return especialidades;
+        }
+
     }
 
 }

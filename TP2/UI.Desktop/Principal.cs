@@ -181,5 +181,11 @@ namespace UI.Desktop
                 this.Close();
             }
         }
+
+        private void btnPlan_Click(object sender, EventArgs e)
+        {
+            Planes formPlanes = new Planes();
+            formPlanes.ShowDialog();
+        }
     }
 }
