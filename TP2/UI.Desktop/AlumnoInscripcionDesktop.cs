@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
 
-//Falta agregar textbox para la nota
+//Falta agregar un combo de alumnos para cuando el admin quiera inscribir a un alumno
 
 namespace UI.Desktop
 {
@@ -44,6 +44,8 @@ namespace UI.Desktop
             idAlumno = idPersona;
             AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
             AlumnoInscripcionActual = ail.GetOne(ID);
+            cargarComboMaterias(idPersona);
+            cargarComboComisiones(idPersona);
             MapearDeDatos();
             validarPermisos(idPersona);
         }
@@ -57,6 +59,7 @@ namespace UI.Desktop
 
         private bool Validar(){
 
+            AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
             MateriaLogic ml = new MateriaLogic();
             CursoLogic cl = new CursoLogic();
             ComisionLogic col = new ComisionLogic();
@@ -65,19 +68,26 @@ namespace UI.Desktop
             int idModulo = mul.GetIdModulo("AlumnoInscripcionDesktop");
             ModuloUsuario mu = mul.GetModuloUsuario(idModulo, Principal.Id);
             string errores = "";
-
-            if ((this.cmbMateria.Items.Count == 0) || (this.cmbCondicion.Items.Count == 0)) {
-                this.Notificar("No hay ninguna materia disponible para inscrbirse", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
-            }
-
+           
             if (esDocente())
             {
-                if ((String.IsNullOrEmpty(this.cmbCondicion.Text).Equals("Aprobado")) && String.IsNullOrEmpty(this.txtNota.Text))
+                //Obligamos al docente a introducir la nota en caso de que desee aprobar a un alumno
+                if (((this.cmbCondicion.Text).Equals("Aprobado")) && String.IsNullOrEmpty(this.txtNota.Text))
                 {
                     errores += "El campo nota no puede estar vacio\n";
                     this.Notificar(errores, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return false;
+                //Validamos la nota ingresada
+                } else if (((this.cmbCondicion.Text).Equals("Aprobado")) && (!String.IsNullOrEmpty(this.txtNota.Text))) {
+                    if (ail.validarNota(this.txtNota.Text))
+                    {
+                        return true;
+                    }
+                    else {                                              
+                        errores += "El campo nota tiene que tener un valor entero entre 6 y 10\n";
+                        this.Notificar(errores, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return false;
+                    }      
                 }
             }
 
@@ -122,8 +132,8 @@ namespace UI.Desktop
                 this.lblNota.Visible = false;
                 cmbCondicion.Visible = false;
                 txtNota.Visible = false;
-                cargarComboMaterias(idPersona);
-                cargarComboComisiones(idPersona);
+              //  cargarComboMaterias(idPersona);
+              //  cargarComboComisiones(idPersona);
             }
             else { //Para el admin habría que modificar la forma de cargar las inscripciones
                    //Tendriamos que agregar un combo correspondiente al alumno y en funcion de ese alumno
@@ -132,8 +142,8 @@ namespace UI.Desktop
                 this.lblNota.Visible = false;
                 cmbCondicion.Visible = false;
                 txtNota.Visible = false;
-                cargarComboMaterias(idPersona);
-                cargarComboComisiones(idPersona);
+               // cargarComboMaterias(idPersona);
+               // cargarComboComisiones(idPersona);
             }
 
         }
@@ -142,9 +152,9 @@ namespace UI.Desktop
         {
             PersonaLogic pl = new PersonaLogic();
             CursoLogic cl = new CursoLogic();
-            Persona personaActual = pl.GetOne(idPersona);            
-
+            Persona personaActual = pl.GetOne(idPersona);
             MateriaLogic ml = new MateriaLogic();
+            
             List<Materia> materias = ml.GetMateriasPlan(personaActual.IDPlan);  //obtenemos listado de materias
             List<Materia> materiasNoDisponibles = ml.GetMateriasAlumno(idPersona); //obtenemos listado de materias inscriptas o aprobadas            
 
@@ -154,7 +164,8 @@ namespace UI.Desktop
                 this.cmbMateria.DataSource = materias.Where(item => !materiasNoDisponibles.Any(e => item.ID == e.ID)).ToList();
             }
             else {
-                this.cmbMateria.DataSource = materias;
+                Materia materiaActual = ml.GetOne(cl.GetOne(AlumnoInscripcionActual.IDCurso).IDMateria);
+                this.cmbMateria.DataSource = (materias.Where(item => !materiasNoDisponibles.Any(e => (item.ID == e.ID) && (item.ID != materiaActual.ID))).ToList());
             }
             
 
@@ -184,15 +195,15 @@ namespace UI.Desktop
 
             this.txtIDInscripcion.Text = this.AlumnoInscripcionActual.ID.ToString();
 
-            //Esta linea sirve para obtener el indice de una Materia
-            
+            //Esta linea sirve para obtener el indice de una Materia            
             this.cmbMateria.SelectedValue = cl.GetOne(AlumnoInscripcionActual.IDCurso).IDMateria;
             //this.cmbMateria.SelectedValue = (int)this.cmbMateria.FindString(ml.GetOne((cl.GetOne(AlumnoInscripcionActual.IDCurso).IDMateria)).Descripcion);
             this.cmbComision.SelectedValue = cl.GetOne(AlumnoInscripcionActual.IDCurso).IDComision;
             //this.cmbComision.SelectedValue = this.cmbComision.FindString((col.GetOne((cl.GetOne(AlumnoInscripcionActual.IDCurso).IDComision)).Descripcion));
-            this.cmbCondicion.SelectedIndex = this.cmbCondicion.FindString(AlumnoInscripcionActual.Condicion);
-            
-
+            //this.cmbCondicion.SelectedIndex = this.cmbCondicion.FindString(AlumnoInscripcionActual.Condicion);
+            if (this.alumnoInscripcionActual.Nota != -1) {
+                this.txtNota.Text = this.alumnoInscripcionActual.Nota.ToString();
+            }            
             //Bloqueamos el combo de condicion salvo que sea admin
             if (!(((pl.GetOne(AlumnoInscripcionActual.IDAlumno)).Tipo.ToString()).Equals("Administrador")))
             {
@@ -244,10 +255,17 @@ namespace UI.Desktop
                 case (ApplicationForm.ModoForm)ModoForm.Modificacion:
                     //falta inhabilitar el combo a los usuarios no admin
                     AlumnoInscripcionActual.Condicion = cmbCondicion.SelectedItem.ToString();
+
+                    //Si es docente, asignamos la materia y comision que estaban antes
                     if (esDocente()) 
                     {
                         idMat = cl.GetOne(AlumnoInscripcionActual.IDCurso).IDMateria;
                         idComision = cl.GetOne(AlumnoInscripcionActual.IDCurso).IDComision;
+                        
+                        //Si acaba de aprobar a un alumno, leemos la nota 
+                        if ((this.cmbCondicion.Text).Equals("Aprobado")) {
+                            AlumnoInscripcionActual.Nota = Int32.Parse(this.txtNota.Text);
+                        }
                     }
                     else {
                         idMat = (int)this.cmbMateria.SelectedValue;
@@ -322,7 +340,13 @@ namespace UI.Desktop
 
         }
 
-
-
+        private void AlumnoInscripcionDesktop_Load(object sender, EventArgs e)
+        {
+            if (((this.cmbMateria.Items.Count == 0) || (this.cmbCondicion.Items.Count == 0)) && (!esDocente()))
+            {
+                this.Notificar("No hay ninguna materia disponible para inscrbirse", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                Close();
+            }
+        }
     }
 }

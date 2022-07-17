@@ -56,5 +56,22 @@ namespace Business.Logic
             return _AlumnoInscripcionData.FiltrarPorComision(idDocente, idComision, idMateria);
         }
 
+        public bool validarNota(string nota)
+        {
+            int numericValue;
+            if (int.TryParse(nota, out numericValue))
+            {
+                if (numericValue >= 6 && numericValue <= 10)
+                {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            else {
+                return false;
+            }
+        }
     }
 }
