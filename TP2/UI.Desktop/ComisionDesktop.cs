@@ -13,43 +13,45 @@ using Business.Entities;
 
 namespace UI.Desktop
 {
-    public partial class PlanDesktop : ApplicationForm
+    public partial class ComisionDesktop : ApplicationForm
     {
-        private Business.Entities.Plan planActual;          
-        public Plan PlanActual { get => planActual; set => planActual = value; } 
+        private Business.Entities.Comision comisionActual;
 
-        public PlanDesktop()
+        public Comision ComisionActual { get => comisionActual; set => comisionActual = value; }
+
+        public ComisionDesktop()
         {
             InitializeComponent();
-            cargarComboEspecialidades();
+            cargarComboPlanes();
         }
 
-        public PlanDesktop(ApplicationForm.ModoForm modo) : this()
+        public ComisionDesktop(ApplicationForm.ModoForm modo) : this()
         {
             Modo = (ApplicationForm.ModoForm)modo;
         }
-        public PlanDesktop(int ID, ApplicationForm.ModoForm modo) : this()
+        public ComisionDesktop(int ID, ApplicationForm.ModoForm modo) : this()
         {
             Modo = (ApplicationForm.ModoForm)modo;
-            PlanLogic el = new PlanLogic();
-            PlanActual = el.GetOne(ID);
+            ComisionLogic pl = new ComisionLogic();
+            ComisionActual = pl.GetOne(ID);
             MapearDeDatos();
         }
 
-        private void cargarComboEspecialidades()
+        private void cargarComboPlanes()
         {
-            EspecialidadLogic el = new EspecialidadLogic();
-            List<Especialidad> especialidades = el.GetEspecialidades();
-            this.cmbEspecialidades.DataSource = especialidades;
-            this.cmbEspecialidades.DisplayMember = "Descripcion";
-            this.cmbEspecialidades.ValueMember = "ID";
+            PlanLogic pl = new PlanLogic();
+            List<Plan> planes = pl.GetDescripcionPlanes();
+            this.cmbPlanes.DataSource = planes;
+            this.cmbPlanes.DisplayMember = "Descripcion";
+            this.cmbPlanes.ValueMember = "ID";
         }
 
         public override void MapearDeDatos()
         {
-
-            this.txtDescripcion.Text = this.PlanActual.Descripcion;
-            this.cmbEspecialidades.SelectedValue = this.PlanActual.IDEspecialidad;
+            //SOLUCIONAR QUE AL CARGAR DESCRIPCION EN VEZ DE GUARDARSE ESTA SE GUARDA COMO DESCRIPCION EL AñO
+            this.txtDesc.Text = this.ComisionActual.Descripcion;
+            this.txtAnioCalendario.Text = this.ComisionActual.AnioEspecialidad.ToString();
+            this.cmbPlanes.SelectedValue = this.ComisionActual.IDPlan;
             switch (Modo)
             {
                 case (ApplicationForm.ModoForm)ModoForm.Alta:
@@ -67,39 +69,40 @@ namespace UI.Desktop
 
             }
         }
-
         public override void MapearADatos()
         {
             switch (Modo)
             {
                 case (ApplicationForm.ModoForm)ModoForm.Alta:
-                    Plan plan= new Plan();
-                    PlanActual = plan;
-                    PlanActual.Descripcion = txtDescripcion.Text;
-                    PlanActual.IDEspecialidad = (int)this.cmbEspecialidades.SelectedValue;
-                    PlanActual.State = Usuario.States.New;
+                    Comision com = new Comision();
+                    ComisionActual = com;
+                    ComisionActual.Descripcion = txtDesc.Text;
+                    ComisionActual.AnioEspecialidad = Int32.Parse(txtAnioCalendario.Text);
+                    ComisionActual.IDPlan = (int)this.cmbPlanes.SelectedValue;
+                    ComisionActual.State = Usuario.States.New;
                     break;
 
                 case (ApplicationForm.ModoForm)ModoForm.Modificacion:
-                    PlanActual.Descripcion = txtDescripcion.Text;
-                    PlanActual.IDEspecialidad = (int)this.cmbEspecialidades.SelectedValue;
-                    PlanActual.State = Usuario.States.Modified;
+                    ComisionActual.Descripcion = txtDesc.Text;
+                    ComisionActual.AnioEspecialidad = Int32.Parse(txtAnioCalendario.Text);
+                    ComisionActual.IDPlan = (int)this.cmbPlanes.SelectedValue;
+                    ComisionActual.State = Usuario.States.Modified;
                     break;
 
                 case (ApplicationForm.ModoForm)ModoForm.Baja:
-                    PlanActual.State = Usuario.States.Deleted;
+                    ComisionActual.State = Usuario.States.Deleted;
                     break;
 
                 case (ApplicationForm.ModoForm)ModoForm.Consulta:
-                    PlanActual.State = Usuario.States.Modified;
+                    ComisionActual.State = Usuario.States.Modified;
                     break;
             }
         }
         public override void GuardarCambios()
         {
             MapearADatos();
-            PlanLogic el = new PlanLogic();
-            el.Save(PlanActual);
+            ComisionLogic cl = new ComisionLogic();
+            cl.Save(ComisionActual);
         }
 
         public override void Notificar(string titulo, string mensaje, MessageBoxButtons botones, MessageBoxIcon icono)
@@ -113,14 +116,19 @@ namespace UI.Desktop
 
         public override bool Validar()
         {
+            int n;
             string errores = "";
-            if (String.IsNullOrEmpty(this.txtDescripcion.Text))
+            if (String.IsNullOrEmpty(this.txtDesc.Text))
             {
                 errores += "Existen uno o mas campos vacios, rellenelos antes de continuar\n";
             }
-            if (!this.txtDescripcion.Text.All(Char.IsLetter))
+            if (!int.TryParse(this.txtAnioCalendario.Text, out n) && Int32.Parse(txtAnioCalendario.Text) >= 2022)
             {
-                errores += "El campo descripcion solo puede contener letras\n";
+                errores += "El campo Año Calendario solo puede contener numeros\n";
+            }
+            if (Int32.Parse(txtAnioCalendario.Text) < 2022)
+            {
+                errores += "El campo Año Calendario debe ser el año actual o posterior\n";
             }
             if (!errores.Equals(""))
             {

@@ -37,6 +37,11 @@ namespace Business.Logic
             _PlanData.Save(p);
             return;
         }
+
+        public List<Plan> GetDescripcionPlanes()
+        {
+            return _PlanData.GetDescripcionPlanes();
+        }
     }
 }
 

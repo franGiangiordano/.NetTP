@@ -187,5 +187,11 @@ namespace UI.Desktop
             Planes formPlanes = new Planes();
             formPlanes.ShowDialog();
         }
+
+        private void btnComision_Click(object sender, EventArgs e)
+        {
+            Comisiones formComisiones = new Comisiones();   
+            formComisiones.ShowDialog();    
+        }
     }
 }

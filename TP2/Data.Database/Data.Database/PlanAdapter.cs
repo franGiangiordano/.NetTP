@@ -170,5 +170,40 @@ namespace Data.Database
             }
             plan.State = BusinessEntity.States.Unmodified;
         }
+
+        public List<Plan> GetDescripcionPlanes()
+        {
+            List<Plan> planes = new List<Plan>();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdPlan = new SqlCommand("select distinct id_plan, desc_plan from planes", sqlconn);
+
+                SqlDataReader drPlan = cmdPlan.ExecuteReader();
+
+                while (drPlan.Read())
+                {
+                    Business.Entities.Plan p;
+                    p = new Business.Entities.Plan();
+                    p.ID = (int)drPlan["id_plan"];
+                    p.Descripcion = (string)drPlan["desc_plan"];
+                    planes.Add(p);
+                }
+                drPlan.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de planes", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+
+            return planes;
+        }
     }
 }

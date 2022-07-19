@@ -267,6 +267,7 @@
             this.btnComision.TabIndex = 14;
             this.btnComision.Text = "Comisiones";
             this.btnComision.UseVisualStyleBackColor = false;
+            this.btnComision.Click += new System.EventHandler(this.btnComision_Click);
             // 
             // btnEspecialidades
             // 
