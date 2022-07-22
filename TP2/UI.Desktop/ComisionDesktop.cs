@@ -48,7 +48,6 @@ namespace UI.Desktop
 
         public override void MapearDeDatos()
         {
-            //SOLUCIONAR QUE AL CARGAR DESCRIPCION EN VEZ DE GUARDARSE ESTA SE GUARDA COMO DESCRIPCION EL AñO
             this.txtDesc.Text = this.ComisionActual.Descripcion;
             this.txtAnioCalendario.Text = this.ComisionActual.AnioEspecialidad.ToString();
             this.cmbPlanes.SelectedValue = this.ComisionActual.IDPlan;
@@ -77,7 +76,7 @@ namespace UI.Desktop
                     Comision com = new Comision();
                     ComisionActual = com;
                     ComisionActual.Descripcion = txtDesc.Text;
-                    ComisionActual.AnioEspecialidad = Int32.Parse(txtAnioCalendario.Text);
+                    ComisionActual.AnioEspecialidad = Int32.Parse(this.txtAnioCalendario.Text);
                     ComisionActual.IDPlan = (int)this.cmbPlanes.SelectedValue;
                     ComisionActual.State = Usuario.States.New;
                     break;
@@ -122,11 +121,11 @@ namespace UI.Desktop
             {
                 errores += "Existen uno o mas campos vacios, rellenelos antes de continuar\n";
             }
-            if (!int.TryParse(this.txtAnioCalendario.Text, out n) && Int32.Parse(txtAnioCalendario.Text) >= 2022)
+            if (!int.TryParse(this.txtAnioCalendario.Text, out n) )
             {
                 errores += "El campo Año Calendario solo puede contener numeros\n";
             }
-            if (Int32.Parse(txtAnioCalendario.Text) < 2022)
+            else if (Int32.Parse(txtAnioCalendario.Text) < 2022)
             {
                 errores += "El campo Año Calendario debe ser el año actual o posterior\n";
             }

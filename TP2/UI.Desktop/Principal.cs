@@ -193,5 +193,12 @@ namespace UI.Desktop
             Comisiones formComisiones = new Comisiones();   
             formComisiones.ShowDialog();    
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //nombre carpeta.NombreForm
+            DatosReportes.ReporteUsuarios formReporteUsuarios = new DatosReportes.ReporteUsuarios();
+            formReporteUsuarios.ShowDialog();
+        }
     }
 }
