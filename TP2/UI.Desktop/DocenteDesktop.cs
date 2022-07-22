@@ -19,40 +19,65 @@ namespace UI.Desktop
         public event EventHandler SelectedIndexChanged;
 
         public DocenteCurso DocenteActual { get => _docenteActual; set => _docenteActual = value; }
+        public int IdCur { get => idCur; set => idCur = value; }
 
         /*private Business.Entities.DocenteCurso _docenteActual2;
 
         public DocenteCurso DocenteActual2 { get => _docenteActual2; set => _docenteActual2 = value; }*/
-
-        public DocenteDesktop()
+        private int idCur;
+        public DocenteDesktop(int idCurso)
         {
+            IdCur = idCurso;
             InitializeComponent();            
             cargarComboDocentes();
+            
         }
 
-        public DocenteDesktop(int ID, ApplicationForm.ModoForm modo) : this()
+        public DocenteDesktop(int idCurso, int ID, ApplicationForm.ModoForm modo) : this()
         {
-         //   InitializeComponent();
+            IdCur = idCurso;
+            InitializeComponent();
             Modo = (ApplicationForm.ModoForm)modo;
             DocenteCursoLogic ml = new DocenteCursoLogic();
             DocenteActual = ml.GetOne(ID);            
             cargarComboDocentes();
             MapearDeDatos();
+            
         }
 
-        
-        
+        public DocenteDesktop()
+        {
+        }
+
         private void cargarComboDocentes()
         {
           PersonaLogic pl = new PersonaLogic();
           List<Persona> docentes = pl.GetLegajosDocentes();
-          this.cmbDocente1.DataSource = docentes;
-          this.cmbDocente1.DisplayMember = "Legajo";
-          this.cmbDocente1.ValueMember = "ID";            
-          this.cmbDocente1.SelectedIndexChanged += new System.EventHandler(cmbDocente1_SelectedIndexChanged);
+          //this.cmbDocente1.DataSource = docentes;
+          
 
-          Persona docente = pl.GetOne((int)this.cmbDocente1.SelectedValue);
-         this.lblNomApe1.Text = "" + docente.Nombre + " " + docente.Apellido;
+             
+
+            DocenteCursoLogic dcl = new DocenteCursoLogic();
+            List<DocenteCurso> docentesNoDisponibles = dcl.GetDocentesNoDisponibles(IdCur);
+
+            if ((ApplicationForm.ModoForm)ModoForm.Alta == Modo)
+            {
+                //calculamos la diferencia
+                this.cmbDocente1.DataSource = docentes.Where(item => !docentesNoDisponibles.Any(e => item.ID == e.IDDocente)).ToList();
+            }
+            else
+            {
+                //Materia materiaActual = ml.GetOne(cl.GetOne(AlumnoInscripcionActual.IDCurso).IDMateria);
+                this.cmbDocente1.DataSource = (docentes.Where(item => !docentesNoDisponibles.Any(e => (item.ID == e.IDDocente) && (item.ID != DocenteActual.IDDocente))).ToList());
+            }
+            this.cmbDocente1.DisplayMember = "Legajo";
+            this.cmbDocente1.ValueMember = "ID";
+            this.cmbDocente1.SelectedIndexChanged += new System.EventHandler(cmbDocente1_SelectedIndexChanged);
+            Persona docente = pl.GetOne((int)this.cmbDocente1.SelectedValue);
+            this.lblNomApe1.Text = "" + docente.Nombre + " " + docente.Apellido;
+
+
             /*
            this.cmbDocente2.DataSource = docentes.Where(x => x.ID != (int)this.cmbDocente1.SelectedValue).ToList(); ;
            this.cmbDocente2.DisplayMember = "Legajo";
@@ -105,6 +130,41 @@ namespace UI.Desktop
             }
         }
 
+        public override void MapearADatos()
+        {
+            PlanLogic pl = new PlanLogic();
+            switch (Modo)
+            {
+                case (ApplicationForm.ModoForm)ModoForm.Alta:
+                    DocenteCurso dc = new DocenteCurso();
+                    DocenteActual = dc;
+                    DocenteActual.IDDocente = (int)cmbDocente1.SelectedValue;
+                    DocenteActual.Cargo = (DocenteCurso.TiposCargos)Enum.Parse(typeof(DocenteCurso.TiposCargos), cmbCargo1.SelectedItem.ToString());
+                    DocenteActual.IDCurso = IdCur;
+
+
+                    DocenteActual.State = Usuario.States.New;
+                    break;
+
+                case (ApplicationForm.ModoForm)ModoForm.Modificacion:
+                    DocenteActual.IDDocente = (int)cmbDocente1.SelectedValue;
+                    DocenteActual.Cargo = (DocenteCurso.TiposCargos)Enum.Parse(typeof(DocenteCurso.TiposCargos), cmbCargo1.SelectedItem.ToString());
+                    DocenteActual.IDCurso = IdCur;
+
+                    DocenteActual.State = Usuario.States.Modified;
+                    break;
+
+                case (ApplicationForm.ModoForm)ModoForm.Baja:
+                    DocenteActual.State = Usuario.States.Deleted;
+                    break;
+
+                case (ApplicationForm.ModoForm)ModoForm.Consulta:
+                    DocenteActual.State = Usuario.States.Modified;
+                    break;
+            }
+        }
+
+
         /*
         private void cmbDocente2_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -140,6 +200,13 @@ namespace UI.Desktop
             {
                 return true;
             }
+        }
+
+        public override void GuardarCambios()
+        {
+            MapearADatos();
+            DocenteCursoLogic dcl = new DocenteCursoLogic();
+            dcl.Save(DocenteActual);
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)

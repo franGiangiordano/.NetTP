@@ -22,6 +22,11 @@ namespace Business.Logic
             return _docenteCurso.GetDocentesCurso(idCurso);
         }
 
+        public List<DocenteCurso> GetDocentesNoDisponibles(int idCurso)
+        {
+            return _docenteCurso.GetDocentesNoDisponibles(idCurso);
+        }
+
         public DocenteCurso GetOne(int id)
         {
             return _docenteCurso.GetOne(id);

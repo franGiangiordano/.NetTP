@@ -19,9 +19,8 @@ namespace UI.Desktop
             InitializeComponent();
             dgvPlanes.AutoGenerateColumns = false;
             Listar();
-            validarPermisos();
+            //validarPermisos();
         }
-
 
         private void validarPermisos()
         {

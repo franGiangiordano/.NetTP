@@ -11,8 +11,6 @@ using Business.Logic;
 using Business.Entities;
 
 
-//Falta mostrar el ID 1 para administradores
-
 namespace UI.Desktop
 {
     public partial class UsuarioDesktop : ApplicationForm
@@ -138,9 +136,108 @@ namespace UI.Desktop
         
         public override void GuardarCambios()
         {
-            MapearADatos();
+            //esto es sólo en caso de que se modifique el id_persona y cambie el rol del usuario
+            int idViejo = -1;
+            if (Modo.ToString().Equals("Modificacion")) {
+                idViejo = this.UsuarioActual.IdPersona;
+            }
+                
+            ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+            PersonaLogic pl = new PersonaLogic();
             UsuarioLogic ul = new UsuarioLogic();
-            ul.Save(UsuarioActual);
+            MapearADatos(); //aca ya cambio el Id
+
+            if (Modo.ToString().Equals("Alta")) {
+
+                ul.Save(UsuarioActual);
+                Persona per = pl.GetOne(UsuarioActual.IdPersona);
+                List<ModuloUsuario> modulos = crearLista((int)per.Tipo);
+                mul.CargarPermisos(modulos);
+            }
+            else if (Modo.ToString().Equals("Baja"))
+            {
+                mul.EliminarPermisos(UsuarioActual.ID);
+                ul.Save(UsuarioActual);
+            } else if (Modo.ToString().Equals("Modificacion")){
+                Persona perNueva = pl.GetOne(UsuarioActual.IdPersona);
+                Persona perVieja = pl.GetOne(idViejo);
+                if (perNueva.Tipo == perVieja.Tipo)
+                {
+                    ul.Save(UsuarioActual);
+                }
+                else {                    
+                    mul.EliminarPermisos(UsuarioActual.ID);
+                    List<ModuloUsuario> modulos = crearLista((int)perNueva.Tipo);
+                    mul.CargarPermisos(modulos);
+                    ul.Save(UsuarioActual);
+                }                
+            }
+        }
+
+        private List<ModuloUsuario> crearLista(int tipo)
+        {
+            List<ModuloUsuario> m = new List<ModuloUsuario>();
+            for (int i = 1; i <= 6; i++) {
+                ModuloUsuario modulo = new ModuloUsuario();
+                if (tipo == 2) {
+                    modulo.IdModulo = i;
+                    modulo.IdUsuario = UsuarioActual.ID;
+                    modulo.PermiteAlta = true;
+                    modulo.PermiteBaja = true;
+                    modulo.PermiteConsulta = true;
+                    modulo.PermiteModificacion = true;
+                } else if (tipo == 0)
+                {
+                    if (i == 1)
+                    {
+                        modulo.IdModulo = i;
+                        modulo.IdUsuario = UsuarioActual.ID;
+                        modulo.PermiteAlta = false;
+                        modulo.PermiteBaja = false;
+                        modulo.PermiteConsulta = true;
+                        modulo.PermiteModificacion = false;
+                    }
+                    else if (i >= 5)
+                    {
+                        modulo.IdModulo = i;
+                        modulo.IdUsuario = UsuarioActual.ID;
+                        modulo.PermiteAlta = true;
+                        modulo.PermiteBaja = true;
+                        modulo.PermiteConsulta = true;
+                        modulo.PermiteModificacion = false;
+                    }
+                    else {
+                        modulo.IdModulo = i;
+                        modulo.IdUsuario = UsuarioActual.ID;
+                        modulo.PermiteAlta = false;
+                        modulo.PermiteBaja = false;
+                        modulo.PermiteConsulta = false;
+                        modulo.PermiteModificacion = false;
+                    }               
+                }
+                else if (tipo == 1)
+                {
+                    if (i == 1 || i == 5 || i == 6)
+                    {
+                        modulo.IdModulo = i;
+                        modulo.IdUsuario = UsuarioActual.ID;
+                        modulo.PermiteAlta = false;
+                        modulo.PermiteBaja = false;
+                        modulo.PermiteConsulta = true;
+                        modulo.PermiteModificacion = true;
+                    }
+                    else {
+                        modulo.IdModulo = i;
+                        modulo.IdUsuario = UsuarioActual.ID;
+                        modulo.PermiteAlta = false;
+                        modulo.PermiteBaja = false;
+                        modulo.PermiteConsulta = false;
+                        modulo.PermiteModificacion = false;
+                    }                    
+                }
+                m.Add(modulo);
+            }
+            return m;
         }
 
         public override bool Validar()

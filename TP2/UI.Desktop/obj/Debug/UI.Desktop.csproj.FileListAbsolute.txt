@@ -202,3 +202,7 @@ C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desk
 C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.PlanDesktop.resources
 C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Comisiones.resources
 C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.ComisionDesktop.resources
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.ComisionDesktop.resources
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.PlanDesktop.resources
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Comisiones.resources
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.Planes.resources

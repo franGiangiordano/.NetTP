@@ -19,7 +19,7 @@ namespace UI.Desktop
             InitializeComponent();
             dgvComisiones.AutoGenerateColumns = false;
             Listar();
-            validarPermisos();
+           // validarPermisos();
         }
 
 

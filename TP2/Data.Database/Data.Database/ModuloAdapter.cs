@@ -87,7 +87,105 @@ namespace Data.Database
             return mod;
         }
 
-       
+        public void cargarPermisos(List<ModuloUsuario> modulos)
+        {
+            int i = 0;
+                using (SqlConnection connection = new SqlConnection("Data Source=localhost\\SQLEXPRESS;Initial Catalog=academia;Integrated Security=SSPI;")) {
+                    connection.Open();
+                    SqlTransaction sqlTran = connection.BeginTransaction();
+
+                    SqlCommand command = connection.CreateCommand();
+                    command.Transaction = sqlTran;
+                try
+                {                  
+                        foreach (ModuloUsuario m in modulos) {
+                            i++;
+                            command.CommandText =
+                              "INSERT INTO modulos_usuarios VALUES("+$"@modulo{i},@usuario{i},@alta{i},@baja{i},@modificacion{i},@consulta{i})";
+                            command.Parameters.Add($"@modulo{i}", SqlDbType.Int).Value = m.IdModulo;
+                            command.Parameters.Add($"@usuario{i}", SqlDbType.Int).Value = m.IdUsuario;
+                            command.Parameters.Add($"@alta{i}", SqlDbType.Bit).Value = m.PermiteAlta;
+                            command.Parameters.Add($"@baja{i}", SqlDbType.Bit).Value = m.PermiteBaja;
+                            command.Parameters.Add($"@modificacion{i}", SqlDbType.Bit).Value = m.PermiteModificacion;
+                            command.Parameters.Add($"@consulta{i}", SqlDbType.Bit).Value = m.PermiteConsulta;
+                            command.ExecuteNonQuery();                            
+                        }                                                                              
+                    // Commit the transaction.
+                    sqlTran.Commit();                    
+                }
+                catch (Exception Ex)
+                {
+                    //falta rollback
+                    sqlTran.Rollback();
+                    Exception ExcepcionManejada = new Exception("Error al cargar permisos", Ex);
+                    throw ExcepcionManejada;
+                }                
+            }            
+
+        }
+
+        public void editarPermisos(List<ModuloUsuario> modulos)
+        {
+            int i = 0;
+            using (SqlConnection connection = new SqlConnection("Data Source=localhost\\SQLEXPRESS;Initial Catalog=academia;Integrated Security=SSPI;"))
+            {
+                connection.Open();
+                SqlTransaction sqlTran = connection.BeginTransaction();
+
+                SqlCommand command = connection.CreateCommand();
+                command.Transaction = sqlTran;
+                try
+                {
+                        foreach (ModuloUsuario m in modulos)
+                        {
+                            i++;
+                            command.CommandText =
+                              "UPDATE modulos_usuarios SET=id_modulo =" + $"@modulo{i}," + "id_usuario ="+ $"@usuario{i},"+"alta =" + $"@alta{i}," + "baja =" + $"@baja{i}," + "modificacion =" + $"@modificacion{i}," + "consulta =" + $"@consulta{i} where id=modulo_usuario =" + $"@id{i}";
+                            command.Parameters.Add($"@id{i}", SqlDbType.Int).Value = m.ID;
+                            command.Parameters.Add($"@modulo{i}", SqlDbType.Int).Value = m.IdModulo;
+                            command.Parameters.Add($"@usuario{i}", SqlDbType.Int).Value = m.IdUsuario;
+                            command.Parameters.Add($"@alta{i}", SqlDbType.Bit).Value = m.PermiteAlta;
+                            command.Parameters.Add($"@baja{i}", SqlDbType.Bit).Value = m.PermiteBaja;
+                            command.Parameters.Add($"@modificacion{i}", SqlDbType.Bit).Value = m.PermiteModificacion;
+                            command.Parameters.Add($"@consulta{i}", SqlDbType.Bit).Value = m.PermiteConsulta;
+                            command.ExecuteNonQuery();
+                        }                
+                    // Commit the transaction.
+                    sqlTran.Commit();
+                }
+                catch (Exception Ex)
+                {
+                    sqlTran.Rollback();
+                    Exception ExcepcionManejada = new Exception("Error al cargar permisos", Ex);
+                    throw ExcepcionManejada;
+                }
+            }
+
+        }
+
+
+        public void eliminarPermisos(int idUsuario)
+        {
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdDelete = new SqlCommand("delete modulos_usuarios where id_usuario=@id", sqlconn);
+                cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = idUsuario;
+                cmdDelete.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al eliminar permisos", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+
+        }
 
 
     }

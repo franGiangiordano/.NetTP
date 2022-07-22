@@ -18,8 +18,21 @@ namespace Business.Logic
            return md.GetIdModulo(desc);
         }
 
-        public ModuloUsuario GetModuloUsuario(int idModulo, int idUsuario) {
+        public ModuloUsuario GetModuloUsuario(int idModulo,int idUsuario) {
             return md.GetModuloUsuario(idModulo, idUsuario);
         }
+
+        public void CargarPermisos(List<ModuloUsuario> modulos)
+        {
+            md.cargarPermisos(modulos);
+            return;
+        }
+
+        public void EliminarPermisos(int idUsuario)
+        {
+            md.eliminarPermisos(idUsuario);
+            return;
+        }
+
     }
 }

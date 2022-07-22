@@ -50,6 +50,41 @@ namespace Data.Database
 
         }
 
+        public List<DocenteCurso> GetDocentesNoDisponibles(int idCurso)
+        {
+            List<DocenteCurso> personas = new List<DocenteCurso>();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdPersonas = new SqlCommand("select id_docente from docentes_cursos where id_curso = @idCurso", sqlconn);
+                cmdPersonas.Parameters.Add("@idCurso", SqlDbType.Int).Value = idCurso;
+                SqlDataReader drPersonas = cmdPersonas.ExecuteReader();
+
+                while (drPersonas.Read())
+                {
+                    Business.Entities.DocenteCurso per;
+                    per = new Business.Entities.DocenteCurso();
+                    per.IDDocente = (int)drPersonas["id_docente"];
+                    personas.Add(per);
+                }
+                drPersonas.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de docentes para el curso", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+
+            return personas; //llamar a open , hacer select, exeecute reader
+
+        }
+
         public Business.Entities.DocenteCurso GetOne(int ID)
         {
             Business.Entities.DocenteCurso per;
