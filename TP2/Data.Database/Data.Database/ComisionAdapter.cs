@@ -137,11 +137,8 @@ namespace Data.Database
                 this.OpenConnection();
 
                 SqlCommand cmdSave = new SqlCommand("insert into comisiones (desc_comision,anio_especialidad, id_plan) " +
-<<<<<<< Updated upstream
                     "values (@desc_comision, @anio_especialidad, @id_plan) " +
-=======
                     "values (@desc_comision,@anio_especialidad, @id_plan) " +
->>>>>>> Stashed changes
                     "select @@identity", sqlconn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = com.ID;
                 cmdSave.Parameters.Add("@desc_comision", SqlDbType.VarChar, 50).Value = com.Descripcion;
