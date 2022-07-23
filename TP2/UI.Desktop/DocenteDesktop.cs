@@ -204,9 +204,24 @@ namespace UI.Desktop
 
         public override void GuardarCambios()
         {
-            MapearADatos();
             DocenteCursoLogic dcl = new DocenteCursoLogic();
-            dcl.Save(DocenteActual);
+            MapearADatos();
+            if (Modo.ToString().Equals("Modificacion") || Modo.ToString().Equals("Alta"))
+            {
+                if (dcl.validarDocenteCargo(DocenteActual))
+                {
+                    dcl.Save(DocenteActual);
+                }
+                else
+                {
+                    this.Notificar("No se admiten tres ayudantes en un mismo curso sin un docente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            else {
+                dcl.Save(DocenteActual);
+            }
+            
+
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)

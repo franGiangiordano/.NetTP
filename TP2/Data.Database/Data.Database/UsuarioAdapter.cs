@@ -19,6 +19,7 @@ namespace Data.Database
 
         public List<Usuario> GetAll()
         {
+            
             List<Usuario> usuarios = new List<Usuario>();
             try
             {
@@ -75,6 +76,7 @@ namespace Data.Database
         {
             Business.Entities.Usuario usr;
             usr = new Business.Entities.Usuario();
+            
             try
             {
                 this.OpenConnection();
@@ -144,6 +146,7 @@ namespace Data.Database
 
         protected void Update(Usuario usuario)
         {
+            Encrypt64 encriptar = new Encrypt64();
             try
             {
                 this.OpenConnection();
@@ -152,7 +155,7 @@ namespace Data.Database
                     "clave = @clave, habilitado = @habilitado, nombre = @nombre, apellido = @apellido, email = @email, id_persona=@id_persona where id_usuario = @id", sqlconn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = usuario.ID;
                 cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar,50).Value = usuario.NombreUsuario;
-                cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
+                cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = encriptar.Encriptar(usuario.Clave);
                 cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
                 cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Nombre;
                 cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
@@ -176,6 +179,7 @@ namespace Data.Database
 
         protected void Insert(Usuario usuario)
         {
+            Encrypt64 encriptar = new Encrypt64();
             try
             {
                 this.OpenConnection();
@@ -185,7 +189,7 @@ namespace Data.Database
                     "select @@identity", sqlconn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = usuario.ID;
                 cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar, 50).Value = usuario.NombreUsuario;
-                cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
+                cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = encriptar.Encriptar(usuario.Clave);
                 cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
                 cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Nombre;
                 cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
@@ -211,16 +215,41 @@ namespace Data.Database
         public void Save(Usuario usuario)
         {
             if (usuario.State == BusinessEntity.States.New)
-            {
-                this.Insert(usuario);
+            {               
+                try
+                {
+                    this.Insert(usuario);
+                }
+                catch (Exception Ex)
+                {
+                    Exception ExcepcionManejada = new Exception("Error al eliminar usuarios", Ex);
+                    throw ExcepcionManejada;
+                }
             }
             else if (usuario.State == BusinessEntity.States.Deleted)
             {
-                this.Delete(usuario.ID);
+                try {
+                    this.Delete(usuario.ID);
+                }
+                catch (Exception Ex)
+                {
+                    Exception ExcepcionManejada = new Exception("Error al eliminar usuarios", Ex);
+                    throw ExcepcionManejada;
+                }
+
             }
             else if (usuario.State == BusinessEntity.States.Modified)
             {
-                this.Update(usuario);
+                try
+                {
+                    this.Update(usuario);
+                }
+                catch (Exception Ex)
+                {
+                    Exception ExcepcionManejada = new Exception("Error al eliminar usuarios", Ex);
+                    throw ExcepcionManejada;
+                }
+                
             }
             usuario.State = BusinessEntity.States.Unmodified;            
         }
@@ -228,13 +257,14 @@ namespace Data.Database
         //este metodo es para recuperar y validar que el usuario del login es correcto
         public Usuario GetUsuarioLogin(string user, string pass)
         {
+            Encrypt64 encriptar = new Encrypt64();
             Usuario usr = null;
             try
             {
                 OpenConnection();
                 SqlCommand cmdBuscarUsuario = new SqlCommand("select * from usuarios where nombre_usuario like @user and clave like @pass", sqlconn);
                 cmdBuscarUsuario.Parameters.Add("@user", SqlDbType.VarChar, 50).Value = user;
-                cmdBuscarUsuario.Parameters.Add("@pass", SqlDbType.VarChar, 50).Value = pass;
+                cmdBuscarUsuario.Parameters.Add("@pass", SqlDbType.VarChar, 50).Value = encriptar.Encriptar(pass);
                 SqlDataReader drUsuarios = cmdBuscarUsuario.ExecuteReader();
                 if (drUsuarios.Read())
                 {
@@ -242,8 +272,8 @@ namespace Data.Database
                     usr.ID = (int)drUsuarios["id_usuario"];
                     usr.Nombre = (string)drUsuarios["nombre"]; ;
                     usr.Apellido = (string)drUsuarios["apellido"];
-                    usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];
-                    usr.Clave = (string)drUsuarios["clave"];
+                    usr.NombreUsuario = (string)drUsuarios["nombre_usuario"];                    
+                    usr.Clave = (string)drUsuarios["clave"];                                        
                     usr.Email = (string)drUsuarios["email"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
 
@@ -275,6 +305,7 @@ namespace Data.Database
 
         public List<Usuario> BusquedaUsuario(int cmbCriterio, string criterio)
         {
+           
             List<Usuario> usuarios = new List<Usuario>();
             try
             {

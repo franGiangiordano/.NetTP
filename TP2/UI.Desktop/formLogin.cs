@@ -38,7 +38,17 @@ namespace UI.Desktop
                 //otra alternativa para validar y retornar el usuario del login usando @Query a la BD
 
                 UsuarioLogic ul = new UsuarioLogic();
-                Usuario usuarioEncontrado = ul.GetUsuarioLogin(txtUsuario.Text, txtPass.Text);
+                Usuario usuarioEncontrado = null;
+                try {
+                    usuarioEncontrado = ul.GetUsuarioLogin(txtUsuario.Text, txtPass.Text);
+                }
+                catch (Exception ex)
+                {
+                    Exception ExcepcionManejada = new Exception("Error en la conexión con la base de datos");
+                    Notificar("Error de logueo", ExcepcionManejada.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                
                 if (usuarioEncontrado!= null)
                 {
                     if(usuarioEncontrado.Habilitado != false)

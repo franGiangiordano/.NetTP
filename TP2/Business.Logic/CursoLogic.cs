@@ -82,5 +82,18 @@ namespace Business.Logic
             return _CursoData.validaCursoExistente(idMat, idCom, anio);
         }
 
+        public bool validarEntero(string nota)
+        {
+            int numericValue;
+            if (int.TryParse(nota, out numericValue))
+            {                
+                    return true;                
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }

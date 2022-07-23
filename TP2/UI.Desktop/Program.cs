@@ -4,10 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-/*DUDAS     
-   Ver el tema de reportes
-   Hacer transacciones para las tablas modulo_usuarios al momento de crear un usuario
-*/
 
 namespace UI.Desktop
 {

@@ -34,8 +34,17 @@ namespace Business.Logic
 
         public void Save(Business.Entities.Persona u)
         {
-            _PersonaData.Save(u);
-            return;
+            try
+            {
+                _PersonaData.Save(u);
+                return;
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al eliminar usuarios", Ex);
+                throw ExcepcionManejada;
+            }
+            
         }
         public bool IsValidMailAddress1(string mail)
         {

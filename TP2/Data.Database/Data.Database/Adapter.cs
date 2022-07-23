@@ -21,9 +21,9 @@ namespace Data.Database
 
         //Nota: con este string nos deberia conectar a la DB desde nuestras casas
 
-       const string consKeyDefaultCnnString = "ConnStringLocalCasa";
+       //const string consKeyDefaultCnnString = "ConnStringLocalCasa";
 
-      //const string consKeyDefaultCnnString = "ConnStringLocalCasa";
+     // const string consKeyDefaultCnnString = "ConnStringLocalCasa";
 
         public SqlConnection sqlconn;
         protected void OpenConnection()
@@ -34,12 +34,15 @@ namespace Data.Database
           //sqlconn.ConnectionString = @"Server=.\SQLEXPRESS;Database=Academia;Integrated Security = false; User = net; Password = net;";
 
             //Nota: con este sqlconn nos deberia conectar a la DB desde nuestras casas
-           sqlconn.ConnectionString = ConfigurationManager.ConnectionStrings[consKeyDefaultCnnString].ConnectionString;
+          //sqlconn.ConnectionString = ConfigurationManager.ConnectionStrings[consKeyDefaultCnnString].ConnectionString;
 
             //sqlconn.ConnectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=academia;Integrated Security=SSPI;";
 
-            //sqlconn.ConnectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=academia;Integrated Security=SSPI;";
+            sqlconn.ConnectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=academia;Integrated Security=SSPI;";
             sqlconn.Open();
+
+
+            //Data Source=.;Initial Catalog=Academia;Integrated Security=True
         }
 
         protected void CloseConnection()

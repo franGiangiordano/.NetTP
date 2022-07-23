@@ -28,8 +28,16 @@ namespace Business.Logic
 
         public void Delete(int id)
         {
-             _UsuarioData.Delete(id);
-            return;
+            try {
+                _UsuarioData.Delete(id);
+                return;
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al eliminar usuarios", Ex);
+                throw ExcepcionManejada;
+            }
+
         }
 
         public void Save(Business.Entities.Usuario u)
@@ -73,7 +81,15 @@ namespace Business.Logic
         // este metodo retorna el usuario validado del login
         public Usuario GetUsuarioLogin(string user, string pass)
         {
-            return _UsuarioData.GetUsuarioLogin(user, pass);
+            try {
+                return _UsuarioData.GetUsuarioLogin(user, pass);
+            }
+            catch (Exception ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error buscar el usuario en el Login");
+                throw ExcepcionManejada;
+            }
+            
         }
 
         public List<Usuario> BusquedaUsuario(int cmbCriterio, string criterio)

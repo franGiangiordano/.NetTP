@@ -25,3 +25,4 @@ C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Business.Entities\obj\Debug\
 C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Business.Entities\obj\Debug\Business.Entities.csproj.CoreCompileInputs.cache
 C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Business.Entities\obj\Debug\Business.Entities.dll
 C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Business.Entities\obj\Debug\Business.Entities.pdb
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Business.Entities\obj\Debug\Business.Entities.csproj.AssemblyReference.cache

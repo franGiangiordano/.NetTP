@@ -94,6 +94,9 @@
     <Compile Include="Cursos.Designer.cs">
       <DependentUpon>Cursos.cs</DependentUpon>
     </Compile>
+    <Compile Include="DatosReportes\DataSetUsuarios.cs">
+      <DependentUpon>DataSetUsuarios.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DatosReportes\DataSetUsuarios.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -52,6 +52,9 @@ namespace UI.Desktop
            // validarMateriasDisponibles();
             MapearDeDatos();
             validarPermisos(idPersona);
+
+            this.txtNota.Enabled = false;
+            this.cmbCondicion.SelectedIndexChanged += new System.EventHandler(cmbCondicion_SelectedIndexChanged); //asociamos el evento al combo            
         }
 
         private Boolean esDocente() {
@@ -227,7 +230,8 @@ namespace UI.Desktop
                 List<Persona> legajos = pl.GetLegajosAlumnos();
                 this.cmbLegajo.DataSource = legajos;
                 this.cmbLegajo.DisplayMember = "Legajo";
-                this.cmbLegajo.ValueMember = "ID";            
+                this.cmbLegajo.ValueMember = "ID";
+                
         }
 
 
@@ -406,6 +410,17 @@ namespace UI.Desktop
 
 
         }
+
+        private void cmbCondicion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.cmbCondicion.SelectedItem.ToString().Equals("Aprobado")) {
+                this.txtNota.Enabled = true;
+            }
+
+
+        }
+
+        
 
         private void validarMateriasDisponibles() {
             if (((this.cmbMateria.Items.Count == 0) || (this.cmbCondicion.Items.Count == 0)) && (!esDocente()) && (!esAdmin()))

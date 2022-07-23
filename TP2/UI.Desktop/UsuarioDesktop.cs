@@ -322,8 +322,17 @@ namespace UI.Desktop
         {
             if (Validar())
             {
-                GuardarCambios();
-                Close();
+                try
+                {
+                    GuardarCambios();
+                    Close();
+                }
+                catch (Exception Ex)
+                {
+                    Exception ExcepcionManejada = new Exception("Error al eliminar usuarios", Ex);
+                    this.Notificar(ExcepcionManejada.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                
             }
 
         }

@@ -171,9 +171,14 @@ namespace UI.Desktop
                 errores += "Existen uno o mas campos vacios, rellenelos antes de continuar\n";
             }
             else {
-                errores += cl.validaCupo(Int32.Parse(this.txtCupo.Text));
-                errores += cl.validaAnioCalendario(Int32.Parse(this.txtAnioCalendario.Text));
-
+                if ((!cl.validarEntero(this.txtCupo.Text)) || (!cl.validarEntero(this.txtAnioCalendario.Text)))
+                {
+                    errores += "El cupo y el año calendario tienen que ser numeros enteros positivos";
+                }
+                else {
+                    errores += cl.validaCupo(Int32.Parse(this.txtCupo.Text));
+                    errores += cl.validaAnioCalendario(Int32.Parse(this.txtAnioCalendario.Text));
+                }                                
                 if ((!((int)ApplicationForm.ModoForm.Baja == 1)) && (cl.validaCursoExistente((int)this.cmbMaterias.SelectedValue, (int)this.cmbComisiones.SelectedValue, Int32.Parse(this.txtAnioCalendario.Text))))
                 {
                     errores += "Ya existe un curso con esas caracteristicas\n";

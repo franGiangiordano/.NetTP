@@ -66,9 +66,17 @@ namespace UI.Desktop
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            DocenteDesktop formDocente = new DocenteDesktop(idCurso);
-            formDocente.ShowDialog();
-            this.Listar();
+            DocenteCursoLogic ul = new DocenteCursoLogic();
+            if (ul.GetDocentesCurso(idCurso).Count < 3)
+            {
+                DocenteDesktop formDocente = new DocenteDesktop(idCurso);
+                formDocente.ShowDialog();
+                this.Listar();
+            }
+            else {
+                this.Notificar("Ya se alcanzó el tope de docentes para el curso\n", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            
 
         }
 
