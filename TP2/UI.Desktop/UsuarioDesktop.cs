@@ -115,7 +115,15 @@ namespace UI.Desktop
                 case (ApplicationForm.ModoForm)ModoForm.Modificacion:
                     UsuarioActual.Nombre = txtNombre.Text;
                     UsuarioActual.Email = txtEmail.Text;
-                    UsuarioActual.Clave = txtClave.Text;
+                    if (!txtClave.Text.Equals(UsuarioActual.Clave))
+                    {
+                        UsuarioActual.CambiaClave = true;
+                        UsuarioActual.Clave = txtClave.Text;
+                    }
+                    else {
+                        UsuarioActual.CambiaClave = false;
+                    }                    
+
                     UsuarioActual.Habilitado = checkHab.Checked;
                     UsuarioActual.Apellido = txtApe.Text;
                     UsuarioActual.NombreUsuario = txtUsu.Text;

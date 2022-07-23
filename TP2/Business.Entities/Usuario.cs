@@ -15,7 +15,7 @@ namespace Business.Entities
         private string _Email;
         private bool _Habilitado;
         private int _IdPersona;
-
+        private bool _CambiaClave;
 
         public string NombreUsuario { get => _NombreUsuario; set => _NombreUsuario = value; }
         public string Clave { get => _Clave; set => _Clave = value; }
@@ -24,6 +24,7 @@ namespace Business.Entities
         public string Email { get => _Email; set => _Email = value; }
         public bool Habilitado { get => _Habilitado; set => _Habilitado = value; }
         public int IdPersona { get => _IdPersona; set => _IdPersona = value; }
+        public bool CambiaClave { get => _CambiaClave; set => _CambiaClave = value; }
     }
 
 }

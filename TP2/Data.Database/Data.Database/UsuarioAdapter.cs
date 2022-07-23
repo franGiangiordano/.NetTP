@@ -155,7 +155,13 @@ namespace Data.Database
                     "clave = @clave, habilitado = @habilitado, nombre = @nombre, apellido = @apellido, email = @email, id_persona=@id_persona where id_usuario = @id", sqlconn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = usuario.ID;
                 cmdSave.Parameters.Add("@nombre_usuario", SqlDbType.VarChar,50).Value = usuario.NombreUsuario;
-                cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = encriptar.Encriptar(usuario.Clave);
+                if (usuario.CambiaClave)
+                {
+                    cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = encriptar.Encriptar(usuario.Clave);
+                }
+                else {
+                    cmdSave.Parameters.Add("@clave", SqlDbType.VarChar, 50).Value = usuario.Clave;
+                }                                
                 cmdSave.Parameters.Add("@habilitado", SqlDbType.Bit).Value = usuario.Habilitado;
                 cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Nombre;
                 cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;

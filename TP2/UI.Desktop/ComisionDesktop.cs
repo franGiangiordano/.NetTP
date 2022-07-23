@@ -115,13 +115,14 @@ namespace UI.Desktop
 
         public override bool Validar()
         {
+            ComisionLogic cl = new ComisionLogic();
             int n;
             string errores = "";
             if (String.IsNullOrEmpty(this.txtDesc.Text))
             {
                 errores += "Existen uno o mas campos vacios, rellenelos antes de continuar\n";
             }
-            if (!int.TryParse(this.txtAnioCalendario.Text, out n) )
+            if (!int.TryParse(this.txtAnioCalendario.Text, out n))
             {
                 errores += "El campo Año Calendario solo puede contener numeros\n";
             }
@@ -129,6 +130,20 @@ namespace UI.Desktop
             {
                 errores += "El campo Año Calendario debe ser el año actual o posterior\n";
             }
+            else if (!cl.validarEntero(txtDesc.Text))
+            {
+                errores += "El campo descripcion solo puede contener numeros enteros postivos\n";
+            }
+            else {
+                errores += cl.validaDesc(Int32.Parse(txtDesc.Text));
+            }
+            
+            if (!(ApplicationForm.ModoForm.Baja.ToString().Equals("Baja")) && (cl.validaComisionExistente(txtDesc.Text, Int32.Parse(txtAnioCalendario.Text),(int)cmbPlanes.SelectedValue)))
+            {
+                errores += "Ya existe una comision con esas caracteristicas\n";
+            }
+
+
             if (!errores.Equals(""))
             {
                 this.Notificar(errores, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

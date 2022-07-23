@@ -59,5 +59,34 @@ namespace Business.Logic
             return _PlanComision.GetDescripciones();
         }
 
+        public string validaDesc(int desc)
+        {
+            if (desc > 0)
+            {
+                return "";
+            }
+            else
+            {
+                return "La descripcion tiene que ser un numero positivo\n";
+            }
+        }
+
+        public bool validarEntero(string desc)
+        {
+            int numericValue;
+            if (int.TryParse(desc, out numericValue))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool validaComisionExistente(string desc, int anio, int plan)
+        {
+            return _PlanComision.validaComisionExistente(desc, anio, plan);
+        }
     }
 }

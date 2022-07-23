@@ -83,6 +83,35 @@ namespace Data.Database
             return com;
         }
 
+        public bool validaComisionExistente(string desc, int anio, int plan)
+        {
+            Comision com = new Comision();
+            try
+            {
+                OpenConnection();
+                SqlCommand cmdCurso = new SqlCommand("select * from comisiones where desc_comision like @desc and anio_especialidad like @anio and id_plan like @plan", sqlconn);
+                cmdCurso.Parameters.Add("@desc", SqlDbType.VarChar).Value = desc;
+                cmdCurso.Parameters.Add("@anio", SqlDbType.Int).Value = anio;
+                cmdCurso.Parameters.Add("@plan", SqlDbType.Int).Value = plan;
+                SqlDataReader drCurso = cmdCurso.ExecuteReader();
+                while (drCurso.Read())
+                {
+                    return true;
+                }
+                drCurso.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar comision", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return false;
+        }
+
         public void Delete(int ID)
         {
             try
@@ -137,7 +166,6 @@ namespace Data.Database
                 this.OpenConnection();
 
                 SqlCommand cmdSave = new SqlCommand("insert into comisiones (desc_comision,anio_especialidad, id_plan) " +
-                    "values (@desc_comision, @anio_especialidad, @id_plan) " +
                     "values (@desc_comision,@anio_especialidad, @id_plan) " +
                     "select @@identity", sqlconn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = com.ID;
