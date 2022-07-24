@@ -26,7 +26,8 @@ namespace UI.Desktop
             InitializeComponent();
             dgvDocentes.AutoGenerateColumns = false;
             Listar();
-            
+            validarPermisos();
+
         }
 
         public Docentes (int ID)
@@ -35,9 +36,25 @@ namespace UI.Desktop
             dgvDocentes.AutoGenerateColumns = false;
             idCurso = ID;
             Listar();
+            validarPermisos();
         }
 
-        
+        private void validarPermisos()
+        {
+            ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+            int idModulo = mul.GetIdModulo("Docentes");
+            ModuloUsuario mu = mul.GetModuloUsuario(idModulo, Principal.Id);
+
+            if (!mu.PermiteAlta) //es Docente
+            {
+                this.tsbNuevo.Visible = false;
+                this.tsbEditar.Visible = false;
+                this.tsbEliminar.Visible = false;                
+            }
+            
+        }
+
+
         public void Listar()
         {
             DocenteCursoLogic ul = new DocenteCursoLogic();

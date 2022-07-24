@@ -96,10 +96,18 @@ namespace UI.Desktop
             }
         }
         public override void GuardarCambios()
-        {
-            MapearADatos();
-            PlanLogic el = new PlanLogic();
-            el.Save(PlanActual);
+        {           
+            try
+            {
+                MapearADatos();
+                PlanLogic el = new PlanLogic();
+                el.Save(PlanActual);
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al ejecutar la operacion", Ex);
+                this.Notificar(ExcepcionManejada.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         public override void Notificar(string titulo, string mensaje, MessageBoxButtons botones, MessageBoxIcon icono)
@@ -113,15 +121,26 @@ namespace UI.Desktop
 
         public override bool Validar()
         {
+            PlanLogic pl = new PlanLogic();
             string errores = "";
             if (String.IsNullOrEmpty(this.txtDescripcion.Text))
             {
                 errores += "Existen uno o mas campos vacios, rellenelos antes de continuar\n";
             }
-            if (!this.txtDescripcion.Text.All(Char.IsLetter))
+            else if (!pl.validarEntero(txtDescripcion.Text))
             {
-                errores += "El campo descripcion solo puede contener letras\n";
+                errores += "El campo descripcion solo puede contener numeros enteros postivos\n";
             }
+            else
+            {
+                errores += pl.validaDesc(Int32.Parse(txtDescripcion.Text));
+            }
+
+            if (!Modo.ToString().Equals("Baja") && (pl.validaPlanExistente(txtDescripcion.Text, (int)cmbEspecialidades.SelectedValue)))
+            {
+                errores += "Ya existe un plan con esas caracteristicas\n";
+            }
+
             if (!errores.Equals(""))
             {
                 this.Notificar(errores, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

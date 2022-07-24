@@ -99,9 +99,18 @@ namespace UI.Desktop
         }
         public override void GuardarCambios()
         {
-            MapearADatos();
-            ComisionLogic cl = new ComisionLogic();
-            cl.Save(ComisionActual);
+            
+            try {
+                MapearADatos();
+                ComisionLogic cl = new ComisionLogic();
+                cl.Save(ComisionActual);
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al ejecutar la operacion", Ex);
+                this.Notificar(ExcepcionManejada.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            }
         }
 
         public override void Notificar(string titulo, string mensaje, MessageBoxButtons botones, MessageBoxIcon icono)
@@ -138,7 +147,7 @@ namespace UI.Desktop
                 errores += cl.validaDesc(Int32.Parse(txtDesc.Text));
             }
             
-            if (!(ApplicationForm.ModoForm.Baja.ToString().Equals("Baja")) && (cl.validaComisionExistente(txtDesc.Text, Int32.Parse(txtAnioCalendario.Text),(int)cmbPlanes.SelectedValue)))
+            if (!Modo.ToString().Equals("Baja") && (cl.validaComisionExistente(txtDesc.Text, Int32.Parse(txtAnioCalendario.Text),(int)cmbPlanes.SelectedValue)))
             {
                 errores += "Ya existe una comision con esas caracteristicas\n";
             }

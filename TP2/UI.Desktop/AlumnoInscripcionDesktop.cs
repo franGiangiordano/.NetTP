@@ -361,9 +361,18 @@ namespace UI.Desktop
 
         public override void GuardarCambios()
         {
-            MapearADatos();
-            AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
-            ail.Save(AlumnoInscripcionActual);
+            try
+            {
+                MapearADatos();
+                AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
+                ail.Save(AlumnoInscripcionActual);
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al ejecutar la operacion", Ex);
+                this.Notificar(ExcepcionManejada.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            
              
         }
 
@@ -379,8 +388,11 @@ namespace UI.Desktop
                 {
                     GuardarCambios();
                     Close();
-                }           
+                }
+
+
             
+
         }
 
         private void label1_Click(object sender, EventArgs e)

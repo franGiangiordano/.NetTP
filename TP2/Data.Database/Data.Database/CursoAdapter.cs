@@ -146,19 +146,26 @@ namespace Data.Database
 
         public void Save(Curso curso)
         {
-            if (curso.State == BusinessEntity.States.Deleted)
-            {
-                Delete(curso.ID);
+            try {
+                if (curso.State == BusinessEntity.States.Deleted)
+                {
+                    Delete(curso.ID);
+                }
+                else if (curso.State == BusinessEntity.States.Modified)
+                {
+                    Update(curso);
+                }
+                else if (curso.State == BusinessEntity.States.New)
+                {
+                    Insert(curso);
+                }
+                curso.State = BusinessEntity.States.Unmodified;
             }
-            else if (curso.State == BusinessEntity.States.Modified)
+            catch (Exception Ex)
             {
-                Update(curso);
-            }
-            else if (curso.State == BusinessEntity.States.New)
-            {
-                Insert(curso);
-            }
-            curso.State = BusinessEntity.States.Unmodified;
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de cursos", Ex);
+                throw ExcepcionManejada;
+            }            
         }
 
         public Curso GetCurso(int idMat, int idCom)

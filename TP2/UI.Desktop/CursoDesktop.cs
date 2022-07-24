@@ -131,9 +131,18 @@ namespace UI.Desktop
 
         public override void GuardarCambios()
         {
-            MapearADatos();
-            CursoLogic ul = new CursoLogic();
-            ul.Save(CursoActual);
+            
+            try {
+                MapearADatos();
+                CursoLogic ul = new CursoLogic();
+                ul.Save(CursoActual);
+
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de cursos", Ex);
+                this.Notificar(ExcepcionManejada.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         public override void Notificar(string titulo, string mensaje, MessageBoxButtons
@@ -179,7 +188,7 @@ namespace UI.Desktop
                     errores += cl.validaCupo(Int32.Parse(this.txtCupo.Text));
                     errores += cl.validaAnioCalendario(Int32.Parse(this.txtAnioCalendario.Text));
                 }                                
-                if (!ApplicationForm.ModoForm.Baja.ToString().Equals("Baja") && (cl.validaCursoExistente((int)this.cmbMaterias.SelectedValue, (int)this.cmbComisiones.SelectedValue, Int32.Parse(this.txtAnioCalendario.Text))))
+                if (!Modo.ToString().Equals("Baja") && (cl.validaCursoExistente((int)this.cmbMaterias.SelectedValue, (int)this.cmbComisiones.SelectedValue, Int32.Parse(this.txtAnioCalendario.Text))))
                 {
                     errores += "Ya existe un curso con esas caracteristicas\n";
                 }

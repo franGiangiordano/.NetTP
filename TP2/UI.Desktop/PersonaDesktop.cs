@@ -23,10 +23,10 @@ namespace UI.Desktop
         {
             PlanLogic pl = new PlanLogic();            
             InitializeComponent();
+            iniciarCheckBox();
             this.cmbPlan.DataSource = pl.GetAll();
             this.cmbPlan.DisplayMember = "Descripcion";
             this.cmbPlan.ValueMember = "ID";
-
             this.cmbTipo.SelectedIndex = 1;
             
         }
@@ -40,7 +40,8 @@ namespace UI.Desktop
         
         public PersonaDesktop(int ID, ApplicationForm.ModoForm modo) : this()
         {
-          //  InitializeComponent();
+            //  InitializeComponent();
+            iniciarCheckBox();
             Modo = (ApplicationForm.ModoForm)modo;
             PersonaLogic pl = new PersonaLogic();
             PersonaActual = pl.GetOne(ID);
@@ -48,13 +49,16 @@ namespace UI.Desktop
         }
 
 
-        private void PersonaDesktop_Load(object sender, EventArgs e)
-        {
+        public void iniciarCheckBox() {
+            this.checkAdmin.CheckedChanged += checkAdmin_CheckedChanged;
+        }
 
+        private void PersonaDesktop_Load(object sender, EventArgs e)
+        {            
         }
 
         public override void MapearDeDatos() {
-
+           
             PlanLogic pl = new PlanLogic();
 
             this.txtId.Text = this.PersonaActual.ID.ToString();            
@@ -105,12 +109,22 @@ namespace UI.Desktop
                     PersonaActual.FechaNacimiento = DateTime.ParseExact(txtFechaNac.Text, "MM/dd/yyyy", CultureInfo.CreateSpecificCulture("en-US"));
 
 
-                    PersonaActual.IDPlan = (int)cmbPlan.SelectedValue;
-
+                    if (this.checkAdmin.Checked)
+                    {
+                        PersonaActual.Legajo = 1;
+                        PersonaActual.IDPlan = 2;
+                        PersonaActual.Tipo = Persona.TipoPersonas.Administrativo;
+                    }
+                    else {
+                        PersonaActual.Legajo = Int32.Parse(txtLeg.Text);
+                        PersonaActual.IDPlan = (int)cmbPlan.SelectedValue;
+                        PersonaActual.Tipo = (Persona.TipoPersonas)Enum.Parse(typeof(Persona.TipoPersonas), cmbTipo.SelectedItem.ToString());
+                    }
+                    
                     //PersonaActual.IDPlan = (from plan in pl.GetAll() where cmbPlan.SelectedItem.ToString() == plan.Descripcion select plan.ID).ToList()[0];                    
 
-                    PersonaActual.Legajo = Int32.Parse(txtLeg.Text);                    
-                    PersonaActual.Tipo = (Persona.TipoPersonas)Enum.Parse(typeof(Persona.TipoPersonas), cmbTipo.SelectedItem.ToString());                    
+                    
+                    
                     PersonaActual.State = Usuario.States.New;
                     break;
 
@@ -120,11 +134,19 @@ namespace UI.Desktop
                     PersonaActual.Apellido = txtApe.Text;
                     PersonaActual.Direccion = txtDirec.Text;
                     PersonaActual.Telefono = txtTel.Text;
-                    PersonaActual.FechaNacimiento = DateTime.ParseExact(txtFechaNac.Text, "dd/MM/yyyy", null);
-                    PersonaActual.IDPlan = (int)cmbPlan.SelectedValue;
-                    
-                    PersonaActual.Legajo = Int32.Parse(txtLeg.Text);
-                    PersonaActual.Tipo = (Persona.TipoPersonas)Enum.Parse(typeof(Persona.TipoPersonas), cmbTipo.SelectedItem.ToString());
+                    PersonaActual.FechaNacimiento = DateTime.ParseExact(txtFechaNac.Text, "dd/MM/yyyy", null);                                                          
+                    if (this.checkAdmin.Checked)
+                    {
+                        PersonaActual.Legajo = 1;
+                        PersonaActual.IDPlan = 2;
+                        PersonaActual.Tipo = Persona.TipoPersonas.Administrativo;
+                    }
+                    else
+                    {
+                        PersonaActual.Legajo = Int32.Parse(txtLeg.Text);
+                        PersonaActual.IDPlan = (int)cmbPlan.SelectedValue;
+                        PersonaActual.Tipo = (Persona.TipoPersonas)Enum.Parse(typeof(Persona.TipoPersonas), cmbTipo.SelectedItem.ToString());
+                    }
                     PersonaActual.State = Usuario.States.Modified;
                     break;
 
@@ -173,11 +195,19 @@ namespace UI.Desktop
             PersonaLogic pl = new PersonaLogic();
             if (String.IsNullOrEmpty(this.txtNombre.Text)
             || String.IsNullOrEmpty(this.txtApe.Text) || String.IsNullOrEmpty(this.txtDirec.Text)
-            || (!this.txtFechaNac.MaskFull) || String.IsNullOrEmpty(this.cmbPlan.Text) 
-            || String.IsNullOrEmpty(this.txtLeg.Text) || String.IsNullOrEmpty(this.cmbTipo.Text)
-             )
-            {
+            || (!this.txtFechaNac.MaskFull) || String.IsNullOrEmpty(this.cmbPlan.Text)
+            || String.IsNullOrEmpty(this.cmbTipo.Text)
+             )                
+                {
                 errores += "Existen uno o mas campos vacios, rellenelos antes de continuar\n";
+                if (this.txtLeg.Enabled)
+                {
+                    if (String.IsNullOrEmpty(this.txtLeg.Text))
+                    {
+                        errores += "Existen uno o mas campos vacios, rellenelos antes de continuar\n";
+                    }
+                }
+
                 //this.Notificar("Campos Obligatorios Vacios", "Existen uno o mas campos vacios, rellenelos antes de continuar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 //MessageBox.Show(this.txtFechaNac.MaskFull.ToString());              
             }            
@@ -196,10 +226,22 @@ namespace UI.Desktop
             {
                 errores += "El campo telefono solo puede contener numeros\n";
             }
-            if (!int.TryParse(this.txtLeg.Text, out n))
-            {
-                errores += "El campo legajo solo puede contener numeros\n";
+            if (this.txtLeg.Enabled) {
+                if (!int.TryParse(this.txtLeg.Text, out n))
+                {
+                    errores += "El campo legajo solo puede contener numeros\n";
+                }
             }
+            
+            if (!String.IsNullOrEmpty(this.txtTel.Text)) {
+                errores += pl.validaNum(Int32.Parse(this.txtTel.Text));
+            }
+
+            if (this.txtLeg.Enabled) {
+                errores += pl.validaLeg(Int32.Parse(this.txtLeg.Text));
+            }
+            
+
             if (!this.txtNombre.Text.All(Char.IsLetter))
             {
                 errores += "El campo nombre solo puede contener letras\n";
@@ -208,6 +250,13 @@ namespace UI.Desktop
             {
                 errores += "El campo apellido solo puede contener letras\n";
             }
+            if (this.txtLeg.Enabled) {
+                if (!Modo.ToString().Equals("Baja") && !this.txtLeg.Text.Equals("1") && pl.GetPersona(Int32.Parse(this.txtLeg.Text)))
+                {
+                    errores += "Ya existe una persona con ese legajo\n";
+                }
+            }
+            
 
             if (!errores.Equals(""))
             {
@@ -217,6 +266,8 @@ namespace UI.Desktop
             {
                 return true;
             }
+
+
         }
         /*
         private bool ValidarMail(string Email)
@@ -244,6 +295,24 @@ namespace UI.Desktop
             else
                 return false;
         }*/
+
+        protected void checkAdmin_CheckedChanged(object sender, EventArgs e)
+        {
+            
+                if (this.checkAdmin.Checked)
+                {
+                    this.cmbTipo.Enabled = false;
+                    this.cmbPlan.Enabled = false;
+                    this.txtLeg.Enabled = false;
+                }
+                else
+                {
+                    this.cmbTipo.Enabled = true;
+                    this.cmbPlan.Enabled = true;
+                    this.txtLeg.Enabled = true;
+                }
+                        
+        }
 
 
         private void btnAceptar_Click(object sender, EventArgs e)

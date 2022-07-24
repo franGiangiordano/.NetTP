@@ -15,23 +15,51 @@ namespace Business.Logic
 
         public int GetIdModulo(string desc)
         {
-           return md.GetIdModulo(desc);
+            try { return md.GetIdModulo(desc); }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar modulos", Ex);
+                throw ExcepcionManejada;
+            }
         }
 
         public ModuloUsuario GetModuloUsuario(int idModulo,int idUsuario) {
-            return md.GetModuloUsuario(idModulo, idUsuario);
+            
+            try { return md.GetModuloUsuario(idModulo, idUsuario); }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar modulos", Ex);
+                throw ExcepcionManejada;
+            }
         }
 
         public void CargarPermisos(List<ModuloUsuario> modulos)
         {
-            md.cargarPermisos(modulos);
-            return;
+            
+            try {
+                md.cargarPermisos(modulos);
+                return;
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar modulos", Ex);
+                throw ExcepcionManejada;
+            }
         }
 
         public void EliminarPermisos(int idUsuario)
         {
-            md.eliminarPermisos(idUsuario);
-            return;
+            try
+            {
+                md.eliminarPermisos(idUsuario);
+                return;
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar modulos", Ex);
+                throw ExcepcionManejada;
+            }
+           
         }
 
     }

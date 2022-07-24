@@ -204,21 +204,30 @@ namespace UI.Desktop
 
         public override void GuardarCambios()
         {
-            DocenteCursoLogic dcl = new DocenteCursoLogic();
-            MapearADatos();
-            if (Modo.ToString().Equals("Modificacion") || Modo.ToString().Equals("Alta"))
-            {
-                if (dcl.validarDocenteCargo(DocenteActual))
+            try {
+                DocenteCursoLogic dcl = new DocenteCursoLogic();
+                MapearADatos();
+                if (Modo.ToString().Equals("Modificacion") || Modo.ToString().Equals("Alta"))
                 {
-                    dcl.Save(DocenteActual);
+                    if (dcl.validarDocenteCargo(DocenteActual))
+                    {
+                        dcl.Save(DocenteActual);
+                    }
+                    else
+                    {
+                        this.Notificar("No se admiten tres ayudantes en un mismo curso sin un docente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
                 }
                 else
                 {
-                    this.Notificar("No se admiten tres ayudantes en un mismo curso sin un docente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    dcl.Save(DocenteActual);
                 }
+
             }
-            else {
-                dcl.Save(DocenteActual);
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al ejecutar la operacion", Ex);
+                this.Notificar(ExcepcionManejada.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             
 

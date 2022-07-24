@@ -79,6 +79,33 @@ namespace Business.Logic
         {
             return _PersonaData.GetLegajosAlumnos();
         }
+        public string validaNum(int num)
+        {
+            if (num > 0)
+            {
+                return "";
+            }
+            else
+            {
+                return "EL campo telefono tiene que ser un numero positivo\n";
+            }
+        }
+
+        public string validaLeg(int num)
+        {
+            if (num > 1)
+            {
+                return "";
+            }
+            else
+            {
+                return "EL campo legajo tiene que mayor a 1\n";
+            }
+        }
+        public bool GetPersona(int leg)
+        {
+            return _PersonaData.GetPersona(leg);
+        }
 
     }
 }

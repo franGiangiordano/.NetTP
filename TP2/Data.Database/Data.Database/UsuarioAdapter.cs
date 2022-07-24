@@ -396,6 +396,35 @@ namespace Data.Database
             return usuarios;
         }
 
-       
+        public bool GetUser(string userName)
+        {
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdUsuarios = new SqlCommand("select * from usuarios where nombre_usuario=@userName", sqlconn);
+                cmdUsuarios.Parameters.Add("@userName", SqlDbType.VarChar).Value = userName;
+                SqlDataReader drUsuarios = cmdUsuarios.ExecuteReader();
+
+                if (drUsuarios.Read())
+                {
+                    return true;
+                }
+                drUsuarios.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar usuario", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+
+            return false;
+        }
+
     }
 }

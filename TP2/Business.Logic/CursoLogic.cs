@@ -61,8 +61,16 @@ namespace Business.Logic
 
         public void Save(Business.Entities.Curso c)
         {
-            _CursoData.Save(c);
-            return;
+            
+            try {
+                _CursoData.Save(c);
+                return;
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de cursos", Ex);
+                throw ExcepcionManejada;
+            }
         }
 
         public Business.Entities.Curso GetCurso(int idMat, int idCom)

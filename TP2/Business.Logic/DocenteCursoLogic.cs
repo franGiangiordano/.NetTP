@@ -35,8 +35,17 @@ namespace Business.Logic
 
         public void Save(Business.Entities.DocenteCurso d)
         {
-            _docenteCurso.Save(d);
-            return;
+            
+            try
+            {
+                _docenteCurso.Save(d);
+                return;
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al asignar docente", Ex);
+                throw ExcepcionManejada;
+            }
         }
 
         public bool validarDocenteCargo(DocenteCurso docente) {

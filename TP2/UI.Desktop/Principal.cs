@@ -26,8 +26,17 @@ namespace UI.Desktop
         private void validarPermisos()
         {
             ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
-            int idModulo = mul.GetIdModulo("Principal");
-            ModuloUsuario mu = mul.GetModuloUsuario(idModulo, Id);
+            ModuloUsuario mu = null;
+            try {
+                int idModulo = mul.GetIdModulo("Principal");
+                mu = mul.GetModuloUsuario(idModulo, Id);
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al ejecutar la operacion", Ex);
+                this.Notificar(ExcepcionManejada.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
 
             if (!mu.PermiteAlta && mu.PermiteModificacion) {
                 //pListado.Controls.Remove(btnPersona); //si bien permite removerlo, queda un hueco vacío que no supe eliminar
@@ -163,7 +172,15 @@ namespace UI.Desktop
 
         private void Principal_Load(object sender, EventArgs e)
         {
-            UsuarioLogic ul = new UsuarioLogic();
+            UsuarioLogic ul = null;
+            try {
+                ul = new UsuarioLogic();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al ejecutar la operacion", Ex);
+                this.Notificar(ExcepcionManejada.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
             Usuario us = ul.GetOne(Id);
             this.txtNombreUsuario.Text = us.NombreUsuario.ToString();
         }

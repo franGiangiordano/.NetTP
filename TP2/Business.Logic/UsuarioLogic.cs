@@ -42,8 +42,16 @@ namespace Business.Logic
 
         public void Save(Business.Entities.Usuario u)
         {
-            _UsuarioData.Save(u);
-            return;
+            try {
+                _UsuarioData.Save(u);
+                return;
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de usuarios", Ex);
+                throw ExcepcionManejada;
+            }            
+            
         }
 
         public bool IsValidMailAddress1(string mail)
@@ -97,6 +105,10 @@ namespace Business.Logic
             return _UsuarioData.BusquedaUsuario(cmbCriterio,criterio);
         }
 
+        public bool GetUser(string userName)
+        {
+            return _UsuarioData.GetUser(userName);
+        }
 
     }
 }

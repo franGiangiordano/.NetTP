@@ -34,14 +34,28 @@ namespace Business.Logic
 
         public void Save(Business.Entities.Especialidad m)
         {
-            _EspecialidadData.Save(m);
-            return;
+            
+            try {
+                _EspecialidadData.Save(m);
+                return;
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de materias", Ex);
+                throw ExcepcionManejada;
+            }
         }
 
         public List<Especialidad> GetEspecialidades()
         {
             return _EspecialidadData.GetEspecialidades();
         }
+
+        public bool GetEspecialidad(string desc)
+        {
+            return _EspecialidadData.GetEspecialidad(desc);
+        }
+
 
     }
 }

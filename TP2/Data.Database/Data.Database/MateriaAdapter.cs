@@ -162,19 +162,28 @@ namespace Data.Database
 
         public void Save(Materia materia)
         {
-            if (materia.State == BusinessEntity.States.New)
-            {
-                this.Insert(materia);
+            try {
+                if (materia.State == BusinessEntity.States.New)
+                {
+                    this.Insert(materia);
+                }
+                else if (materia.State == BusinessEntity.States.Deleted)
+                {
+                    this.Delete(materia.ID);
+                }
+                else if (materia.State == BusinessEntity.States.Modified)
+                {
+                    this.Update(materia);
+                }
+                materia.State = BusinessEntity.States.Unmodified;
             }
-            else if (materia.State == BusinessEntity.States.Deleted)
+             catch (Exception Ex)
             {
-                this.Delete(materia.ID);
+                Exception ExcepcionManejada = new Exception("Error al recuperar materia", Ex);
+                throw ExcepcionManejada;
             }
-            else if (materia.State == BusinessEntity.States.Modified)
-            {
-                this.Update(materia);
-            }
-            materia.State = BusinessEntity.States.Unmodified;
+
+            
         }
 
         public List<Materia> GetMateriasPlan(int idPlan)
@@ -324,6 +333,37 @@ namespace Data.Database
             return materias;
         }
 
+        public bool GetMateria(string desc, int idPlan)
+        {
+            
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdMaterias = new SqlCommand("select * from materias where desc_materia like @desc and id_plan=@idPlan ", sqlconn);
+                cmdMaterias.Parameters.Add("@idPlan", SqlDbType.Int).Value = idPlan;
+                cmdMaterias.Parameters.Add("@desc", SqlDbType.VarChar).Value = desc;
+                SqlDataReader drMaterias = cmdMaterias.ExecuteReader();
+
+                if (drMaterias.Read())
+                {
+                    return true;
+                }
+                drMaterias.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar materia", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+
+            return false;
+        }
 
     }
 }

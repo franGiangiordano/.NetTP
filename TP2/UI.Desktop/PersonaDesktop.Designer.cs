@@ -52,6 +52,7 @@ namespace UI.Desktop
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblId = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
+            this.checkAdmin = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +62,7 @@ namespace UI.Desktop
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.98567F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.01433F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 215F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 177F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 178F));
             this.tableLayoutPanel1.Controls.Add(this.txtLeg, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtTel, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblTel, 2, 0);
@@ -84,6 +85,7 @@ namespace UI.Desktop
             this.tableLayoutPanel1.Controls.Add(this.txtEmail, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.lblId, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.txtId, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.checkAdmin, 0, 5);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 28);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
@@ -98,14 +100,14 @@ namespace UI.Desktop
             // 
             // txtLeg
             // 
-            this.txtLeg.Location = new System.Drawing.Point(549, 117);
+            this.txtLeg.Location = new System.Drawing.Point(548, 117);
             this.txtLeg.Name = "txtLeg";
             this.txtLeg.Size = new System.Drawing.Size(122, 20);
             this.txtLeg.TabIndex = 17;
             // 
             // txtTel
             // 
-            this.txtTel.Location = new System.Drawing.Point(549, 3);
+            this.txtTel.Location = new System.Drawing.Point(548, 3);
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(122, 20);
             this.txtTel.TabIndex = 15;
@@ -113,56 +115,56 @@ namespace UI.Desktop
             // lblTel
             // 
             this.lblTel.AutoSize = true;
-            this.lblTel.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.lblTel.Location = new System.Drawing.Point(334, 0);
+            this.lblTel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.lblTel.Location = new System.Drawing.Point(333, 0);
             this.lblTel.Name = "lblTel";
-            this.lblTel.Size = new System.Drawing.Size(124, 17);
+            this.lblTel.Size = new System.Drawing.Size(113, 15);
             this.lblTel.TabIndex = 5;
             this.lblTel.Text = "Telefono (opcional)";
             // 
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
-            this.lblFecha.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.lblFecha.Location = new System.Drawing.Point(334, 51);
+            this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.lblFecha.Location = new System.Drawing.Point(333, 51);
             this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(202, 17);
+            this.lblFecha.Size = new System.Drawing.Size(180, 15);
             this.lblFecha.TabIndex = 6;
             this.lblFecha.Text = "Fecha Nacimiento (mm/dd/yyyy)";
             // 
             // lblLeg
             // 
             this.lblLeg.AutoSize = true;
-            this.lblLeg.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.lblLeg.Location = new System.Drawing.Point(334, 114);
+            this.lblLeg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.lblLeg.Location = new System.Drawing.Point(333, 114);
             this.lblLeg.Name = "lblLeg";
-            this.lblLeg.Size = new System.Drawing.Size(49, 17);
+            this.lblLeg.Size = new System.Drawing.Size(45, 15);
             this.lblLeg.TabIndex = 7;
             this.lblLeg.Text = "Legajo";
             // 
             // lblPlan
             // 
             this.lblPlan.AutoSize = true;
-            this.lblPlan.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.lblPlan.Location = new System.Drawing.Point(334, 167);
+            this.lblPlan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.lblPlan.Location = new System.Drawing.Point(333, 167);
             this.lblPlan.Name = "lblPlan";
-            this.lblPlan.Size = new System.Drawing.Size(33, 17);
+            this.lblPlan.Size = new System.Drawing.Size(32, 15);
             this.lblPlan.TabIndex = 8;
             this.lblPlan.Text = "Plan";
             // 
             // lblTipo
             // 
             this.lblTipo.AutoSize = true;
-            this.lblTipo.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.lblTipo.Location = new System.Drawing.Point(334, 213);
+            this.lblTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.lblTipo.Location = new System.Drawing.Point(333, 213);
             this.lblTipo.Name = "lblTipo";
-            this.lblTipo.Size = new System.Drawing.Size(35, 17);
+            this.lblTipo.Size = new System.Drawing.Size(34, 15);
             this.lblTipo.TabIndex = 9;
             this.lblTipo.Text = "Tipo ";
             // 
             // txtFechaNac
             // 
-            this.txtFechaNac.Location = new System.Drawing.Point(549, 54);
+            this.txtFechaNac.Location = new System.Drawing.Point(548, 54);
             this.txtFechaNac.Mask = "00/00/0000";
             this.txtFechaNac.Name = "txtFechaNac";
             this.txtFechaNac.Size = new System.Drawing.Size(121, 20);
@@ -173,8 +175,8 @@ namespace UI.Desktop
             // 
             this.btnCancelar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.btnCancelar.Location = new System.Drawing.Point(549, 259);
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnCancelar.Location = new System.Drawing.Point(548, 259);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(80, 26);
             this.btnCancelar.TabIndex = 22;
@@ -187,9 +189,8 @@ namespace UI.Desktop
             this.cmbTipo.FormattingEnabled = true;
             this.cmbTipo.Items.AddRange(new object[] {
             "Alumno",
-            "Docente",
-            "Administrativo\t"});
-            this.cmbTipo.Location = new System.Drawing.Point(549, 216);
+            "Docente"});
+            this.cmbTipo.Location = new System.Drawing.Point(548, 216);
             this.cmbTipo.Name = "cmbTipo";
             this.cmbTipo.Size = new System.Drawing.Size(121, 21);
             this.cmbTipo.TabIndex = 23;
@@ -200,7 +201,7 @@ namespace UI.Desktop
             this.cmbPlan.Items.AddRange(new object[] {
             "1996",
             "2008"});
-            this.cmbPlan.Location = new System.Drawing.Point(549, 170);
+            this.cmbPlan.Location = new System.Drawing.Point(548, 170);
             this.cmbPlan.Name = "cmbPlan";
             this.cmbPlan.Size = new System.Drawing.Size(121, 21);
             this.cmbPlan.TabIndex = 24;
@@ -209,8 +210,8 @@ namespace UI.Desktop
             // 
             this.btnAceptar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAceptar.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.btnAceptar.Location = new System.Drawing.Point(334, 259);
+            this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnAceptar.Location = new System.Drawing.Point(333, 259);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(80, 26);
             this.btnAceptar.TabIndex = 21;
@@ -221,16 +222,16 @@ namespace UI.Desktop
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.lblNombre.Location = new System.Drawing.Point(3, 0);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(56, 17);
+            this.lblNombre.Size = new System.Drawing.Size(52, 15);
             this.lblNombre.TabIndex = 1;
             this.lblNombre.Text = "Nombre";
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(152, 3);
+            this.txtNombre.Location = new System.Drawing.Point(151, 3);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(122, 20);
             this.txtNombre.TabIndex = 11;
@@ -239,16 +240,16 @@ namespace UI.Desktop
             // lblApe
             // 
             this.lblApe.AutoSize = true;
-            this.lblApe.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.lblApe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.lblApe.Location = new System.Drawing.Point(3, 51);
             this.lblApe.Name = "lblApe";
-            this.lblApe.Size = new System.Drawing.Size(58, 17);
+            this.lblApe.Size = new System.Drawing.Size(51, 15);
             this.lblApe.TabIndex = 2;
             this.lblApe.Text = "Apellido";
             // 
             // txtApe
             // 
-            this.txtApe.Location = new System.Drawing.Point(152, 54);
+            this.txtApe.Location = new System.Drawing.Point(151, 54);
             this.txtApe.Name = "txtApe";
             this.txtApe.Size = new System.Drawing.Size(122, 20);
             this.txtApe.TabIndex = 12;
@@ -256,16 +257,16 @@ namespace UI.Desktop
             // lblDirec
             // 
             this.lblDirec.AutoSize = true;
-            this.lblDirec.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.lblDirec.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.lblDirec.Location = new System.Drawing.Point(3, 114);
             this.lblDirec.Name = "lblDirec";
-            this.lblDirec.Size = new System.Drawing.Size(66, 17);
+            this.lblDirec.Size = new System.Drawing.Size(59, 15);
             this.lblDirec.TabIndex = 3;
             this.lblDirec.Text = "Direccion";
             // 
             // txtDirec
             // 
-            this.txtDirec.Location = new System.Drawing.Point(152, 117);
+            this.txtDirec.Location = new System.Drawing.Point(151, 117);
             this.txtDirec.Name = "txtDirec";
             this.txtDirec.Size = new System.Drawing.Size(122, 20);
             this.txtDirec.TabIndex = 13;
@@ -273,16 +274,16 @@ namespace UI.Desktop
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.lblEmail.Location = new System.Drawing.Point(3, 167);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(104, 17);
+            this.lblEmail.Size = new System.Drawing.Size(97, 15);
             this.lblEmail.TabIndex = 4;
             this.lblEmail.Text = "Email (opcional)";
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(152, 170);
+            this.txtEmail.Location = new System.Drawing.Point(151, 170);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(122, 20);
             this.txtEmail.TabIndex = 14;
@@ -290,22 +291,32 @@ namespace UI.Desktop
             // lblId
             // 
             this.lblId.AutoSize = true;
-            this.lblId.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.lblId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.lblId.Location = new System.Drawing.Point(3, 213);
             this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(20, 17);
+            this.lblId.Size = new System.Drawing.Size(19, 15);
             this.lblId.TabIndex = 0;
             this.lblId.Text = "ID";
             this.lblId.Visible = false;
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(152, 216);
+            this.txtId.Location = new System.Drawing.Point(151, 216);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(122, 20);
             this.txtId.TabIndex = 10;
             this.txtId.Visible = false;
+            // 
+            // checkAdmin
+            // 
+            this.checkAdmin.AutoSize = true;
+            this.checkAdmin.Location = new System.Drawing.Point(3, 259);
+            this.checkAdmin.Name = "checkAdmin";
+            this.checkAdmin.Size = new System.Drawing.Size(104, 17);
+            this.checkAdmin.TabIndex = 25;
+            this.checkAdmin.Text = "Es Administrador";
+            this.checkAdmin.UseVisualStyleBackColor = true;
             // 
             // PersonaDesktop
             // 
@@ -348,5 +359,6 @@ namespace UI.Desktop
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ComboBox cmbTipo;
         private System.Windows.Forms.ComboBox cmbPlan;
+        private System.Windows.Forms.CheckBox checkAdmin;
     }
 }

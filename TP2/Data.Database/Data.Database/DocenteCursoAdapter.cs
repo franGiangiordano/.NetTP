@@ -191,19 +191,28 @@ namespace Data.Database
         }
         public void Save(DocenteCurso docente)
         {
-            if (docente.State == BusinessEntity.States.New)
-            {
-                this.Insert(docente);
+            try {
+
+                if (docente.State == BusinessEntity.States.New)
+                {
+                    this.Insert(docente);
+                }
+                else if (docente.State == BusinessEntity.States.Deleted)
+                {
+                    this.Delete(docente.ID);
+                }
+                else if (docente.State == BusinessEntity.States.Modified)
+                {
+                    this.UpdateDocente(docente);
+                }
+                docente.State = BusinessEntity.States.Unmodified;
             }
-            else if (docente.State == BusinessEntity.States.Deleted)
+            catch (Exception Ex)
             {
-                this.Delete(docente.ID);
+                Exception ExcepcionManejada = new Exception("Error al asignar docente", Ex);
+                throw ExcepcionManejada;
             }
-            else if (docente.State == BusinessEntity.States.Modified)
-            {
-                this.UpdateDocente(docente);
-            }
-            docente.State = BusinessEntity.States.Unmodified;
+
         }
     }
 

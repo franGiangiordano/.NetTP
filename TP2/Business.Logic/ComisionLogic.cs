@@ -34,8 +34,18 @@ namespace Business.Logic
 
         public void Save(Business.Entities.Comision c)
         {
-            _PlanComision.Save(c);
-            return;
+            
+
+            try {
+                _PlanComision.Save(c);
+                return;
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de comisiones", Ex);
+                throw ExcepcionManejada;
+            }
+
         }
 
         public List<Comision> GetComisionesPlan(int idPlan, int idMateria)

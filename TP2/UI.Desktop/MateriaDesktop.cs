@@ -118,9 +118,17 @@ namespace UI.Desktop
 
         public override void GuardarCambios() 
         {
-            MapearADatos();
-            MateriaLogic ml = new MateriaLogic();
-            ml.Save(MateriaActual);
+            
+            try {
+                MapearADatos();
+                MateriaLogic ml = new MateriaLogic();
+                ml.Save(MateriaActual);
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al ejecutar la operacion", Ex);
+                this.Notificar(ExcepcionManejada.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
         public override bool Validar()
         {
@@ -135,31 +143,25 @@ namespace UI.Desktop
                 errores += "Existen uno o mas campos vacios, rellenelos antes de continuar\n";
             }
 
-            if (!String.IsNullOrEmpty(this.txtHsSemanales.Text))
-            {
-                if(Int32.Parse(txtHsSemanales.Text) < 0){
-                    errores += "Las horas semanales deben ser mayores a 0\n";
-                }             
+            
+             if (!ml.validarEntero(txtHsSemanales.Text) || !ml.validarEntero(txtHsSemanales.Text))
+              {
+                errores += "Las horas tienen que ser numeros enteros\n";
+             }
+             else {
+                if (Int32.Parse(txtHsSemanales.Text) < 0 || Int32.Parse(txtHsTotales.Text) < 0)
+                {
+                    errores += "Las horas deben ser mayores a 0\n";
+                }
+                else {
+                    errores += ml.ValidarHs(this.txtHsSemanales.Text, this.txtHsTotales.Text);
+                }
+             }
+
+            if (!Modo.ToString().Equals("Baja") && ml.GetMateria(this.txtDescripcion.Text, (int)this.cmbPlan.SelectedValue)) {
+                errores += "Ya existe una materia con esas caracteristicas\n";
             }
 
-            if (!String.IsNullOrEmpty(this.txtHsTotales.Text))
-            {
-                if (Int32.Parse(txtHsTotales.Text) < 0)
-                {
-                    errores += "Las horas totales deben ser mayores a 0\n";
-                }
-            }
-            errores += ml.ValidarHs(this.txtHsSemanales.Text, this.txtHsTotales.Text);
-            
-            if (!int.TryParse(this.txtHsSemanales.Text, out n))
-            {
-                errores += "El campo Horas Semanales solo puede contener numeros\n";
-            }
-            if (!int.TryParse(this.txtHsTotales.Text, out n))
-            {
-                errores += "El campo Horas Totales solo puede contener numeros\n";
-            }
-            
             if (!errores.Equals(""))
             {
                 this.Notificar(errores, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

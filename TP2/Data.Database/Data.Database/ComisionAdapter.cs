@@ -188,19 +188,27 @@ namespace Data.Database
 
         public void Save(Comision com)
         {
-            if (com.State == BusinessEntity.States.New)
-            {
-                this.Insert(com);
+            try {
+                if (com.State == BusinessEntity.States.New)
+                {
+                    this.Insert(com);
+                }
+                else if (com.State == BusinessEntity.States.Deleted)
+                {
+                    this.Delete(com.ID);
+                }
+                else if (com.State == BusinessEntity.States.Modified)
+                {
+                    this.Update(com);
+                }
+                com.State = BusinessEntity.States.Unmodified;
             }
-            else if (com.State == BusinessEntity.States.Deleted)
+            catch (Exception Ex)
             {
-                this.Delete(com.ID);
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de comisiones", Ex);
+                throw ExcepcionManejada;
             }
-            else if (com.State == BusinessEntity.States.Modified)
-            {
-                this.Update(com);
-            }
-            com.State = BusinessEntity.States.Unmodified;
+            
         }
 
         public List<Comision> GetComisionesPlan(int idPlan, int idMateria)

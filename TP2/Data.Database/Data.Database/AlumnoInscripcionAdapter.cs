@@ -180,19 +180,28 @@ namespace Data.Database
 
         public void Save(AlumnoInscripcion inscripcion)
         {
-            if (inscripcion.State == BusinessEntity.States.New)
-            {
-                this.Insert(inscripcion);
+            try {
+                if (inscripcion.State == BusinessEntity.States.New)
+                {
+                    this.Insert(inscripcion);
+                }
+                else if (inscripcion.State == BusinessEntity.States.Deleted)
+                {
+                    this.Delete(inscripcion.ID);
+                }
+                else if (inscripcion.State == BusinessEntity.States.Modified)
+                {
+                    this.Update(inscripcion);
+                }
+                inscripcion.State = BusinessEntity.States.Unmodified;
             }
-            else if (inscripcion.State == BusinessEntity.States.Deleted)
+            catch (Exception Ex)
             {
-                this.Delete(inscripcion.ID);
+                Exception ExcepcionManejada = new Exception("Error al crear inscripcion", Ex);
+                throw ExcepcionManejada;
             }
-            else if (inscripcion.State == BusinessEntity.States.Modified)
-            {
-                this.Update(inscripcion);
-            }
-            inscripcion.State = BusinessEntity.States.Unmodified;
+
+            
         }
 
 

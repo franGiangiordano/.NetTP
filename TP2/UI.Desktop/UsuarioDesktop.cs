@@ -144,48 +144,85 @@ namespace UI.Desktop
         
         public override void GuardarCambios()
         {
-            //esto es sólo en caso de que se modifique el id_persona y cambie el rol del usuario
-            int idViejo = -1;
-            if (Modo.ToString().Equals("Modificacion")) {
-                idViejo = this.UsuarioActual.IdPersona;
-            }
-                
-            ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
-            PersonaLogic pl = new PersonaLogic();
-            UsuarioLogic ul = new UsuarioLogic();
-            MapearADatos(); //aca ya cambio el Id
-
-            if (Modo.ToString().Equals("Alta")) {
-
-                ul.Save(UsuarioActual);
-                Persona per = pl.GetOne(UsuarioActual.IdPersona);
-                List<ModuloUsuario> modulos = crearLista((int)per.Tipo);
-                mul.CargarPermisos(modulos);
-            }
-            else if (Modo.ToString().Equals("Baja"))
+            try
             {
-                mul.EliminarPermisos(UsuarioActual.ID);
-                ul.Save(UsuarioActual);
-            } else if (Modo.ToString().Equals("Modificacion")){
-                Persona perNueva = pl.GetOne(UsuarioActual.IdPersona);
-                Persona perVieja = pl.GetOne(idViejo);
-                if (perNueva.Tipo == perVieja.Tipo)
+                //esto es sólo en caso de que se modifique el id_persona y cambie el rol del usuario
+                int idViejo = -1;
+                if (Modo.ToString().Equals("Modificacion"))
                 {
-                    ul.Save(UsuarioActual);
+                    idViejo = this.UsuarioActual.IdPersona;
                 }
-                else {                    
-                    mul.EliminarPermisos(UsuarioActual.ID);
-                    List<ModuloUsuario> modulos = crearLista((int)perNueva.Tipo);
-                    mul.CargarPermisos(modulos);
+
+                ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+                PersonaLogic pl = new PersonaLogic();
+                UsuarioLogic ul = new UsuarioLogic();
+                MapearADatos(); //aca ya cambio el Id
+
+                if (Modo.ToString().Equals("Alta"))
+                {
+
                     ul.Save(UsuarioActual);
-                }                
+                    Persona per = pl.GetOne(UsuarioActual.IdPersona);
+                    List<ModuloUsuario> modulos = crearLista((int)per.Tipo);
+                    try {
+                        mul.CargarPermisos(modulos);
+                    }
+                    catch (Exception Ex)
+                    {
+                        Exception ExcepcionManejada = new Exception("Error al cargar permisos", Ex);
+                        this.Notificar(ExcepcionManejada.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }                    
+                }
+                else if (Modo.ToString().Equals("Baja"))
+                {
+                    try {
+                        mul.EliminarPermisos(UsuarioActual.ID);
+                        ul.Save(UsuarioActual);
+                    }
+                    catch (Exception Ex)
+                    {
+                        Exception ExcepcionManejada = new Exception("Error al eliminar permisos", Ex);
+                        this.Notificar(ExcepcionManejada.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }            
+                }
+                else if (Modo.ToString().Equals("Modificacion"))
+                {
+                    Persona perNueva = pl.GetOne(UsuarioActual.IdPersona);
+                    Persona perVieja = pl.GetOne(idViejo);
+                    if (perNueva.Tipo == perVieja.Tipo)
+                    {
+                        ul.Save(UsuarioActual);
+                    }
+                    else
+                    {                        
+                        try{
+                            mul.EliminarPermisos(UsuarioActual.ID);
+                            List<ModuloUsuario> modulos = crearLista((int)perNueva.Tipo);
+                            mul.CargarPermisos(modulos);
+                            ul.Save(UsuarioActual);
+                        }
+                        catch (Exception Ex)
+                        {
+                            Exception ExcepcionManejada = new Exception("Error al cargar permisos", Ex);
+                            this.Notificar(ExcepcionManejada.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+
+        }
+                }
             }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al ejecutar la operacion", Ex);
+                this.Notificar(ExcepcionManejada.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            }
+           
         }
 
         private List<ModuloUsuario> crearLista(int tipo)
         {
             List<ModuloUsuario> m = new List<ModuloUsuario>();
-            for (int i = 1; i <= 6; i++) {
+            for (int i = 1; i <= 7; i++) {
                 ModuloUsuario modulo = new ModuloUsuario();
                 if (tipo == 2) {
                     modulo.IdModulo = i;
@@ -233,6 +270,13 @@ namespace UI.Desktop
                         modulo.PermiteBaja = false;
                         modulo.PermiteConsulta = true;
                         modulo.PermiteModificacion = true;
+                    } else if(i==7){
+                        modulo.IdModulo = i;
+                        modulo.IdUsuario = UsuarioActual.ID;
+                        modulo.PermiteAlta = false;
+                        modulo.PermiteBaja = false;
+                        modulo.PermiteConsulta = true;
+                        modulo.PermiteModificacion = false;
                     }
                     else {
                         modulo.IdModulo = i;
@@ -274,7 +318,11 @@ namespace UI.Desktop
             {
                 errores += "El campo apellido solo puede contener letras\n";
             }
-            if (!errores.Equals(""))
+            if (!Modo.ToString().Equals("Baja") && ul.GetUser(txtUsu.Text)) {
+                errores += "Ya existe un usuario con ese nombre de usuario\n";
+            }
+
+                if (!errores.Equals(""))
             {
                 this.Notificar(errores, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;

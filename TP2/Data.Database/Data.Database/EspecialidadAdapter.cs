@@ -150,19 +150,27 @@ namespace Data.Database
 
         public void Save(Especialidad especialidad)
         {
-            if (especialidad.State == BusinessEntity.States.New)
-            {
-                this.Insert(especialidad);
+            try {
+                if (especialidad.State == BusinessEntity.States.New)
+                {
+                    this.Insert(especialidad);
+                }
+                else if (especialidad.State == BusinessEntity.States.Deleted)
+                {
+                    this.Delete(especialidad.ID);
+                }
+                else if (especialidad.State == BusinessEntity.States.Modified)
+                {
+                    this.Update(especialidad);
+                }
+                especialidad.State = BusinessEntity.States.Unmodified;
             }
-            else if (especialidad.State == BusinessEntity.States.Deleted)
+            catch (Exception Ex)
             {
-                this.Delete(especialidad.ID);
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de materias", Ex);
+                throw ExcepcionManejada;
             }
-            else if (especialidad.State == BusinessEntity.States.Modified)
-            {
-                this.Update(especialidad);
-            }
-            especialidad.State = BusinessEntity.States.Unmodified;
+            
         }
 
         public List<Especialidad> GetEspecialidades()
@@ -198,6 +206,38 @@ namespace Data.Database
 
 
             return especialidades;
+        }
+
+        public bool GetEspecialidad(string desc)
+        {
+           
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdEspecialidades = new SqlCommand("select * from especialidades where desc_especialidad like @desc", sqlconn);
+                cmdEspecialidades.Parameters.Add("@desc", SqlDbType.VarChar).Value = desc;
+                SqlDataReader drEspecialidades = cmdEspecialidades.ExecuteReader();
+
+                if (drEspecialidades.Read())
+                {
+                    return true;
+
+                }
+                drEspecialidades.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar especialidad", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+
+            return false;
         }
 
     }

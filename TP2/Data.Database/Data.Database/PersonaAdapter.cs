@@ -49,7 +49,7 @@ namespace Data.Database
                     }
 
 
-                    
+
                     per.Legajo = (int)drPersonas["legajo"];
                     per.FechaNacimiento = (DateTime)drPersonas["fecha_nac"];
                     per.Tipo = (Persona.TipoPersonas)drPersonas["tipo_persona"];
@@ -307,7 +307,7 @@ namespace Data.Database
             }
 
 
-            return personas; 
+            return personas;
         }
 
         public List<Persona> GetLegajosDocentes()
@@ -380,6 +380,33 @@ namespace Data.Database
             return personas;
         }
 
+        public bool GetPersona(int legajo)
+        {
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdPersonas = new SqlCommand("select * from personas where legajo=@legajo", sqlconn);
+                cmdPersonas.Parameters.Add("@legajo", SqlDbType.Int).Value = legajo;
+                SqlDataReader drPersonas = cmdPersonas.ExecuteReader();
+
+                if (drPersonas.Read())
+                {
+                    return true;
+                }
+                drPersonas.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar persona", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return false;
+        }
     }
 }
 #endregion

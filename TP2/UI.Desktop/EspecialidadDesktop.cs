@@ -83,9 +83,17 @@ namespace UI.Desktop
         }
         public override void GuardarCambios()
         {
-            MapearADatos();
-            EspecialidadLogic el = new EspecialidadLogic();
-            el.Save(EspecialidadActual);
+            
+            try {
+                MapearADatos();
+                EspecialidadLogic el = new EspecialidadLogic();
+                el.Save(EspecialidadActual);
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al ejecutar la operacion", Ex);
+                this.Notificar(ExcepcionManejada.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         public override void Notificar(string titulo, string mensaje, MessageBoxButtons botones, MessageBoxIcon icono)
@@ -99,6 +107,7 @@ namespace UI.Desktop
 
         public override bool Validar()
         {
+            EspecialidadLogic el = new EspecialidadLogic();
             string errores = "";
             if (String.IsNullOrEmpty(this.txtDescripcion.Text))
             {
@@ -108,6 +117,10 @@ namespace UI.Desktop
             {
                 errores += "El campo nombre solo puede contener letras\n";
             }
+            if (!Modo.ToString().Equals("Baja") && el.GetEspecialidad(this.txtDescripcion.Text)) {
+                errores += "Ya existe una especialidad con esas caracteristicas\n";
+            }
+
             if (!errores.Equals(""))
             {
                 this.Notificar(errores, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -117,6 +130,7 @@ namespace UI.Desktop
             {
                 return true;
             }
+
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)

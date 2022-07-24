@@ -82,6 +82,34 @@ namespace Data.Database
             return plan;
         }
 
+        public bool validaPlanExistente(string desc, int idEsp)
+        {
+            Plan pl = new Plan();
+            try
+            {
+                OpenConnection();
+                SqlCommand cmdCurso = new SqlCommand("select * from planes where desc_plan like @desc and id_especialidad like @idEsp", sqlconn);
+                cmdCurso.Parameters.Add("@desc", SqlDbType.VarChar).Value = desc;
+                cmdCurso.Parameters.Add("@idEsp", SqlDbType.Int).Value = idEsp;                
+                SqlDataReader drCurso = cmdCurso.ExecuteReader();
+                while (drCurso.Read())
+                {
+                    return true;
+                }
+                drCurso.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar plan", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return false;
+        }
+
         public void Delete(int ID)
         {
             try
@@ -156,19 +184,26 @@ namespace Data.Database
 
         public void Save(Plan plan)
         {
-            if (plan.State == BusinessEntity.States.New)
-            {
-                this.Insert(plan);
+            try {
+                if (plan.State == BusinessEntity.States.New)
+                {
+                    this.Insert(plan);
+                }
+                else if (plan.State == BusinessEntity.States.Deleted)
+                {
+                    this.Delete(plan.ID);
+                }
+                else if (plan.State == BusinessEntity.States.Modified)
+                {
+                    this.Update(plan);
+                }
+                plan.State = BusinessEntity.States.Unmodified;
             }
-            else if (plan.State == BusinessEntity.States.Deleted)
+            catch (Exception Ex)
             {
-                this.Delete(plan.ID);
-            }
-            else if (plan.State == BusinessEntity.States.Modified)
-            {
-                this.Update(plan);
-            }
-            plan.State = BusinessEntity.States.Unmodified;
+                Exception ExcepcionManejada = new Exception("Error al recuperar plan", Ex);
+                throw ExcepcionManejada;
+            }            
         }
 
         public List<Plan> GetDescripcionPlanes()

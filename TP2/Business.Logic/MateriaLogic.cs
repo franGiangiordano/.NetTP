@@ -34,8 +34,16 @@ namespace Business.Logic
 
         public void Save(Business.Entities.Materia m)
         {
-            _MateriaData.Save(m);
-            return;
+            
+            try {
+                _MateriaData.Save(m);
+                return;
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar materia", Ex);
+                throw ExcepcionManejada;
+            }
         }
 
         public string ValidarHs(string HsSemanales, string HsTotales)
@@ -65,6 +73,23 @@ namespace Business.Logic
         public List<Materia> GetDescripciones()
         {
             return _MateriaData.GetDescripciones();
+        }
+        public bool validarEntero(string desc)
+        {
+            int numericValue;
+            if (int.TryParse(desc, out numericValue))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool GetMateria(string desc, int idPlan)
+        {
+            return _MateriaData.GetMateria(desc, idPlan);
         }
     }
 }

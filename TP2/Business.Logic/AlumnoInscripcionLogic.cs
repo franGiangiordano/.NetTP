@@ -36,8 +36,17 @@ namespace Business.Logic
 
         public void Save(Business.Entities.AlumnoInscripcion i)
         {
-            _AlumnoInscripcionData.Save(i);
-            return;
+            
+            try {
+                _AlumnoInscripcionData.Save(i);
+                return;
+
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al crear inscripcion", Ex);
+                throw ExcepcionManejada;
+            }
         }
 
 
