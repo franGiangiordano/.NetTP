@@ -89,7 +89,7 @@ namespace UI.Desktop
             {
                 //Obligamos al docente a introducir la nota en caso de que desee aprobar a un alumno
                 if (((this.cmbCondicion.Text).Equals("Aprobado")) && String.IsNullOrEmpty(this.txtNota.Text))
-                {
+                { 
                     errores += "El campo nota no puede estar vacio\n";
                     this.Notificar(errores, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return false;
@@ -265,7 +265,11 @@ namespace UI.Desktop
                 if (alumnoInscripcionActual.Nota == -1) {
                     this.txtNota.Text = "";
                 }
-                this.txtNota.Text = alumnoInscripcionActual.Nota.ToString();
+                else
+                {
+                    this.txtNota.Text = alumnoInscripcionActual.Nota.ToString();
+                }
+                
             }
 
             switch (Modo)
@@ -305,6 +309,7 @@ namespace UI.Desktop
                     AlumnoInscripcion ai = new AlumnoInscripcion();
                     AlumnoInscripcionActual = ai;
                     AlumnoInscripcionActual.Condicion = "Inscripto";
+                    AlumnoInscripcionActual.Nota = -1;
                     AlumnoInscripcionActual.IDCurso = cu.ID;
                     if (esAdmin())
                     {
@@ -427,8 +432,12 @@ namespace UI.Desktop
         {
             if (this.cmbCondicion.SelectedItem.ToString().Equals("Aprobado")) {
                 this.txtNota.Enabled = true;
+                
             }
-
+            if (this.cmbCondicion.SelectedItem.ToString().Equals("Libre") || this.cmbCondicion.SelectedItem.ToString().Equals("Regular"))
+            {
+                this.txtNota.Enabled = false;
+            }
 
         }
 

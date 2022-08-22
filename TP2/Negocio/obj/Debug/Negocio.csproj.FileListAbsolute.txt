@@ -27,3 +27,4 @@ C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Negocio\obj\Debug\Negocio.cs
 C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
 C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Negocio\obj\Debug\Negocio.dll
 C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\Negocio\obj\Debug\Negocio.pdb
+F:\TP2\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache

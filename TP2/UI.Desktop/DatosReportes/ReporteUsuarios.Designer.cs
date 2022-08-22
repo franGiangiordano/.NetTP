@@ -30,24 +30,46 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.usuariosBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.usuariosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.dataSetUsuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetUsuarios = new UI.Desktop.DatosReportes.DataSetUsuarios();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.usuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.usuariosTableAdapter = new UI.Desktop.DatosReportes.DataSetUsuariosTableAdapters.usuariosTableAdapter();
-            this.usuariosBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.usuarios1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.usuarios1TableAdapter = new UI.Desktop.DatosReportes.DataSetUsuariosTableAdapters.usuarios1TableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetUsuariosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetUsuarios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usuarios1BindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // usuariosBindingSource2
+            // 
+            this.usuariosBindingSource2.DataMember = "usuarios";
+            this.usuariosBindingSource2.DataSource = this.dataSetUsuariosBindingSource;
             // 
             // usuariosBindingSource1
             // 
             this.usuariosBindingSource1.DataMember = "usuarios";
             this.usuariosBindingSource1.DataSource = this.dataSetUsuariosBindingSource;
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource1.Name = "DataSetUsuarios";
+            reportDataSource1.Value = this.usuarios1BindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "UI.Desktop.DatosReportes.InformeUsuarios.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(800, 450);
+            this.reportViewer1.TabIndex = 0;
+            this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
             // 
             // dataSetUsuariosBindingSource
             // 
@@ -59,20 +81,6 @@
             this.dataSetUsuarios.DataSetName = "DataSetUsuarios";
             this.dataSetUsuarios.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // reportViewer1
-            // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "DataSetUsuarios";
-            reportDataSource1.Value = this.usuariosBindingSource2;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "UI.Desktop.DatosReportes.InformeUsuarios.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(800, 450);
-            this.reportViewer1.TabIndex = 0;
-            this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
-            // 
             // usuariosBindingSource
             // 
             this.usuariosBindingSource.DataMember = "usuarios";
@@ -82,10 +90,14 @@
             // 
             this.usuariosTableAdapter.ClearBeforeFill = true;
             // 
-            // usuariosBindingSource2
+            // usuarios1BindingSource
             // 
-            this.usuariosBindingSource2.DataMember = "usuarios";
-            this.usuariosBindingSource2.DataSource = this.dataSetUsuariosBindingSource;
+            this.usuarios1BindingSource.DataMember = "usuarios1";
+            this.usuarios1BindingSource.DataSource = this.dataSetUsuarios;
+            // 
+            // usuarios1TableAdapter
+            // 
+            this.usuarios1TableAdapter.ClearBeforeFill = true;
             // 
             // ReporteUsuarios
             // 
@@ -96,11 +108,12 @@
             this.Name = "ReporteUsuarios";
             this.Text = "ReporteUsuarios";
             this.Load += new System.EventHandler(this.ReporteUsuarios_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetUsuariosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetUsuarios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usuarios1BindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -113,5 +126,7 @@
         private System.Windows.Forms.BindingSource usuariosBindingSource1;
         private DataSetUsuariosTableAdapters.usuariosTableAdapter usuariosTableAdapter;
         private System.Windows.Forms.BindingSource usuariosBindingSource2;
+        private System.Windows.Forms.BindingSource usuarios1BindingSource;
+        private DataSetUsuariosTableAdapters.usuarios1TableAdapter usuarios1TableAdapter;
     }
 }

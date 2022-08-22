@@ -58,7 +58,7 @@ namespace UI.Desktop
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.56097F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.43903F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 213F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 214F));
             this.tableLayoutPanel1.Controls.Add(this.lblClave, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.txtEmail, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtClave, 1, 3);
@@ -103,15 +103,16 @@ namespace UI.Desktop
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(111, 75);
+            this.txtEmail.Location = new System.Drawing.Point(110, 75);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(160, 20);
             this.txtEmail.TabIndex = 5;
             // 
             // txtClave
             // 
-            this.txtClave.Location = new System.Drawing.Point(111, 116);
+            this.txtClave.Location = new System.Drawing.Point(110, 116);
             this.txtClave.Name = "txtClave";
+            this.txtClave.PasswordChar = '*';
             this.txtClave.Size = new System.Drawing.Size(160, 20);
             this.txtClave.TabIndex = 6;
             // 
@@ -119,7 +120,7 @@ namespace UI.Desktop
             // 
             this.checkHab.AutoSize = true;
             this.checkHab.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.checkHab.Location = new System.Drawing.Point(290, 3);
+            this.checkHab.Location = new System.Drawing.Point(289, 3);
             this.checkHab.Name = "checkHab";
             this.checkHab.Size = new System.Drawing.Size(89, 21);
             this.checkHab.TabIndex = 7;
@@ -130,7 +131,7 @@ namespace UI.Desktop
             // 
             this.lblApellido.AutoSize = true;
             this.lblApellido.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.lblApellido.Location = new System.Drawing.Point(290, 36);
+            this.lblApellido.Location = new System.Drawing.Point(289, 36);
             this.lblApellido.Name = "lblApellido";
             this.lblApellido.Size = new System.Drawing.Size(58, 17);
             this.lblApellido.TabIndex = 8;
@@ -140,7 +141,7 @@ namespace UI.Desktop
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.lblUsuario.Location = new System.Drawing.Point(290, 72);
+            this.lblUsuario.Location = new System.Drawing.Point(289, 72);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(51, 17);
             this.lblUsuario.TabIndex = 9;
@@ -150,7 +151,7 @@ namespace UI.Desktop
             // 
             this.lblConfirm.AutoSize = true;
             this.lblConfirm.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.lblConfirm.Location = new System.Drawing.Point(290, 113);
+            this.lblConfirm.Location = new System.Drawing.Point(289, 113);
             this.lblConfirm.Name = "lblConfirm";
             this.lblConfirm.Size = new System.Drawing.Size(105, 17);
             this.lblConfirm.TabIndex = 10;
@@ -158,29 +159,30 @@ namespace UI.Desktop
             // 
             // txtApe
             // 
-            this.txtApe.Location = new System.Drawing.Point(409, 39);
+            this.txtApe.Location = new System.Drawing.Point(408, 39);
             this.txtApe.Name = "txtApe";
             this.txtApe.Size = new System.Drawing.Size(160, 20);
             this.txtApe.TabIndex = 11;
             // 
             // txtUsu
             // 
-            this.txtUsu.Location = new System.Drawing.Point(409, 75);
+            this.txtUsu.Location = new System.Drawing.Point(408, 75);
             this.txtUsu.Name = "txtUsu";
             this.txtUsu.Size = new System.Drawing.Size(160, 20);
             this.txtUsu.TabIndex = 12;
             // 
             // txtConfirm
             // 
-            this.txtConfirm.Location = new System.Drawing.Point(409, 116);
+            this.txtConfirm.Location = new System.Drawing.Point(408, 116);
             this.txtConfirm.Name = "txtConfirm";
+            this.txtConfirm.PasswordChar = '*';
             this.txtConfirm.Size = new System.Drawing.Size(160, 20);
             this.txtConfirm.TabIndex = 13;
             this.txtConfirm.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(111, 3);
+            this.txtId.Location = new System.Drawing.Point(110, 3);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(160, 20);
@@ -221,7 +223,7 @@ namespace UI.Desktop
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(111, 39);
+            this.txtNombre.Location = new System.Drawing.Point(110, 39);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(160, 20);
             this.txtNombre.TabIndex = 4;
@@ -231,7 +233,7 @@ namespace UI.Desktop
             this.btnAceptar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAceptar.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.btnAceptar.Location = new System.Drawing.Point(290, 193);
+            this.btnAceptar.Location = new System.Drawing.Point(289, 193);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(80, 26);
             this.btnAceptar.TabIndex = 14;
@@ -244,7 +246,7 @@ namespace UI.Desktop
             this.btnCancelar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.btnCancelar.Location = new System.Drawing.Point(409, 193);
+            this.btnCancelar.Location = new System.Drawing.Point(408, 193);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(80, 26);
             this.btnCancelar.TabIndex = 16;
@@ -255,7 +257,7 @@ namespace UI.Desktop
             // cmbLegajos
             // 
             this.cmbLegajos.FormattingEnabled = true;
-            this.cmbLegajos.Location = new System.Drawing.Point(111, 157);
+            this.cmbLegajos.Location = new System.Drawing.Point(110, 157);
             this.cmbLegajos.Name = "cmbLegajos";
             this.cmbLegajos.Size = new System.Drawing.Size(121, 21);
             this.cmbLegajos.TabIndex = 17;

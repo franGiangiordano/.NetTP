@@ -102,6 +102,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetUsuarios.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DatosReportes\ReporteMaterias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatosReportes\ReporteMaterias.Designer.cs">
+      <DependentUpon>ReporteMaterias.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatosReportes\ReporteUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,7 +240,11 @@
     <EmbeddedResource Include="Cursos.resx">
       <DependentUpon>Cursos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DatosReportes\InformeMaterias.rdlc" />
     <EmbeddedResource Include="DatosReportes\InformeUsuarios.rdlc" />
+    <EmbeddedResource Include="DatosReportes\ReporteMaterias.resx">
+      <DependentUpon>ReporteMaterias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DatosReportes\ReporteUsuarios.resx">
       <DependentUpon>ReporteUsuarios.cs</DependentUpon>
     </EmbeddedResource>

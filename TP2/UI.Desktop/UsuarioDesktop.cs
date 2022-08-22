@@ -318,7 +318,7 @@ namespace UI.Desktop
             {
                 errores += "El campo apellido solo puede contener letras\n";
             }
-            if (!Modo.ToString().Equals("Baja") && ul.GetUser(txtUsu.Text)) {
+            if (!Modo.ToString().Equals("Baja") && ul.GetUser(txtUsu.Text) && usuarioActual.NombreUsuario!= this.txtUsu.Text) {
                 errores += "Ya existe un usuario con ese nombre de usuario\n";
             }
 

@@ -214,8 +214,11 @@ namespace UI.Desktop
         private void button5_Click(object sender, EventArgs e)
         {
             //nombre carpeta.NombreForm
-            DatosReportes.ReporteUsuarios formReporteUsuarios = new DatosReportes.ReporteUsuarios();
-            formReporteUsuarios.ShowDialog();
+            //DatosReportes.ReporteUsuarios formReporteUsuarios = new DatosReportes.ReporteUsuarios(Id);
+            //formReporteUsuarios.ShowDialog();
+            DatosReportes.ReporteMaterias formReporteMaterias = new DatosReportes.ReporteMaterias();
+            formReporteMaterias.ShowDialog();
+
         }
     }
 }

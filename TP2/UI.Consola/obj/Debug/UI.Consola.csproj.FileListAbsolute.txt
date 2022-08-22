@@ -28,3 +28,17 @@ C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\UI.Consola\obj\Debug\UI.Cons
 C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\UI.Consola\obj\Debug\UI.Consola.csproj.CopyComplete
 C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\UI.Consola\obj\Debug\UI.Consola.exe
 C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\UI.Consola\obj\Debug\UI.Consola.pdb
+F:\TP2\UI.Consola\bin\Debug\UI.Consola.exe.config
+F:\TP2\UI.Consola\bin\Debug\UI.Consola.exe
+F:\TP2\UI.Consola\bin\Debug\UI.Consola.pdb
+F:\TP2\UI.Consola\bin\Debug\Business.Entities.dll
+F:\TP2\UI.Consola\bin\Debug\Business.Logic.dll
+F:\TP2\UI.Consola\bin\Debug\Data.Database.dll
+F:\TP2\UI.Consola\bin\Debug\Business.Entities.pdb
+F:\TP2\UI.Consola\bin\Debug\Business.Logic.pdb
+F:\TP2\UI.Consola\bin\Debug\Data.Database.pdb
+F:\TP2\UI.Consola\obj\Debug\UI.Consola.csproj.AssemblyReference.cache
+F:\TP2\UI.Consola\obj\Debug\UI.Consola.csproj.CoreCompileInputs.cache
+F:\TP2\UI.Consola\obj\Debug\UI.Consola.csproj.CopyComplete
+F:\TP2\UI.Consola\obj\Debug\UI.Consola.exe
+F:\TP2\UI.Consola\obj\Debug\UI.Consola.pdb

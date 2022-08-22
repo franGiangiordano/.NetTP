@@ -371,7 +371,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Reporte de Usuarios </Value>
+                <Value>Reporte de Usuarios Habiltados</Value>
                 <Style>
                   <FontFamily>Century Gothic</FontFamily>
                   <FontSize>12pt</FontSize>
@@ -384,9 +384,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox11</rd:DefaultName>
         <Top>0.88759cm</Top>
-        <Left>5.34141cm</Left>
+        <Left>4.75933cm</Left>
         <Height>0.78521cm</Height>
-        <Width>4.61604cm</Width>
+        <Width>7.34125cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
