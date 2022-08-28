@@ -53,6 +53,7 @@ namespace UI.Desktop
             this.label1.TabIndex = 0;
             this.label1.Text = "     ¡Bienvenido al Sistema!  \r\nPor favor digite su información de Ingreso";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
