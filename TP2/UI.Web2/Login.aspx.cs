@@ -19,7 +19,9 @@ namespace UI.Web2
         protected void btnIngresar_Click(object sender, EventArgs e){
             if (String.IsNullOrEmpty(txtUsuario.Text) || String.IsNullOrEmpty(txtPassword.Text))
             {
-                Page.Response.Write("Existen uno o mas campos vacios, rellenelos antes de continuar");
+                Response.Write("<script>alert('Existen uno o mas campos vacios, rellenelos antes de continuar');</script>");
+
+                //Page.Response.Write("Existen uno o mas campos vacios, rellenelos antes de continuar");
             }
             else
             {
@@ -35,7 +37,9 @@ namespace UI.Web2
                 catch (Exception ex)
                 {
                     Exception ExcepcionManejada = new Exception("Error en la conexión con la base de datos");
-                    Page.Response.Write(ExcepcionManejada.Message);
+                    Response.Write("<script>alert("+ExcepcionManejada.Message+");</script>");
+
+                    //Page.Response.Write(ExcepcionManejada.Message);
 
                 }
 
@@ -45,7 +49,7 @@ namespace UI.Web2
                     if (usuarioEncontrado.Habilitado != false)
                     {
                         Session["usuario"] = usuarioEncontrado;
-                        Response.Redirect("~/About.aspx");
+                        Response.Redirect("~/Principal.aspx");
 
                         //Response.Redirect("~/About.aspx?msj="+usuarioEncontrado.ID.ToString());
                         //Principal formPrincipal = new Principal(usuarioEncontrado.ID);
@@ -58,13 +62,17 @@ namespace UI.Web2
                     }
                     else
                     {
-                        Page.Response.Write("Lo sentimos, no puede ingresar al sistema \n Su usuario se encuentra inhabilitado");
+                        Response.Write("<script>alert('Lo sentimos, no puede ingresar al sistema \n Su usuario se encuentra inhabilitado');</script>");
+
+                        //Page.Response.Write("Lo sentimos, no puede ingresar al sistema \n Su usuario se encuentra inhabilitado");
                     }
 
                 }
                 else
                 {
-                    Page.Response.Write("Usuario y/o contraseña incorrectos");
+                    Response.Write("<script>alert('Usuario y/o contraseña incorrectos');</script>");
+
+                    //Page.Response.Write("Usuario y/o contraseña incorrectos");
                 }
             }
         }

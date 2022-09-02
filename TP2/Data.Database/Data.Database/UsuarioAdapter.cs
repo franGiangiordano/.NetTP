@@ -41,7 +41,7 @@ namespace Data.Database
                     usr.Email = (string)drUsuarios["email"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
 
-                    usr.IdPersona = (int)drUsuarios["id_persona"];
+                    //usr.IdPersona = (int)drUsuarios["id_persona"];
 
 
                     if (!drUsuarios.IsDBNull(8))
@@ -144,7 +144,7 @@ namespace Data.Database
 
         }
 
-        protected void Update(Usuario usuario)
+        public void Update(Usuario usuario)
         {
             Encrypt64 encriptar = new Encrypt64();
             try
@@ -183,7 +183,7 @@ namespace Data.Database
 
         }
 
-        protected void Insert(Usuario usuario)
+        public void Insert(Usuario usuario)
         {
             Encrypt64 encriptar = new Encrypt64();
             try

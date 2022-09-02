@@ -11,9 +11,6 @@ using Business.Entities;
 using Business.Logic;
 
 
-//Este formulario fue hecho para un laboratorio pero sirve también para el TP2
-
-
 namespace UI.Desktop
 {
     public partial class formLogin : Form
