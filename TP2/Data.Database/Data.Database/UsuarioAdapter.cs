@@ -283,7 +283,7 @@ namespace Data.Database
                     usr.Email = (string)drUsuarios["email"];
                     usr.Habilitado = (bool)drUsuarios["habilitado"];
 
-                    usr.IdPersona = (int)drUsuarios["id_persona"];                   
+                    //usr.IdPersona = (int)drUsuarios["id_persona"];                   
 
                     if (!drUsuarios.IsDBNull(8))
                     {

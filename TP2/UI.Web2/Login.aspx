@@ -15,7 +15,7 @@ Por favor digite su información de Ingreso</h1>
            Contraseña: <asp:TextBox ID="txtPassword" runat="server" type="password"></asp:TextBox>   
         
     <div class="jumbotron">
-       <asp:Button ID="btnIngresar" runat="server" OnClick="btnIngresar_Click" Text="Aceptar"  />
+       <asp:Button ID="btnIngresar" runat="server" OnClick="btnIngresar_Click" Text="Aceptar"/>
      </div>
 
 
