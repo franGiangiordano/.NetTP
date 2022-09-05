@@ -281,7 +281,7 @@ namespace UI.Web
 
             if (!errores.Equals(""))
             {
-                Response.Write($"<script>alert('{errores}');</script>");//esto es para mostrar una alerta de los errores
+                //Response.Write($"<script>alert('{errores}');</script>");//esto es para mostrar una alerta de los errores
                 return false;
             }
             else
