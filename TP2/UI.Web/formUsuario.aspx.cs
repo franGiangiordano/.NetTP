@@ -299,7 +299,7 @@ namespace UI.Web
                 try
                 {
                     GuardarCambios();
-                    Response.Write("<script>alert(Usuario añadido exitosamente);</script>");
+                    Response.Write("<script>alert('Usuario añadido correctamente');</script>"); //esta alerta no funciona
                     Response.Redirect("~/Usuarios.aspx");
                 }
                 catch (Exception Ex)
