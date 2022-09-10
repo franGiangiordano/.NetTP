@@ -100,8 +100,8 @@ namespace UI.Web
                     break;
 
                 case "modificacion":
-                        UsuarioActual.Nombre = txtNombre.Text;
-                        UsuarioActual.Email = txtEmail.Text;
+                    UsuarioActual.Nombre = txtNombre.Text;
+                    UsuarioActual.Email = txtEmail.Text;
                     if (!txtClave.Text.Equals(UsuarioActual.Clave))
                     {
                         UsuarioActual.CambiaClave = true;
@@ -111,7 +111,6 @@ namespace UI.Web
                     {
                         UsuarioActual.CambiaClave = false;
                     }
-
                     UsuarioActual.Habilitado = chkHabilitado.Checked;
                     UsuarioActual.Apellido = txtApellido.Text;
                     UsuarioActual.NombreUsuario = txtUsuario.Text;
@@ -278,34 +277,33 @@ namespace UI.Web
             //String Modo = Request.QueryString["modo"];
             string errores = "";
             UsuarioLogic ul = new UsuarioLogic();
-            if (String.IsNullOrEmpty(this.txtNombre.Text)
-            || String.IsNullOrEmpty(this.txtApellido.Text) || String.IsNullOrEmpty(this.txtClave.Text)
-            || String.IsNullOrEmpty(this.txtConfirmarClave.Text) || String.IsNullOrEmpty(this.txtUsuario.Text)
-             )
-            {
-                errores += "Existen uno o mas campos vacios, rellenelos antes de continuar\n";
-            }
-            errores += ul.validarLongitud(txtClave.Text);
-            errores += ul.validarClave(txtClave.Text, txtConfirmarClave.Text);
+            //if (String.IsNullOrEmpty(this.txtNombre.Text)
+            //|| String.IsNullOrEmpty(this.txtApellido.Text) || String.IsNullOrEmpty(this.txtClave.Text)
+            //|| String.IsNullOrEmpty(this.txtConfirmarClave.Text) || String.IsNullOrEmpty(this.txtUsuario.Text)
+            // )
+            //{
+            //    errores += "Existen uno o mas campos vacios, rellenelos antes de continuar\n";
+            //}
+            //errores += ul.validarLongitud(txtClave.Text);
+            //errores += ul.validarClave(txtClave.Text, txtConfirmarClave.Text);
 
-            if (ul.IsValidMailAddress1(txtEmail.Text) == false)
-            {
-                errores += "El Email ingresado es invalido\n";
-            }
-            if (!this.txtNombre.Text.All(Char.IsLetter))
-            {
-                errores += "El campo nombre solo puede contener letras\n";
-            }
-            if (!this.txtApellido.Text.All(Char.IsLetter))
-            {
-                errores += "El campo apellido solo puede contener letras\n";
-            }
-            
-            if (!Session["estado"].Equals("Baja") && !Session["estado"].Equals("Modificacion") && ul.GetUser(txtUsuario.Text))
+            //if (ul.IsValidMailAddress1(txtEmail.Text) == false)
+            //{
+            //    errores += "El Email ingresado es invalido\n";
+            //}
+            //if (!this.txtNombre.Text.All(Char.IsLetter))
+            //{
+            //    errores += "El campo nombre solo puede contener letras\n";
+            //}
+            //if (!this.txtApellido.Text.All(Char.IsLetter))
+            //{
+            //    errores += "El campo apellido solo puede contener letras\n";
+            //}
+            if (!Session["estado"].Equals("baja") && !Session["estado"].Equals("modificacion") && ul.GetUser(txtUsuario.Text))
             {
                 errores += "Ya existe un usuario con ese nombre de usuario\n";
             }
-            else if (!Session["estado"].Equals("Baja") && ul.GetUser(txtUsuario.Text) && usuarioActual.NombreUsuario != this.txtUsuario.Text)
+            else if (!Session["estado"].Equals("baja") && ul.GetUser(txtUsuario.Text) && usuarioActual.NombreUsuario != this.txtUsuario.Text)
             {
                 errores += "Ya existe un usuario con ese nombre de usuario\n";
             }
@@ -330,7 +328,7 @@ namespace UI.Web
                 try
                 {
                     GuardarCambios();
-                    Response.Write("<script>alert('Usuario añadido correctamente');</script>"); //esta alerta no funciona
+                    //Response.Write("<script>alert('Usuario añadido correctamente');</script>"); //esta alerta no funciona
                     Session.Remove("estado"); //cerramos una sesion en particular
                     Response.Redirect("~/Usuarios.aspx");
                 }
