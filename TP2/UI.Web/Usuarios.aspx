@@ -6,13 +6,14 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <link rel="stylesheet" href="estilos/gridView.css">
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
              <h2><%: Title %><asp:ObjectDataSource ID="ObjectDataSource1" runat="server" DataObjectTypeName="Business.Entities.Usuario" DeleteMethod="EliminarWeb" InsertMethod="Insert" SelectMethod="GetAll" TypeName="Data.Database.UsuarioAdapter" UpdateMethod="Update">
         </asp:ObjectDataSource>
-        <asp:GridView ID="grdUsuarios" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" ShowFooter="True" OnRowCommand="grdUsuarios_RowCommand" OnSelectedIndexChanged="grdUsuarios_SelectedIndexChanged">
+        <asp:GridView ID="grdUsuarios" runat="server" Class="mGrid" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" ShowFooter="True" OnRowCommand="grdUsuarios_RowCommand" OnSelectedIndexChanged="grdUsuarios_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
                 <asp:TemplateField HeaderText="Nombre" SortExpression="Nombre">
@@ -55,15 +56,15 @@
                         <asp:CheckBox ID="CheckBox1" runat="server" Checked='<%# Bind("Habilitado") %>' Enabled="false" />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:ButtonField ButtonType="Button" CommandName="Borrar" HeaderText="Borrar" ShowHeader="True" Text="Borrar" />
-                <asp:ButtonField ButtonType="Button" HeaderText="Editar" ShowHeader="True" Text="Editar" CommandName="Editar"/>                
+                <asp:ButtonField ButtonType="Image" ImageUrl="~\Imagenes\borrar.png" CommandName="Borrar" HeaderText="Borrar" ShowHeader="True" Text="Borrar" />
+                <asp:ButtonField ButtonType="Image" ImageUrl="~\Imagenes\boton-editar.png" HeaderText="Editar" ShowHeader="True" Text="Editar" CommandName="Editar"/>                
             </Columns>
         </asp:GridView>
     </h2>
         </div>
-        <p>
-            <asp:Button ID="btnInsertar" runat="server" CommandName="Insertar" Text="Insertar" OnClick="btnInsertar_Click" />
-        </p>
+        <div>
+            <asp:Button ID="btnInsertar" class="btn btn-bootstrap" runat="server" CommandName="Insertar" Text="Insertar" OnClick="btnInsertar_Click" />
+        </div>
     </form>
 </body>
 </html>
