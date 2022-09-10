@@ -17,10 +17,18 @@ namespace UI.Web
         public Usuario UsuarioActual { get => usuarioActual; set => usuarioActual = value; }
         protected void Page_Load(object sender, EventArgs e)
         {
-
-           //GridViewRow a = (GridViewRow)Session["celda"];
-           //int id = Int32.Parse(a.Cells[0].Text.ToString());
+            //GridViewRow a = (GridViewRow)Session["celda"];
+            //int id = Int32.Parse(a.Cells[0].Text.ToString());
             cargarComboLegajos();
+            if (Session["estado"] == null)
+            {
+                Response.Redirect("~/Usuarios.aspx");
+            }
+            else if (Session["estado"].Equals("modificacion")) {                
+                MapearDeDatos();
+            }
+
+                
 
         }
 
@@ -34,13 +42,49 @@ namespace UI.Web
             this.cmbLegajos.DataBind();
         }
 
+        public void MapearDeDatos()
+        {
+            
+            PersonaLogic pl = new PersonaLogic();
+            UsuarioLogic ul = new UsuarioLogic();
+
+            string id = (string)Session["id"];
+            UsuarioActual = new Usuario();
+            UsuarioActual = ul.GetOne(Int32.Parse(id));
+            
+            //UsuarioActual.ID = Int32.Parse(id);
+
+            this.chkHabilitado.Checked = this.UsuarioActual.Habilitado;
+            this.txtNombre.Text = this.UsuarioActual.Nombre;
+            this.txtApellido.Text = this.UsuarioActual.Apellido;
+            this.txtEmail.Text = this.UsuarioActual.Email;
+            this.txtUsuario.Text = this.UsuarioActual.NombreUsuario;
+            this.txtClave.Text = this.UsuarioActual.Clave;
+            this.txtConfirmarClave.Text = this.UsuarioActual.Clave;
+
+            this.cmbLegajos.SelectedValue = this.UsuarioActual.IdPersona.ToString();
+            switch (Session["estado"])
+            {
+                case "alta":
+                    btnAceptar.Text = "Guardar";
+                    break;
+                case "modificacion":
+                    btnAceptar.Text = "Guardar";
+                    break;
+                case "consulta":
+                    btnAceptar.Text = "Aceptar";
+                    break;
+
+            }
+        }
+
         public void MapearADatos()
         {
-            String Modo = Request.QueryString["modo"];
+            //String Modo = Request.QueryString["modo"];
 
             PersonaLogic pl = new PersonaLogic();
 
-            switch (Modo)
+            switch (Session["estado"])
             {
                 case "alta":
                     Usuario usu = new Usuario();
@@ -55,34 +99,29 @@ namespace UI.Web
                     UsuarioActual.State = Usuario.States.New;
                     break;
 
-                //case (ApplicationForm.ModoForm)ModoForm.Modificacion:
-                //    UsuarioActual.Nombre = txtNombre.Text;
-                //    UsuarioActual.Email = txtEmail.Text;
-                //    if (!txtClave.Text.Equals(UsuarioActual.Clave))
-                //    {
-                //        UsuarioActual.CambiaClave = true;
-                //        UsuarioActual.Clave = txtClave.Text;
-                //    }
-                //    else
-                //    {
-                //        UsuarioActual.CambiaClave = false;
-                //    }
+                case "modificacion":
+                        UsuarioActual.Nombre = txtNombre.Text;
+                        UsuarioActual.Email = txtEmail.Text;
+                    if (!txtClave.Text.Equals(UsuarioActual.Clave))
+                    {
+                        UsuarioActual.CambiaClave = true;
+                        UsuarioActual.Clave = txtClave.Text;
+                    }
+                    else
+                    {
+                        UsuarioActual.CambiaClave = false;
+                    }
 
-                //    UsuarioActual.Habilitado = checkHab.Checked;
-                //    UsuarioActual.Apellido = txtApe.Text;
-                //    UsuarioActual.NombreUsuario = txtUsu.Text;
-                //    //_UsuarioActual.IDPersona = (pl.GetOnePorLejago(Int32.Parse(cmbLegajos.SelectedItem.ToString()))).ID;
-                //    UsuarioActual.IdPersona = (int)this.cmbLegajos.SelectedValue;
-                //    UsuarioActual.State = Usuario.States.Modified;
-                //    break;
-
-                //case (ApplicationForm.ModoForm)ModoForm.Baja:
-                //    UsuarioActual.State = Usuario.States.Deleted;
-                //    break;
-
-                //case (ApplicationForm.ModoForm)ModoForm.Consulta:
-                //    UsuarioActual.State = Usuario.States.Modified;
-                //    break;
+                    UsuarioActual.Habilitado = chkHabilitado.Checked;
+                    UsuarioActual.Apellido = txtApellido.Text;
+                    UsuarioActual.NombreUsuario = txtUsuario.Text;
+                    //_UsuarioActual.IDPersona = (pl.GetOnePorLejago(Int32.Parse(cmbLegajos.SelectedItem.ToString()))).ID;
+                    UsuarioActual.IdPersona = Int32.Parse(this.cmbLegajos.SelectedValue);
+                    UsuarioActual.State = Usuario.States.Modified;
+                    break;
+                    //case (ApplicationForm.ModoForm)ModoForm.Consulta:
+                    //    UsuarioActual.State = Usuario.States.Modified;
+                    //    break;
             }
         }
 
@@ -91,19 +130,19 @@ namespace UI.Web
             try
             {
                 //esto es sólo en caso de que se modifique el id_persona y cambie el rol del usuario
-                //int idViejo = -1;
-                //if (Modo.ToString().Equals("Modificacion"))
-                //{
-                //    idViejo = this.UsuarioActual.IdPersona;
-                //}
+                int idViejo = -1;
+                if (Session["estado"].Equals("modificacion"))
+                {
+                    idViejo = this.UsuarioActual.IdPersona;
+                }
 
                 ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
                 PersonaLogic pl = new PersonaLogic();
                 UsuarioLogic ul = new UsuarioLogic();
                 MapearADatos(); //aca ya cambio el Id
 
-                String Modo = Request.QueryString["modo"];
-                if (Modo.Equals("alta"))
+                //String Modo = Request.QueryString["modo"];
+                if (Session["estado"].Equals("alta"))
                 {
                     ul.Save(UsuarioActual);
                     Persona per = pl.GetOne(UsuarioActual.IdPersona);
@@ -119,44 +158,31 @@ namespace UI.Web
 
                     }
                 }
-                //else if (Modo.ToString().Equals("Baja"))
-                //{
-                //    try
-                //    {
-                //        mul.EliminarPermisos(UsuarioActual.ID);
-                //        ul.Save(UsuarioActual);
-                //    }
-                //    catch (Exception Ex)
-                //    {
-                //        Exception ExcepcionManejada = new Exception("Error al eliminar permisos", Ex);
-                //        this.Notificar(ExcepcionManejada.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                //    }
-                //}
-                //else if (Modo.ToString().Equals("Modificacion"))
-                //{
-                //    Persona perNueva = pl.GetOne(UsuarioActual.IdPersona);
-                //    Persona perVieja = pl.GetOne(idViejo);
-                //    if (perNueva.Tipo == perVieja.Tipo)
-                //    {
-                //        ul.Save(UsuarioActual);
-                //    }
-                //    else
-                //    {
-                //        try
-                //        {
-                //            mul.EliminarPermisos(UsuarioActual.ID);
-                //            List<ModuloUsuario> modulos = crearLista((int)perNueva.Tipo);
-                //            mul.CargarPermisos(modulos);
-                //            ul.Save(UsuarioActual);
-                //        }
-                //        catch (Exception Ex)
-                //        {
-                //            Exception ExcepcionManejada = new Exception("Error al cargar permisos", Ex);
-                //            this.Notificar(ExcepcionManejada.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                //        }
+                else if (Session["estado"].Equals("modificacion"))
+                {
+                    Persona perNueva = pl.GetOne(UsuarioActual.IdPersona);
+                    Persona perVieja = pl.GetOne(idViejo);
+                    if (perNueva.Tipo == perVieja.Tipo)
+                    {
+                        ul.Save(UsuarioActual);
+                    }
+                    else
+                    {
+                        try
+                        {
+                            mul.EliminarPermisos(UsuarioActual.ID);
+                            List<ModuloUsuario> modulos = crearLista((int)perNueva.Tipo);
+                            mul.CargarPermisos(modulos);
+                            ul.Save(UsuarioActual);
+                        }
+                        catch (Exception Ex)
+                        {
+                            Exception ExcepcionManejada = new Exception("Error al cargar permisos", Ex);
+                            Response.Write("<script>alert(" + ExcepcionManejada.Message + ");</script>");                            
+                        }
 
-                //    }
-                //}
+                    }
+                }
             }
             catch (Exception Ex)
             {
@@ -249,7 +275,7 @@ namespace UI.Web
 
         public bool Validar()
         {
-            String Modo = Request.QueryString["modo"];
+            //String Modo = Request.QueryString["modo"];
             string errores = "";
             UsuarioLogic ul = new UsuarioLogic();
             if (String.IsNullOrEmpty(this.txtNombre.Text)
@@ -274,7 +300,12 @@ namespace UI.Web
             {
                 errores += "El campo apellido solo puede contener letras\n";
             }
-            if (!Modo.Equals("Baja") && ul.GetUser(txtUsuario.Text) && usuarioActual.NombreUsuario != this.txtUsuario.Text)
+            
+            if (!Session["estado"].Equals("Baja") && !Session["estado"].Equals("Modificacion") && ul.GetUser(txtUsuario.Text))
+            {
+                errores += "Ya existe un usuario con ese nombre de usuario\n";
+            }
+            else if (!Session["estado"].Equals("Baja") && ul.GetUser(txtUsuario.Text) && usuarioActual.NombreUsuario != this.txtUsuario.Text)
             {
                 errores += "Ya existe un usuario con ese nombre de usuario\n";
             }
@@ -300,6 +331,7 @@ namespace UI.Web
                 {
                     GuardarCambios();
                     Response.Write("<script>alert('Usuario añadido correctamente');</script>"); //esta alerta no funciona
+                    Session.Remove("estado"); //cerramos una sesion en particular
                     Response.Redirect("~/Usuarios.aspx");
                 }
                 catch (Exception Ex)
@@ -313,6 +345,7 @@ namespace UI.Web
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
+            Session.Remove("estado");
             Response.Redirect("~/Usuarios.aspx");
         }
     }

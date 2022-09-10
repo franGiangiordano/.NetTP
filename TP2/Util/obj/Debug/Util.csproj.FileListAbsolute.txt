@@ -16,3 +16,9 @@ F:\TP2\Util\obj\Debug\Util.csproj.AssemblyReference.cache
 F:\TP2\Util\obj\Debug\Util.csproj.CoreCompileInputs.cache
 F:\TP2\Util\obj\Debug\Util.dll
 F:\TP2\Util\obj\Debug\Util.pdb
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Util\bin\Debug\Util.dll
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Util\bin\Debug\Util.pdb
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Util\obj\Debug\Util.csproj.AssemblyReference.cache
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Util\obj\Debug\Util.csproj.CoreCompileInputs.cache
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Util\obj\Debug\Util.dll
+C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\Util\obj\Debug\Util.pdb

@@ -217,7 +217,7 @@ namespace Data.Database
             }
 
         }
-
+        
         public void Save(Usuario usuario)
         {
             if (usuario.State == BusinessEntity.States.New)
