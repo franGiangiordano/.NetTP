@@ -74,6 +74,12 @@ namespace UI.Desktop
             this.txtFechaNac.Text = this.PersonaActual.FechaNacimiento.ToString(); //ver como formatear
             this.cmbTipo.Text = this.PersonaActual.Tipo.ToString();
 
+            if (this.PersonaActual.Tipo.ToString().Equals("Administrativo"))
+            {
+                this.checkAdmin.Checked = true;
+            }
+            
+
             switch (Modo)
             {
                 case (ApplicationForm.ModoForm)ModoForm.Alta:

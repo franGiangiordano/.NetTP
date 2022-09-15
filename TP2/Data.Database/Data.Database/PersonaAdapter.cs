@@ -25,7 +25,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
 
-                SqlCommand cmdPersonas = new SqlCommand("select * from personas", sqlconn);
+                SqlCommand cmdPersonas = new SqlCommand("select * from personas p join planes pl on p.id_plan = pl.id_plan", sqlconn);
 
                 SqlDataReader drPersonas = cmdPersonas.ExecuteReader();
 
@@ -54,6 +54,7 @@ namespace Data.Database
                     per.FechaNacimiento = (DateTime)drPersonas["fecha_nac"];
                     per.Tipo = (Persona.TipoPersonas)drPersonas["tipo_persona"];
                     per.IDPlan = (int)drPersonas["id_plan"];
+                    per.DescPlan = (string)drPersonas["desc_plan"];
 
                     personas.Add(per);
                 }
@@ -144,7 +145,7 @@ namespace Data.Database
             }
         }
 
-        protected void Update(Persona persona)
+        public void Update(Persona persona)
         {
             try
             {
@@ -176,7 +177,7 @@ namespace Data.Database
 
         }
 
-        protected void Insert(Persona persona)
+        public void Insert(Persona persona)
         {
             try
             {

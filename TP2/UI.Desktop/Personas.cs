@@ -32,9 +32,6 @@ namespace UI.Desktop
             PersonaLogic ul = new PersonaLogic();
             List<Persona> l1 = ul.GetAll();
 
-            PlanLogic pl = new PlanLogic();
-            List<Plan> l2 = pl.GetAll();
-
             DataTable dt1 = new DataTable();
             dt1.Columns.Add("ID", typeof(int)); //los nombres de las columnas tienen que coincidir con los definidos en el Smart Tag
             dt1.Columns.Add("Nombre", typeof(string));
@@ -49,7 +46,7 @@ namespace UI.Desktop
 
 
             foreach (var per in l1) {                    
-                    dt1.Rows.Add(per.ID,per.Nombre,per.Apellido,per.Telefono,per.Direccion,per.Legajo,per.FechaNacimiento.Date,per.Email,per.Tipo, l2.Find(x => x.ID == per.IDPlan).Descripcion);
+                    dt1.Rows.Add(per.ID,per.Nombre,per.Apellido,per.Telefono,per.Direccion,per.Legajo,per.FechaNacimiento.Date,per.Email,per.Tipo, per.DescPlan);
             }
             this.dgvPersonas.DataSource = dt1;
                        

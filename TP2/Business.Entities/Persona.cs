@@ -38,6 +38,6 @@ namespace Business.Entities
         public DateTime FechaNacimiento { get => _FechaNacimiento; set => _FechaNacimiento = value; }
         public string Email { get => _Email; set => _Email = value; }
         public TipoPersonas Tipo { get => tipo; set => tipo = value; }
-       
+        public string DescPlan { get; set; }
     }
 }

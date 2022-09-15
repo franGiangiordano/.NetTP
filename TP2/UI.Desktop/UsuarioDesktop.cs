@@ -105,7 +105,7 @@ namespace UI.Desktop
                     UsuarioActual.Email = txtEmail.Text;
                     UsuarioActual.Clave = txtClave.Text;
                     UsuarioActual.Habilitado = checkHab.Checked;
-                    UsuarioActual.Apellido = txtApe.Text;
+                     UsuarioActual.Apellido = txtApe.Text;
                     UsuarioActual.NombreUsuario = txtUsu.Text;
                     //_UsuarioActual.IDPersona = (pl.GetOnePorLejago(Int32.Parse(cmbLegajos.SelectedItem.ToString()))).ID;                    
                     UsuarioActual.IdPersona = (int)this.cmbLegajos.SelectedValue;

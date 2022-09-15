@@ -42,6 +42,7 @@
           <div class="input-box">
             <asp:Label ID="lblApellido" class="details" runat="server" Text="Apellido"></asp:Label>
             <asp:TextBox ID="txtApellido" runat="server" type="text"></asp:TextBox>
+
                 <div>
                     <!-- validamos que no este vacio y que sea letras-->
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="El campo Apellido no puede estar vacio" ForeColor="Red" ControlToValidate="txtApellido"></asp:RequiredFieldValidator>

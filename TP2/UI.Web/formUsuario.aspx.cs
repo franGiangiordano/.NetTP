@@ -17,20 +17,38 @@ namespace UI.Web
         public Usuario UsuarioActual { get => usuarioActual; set => usuarioActual = value; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack){
+                cargarComboLegajos();
+            }
             //GridViewRow a = (GridViewRow)Session["celda"];
             //int id = Int32.Parse(a.Cells[0].Text.ToString());
-            cargarComboLegajos();
+
             if (Session["estado"] == null)
             {
                 Response.Redirect("~/Usuarios.aspx");
             }
-            else if (Session["estado"].Equals("modificacion")) {                
+            else if (Session["estado"].Equals("modificacion")) {
+                //Tenemos que guardar en el ViewState los datos ingresados para conservarlos entre postbacks
+                CargarViewStates();
+
                 MapearDeDatos();
             }
 
                 
 
         }
+
+        private void CargarViewStates() {
+            ViewState["nombre"] = txtNombre.Text;
+            ViewState["apellido"] = txtApellido.Text;
+            ViewState["clave"] = txtClave.Text;
+            ViewState["cofirmarClave"] = txtConfirmarClave.Text;
+            ViewState["email"] = txtEmail.Text;
+            ViewState["usuario"] = txtUsuario.Text;
+            ViewState["habilitado"] = chkHabilitado.Checked;
+            ViewState["legajo"] = cmbLegajos.SelectedValue;
+        }
+
 
         private void cargarComboLegajos()
         {
@@ -80,9 +98,7 @@ namespace UI.Web
 
         public void MapearADatos()
         {
-            //String Modo = Request.QueryString["modo"];
 
-            PersonaLogic pl = new PersonaLogic();
 
             switch (Session["estado"])
             {
@@ -94,28 +110,29 @@ namespace UI.Web
                     UsuarioActual.Clave = txtClave.Text;
                     UsuarioActual.Habilitado = chkHabilitado.Checked;
                     UsuarioActual.Apellido = txtApellido.Text;
+
                     UsuarioActual.NombreUsuario = txtUsuario.Text;
                     UsuarioActual.IdPersona = Int32.Parse(this.cmbLegajos.SelectedValue);
                     UsuarioActual.State = Usuario.States.New;
                     break;
 
                 case "modificacion":
-                    UsuarioActual.Nombre = txtNombre.Text;
-                    UsuarioActual.Email = txtEmail.Text;
-                    if (!txtClave.Text.Equals(UsuarioActual.Clave))
+                    UsuarioActual.Nombre = (string)ViewState["nombre"];
+                    UsuarioActual.Email = (string)ViewState["email"];
+                    if (!((string)ViewState["clave"]).Equals(UsuarioActual.Clave))
                     {
                         UsuarioActual.CambiaClave = true;
-                        UsuarioActual.Clave = txtClave.Text;
+                        UsuarioActual.Clave = (string)ViewState["clave"];
                     }
                     else
                     {
                         UsuarioActual.CambiaClave = false;
                     }
-                    UsuarioActual.Habilitado = chkHabilitado.Checked;
-                    UsuarioActual.Apellido = txtApellido.Text;
-                    UsuarioActual.NombreUsuario = txtUsuario.Text;
+                    UsuarioActual.Habilitado = (Boolean)ViewState["habilitado"];
+                    UsuarioActual.Apellido = (string)ViewState["apellido"];
+                    UsuarioActual.NombreUsuario = (string)ViewState["usuario"];
                     //_UsuarioActual.IDPersona = (pl.GetOnePorLejago(Int32.Parse(cmbLegajos.SelectedItem.ToString()))).ID;
-                    UsuarioActual.IdPersona = Int32.Parse(this.cmbLegajos.SelectedValue);
+                    UsuarioActual.IdPersona = Int32.Parse((string)ViewState["legajo"]);
                     UsuarioActual.State = Usuario.States.Modified;
                     break;
                     //case (ApplicationForm.ModoForm)ModoForm.Consulta:
@@ -327,6 +344,7 @@ namespace UI.Web
             {
                 try
                 {
+
                     GuardarCambios();
                     //Response.Write("<script>alert('Usuario añadido correctamente');</script>"); //esta alerta no funciona
                     Session.Remove("estado"); //cerramos una sesion en particular

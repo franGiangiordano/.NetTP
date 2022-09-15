@@ -21,6 +21,12 @@ namespace UI.Web
             Response.Redirect("~/Usuarios.aspx");
         }
 
+        protected void LinkButtonPersonas_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Personas.aspx");
+
+        }
+
         //protected void Menu1_MenuItemClick(object sender, MenuEventArgs e)
         //{
         //    bool hasParent = (e.Item.Parent != null);

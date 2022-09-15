@@ -21,7 +21,7 @@ namespace Data.Database
 
         //Nota: con este string nos deberia conectar a la DB desde nuestras casas
 
-       const string consKeyDefaultCnnString = "ConnStringLocalCasa";
+      const string consKeyDefaultCnnString = "ConnStringLocalCasa";
 
      //const string consKeyDefaultCnnString = "ConnStringLocalCasa";
 

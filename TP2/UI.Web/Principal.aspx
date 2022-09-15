@@ -44,7 +44,7 @@
                             <asp:LinkButton ID="LinkButtonPlanes" runat="server">Planes</asp:LinkButton>
 						</li>
                         <li>
-                            <asp:LinkButton ID="LinkButtonPersonas" runat="server">Personas</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButtonPersonas" runat="server" OnClick="LinkButtonPersonas_Click">Personas</asp:LinkButton>
 						</li>
                         <li>
                             <asp:LinkButton ID="LinkButtonMaterias" runat="server">Materias</asp:LinkButton>
