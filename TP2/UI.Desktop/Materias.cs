@@ -48,9 +48,6 @@ namespace UI.Desktop
             MateriaLogic ml = new MateriaLogic();
             List<Materia> l1 = ml.GetAll();
 
-            PlanLogic pl = new PlanLogic();
-            List<Plan> l2 = pl.GetAll();
-
             DataTable dt1 = new DataTable();
             dt1.Columns.Add("ID", typeof(int)); //los nombres de las columnas tienen que coincidir con los definidos en el Smart Tag
             dt1.Columns.Add("Descripcion", typeof(string));
@@ -62,7 +59,7 @@ namespace UI.Desktop
 
             foreach (var mat in l1)
             {             
-                dt1.Rows.Add(mat.ID, mat.Descripcion, mat.HSSemanales,mat.HSTotales, l2.Find(x => x.ID == mat.IDPlan).Descripcion);
+                dt1.Rows.Add(mat.ID, mat.Descripcion, mat.HSSemanales,mat.HSTotales, mat.NombrePlan);
             }
             this.dgvMaterias.DataSource = dt1;
         }

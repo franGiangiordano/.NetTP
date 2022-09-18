@@ -33,7 +33,7 @@ namespace UI.Web
                 catch (Exception ex)
                 {
                     Exception ExcepcionManejada = new Exception("Error en la conexión con la base de datos");
-                    Response.Write("<script>alert(" + ExcepcionManejada.Message + ");</script>");
+                    Response.Write("<script>alert('" + ExcepcionManejada.Message + "');</script>");
                 }
                 if (usuarioEncontrado != null)
                 {

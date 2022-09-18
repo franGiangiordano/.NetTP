@@ -70,6 +70,7 @@
     <Content Include="Estilos\formLogin.css" />
     <Content Include="Estilos\gridView.css" />
     <Content Include="Estilos\menuPrincipal.css" />
+    <Content Include="formMateria.aspx" />
     <Content Include="formPersona.aspx" />
     <Content Include="formUsuario.aspx" />
     <Content Include="Estilos\formUsuario.css" />
@@ -77,12 +78,20 @@
     <Content Include="Imagenes\borrar.png" />
     <Content Include="Imagenes\boton-editar.png" />
     <Content Include="Login.aspx" />
+    <Content Include="Materias.aspx" />
     <Content Include="Personas.aspx" />
     <Content Include="Principal.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="formMateria.aspx.cs">
+      <DependentUpon>formMateria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formMateria.aspx.designer.cs">
+      <DependentUpon>formMateria.aspx</DependentUpon>
+    </Compile>
     <Compile Include="formPersona.aspx.cs">
       <DependentUpon>formPersona.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -106,6 +115,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Materias.aspx.cs">
+      <DependentUpon>Materias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Materias.aspx.designer.cs">
+      <DependentUpon>Materias.aspx</DependentUpon>
     </Compile>
     <Compile Include="Personas.aspx.cs">
       <DependentUpon>Personas.aspx</DependentUpon>

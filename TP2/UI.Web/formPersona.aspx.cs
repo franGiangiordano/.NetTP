@@ -19,7 +19,18 @@ namespace UI.Web
         {
             if (!Page.IsPostBack)
             {
+                PersonaLogic perl = new PersonaLogic();
+
+                string id = (string)Session["id"];
+                PersonaActual = new Persona();
+                PersonaActual = perl.GetOne(Int32.Parse(id));
+                if (PersonaActual.Tipo.ToString().Equals("Administrativo"))
+                {
+                    this.chkAdmin.Checked = true;
+                }
+
                 cargarCombos();
+
             }
 
             if (Session["estado"] == null)
@@ -54,13 +65,27 @@ namespace UI.Web
           
             this.cmbPlan.SelectedValue = this.PersonaActual.IDPlan.ToString();
             this.txtFecha.Text = this.PersonaActual.FechaNacimiento.ToString("yyyy-MM-dd"); //ver formato
-            this.cmbTipo.SelectedValue = this.PersonaActual.Tipo.ToString();
-
 
             if (this.PersonaActual.Tipo.ToString().Equals("Administrativo"))
             {
-                this.chkAdmin.Checked = true;
+                this.cmbTipo.Enabled = false;
+                this.cmbPlan.Enabled = false;
+                this.txtLegajo.Enabled = false;
             }
+            else
+            {
+                this.cmbTipo.SelectedValue = this.PersonaActual.Tipo.ToString();
+                this.chkAdmin.Checked = false;
+                //if (!this.chkAdmin.Checked)
+                //{
+                //    this.cmbTipo.Enabled = true;
+                //    this.cmbPlan.Enabled = true;
+                //    this.txtLegajo.Enabled = true;
+                //}
+            }
+
+
+
 
             switch (Session["estado"])
             {
@@ -101,7 +126,11 @@ namespace UI.Web
             this.cmbPlan.DataValueField = "ID";
             this.cmbPlan.DataBind();
 
+            this.cmbTipo.Items.Add("Alumno");
+            this.cmbTipo.Items.Add("Docente");
+
             this.cmbTipo.SelectedIndex = 1;
+
         }
 
         public void MapearADatos()
@@ -132,7 +161,13 @@ namespace UI.Web
                         PersonaActual.Tipo = (Persona.TipoPersonas)Enum.Parse(typeof(Persona.TipoPersonas), cmbTipo.SelectedItem.ToString());
                     }
 
-                    PersonaActual.FechaNacimiento = DateTime.ParseExact(txtFecha.Text, "MM/dd/yyyy", CultureInfo.CreateSpecificCulture("en-US"));
+                    //DateTime FechaNacimiento = Convert.ToDateTime(txtFecha.Text);
+
+                    //txtFecha.Text = FechaNacimiento.ToString("MM/dd/yyyy");
+
+                    //PersonaActual.FechaNacimiento = DateTime.Parse(txtFecha.Text);
+
+                    PersonaActual.FechaNacimiento = DateTime.Parse(Convert.ToDateTime(txtFecha.Text).ToString("dd/MM/yyyy"));
                     PersonaActual.State = Usuario.States.New;
                     break;
 
@@ -142,7 +177,7 @@ namespace UI.Web
                     PersonaActual.Apellido = (string)ViewState["apellido"];
                     PersonaActual.Direccion = (string)ViewState["direccion"];
                     PersonaActual.Telefono = (string)ViewState["telefono"];
-                    PersonaActual.FechaNacimiento = DateTime.ParseExact((string)ViewState["fecha"], "dd/MM/yyyy", null);
+                    PersonaActual.FechaNacimiento = DateTime.Parse(Convert.ToDateTime(txtFecha.Text).ToString("dd/MM/yyyy"));
                     if (this.chkAdmin.Checked)
                     {
                         PersonaActual.Legajo = 1;
@@ -171,12 +206,12 @@ namespace UI.Web
             catch (Exception Ex)
             {
                 Exception ExcepcionManejada = new Exception("Error al cargar la persona", Ex);
-                Response.Write("<script>alert(" + ExcepcionManejada.Message + ");</script>");
+                throw ExcepcionManejada;
 
             }
         }
 
-        public bool validar()
+        public bool Validar()
         {
             PersonaLogic pl = new PersonaLogic();
             if (this.txtLegajo.Enabled)
@@ -190,34 +225,45 @@ namespace UI.Web
         }
 
 
-
-
-
-        protected void btnAceptar_Click(object sender, EventArgs e)
-        {
-
-        }
-
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            Session.Remove("estado");
+            Response.Redirect("~/Personas.aspx");
         }
 
         protected void chkAdmin_CheckedChanged(object sender, EventArgs e)
         {
+            //no anda para modificar un alumno y un docente 
+            if (this.chkAdmin.Checked)
+            {
+                this.cmbTipo.Enabled = false;
+                this.cmbPlan.Enabled = false;
+                this.txtLegajo.Enabled = false;
+            }
+            else
+            {
+                this.cmbTipo.Enabled = true;
+                this.cmbPlan.Enabled = true;
+                this.txtLegajo.Enabled = true;
+            }
+        }
 
-                if (this.chkAdmin.Checked)
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (Validar())
+            {
+                try
                 {
-                    this.cmbTipo.Enabled = false;
-                    this.cmbPlan.Enabled = false;
-                    this.txtLegajo.Enabled = false;
+                    GuardarCambios();
+                    Session.Remove("estado"); //cerramos una sesion en particular
+                    Response.Redirect("~/Personas.aspx");
                 }
-                else
+                catch (Exception Ex)
                 {
-                    this.cmbTipo.Enabled = true;
-                    this.cmbPlan.Enabled = true;
-                    this.txtLegajo.Enabled = true;
+                    Exception ExcepcionManejada = new Exception("Error al guardar datos de la persona", Ex);
+                    Response.Write("<script>alert('" + ExcepcionManejada.Message + "');</script>");
                 }
+            }
         }
     }
 }

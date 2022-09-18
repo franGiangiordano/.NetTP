@@ -102,7 +102,7 @@ namespace Data.Database
 
         }
 
-        protected void Update(Especialidad especialidad)
+        public void Update(Especialidad especialidad)
         {
             try
             {
@@ -125,7 +125,7 @@ namespace Data.Database
 
         }
 
-        protected void Insert(Especialidad especialidad)
+        public void Insert(Especialidad especialidad)
         {
             try
             {

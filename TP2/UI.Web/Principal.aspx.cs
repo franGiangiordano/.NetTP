@@ -27,6 +27,18 @@ namespace UI.Web
 
         }
 
+        protected void LinkButtonEspecialidades_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Especialidades.aspx");
+
+        }
+
+        protected void LinkButtonMaterias_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Materias.aspx");
+
+        }
+
         //protected void Menu1_MenuItemClick(object sender, MenuEventArgs e)
         //{
         //    bool hasParent = (e.Item.Parent != null);

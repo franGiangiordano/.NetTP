@@ -28,9 +28,8 @@
             <asp:Label ID="lblEmail" class="details" runat="server" Text="Email"></asp:Label>
             <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
                 <div>
-                    <!-- validamos que no este vacio-->
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="El campo Email no puede estar vacio" ForeColor="Red" ControlToValidate="txtEmail"></asp:RequiredFieldValidator>
-                    <br />
+                    <!-- NO validamos que no este vacio porque es opcional-->
+                    
                     <!-- validar el mail -->
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ErrorMessage="El campo Email no es valido" ForeColor="Red" ControlToValidate="txtEmail" ValidationExpression="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"></asp:RegularExpressionValidator>
                 </div>
@@ -58,8 +57,8 @@
             <asp:Label ID="lblTelefono" class="details" runat="server" Text="Telefono"></asp:Label>
             <asp:TextBox ID="txtTelefono" runat="server"></asp:TextBox>
                 <div>
-                    <!-- validamos que no este vacio-->
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="El campo Telefono no puede estar vacio" ForeColor="Red" ControlToValidate="txtTelefono"></asp:RequiredFieldValidator>
+                    <!-- NO validamos que no este vacio porque es opcional-->
+  
                     <!-- validamos que sean solo numeros-->
                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="El campo Telefono admite numeros mayores a 0" ForeColor="Red" ControlToValidate="txtTelefono" ValidationExpression="^([1-9][0-9]+|[1-9])$"></asp:RegularExpressionValidator>  
                </div>
@@ -88,19 +87,18 @@
           <div class="input-box">
             <asp:Label ID="lblTipo" class="details" runat="server" Text="Tipo"></asp:Label>
             <asp:DropDownList ID="cmbTipo" runat="server">
-                <asp:ListItem>Alumno</asp:ListItem>
-                <asp:ListItem>Docente</asp:ListItem>
               </asp:DropDownList>
             <!-- no validamos nada es un combo-->
           </div>
             <div class="input-box">
             <asp:Label ID="lblFecha" class="details" runat="server" Text="Fecha Nacimiento"></asp:Label>
-            <asp:TextBox ID="txtFecha" runat="server" type="date" required pattern="\d{2}-\d{2}-\d{4}"></asp:TextBox>
+            <asp:TextBox ID="txtFecha" runat="server" type="date" required pattern="\d{2}-\d{2}-\d{4}" ></asp:TextBox>
           </div>                  
         </div>
         <div class="button">
-            <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" OnClick="btnAceptar_Click" />
-            <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" CausesValidation="False" />
+            <asp:Button ID="btnAceptar" runat="server" Text="Aceptar"  OnClick="btnAceptar_Click"/>
+            <!-- para saltar validaciones: CausesValidation="False" UseSubmitBehavior="false" -->
+            <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" CausesValidation="False" UseSubmitBehavior="false"/>
         </div>
       </form>
     </div>

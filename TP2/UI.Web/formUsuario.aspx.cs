@@ -33,9 +33,6 @@ namespace UI.Web
 
                 MapearDeDatos();
             }
-
-                
-
         }
 
         private void CargarViewStates() {
@@ -98,8 +95,6 @@ namespace UI.Web
 
         public void MapearADatos()
         {
-
-
             switch (Session["estado"])
             {
                 case "alta":
@@ -170,7 +165,7 @@ namespace UI.Web
                     catch (Exception Ex)
                     {
                         Exception ExcepcionManejada = new Exception("Error al cargar permisos", Ex);
-                        Response.Write("<script>alert("+ ExcepcionManejada.Message+");</script>");
+                        throw ExcepcionManejada;
 
                     }
                 }
@@ -194,7 +189,7 @@ namespace UI.Web
                         catch (Exception Ex)
                         {
                             Exception ExcepcionManejada = new Exception("Error al cargar permisos", Ex);
-                            Response.Write("<script>alert(" + ExcepcionManejada.Message + ");</script>");                            
+                            throw ExcepcionManejada;
                         }
 
                     }
@@ -203,10 +198,8 @@ namespace UI.Web
             catch (Exception Ex)
             {
                 Exception ExcepcionManejada = new Exception("Error al ejecutar la operacion", Ex);
-                Response.Write("<script>alert(" + ExcepcionManejada.Message + ");</script>");
-
+                throw ExcepcionManejada;
             }
-
         }
 
         private List<ModuloUsuario> crearLista(int tipo)
@@ -352,8 +345,8 @@ namespace UI.Web
                 }
                 catch (Exception Ex)
                 {
-                    Exception ExcepcionManejada = new Exception("Error al eliminar usuarios", Ex);
-                    Response.Write("<script>alert(" + ExcepcionManejada.Message + ");</script>");
+                    Exception ExcepcionManejada = new Exception("Error al guardar datos usuario", Ex);
+                    Response.Write("<script>alert('" + ExcepcionManejada.Message + "');</script>");
                 }
 
             }
