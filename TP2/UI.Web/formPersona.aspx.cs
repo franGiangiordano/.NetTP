@@ -19,18 +19,7 @@ namespace UI.Web
         {
             if (!Page.IsPostBack)
             {
-                PersonaLogic perl = new PersonaLogic();
-
-                string id = (string)Session["id"];
-                PersonaActual = new Persona();
-                PersonaActual = perl.GetOne(Int32.Parse(id));
-                if (PersonaActual.Tipo.ToString().Equals("Administrativo"))
-                {
-                    this.chkAdmin.Checked = true;
-                }
-
                 cargarCombos();
-
             }
 
             if (Session["estado"] == null)
@@ -66,26 +55,16 @@ namespace UI.Web
             this.cmbPlan.SelectedValue = this.PersonaActual.IDPlan.ToString();
             this.txtFecha.Text = this.PersonaActual.FechaNacimiento.ToString("yyyy-MM-dd"); //ver formato
 
-            if (this.PersonaActual.Tipo.ToString().Equals("Administrativo"))
-            {
-                this.cmbTipo.Enabled = false;
-                this.cmbPlan.Enabled = false;
-                this.txtLegajo.Enabled = false;
+            if (!Page.IsPostBack) {
+                if (this.PersonaActual.Tipo.ToString().Equals("Administrativo"))
+                {
+                    this.chkAdmin.Checked = true;
+                    this.cmbTipo.Enabled = false;
+                    this.cmbPlan.Enabled = false;
+                    this.txtLegajo.Enabled = false;
+                }
             }
-            else
-            {
-                this.cmbTipo.SelectedValue = this.PersonaActual.Tipo.ToString();
-                this.chkAdmin.Checked = false;
-                //if (!this.chkAdmin.Checked)
-                //{
-                //    this.cmbTipo.Enabled = true;
-                //    this.cmbPlan.Enabled = true;
-                //    this.txtLegajo.Enabled = true;
-                //}
-            }
-
-
-
+            
 
             switch (Session["estado"])
             {
@@ -214,12 +193,14 @@ namespace UI.Web
         public bool Validar()
         {
             PersonaLogic pl = new PersonaLogic();
+            //Validamos si la persona existe
             if (this.txtLegajo.Enabled)
             {
                 if ( !this.txtLegajo.Text.Equals("1") && pl.GetPersona(Int32.Parse(this.txtLegajo.Text)))
                 {
                     return false;
                 }
+             
             }
             return true;
         }
@@ -263,6 +244,9 @@ namespace UI.Web
                     Exception ExcepcionManejada = new Exception("Error al guardar datos de la persona", Ex);
                     Response.Write("<script>alert('" + ExcepcionManejada.Message + "');</script>");
                 }
+            }
+            else {
+                Response.Write("<script>alert('La persona ya existe');</script>");
             }
         }
     }

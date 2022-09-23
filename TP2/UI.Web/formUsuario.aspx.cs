@@ -284,49 +284,19 @@ namespace UI.Web
 
         public bool Validar()
         {
-            //String Modo = Request.QueryString["modo"];
-            string errores = "";
+
             UsuarioLogic ul = new UsuarioLogic();
-            //if (String.IsNullOrEmpty(this.txtNombre.Text)
-            //|| String.IsNullOrEmpty(this.txtApellido.Text) || String.IsNullOrEmpty(this.txtClave.Text)
-            //|| String.IsNullOrEmpty(this.txtConfirmarClave.Text) || String.IsNullOrEmpty(this.txtUsuario.Text)
-            // )
-            //{
-            //    errores += "Existen uno o mas campos vacios, rellenelos antes de continuar\n";
-            //}
-            //errores += ul.validarLongitud(txtClave.Text);
-            //errores += ul.validarClave(txtClave.Text, txtConfirmarClave.Text);
-
-            //if (ul.IsValidMailAddress1(txtEmail.Text) == false)
-            //{
-            //    errores += "El Email ingresado es invalido\n";
-            //}
-            //if (!this.txtNombre.Text.All(Char.IsLetter))
-            //{
-            //    errores += "El campo nombre solo puede contener letras\n";
-            //}
-            //if (!this.txtApellido.Text.All(Char.IsLetter))
-            //{
-            //    errores += "El campo apellido solo puede contener letras\n";
-            //}
-            if (!Session["estado"].Equals("baja") && !Session["estado"].Equals("modificacion") && ul.GetUser(txtUsuario.Text))
+            
+            if (!Session["estado"].Equals("modificacion") && ul.GetUser(txtUsuario.Text))
             {
-                errores += "Ya existe un usuario con ese nombre de usuario\n";
-            }
-            else if (!Session["estado"].Equals("baja") && ul.GetUser(txtUsuario.Text) && usuarioActual.NombreUsuario != this.txtUsuario.Text)
-            {
-                errores += "Ya existe un usuario con ese nombre de usuario\n";
-            }
-
-            if (!errores.Equals(""))
-            {
-                //Response.Write($"<script>alert('{errores}');</script>");//esto es para mostrar una alerta de los errores
                 return false;
             }
-            else
+            else if (ul.GetUser(txtUsuario.Text) && usuarioActual.NombreUsuario != this.txtUsuario.Text)
             {
-                return true;
+                return false;
             }
+         
+          return true;
         }
 
 
@@ -348,7 +318,9 @@ namespace UI.Web
                     Exception ExcepcionManejada = new Exception("Error al guardar datos usuario", Ex);
                     Response.Write("<script>alert('" + ExcepcionManejada.Message + "');</script>");
                 }
-
+            }
+            else {
+                   Response.Write("<script>alert('Ya existe un usuario con ese nombre');</script>");
             }
         }
 

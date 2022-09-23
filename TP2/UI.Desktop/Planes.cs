@@ -47,7 +47,6 @@ namespace UI.Desktop
 
 
             EspecialidadLogic el = new EspecialidadLogic();
-            List<Especialidad> l2 = el.GetAll();
 
             DataTable dt1 = new DataTable();
             dt1.Columns.Add("ID", typeof(int)); //los nombres de las columnas tienen que coincidir con los definidos en el Smart Tag
@@ -56,7 +55,7 @@ namespace UI.Desktop
 
             foreach (var plan in l1)
             {
-                dt1.Rows.Add(plan.ID, plan.Descripcion, l2.Find(x => x.ID == plan.IDEspecialidad).Descripcion);
+                dt1.Rows.Add(plan.ID, plan.Descripcion, plan.Especialidad);
             }
             this.dgvPlanes.DataSource = dt1;
         }

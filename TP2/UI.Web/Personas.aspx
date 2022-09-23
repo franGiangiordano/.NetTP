@@ -27,7 +27,7 @@
                 <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
                 <asp:BoundField DataField="Legajo" HeaderText="Legajo" SortExpression="Legajo" />
                 <asp:BoundField DataField="Tipo" HeaderText="Tipo" SortExpression="Tipo" />
-                <!-- las columnas que se obtienen con join se agregan manualmente, en este caso DescPlan -->
+               
                 <asp:BoundField DataField="DescPlan" HeaderText="DescPlan" SortExpression="DescPlan" />
                 <asp:ButtonField ButtonType="Button" CommandName="Editar" HeaderText="Editar" ShowHeader="True" Text="Editar" />
                 <asp:ButtonField ButtonType="Button" CommandName="Borrar" HeaderText="Borrar" ShowHeader="True" Text="Borrar" />

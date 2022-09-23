@@ -24,7 +24,7 @@
                 <asp:BoundField DataField="HSTotales" HeaderText="HSTotales" SortExpression="HSTotales" />
                 <asp:BoundField DataField="NombrePlan" HeaderText="NombrePlan" SortExpression="NombrePlan" />
                 <asp:ButtonField ButtonType="Button" CommandName="Editar" HeaderText="Editar" ShowHeader="True" Text="Editar" />
-                <asp:ButtonField ButtonType="Button" CommandName="Eliminar" HeaderText="Eliminar" ShowHeader="True" Text="Eliminar" />
+                <asp:ButtonField ButtonType="Button" CommandName="Borrar" HeaderText="Eliminar" ShowHeader="True" Text="Eliminar" />
             </Columns>
         </asp:GridView>
          <div>

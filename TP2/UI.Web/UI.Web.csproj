@@ -72,6 +72,7 @@
     <Content Include="Estilos\menuPrincipal.css" />
     <Content Include="formMateria.aspx" />
     <Content Include="formPersona.aspx" />
+    <Content Include="formPlan.aspx" />
     <Content Include="formUsuario.aspx" />
     <Content Include="Estilos\formUsuario.css" />
     <Content Include="Global.asax" />
@@ -80,6 +81,7 @@
     <Content Include="Login.aspx" />
     <Content Include="Materias.aspx" />
     <Content Include="Personas.aspx" />
+    <Content Include="Planes.aspx" />
     <Content Include="Principal.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
@@ -98,6 +100,13 @@
     </Compile>
     <Compile Include="formPersona.aspx.designer.cs">
       <DependentUpon>formPersona.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="formPlan.aspx.cs">
+      <DependentUpon>formPlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formPlan.aspx.designer.cs">
+      <DependentUpon>formPlan.aspx</DependentUpon>
     </Compile>
     <Compile Include="formUsuario.aspx.cs">
       <DependentUpon>formUsuario.aspx</DependentUpon>
@@ -129,6 +138,13 @@
     </Compile>
     <Compile Include="Personas.aspx.designer.cs">
       <DependentUpon>Personas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Planes.aspx.cs">
+      <DependentUpon>Planes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Planes.aspx.designer.cs">
+      <DependentUpon>Planes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Principal.aspx.cs">
       <DependentUpon>Principal.aspx</DependentUpon>

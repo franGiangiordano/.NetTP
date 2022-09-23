@@ -96,8 +96,8 @@ namespace UI.Web
 
                 case "modificacion":
                     MateriaActual.Descripcion = (string)ViewState["descripcion"];
-                    MateriaActual.HSSemanales = (int)ViewState["HsSemanales"];
-                    MateriaActual.HSTotales = (int)ViewState["HsTotales"];
+                    MateriaActual.HSSemanales = Int32.Parse((string)ViewState["HsSemanales"]);
+                    MateriaActual.HSTotales = Int32.Parse((string)ViewState["HsTotales"]);
                     MateriaActual.IDPlan = Int32.Parse((string)ViewState["plan"]);
                     MateriaActual.State = Usuario.States.Modified;
                     break;
