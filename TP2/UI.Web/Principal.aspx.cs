@@ -45,6 +45,12 @@ namespace UI.Web
 
         }
 
+        protected void LinkButtonComisiones_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Comisiones.aspx");
+
+        }
+
         //protected void Menu1_MenuItemClick(object sender, MenuEventArgs e)
         //{
         //    bool hasParent = (e.Item.Parent != null);

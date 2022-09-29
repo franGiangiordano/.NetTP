@@ -56,7 +56,7 @@ namespace UI.Desktop
 
             foreach (var com in l1)
             {
-                dt1.Rows.Add(com.ID, com.Descripcion,com.AnioEspecialidad, l2.Find(x => x.ID == com.IDPlan).Descripcion);
+                dt1.Rows.Add(com.ID, com.Descripcion,com.AnioEspecialidad, com.NombrePlan);
             }
             this.dgvComisiones.DataSource = dt1;
         }

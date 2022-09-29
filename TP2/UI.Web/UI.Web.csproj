@@ -67,9 +67,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Comisiones.aspx" />
+    <Content Include="Especialidades.aspx" />
     <Content Include="Estilos\formLogin.css" />
     <Content Include="Estilos\gridView.css" />
     <Content Include="Estilos\menuPrincipal.css" />
+    <Content Include="formComision.aspx" />
+    <Content Include="formEspecialidad.aspx" />
     <Content Include="formMateria.aspx" />
     <Content Include="formPersona.aspx" />
     <Content Include="formPlan.aspx" />
@@ -87,6 +91,34 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comisiones.aspx.cs">
+      <DependentUpon>Comisiones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comisiones.aspx.designer.cs">
+      <DependentUpon>Comisiones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Especialidades.aspx.cs">
+      <DependentUpon>Especialidades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Especialidades.aspx.designer.cs">
+      <DependentUpon>Especialidades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="formComision.aspx.cs">
+      <DependentUpon>formComision.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formComision.aspx.designer.cs">
+      <DependentUpon>formComision.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="formEspecialidad.aspx.cs">
+      <DependentUpon>formEspecialidad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formEspecialidad.aspx.designer.cs">
+      <DependentUpon>formEspecialidad.aspx</DependentUpon>
+    </Compile>
     <Compile Include="formMateria.aspx.cs">
       <DependentUpon>formMateria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

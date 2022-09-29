@@ -13,7 +13,7 @@
         <div>
              <h2><%: Title %><asp:ObjectDataSource ID="ObjectDataSource1" runat="server" DataObjectTypeName="Business.Entities.Usuario" DeleteMethod="EliminarWeb" InsertMethod="Insert" SelectMethod="GetAll" TypeName="Data.Database.UsuarioAdapter" UpdateMethod="Update">
         </asp:ObjectDataSource>
-        <asp:GridView ID="grdUsuarios" runat="server" Class="mGrid" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" ShowFooter="True" OnRowCommand="grdUsuarios_RowCommand" OnSelectedIndexChanged="grdUsuarios_SelectedIndexChanged">
+        <asp:GridView ID="grdUsuarios" runat="server" Class="mGrid" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" ShowFooter="True" OnRowCommand="grdUsuarios_RowCommand" OnSelectedIndexChanged="grdUsuarios_SelectedIndexChanged" Font-Size="Large">
             <Columns>
                 <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
                 <asp:TemplateField HeaderText="Nombre" SortExpression="Nombre">

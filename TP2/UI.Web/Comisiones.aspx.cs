@@ -4,59 +4,57 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Business.Entities;
 using Business.Logic;
+using Business.Entities;
 
 namespace UI.Web
 {
-    public partial class Planes : System.Web.UI.Page
+    public partial class Comisiones : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-
         protected void btnInsertar_Click(object sender, EventArgs e)
         {
             Session["estado"] = "alta";
-            Response.Redirect("~/formPlan.aspx");
+            Response.Redirect("~/formComision.aspx");
         }
 
-        protected void grdPlanes_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void grdComisiones_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             string arg = Convert.ToString(((System.Web.UI.WebControls.CommandEventArgs)(e)).CommandArgument);
 
             if (e.CommandName == "Editar")
             {
-               string ide = grdPlanes.Rows[Convert.ToInt32(e.CommandArgument)].Cells[0].Text.ToString();
+                string ide = grdComisiones.Rows[Convert.ToInt32(e.CommandArgument)].Cells[0].Text.ToString();
 
                 Session["estado"] = "modificacion";
                 Session["id"] = ide;
-                Response.Redirect("~/formPlan.aspx");
+                Response.Redirect("~/formComision.aspx");
             }
             else if (e.CommandName == "Borrar")
             {
-                string ide = grdPlanes.Rows[Convert.ToInt32(e.CommandArgument)].Cells[0].Text.ToString();
+                string ide = grdComisiones.Rows[Convert.ToInt32(e.CommandArgument)].Cells[0].Text.ToString();
                 int id = Int32.Parse(ide);
 
-                Plan plan = new Plan();
-                plan.ID = id;
-                plan.State = BusinessEntity.States.Deleted;
+                Comision com = new Comision();
+                com.ID = id;
+                com.State = BusinessEntity.States.Deleted;
                 try
                 {
-                    PlanLogic pl = new PlanLogic();
-                    pl.Save(plan);
+                    ComisionLogic cl = new ComisionLogic();
+                    cl.Save(com);
                     Response.Redirect(Request.Url.ToString());
 
                 }
                 catch (Exception Ex)
                 {
-                    Exception ExcepcionManejada = new Exception("Error al eliminar el plan", Ex);
+                    Exception ExcepcionManejada = new Exception("Error al eliminar comision", Ex);
                     Response.Write("<script>alert(" + ExcepcionManejada.Message + ");</script>");
                 }
             }
-            
         }
     }
 }

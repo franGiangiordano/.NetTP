@@ -18,7 +18,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
 
-                SqlCommand cmdComisiones = new SqlCommand("select * from comisiones", sqlconn);
+                SqlCommand cmdComisiones = new SqlCommand("select * from comisiones c join planes p on c.id_plan = p.id_plan ", sqlconn);
 
                 SqlDataReader drComisiones = cmdComisiones.ExecuteReader();
 
@@ -30,6 +30,7 @@ namespace Data.Database
                     com.Descripcion = (string)drComisiones["desc_comision"]; ;
                     com.AnioEspecialidad = (int)drComisiones["anio_especialidad"];
                     com.IDPlan = (int)drComisiones["id_plan"];
+                    com.NombrePlan = (string)drComisiones["desc_plan"];
                     comisiones.Add(com);
                 }
                 drComisiones.Close();
@@ -134,7 +135,7 @@ namespace Data.Database
 
         }
 
-        protected void Update(Comision com)
+        public void Update(Comision com)
         {
             try
             {
@@ -159,7 +160,7 @@ namespace Data.Database
             }
         }
 
-        protected void Insert(Comision com)
+        public void Insert(Comision com)
         {
             try
             {
