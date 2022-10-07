@@ -51,6 +51,12 @@ namespace UI.Web
 
         }
 
+        protected void LinkButtonInscripciones_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Inscripciones.aspx");
+
+        }
+
         //protected void Menu1_MenuItemClick(object sender, MenuEventArgs e)
         //{
         //    bool hasParent = (e.Item.Parent != null);

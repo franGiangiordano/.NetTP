@@ -139,7 +139,24 @@ namespace UI.Web
 
         public bool validar()
         {
-            //falta hacer
+            ComisionLogic cl = new ComisionLogic();
+
+            if (Int32.Parse(txtAnioCalendario.Text) < DateTime.Now.Year)
+            {
+                Response.Write("<script>alert('El campo Año Calendario debe ser el año actual o posterior');</script>");
+                return false;
+            }
+            if(Session["estado"].Equals("modificacion") && (cl.validaComisionExistente(ViewState["descripcion"].ToString(), Int32.Parse(ViewState["AnioCalendario"].ToString()), Int32.Parse(ViewState["plan"].ToString()))))
+            {
+                Response.Write("<script>alert('Ya existe una comision con esas caracteristicas');</script>");
+                return false;
+            }
+            else if (Session["estado"].Equals("alta") &&  (cl.validaComisionExistente(txtDescripcion.Text, Int32.Parse(txtAnioCalendario.Text), Int32.Parse(cmbPlan.SelectedValue))))
+            {
+                Response.Write("<script>alert('Ya existe una comision con esas caracteristicas');</script>");
+                return false;
+            }
+
             return true;
         }
     }

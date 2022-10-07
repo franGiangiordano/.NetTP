@@ -31,3 +31,4 @@ C:\Users\ALUMNO\Downloads\.NetTP-main\TP2\Business.Entities\obj\Debug\Business.E
 C:\Users\ALUMNO\Downloads\.NetTP-main\TP2\Business.Entities\obj\Debug\Business.Entities.csproj.CoreCompileInputs.cache
 C:\Users\ALUMNO\Downloads\.NetTP-main\TP2\Business.Entities\obj\Debug\Business.Entities.dll
 C:\Users\ALUMNO\Downloads\.NetTP-main\TP2\Business.Entities\obj\Debug\Business.Entities.pdb
+F:\TP2\Business.Entities\obj\Debug\Business.Entities.csproj.AssemblyReference.cache

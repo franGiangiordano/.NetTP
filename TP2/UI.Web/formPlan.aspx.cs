@@ -137,11 +137,20 @@ namespace UI.Web
         private bool validar()
         {
             PlanLogic pl = new PlanLogic();
-
-            if ((pl.validaPlanExistente(ViewState["descripcion"].ToString(), Int32.Parse(ViewState["especialidad"].ToString()))))
+            if (Session["estado"].Equals("modificacion"))
             {
-                return false;
+                if ((pl.validaPlanExistente(ViewState["descripcion"].ToString(), Int32.Parse(ViewState["especialidad"].ToString()))))
+                {
+                    return false;
+                }
             }
+            else {
+                if (pl.validaPlanExistente(txtDescripcion.Text, Int32.Parse(cmbEspecialidad.SelectedValue)))
+                {
+                    return false;
+                }
+            }
+            
             return true;
         }
 

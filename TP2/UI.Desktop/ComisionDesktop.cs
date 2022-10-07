@@ -135,7 +135,7 @@ namespace UI.Desktop
             {
                 errores += "El campo Año Calendario solo puede contener numeros\n";
             }
-            else if (Int32.Parse(txtAnioCalendario.Text) < 2022)
+            else if (Int32.Parse(txtAnioCalendario.Text) < DateTime.Now.Year)
             {
                 errores += "El campo Año Calendario debe ser el año actual o posterior\n";
             }

@@ -74,6 +74,7 @@
     <Content Include="Estilos\menuPrincipal.css" />
     <Content Include="formComision.aspx" />
     <Content Include="formEspecialidad.aspx" />
+    <Content Include="formInscripcion.aspx" />
     <Content Include="formMateria.aspx" />
     <Content Include="formPersona.aspx" />
     <Content Include="formPlan.aspx" />
@@ -82,6 +83,7 @@
     <Content Include="Global.asax" />
     <Content Include="Imagenes\borrar.png" />
     <Content Include="Imagenes\boton-editar.png" />
+    <Content Include="Inscripciones.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Materias.aspx" />
     <Content Include="Personas.aspx" />
@@ -119,6 +121,13 @@
     <Compile Include="formEspecialidad.aspx.designer.cs">
       <DependentUpon>formEspecialidad.aspx</DependentUpon>
     </Compile>
+    <Compile Include="formInscripcion.aspx.cs">
+      <DependentUpon>formInscripcion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formInscripcion.aspx.designer.cs">
+      <DependentUpon>formInscripcion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="formMateria.aspx.cs">
       <DependentUpon>formMateria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -149,6 +158,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Inscripciones.aspx.cs">
+      <DependentUpon>Inscripciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inscripciones.aspx.designer.cs">
+      <DependentUpon>Inscripciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

@@ -55,11 +55,12 @@
                         <li>
                             <asp:LinkButton ID="LinkButtonComisiones" runat="server" OnClick="LinkButtonComisiones_Click">Comisiones</asp:LinkButton>
 						</li>
+                        
 					</ul>
 				</li>
 				<li>
-                    <asp:LinkButton ID="LinkButton2" runat="server">Inscripciones</asp:LinkButton>
-				</li>
+                            <asp:LinkButton ID="LinkButtonInscripciones" runat="server" OnClick="LinkButtonInscripciones_Click">Inscripciones</asp:LinkButton>
+						</li>
 				<li>
                     <asp:LinkButton ID="LinkButton1" runat="server">Reportes</asp:LinkButton>
 				</li>
