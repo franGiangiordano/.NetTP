@@ -35,8 +35,10 @@ namespace UI.Web
 
         protected void btnInsertar_Click(object sender, EventArgs e)
         {
+        
             Session["estado"] = "alta";
             Response.Redirect("~/formInscripcion.aspx");
+            
         }
 
         protected void grdInscripciones_RowCommand(object sender, GridViewCommandEventArgs e)

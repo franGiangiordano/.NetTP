@@ -23,15 +23,19 @@
             <asp:DropDownList ID="cmbComision" runat="server"></asp:DropDownList>
           </div>
           <div class="input-box">
-            <asp:Label ID="Label2" class="details" runat="server" Text="Legajo"></asp:Label>
+            <asp:Label ID="lblLegajo" class="details" runat="server" Text="Legajo"></asp:Label>
              <asp:DropDownList ID="cmbLegajo" runat="server"></asp:DropDownList>
           </div>
           <div class="input-box">
-            <asp:Label ID="Label3" class="details" runat="server" Text="Condicion"></asp:Label>
-            <asp:DropDownList ID="cmbCondicion" runat="server"></asp:DropDownList>
+            <asp:Label ID="lblCondicion" class="details" runat="server" Text="Condicion"></asp:Label>
+            <asp:DropDownList ID="cmbCondicion" runat="server">
+                <asp:ListItem>Regular</asp:ListItem>
+                <asp:ListItem>Aprobado</asp:ListItem>
+                <asp:ListItem>Libre</asp:ListItem>
+              </asp:DropDownList>
           </div>
             <div class="input-box">
-            <asp:Label ID="Label4" class="details" runat="server" Text="Nota"></asp:Label>
+            <asp:Label ID="lblNota" class="details" runat="server" Text="Nota"></asp:Label>
             <asp:TextBox ID="txtNota" runat="server" type="text"></asp:TextBox> 
              <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="El campo notas admite numeros mayores a 0" ForeColor="Red" ControlToValidate="txtNota" ValidationExpression="^([1-9][0-9]+|[1-9])$"></asp:RegularExpressionValidator>
           </div>

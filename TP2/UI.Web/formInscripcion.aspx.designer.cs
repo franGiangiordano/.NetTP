@@ -60,13 +60,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.DropDownList cmbComision;
 
         /// <summary>
-        /// Control Label2.
+        /// Control lblLegajo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lblLegajo;
 
         /// <summary>
         /// Control cmbLegajo.
@@ -78,13 +78,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.DropDownList cmbLegajo;
 
         /// <summary>
-        /// Control Label3.
+        /// Control lblCondicion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label lblCondicion;
 
         /// <summary>
         /// Control cmbCondicion.
@@ -96,13 +96,13 @@ namespace UI.Web
         protected global::System.Web.UI.WebControls.DropDownList cmbCondicion;
 
         /// <summary>
-        /// Control Label4.
+        /// Control lblNota.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.Label lblNota;
 
         /// <summary>
         /// Control txtNota.
