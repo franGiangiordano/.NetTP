@@ -32,7 +32,12 @@ namespace UI.Web
             Response.Redirect("~/Especialidades.aspx");
 
         }
+        protected void LinkButtonCursos_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Cursos.aspx");
 
+        }
+        
         protected void LinkButtonMaterias_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Materias.aspx");

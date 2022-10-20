@@ -75,3 +75,14 @@ C:\Users\ALUMNO\Downloads\.NetTP-main\TP2\Business.Logic\obj\Debug\Business.Logi
 C:\Users\ALUMNO\Downloads\.NetTP-main\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.CopyComplete
 C:\Users\ALUMNO\Downloads\.NetTP-main\TP2\Business.Logic\obj\Debug\Business.Logic.dll
 C:\Users\ALUMNO\Downloads\.NetTP-main\TP2\Business.Logic\obj\Debug\Business.Logic.pdb
+D:\Descargas\.NetTP-main\TP2\Business.Logic\bin\Debug\Business.Logic.dll
+D:\Descargas\.NetTP-main\TP2\Business.Logic\bin\Debug\Business.Logic.pdb
+D:\Descargas\.NetTP-main\TP2\Business.Logic\bin\Debug\Business.Entities.dll
+D:\Descargas\.NetTP-main\TP2\Business.Logic\bin\Debug\Data.Database.dll
+D:\Descargas\.NetTP-main\TP2\Business.Logic\bin\Debug\Business.Entities.pdb
+D:\Descargas\.NetTP-main\TP2\Business.Logic\bin\Debug\Data.Database.pdb
+D:\Descargas\.NetTP-main\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.AssemblyReference.cache
+D:\Descargas\.NetTP-main\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.CoreCompileInputs.cache
+D:\Descargas\.NetTP-main\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.CopyComplete
+D:\Descargas\.NetTP-main\TP2\Business.Logic\obj\Debug\Business.Logic.dll
+D:\Descargas\.NetTP-main\TP2\Business.Logic\obj\Debug\Business.Logic.pdb

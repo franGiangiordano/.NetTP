@@ -157,7 +157,6 @@ namespace UI.Web
                 {
                     this.txtNota.Text = alumnoInscripcionActual.Nota.ToString();
                 }
-
             }
 
             switch (Session["estado"])
@@ -221,26 +220,25 @@ namespace UI.Web
                     //Si es docente, asignamos la materia y comision que estaban antes
                     if (esDocente())
                     {
-                        AlumnoInscripcionActual.Condicion = cmbCondicion.SelectedItem.ToString();
+                        AlumnoInscripcionActual.Condicion = (string)ViewState["condicion"];
                         idMat = cl.GetOne(AlumnoInscripcionActual.IDCurso).IDMateria;
                         idComision = cl.GetOne(AlumnoInscripcionActual.IDCurso).IDComision;
 
                         //Si acaba de aprobar a un alumno, leemos la nota 
                         if ((this.cmbCondicion.Text).Equals("Aprobado"))
                         {
-                            AlumnoInscripcionActual.Nota = Int32.Parse(this.txtNota.Text);
+                            AlumnoInscripcionActual.Nota = (int)ViewState["nota"];
                         }
                     }
                     else
                     {
-                        idMat = Int32.Parse(this.cmbMateria.SelectedValue);
-                        idComision = Int32.Parse(this.cmbComision.SelectedValue);
+                        idMat = Int32.Parse((string)ViewState["materia"]);
+                        idComision = Int32.Parse((string)ViewState["comision"]);
                     }
 
                     if (esAdmin())
                     {
-                        AlumnoInscripcionActual.IDAlumno = Int32.Parse(this.cmbLegajo.SelectedValue);
-                    }
+                        AlumnoInscripcionActual.IDAlumno = (int)ViewState["legajo"];                     }
                     else
                     {
                         AlumnoInscripcionActual.IDAlumno = ((Usuario)Session["usuario"]).IdPersona;
@@ -408,10 +406,15 @@ namespace UI.Web
             }
         }
 
+
+        //El boton cancelar no ingresa al metodo btnCancelar_Click al presionarlo, refresca la pagina
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Session.Remove("estado");
             Response.Redirect("~/Inscripciones.aspx");
+
+
         }
+
     }
 }

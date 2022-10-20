@@ -68,11 +68,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Comisiones.aspx" />
+    <Content Include="Cursos.aspx" />
     <Content Include="Especialidades.aspx" />
     <Content Include="Estilos\formLogin.css" />
     <Content Include="Estilos\gridView.css" />
     <Content Include="Estilos\menuPrincipal.css" />
     <Content Include="formComision.aspx" />
+    <Content Include="formCurso.aspx" />
     <Content Include="formEspecialidad.aspx" />
     <Content Include="formInscripcion.aspx" />
     <Content Include="formMateria.aspx" />
@@ -100,6 +102,13 @@
     <Compile Include="Comisiones.aspx.designer.cs">
       <DependentUpon>Comisiones.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Cursos.aspx.cs">
+      <DependentUpon>Cursos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cursos.aspx.designer.cs">
+      <DependentUpon>Cursos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Especialidades.aspx.cs">
       <DependentUpon>Especialidades.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -113,6 +122,13 @@
     </Compile>
     <Compile Include="formComision.aspx.designer.cs">
       <DependentUpon>formComision.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="formCurso.aspx.cs">
+      <DependentUpon>formCurso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="formCurso.aspx.designer.cs">
+      <DependentUpon>formCurso.aspx</DependentUpon>
     </Compile>
     <Compile Include="formEspecialidad.aspx.cs">
       <DependentUpon>formEspecialidad.aspx</DependentUpon>

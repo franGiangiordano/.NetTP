@@ -38,7 +38,7 @@
                             <asp:LinkButton ID="LinkButtonUsuarios" runat="server" OnClick="LinkButtonUsuarios_Click">Usuarios</asp:LinkButton>
 						</li>
 						<li>
-                            <asp:LinkButton ID="LinkButtonCursos" runat="server">Cursos</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButtonCursos" runat="server" OnClick="LinkButtonCursos_Click">Cursos</asp:LinkButton>
 						</li>
 						<li>
                             <asp:LinkButton ID="LinkButtonPlanes" runat="server" OnClick="LinkButtonPlanes_Click">Planes</asp:LinkButton>

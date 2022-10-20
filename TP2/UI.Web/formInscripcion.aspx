@@ -44,6 +44,7 @@
             <!-- para saltar validaciones: CausesValidation="False" UseSubmitBehavior="false" -->
             <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" CausesValidation="False" UseSubmitBehavior="false"/>
         </div>
+          
       </form>
     </div>
   </div>
