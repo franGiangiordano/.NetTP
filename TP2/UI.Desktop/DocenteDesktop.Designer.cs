@@ -216,6 +216,7 @@
             this.Controls.Add(this.cmbDocente1);
             this.Name = "DocenteDesktop";
             this.Text = "DocenteDesktop";
+            this.Load += new System.EventHandler(this.DocenteDesktop_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

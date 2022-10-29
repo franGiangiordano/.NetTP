@@ -26,7 +26,11 @@ namespace UI.Web
             }
             else if (Session["estado"].Equals("modificacion"))
             {
-                
+                string id = (string)Session["idDocenteCurso"];
+                DocenteCursoLogic dcl = new DocenteCursoLogic();
+                DocenteCursoActual = new DocenteCurso();
+                DocenteCursoActual = dcl.GetOne(Int32.Parse(id));
+
                 CargarViewStates();
 
                 MapearDeDatos();
@@ -39,10 +43,10 @@ namespace UI.Web
             List<Persona> docentes = pl.GetLegajosDocentes();
 
             DocenteCursoLogic ml = new DocenteCursoLogic();
-            DocenteCursoActual = ml.GetOne(Int32.Parse(Session["id"].ToString()));
+            DocenteCursoActual = ml.GetOne(Int32.Parse(Session["idDocenteCurso"].ToString()));
 
             DocenteCursoLogic dcl = new DocenteCursoLogic();
-            List<DocenteCurso> docentesNoDisponibles = dcl.GetDocentesNoDisponibles(Int32.Parse(Session["idCurso"].ToString()));
+            List<DocenteCurso> docentesNoDisponibles = dcl.GetDocentesNoDisponibles(Int32.Parse(Session["id"].ToString()));
 
             if (Session["estado"].Equals("alta"))
             {
@@ -77,14 +81,14 @@ namespace UI.Web
                     DocenteCursoActual = doc;
                     DocenteCursoActual.IDDocente = Int32.Parse(this.cmbLegajo.SelectedValue);
                     DocenteCursoActual.Cargo = (DocenteCurso.TiposCargos)Enum.Parse(typeof(DocenteCurso.TiposCargos), cmbCargo.SelectedItem.ToString());
-                    DocenteCursoActual.IDCurso = Int32.Parse(Session["idCurso"].ToString());
+                    DocenteCursoActual.IDCurso = Int32.Parse(Session["id"].ToString());
                     DocenteCursoActual.State = Usuario.States.New;
                     break;
 
                 case "modificacion":
                     DocenteCursoActual.IDDocente = Int32.Parse((string)ViewState["legajo"]);
                     DocenteCursoActual.Cargo = (DocenteCurso.TiposCargos)Enum.Parse(typeof(DocenteCurso.TiposCargos), (string)ViewState["cargo"]);
-                    DocenteCursoActual.IDCurso = Int32.Parse(Session["idCurso"].ToString());
+                    DocenteCursoActual.IDCurso = Int32.Parse(Session["id"].ToString());
                     DocenteCursoActual.State = Usuario.States.Modified;
                     break;
             }
@@ -94,13 +98,13 @@ namespace UI.Web
         {
             DocenteCursoLogic dcl = new DocenteCursoLogic();
             PersonaLogic pl = new PersonaLogic();
-            DocenteCursoActual = new DocenteCurso();
+            
 
             if (!Page.IsPostBack)
             {
-                string id = (string)Session["id"];
+                string id = (string)Session["idDocenteCurso"];
                
-                DocenteCursoActual = dcl.GetOne(Int32.Parse(id));
+                
 
                 this.cmbLegajo.SelectedValue = this.DocenteCursoActual.IDDocente.ToString();
                 this.cmbCargo.SelectedValue = this.DocenteCursoActual.Cargo.ToString();
@@ -169,8 +173,8 @@ namespace UI.Web
             {
                 GuardarCambios();
                 Session.Remove("estado"); //cerramos una sesion en particular
-                //Response.Write("<script>history.back()</script>");
-                Response.Redirect("~/Docentes.aspx", false);
+                //Response.Write("<script>history.go(-1)</script>");
+                Response.Redirect("~/Docentes.aspx");
             }
             catch (Exception ex)
             {

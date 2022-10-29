@@ -19,7 +19,7 @@ namespace UI.Web
         protected void btnInsertar_Click(object sender, EventArgs e)
         {
             Session["estado"] = "alta";
-            Session["idCurso"] = Session["id"];
+            //Session["idCurso"] = Session["id"]; //Session["id"] = curso
             Response.Redirect("~/formDocente.aspx");
 
         }
@@ -33,8 +33,8 @@ namespace UI.Web
                 string ide = grdDocentes.Rows[Convert.ToInt32(e.CommandArgument)].Cells[0].Text.ToString();
 
                 Session["estado"] = "modificacion";
-                Session["idCurso"] = Session["id"];
-                Session["id"] = ide;
+                //Session["idCurso"] = Session["id"];
+                Session["idDocenteCurso"] = ide;  
                 Response.Redirect("~/formDocente.aspx");
             }
             else if (e.CommandName == "Borrar")

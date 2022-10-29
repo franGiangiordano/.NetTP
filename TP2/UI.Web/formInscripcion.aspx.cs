@@ -256,7 +256,10 @@ namespace UI.Web
         }
         private bool esDocente()
         {
-            return false;
+            ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+            int idModulo = mul.GetIdModulo("AlumnoInscripcionDesktop");
+            ModuloUsuario mu = mul.GetModuloUsuario(idModulo, ((Usuario)Session["usuario"]).ID);
+            return !mu.PermiteAlta;
         }
 
         private Boolean esAdmin()

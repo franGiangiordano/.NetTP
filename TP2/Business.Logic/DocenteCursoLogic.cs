@@ -50,17 +50,18 @@ namespace Business.Logic
 
         public bool validarDocenteCargo(DocenteCurso docente) {
            int ayudantes = 0;
-           List<DocenteCurso> docentes = _docenteCurso.GetDocentesCurso(docente.IDCurso);
+           List<DocenteCurso> docentes = _docenteCurso.GetDocentesCurso(docente.IDCurso);            
             if (docentes.Count < 2) {
                 return true;
             }
-            
+                       
            foreach (DocenteCurso doc in docentes) {                
                 if (doc.Cargo.ToString().Equals("Ayudante")) {
                     ayudantes++;
                     Console.WriteLine(ayudantes.ToString());
                 }       
            }
+           //Maximo 2 ayudantes
             if (ayudantes == 2 && docente.Cargo.ToString().Equals("Ayudante")) {
                 return false;
             }

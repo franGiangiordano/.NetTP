@@ -257,5 +257,10 @@ namespace UI.Desktop
         {
             this.Close();
         }
+
+        private void DocenteDesktop_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
