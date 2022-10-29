@@ -85,6 +85,7 @@
     <Content Include="Global.asax" />
     <Content Include="Imagenes\borrar.png" />
     <Content Include="Imagenes\boton-editar.png" />
+    <Content Include="Imagenes\buscar.png" />
     <Content Include="Inscripciones.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Materias.aspx" />

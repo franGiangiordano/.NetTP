@@ -21,8 +21,9 @@
             <Columns>
                 <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
                 <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" SortExpression="Descripcion" />
-                <asp:BoundField DataField="AnioCalendario" HeaderText="Año calendario" SortExpression="AnioCalendario" />
+                <asp:BoundField DataField="HSSemanales" HeaderText="Horas Semanales" SortExpression="Horas Semanales" />
                 <asp:BoundField DataField="NombrePlan" HeaderText="NombrePlan" SortExpression="NombrePlan" />
+                <asp:BoundField DataField="HSTotales" HeaderText="Horas Totales" SortExpression="Horas Totales" />
                 <asp:ButtonField ButtonType="Image" ImageUrl="~\Imagenes\boton-editar.png" CommandName="Editar" HeaderText="Editar" ShowHeader="True" Text="Editar" />
                 <asp:ButtonField ButtonType="Image" ImageUrl="~\Imagenes\borrar.png" CommandName="Borrar" HeaderText="Eliminar" ShowHeader="True" Text="Eliminar" />
             </Columns>

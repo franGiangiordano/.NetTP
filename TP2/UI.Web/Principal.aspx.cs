@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Business.Entities;
+using Business.Logic;
+
 
 namespace UI.Web
 {
@@ -11,8 +14,7 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Page.Response.Write(Session["usuario"]);
-
+            validarPermisos();
         }
 
         //este metodo es para redireccionar enlaces, LinkButton es similar a <a> de HTML
@@ -62,64 +64,47 @@ namespace UI.Web
 
         }
 
-        //protected void Menu1_MenuItemClick(object sender, MenuEventArgs e)
-        //{
-        //    bool hasParent = (e.Item.Parent != null);
+        private void validarPermisos()
+        {
+            ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+            ModuloUsuario mu = null;
+            try
+            {
+                int idModulo = mul.GetIdModulo("Principal");
+                mu = mul.GetModuloUsuario(idModulo, ((Usuario)Session["usuario"]).ID);
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al ejecutar la operacion", Ex);
+                Response.Write("<script>alert('" + ExcepcionManejada.Message + "');</script>");
+            }
 
-        //    switch (hasParent)
-        //    {
-        //        case false:
-        //            switch (e.Item.Value)
-        //            {
-        //                case "Listados":
-        //                    //Response.Redirect("~/RGS/Workflow/Workflow.aspx");
-        //                    break;
-        //                case "HoursOfBusiness":
-        //                    //Response.Redirect("~/RGS/Workflow/BusinessHour/BusinessHours.aspx");
-        //                    break;
-        //            }
-        //            break;
-        //        case true:
-        //            switch (e.Item.Parent.Value)
-        //            {
-        //                case "Listados":
-        //                    switch (e.Item.Value)
-        //                    {
-        //                        case "Usuarios":
-        //                            Response.Redirect("~/Usuarios.aspx");
-        //                            break;
-        //                        case "Edit":
-        //                            Response.Redirect("~/RGS/Workflow/WorkflowEdit.aspx");
-        //                            break;
-        //                        case "Create":
-        //                            Response.Redirect("~/RGS/Workflow/WorkflowCreate.aspx");
-        //                            break;
-        //                        case "Delete":
-        //                            Response.Redirect("~/RGS/Workflow/WorkflowDelete.aspx");
-        //                            break;
-        //                    }
-        //                    break;
-        //                case "HoursOfBusiness":
-        //                    switch (e.Item.Value)
-        //                    {
-        //                        case "Overview":
-        //                            Response.Redirect("~/RGS/Workflow/BusinessHour/BusinessHours.aspx");
-        //                            break;
-        //                        case "Edit":
-        //                            Response.Redirect("~/RGS/Workflow/BusinessHour/BusinessHours.aspx");
-        //                            break;
-        //                        case "Create":
-        //                            Response.Redirect("~/RGS/Workflow/BusinessHour/BusinessHoursCreate.aspx");
-        //                            break;
-        //                        case "Delete":
-        //                            Response.Redirect("~/RGS/Workflow/BusinessHour/BusinessHours.aspx");
-        //                            break;
-        //                    }
-        //                    break;
-        //            }
-        //            break;
 
-        //    }
-        //}
+            if (!mu.PermiteAlta && mu.PermiteModificacion)
+            {
+
+                //esto es para ocultar los botones que no corresponden a los permisos del usuario en cuestion
+                this.LinkButtonPersonas.Visible = false;
+                this.LinkButtonUsuarios.Visible = false;
+                this.LinkButtonEspecialidades.Visible = false;
+                this.LinkButtonMaterias.Visible = false;
+                this.LinkButtonPlanes.Visible = false;
+                this.LinkButtonComisiones.Visible = false;
+
+                //this.txtRol.Text = "Docente"; //esto es para mostrar el rol del usuario Logueado
+            }
+            else if (!mu.PermiteAlta && !mu.PermiteModificacion)
+            {
+                this.LinkButton3.Visible = false;
+                //this.txtRol.Text = "Alumno";
+            }
+
+            if (mu.PermiteAlta && mu.PermiteModificacion && mu.PermiteBaja)
+            {
+
+                //this.txtRol.Text = "Administrador"; //esto es para mostrar el rol del usuario Logueado
+            }
+        }
+
     }
 }

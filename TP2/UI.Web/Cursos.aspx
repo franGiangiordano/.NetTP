@@ -26,7 +26,7 @@
                 <asp:BoundField DataField="Cupo" HeaderText="Cupo" SortExpression="NombrePlan" />
                 <asp:ButtonField ButtonType="Image" ImageUrl="~\Imagenes\boton-editar.png" CommandName="Editar" HeaderText="Editar" ShowHeader="True" Text="Editar" />
                 <asp:ButtonField ButtonType="Image" ImageUrl="~\Imagenes\borrar.png" CommandName="Borrar" HeaderText="Eliminar" ShowHeader="True" Text="Eliminar" />
-                <asp:ButtonField ButtonType="Image" ImageUrl="~\Imagenes\borrar.png" CommandName="Docentes" HeaderText="Ver Docentes" ShowHeader="True" Text="Ver Docentes" />
+                <asp:ButtonField ButtonType="Image" ImageUrl="~\Imagenes\buscar.png" CommandName="Docentes" HeaderText="Ver Docentes" ShowHeader="True" Text="Ver Docentes" />
             </Columns>
         </asp:GridView>
          <div>
