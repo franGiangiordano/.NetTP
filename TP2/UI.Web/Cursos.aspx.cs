@@ -13,7 +13,7 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            validarPermisos();
         }
         protected void grdCursos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -48,6 +48,29 @@ namespace UI.Web
                     Response.Write("<script>alert(" + ExcepcionManejada.Message + ");</script>");
                 }
             }
+            else if(e.CommandName == "Docentes")
+            {
+                string ide = grdCursos.Rows[Convert.ToInt32(e.CommandArgument)].Cells[0].Text.ToString();
+
+                Session["estado"] = "docentes";
+                Session["id"] = ide;
+                Response.Redirect("~/Docentes.aspx");
+            }
+        }
+
+        private void validarPermisos()
+        {
+            ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+            int idModulo = mul.GetIdModulo("Docentes");
+            ModuloUsuario mu = mul.GetModuloUsuario(idModulo, ((Usuario)Session["usuario"]).ID);
+
+            if (!mu.PermiteAlta) //es Docente
+            {
+                this.grdCursos.Columns[5].Visible = false;
+                this.grdCursos.Columns[6].Visible = false;
+                this.btnInsertar.Visible = false;
+            }
+
         }
 
         protected void btnInsertar_Click(object sender, EventArgs e)

@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-    <div class="title">Formulario Materias</div>
+    <div class="title">Formulario Cursos</div>
     <div class="content">
       <form id="formPersona" runat="server">
         <div class="user-details">    
