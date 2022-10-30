@@ -12,7 +12,7 @@ body {
 
 header {
     width: 100%;
-    text-align: center;
+    text-align: right;
 }
 
 .navegacion {
@@ -38,7 +38,7 @@ header {
         color: #353535;
         font-family: 'Open sans';
         text-decoration: none;
-        width: 100px;
+        width: 130px;
     }
 
 .menu li a:hover {
@@ -63,6 +63,7 @@ header {
         color: #fff;
         font-family: 'Open sans';
         text-decoration: none;
+        text-align: center;
     }
 
 .menu li:hover .submenu {

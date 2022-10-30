@@ -64,6 +64,9 @@
 				<li>
                     <asp:LinkButton ID="LinkButton1" runat="server">Reportes</asp:LinkButton>
 				</li>
+				<li>
+                    <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Cerrar Sesion</asp:LinkButton>
+				</li>
 			</ul>
 		</nav>
 	</header>

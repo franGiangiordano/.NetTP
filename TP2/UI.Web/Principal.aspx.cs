@@ -106,5 +106,10 @@ namespace UI.Web
             }
         }
 
+        protected void LinkButton2_Click(object sender, EventArgs e)
+        {
+            System.Web.Security.FormsAuthentication.SignOut();
+            Response.Redirect("~/Login.aspx");
+        }
     }
 }
