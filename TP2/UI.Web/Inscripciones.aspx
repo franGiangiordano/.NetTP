@@ -16,7 +16,7 @@
                     <asp:Parameter Name="ID" Type="Int32" />
                 </DeleteParameters>
             </asp:ObjectDataSource>
-             <asp:ObjectDataSource ID="odsInscripciones2" runat="server" SelectMethod="GetInscripcionesAlumno" TypeName="Data.Database.AlumnoInscripcionAdapter">
+             <asp:ObjectDataSource ID="odsInscripciones2" runat="server" SelectMethod="GetInscripcionesAlumno2" TypeName="Data.Database.AlumnoInscripcionAdapter">
                  <SelectParameters>
                      <asp:SessionParameter Name="idAlumno" SessionField="idPersona" Type="Int32" />
                  </SelectParameters>
