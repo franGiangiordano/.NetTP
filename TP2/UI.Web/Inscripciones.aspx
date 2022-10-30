@@ -16,8 +16,21 @@
                     <asp:Parameter Name="ID" Type="Int32" />
                 </DeleteParameters>
             </asp:ObjectDataSource>
+             <asp:ObjectDataSource ID="odsInscripciones2" runat="server" SelectMethod="GetInscripcionesAlumno" TypeName="Data.Database.AlumnoInscripcionAdapter">
+                 <SelectParameters>
+                     <asp:SessionParameter Name="idAlumno" SessionField="idPersona" Type="Int32" />
+                 </SelectParameters>
+             </asp:ObjectDataSource>
+             <asp:ObjectDataSource ID="odsInscripciones3" runat="server" DeleteMethod="Delete" SelectMethod="GetInscripcionesDocente2" TypeName="Data.Database.AlumnoInscripcionAdapter">
+                 <DeleteParameters>
+                     <asp:Parameter Name="ID" Type="Int32" />
+                 </DeleteParameters>
+                 <SelectParameters>
+                     <asp:SessionParameter Name="idDocente" SessionField="idPersona" Type="Int32" />
+                 </SelectParameters>
+             </asp:ObjectDataSource>
         </div>
-        <asp:GridView ID="grdInscripciones" Class="mGrid" runat="server" AutoGenerateColumns="False" DataSourceID="odsInscripciones" OnRowCommand="grdInscripciones_RowCommand" Font-Size="Large">
+        <asp:GridView ID="grdInscripciones" Class="mGrid" runat="server" AutoGenerateColumns="False"  OnRowCommand="grdInscripciones_RowCommand" Font-Size="Large">
             <Columns>
                 <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
                 <asp:BoundField DataField="NomAlumno" HeaderText="Alumno" SortExpression="Alumno" />

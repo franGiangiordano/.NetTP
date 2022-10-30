@@ -28,7 +28,7 @@
           </div>
           <div class="input-box">
             <asp:Label ID="lblCondicion" class="details" runat="server" Text="Condicion"></asp:Label>
-            <asp:DropDownList ID="cmbCondicion" runat="server">
+            <asp:DropDownList ID="cmbCondicion" AutoPostBack="true" runat="server">
                 <asp:ListItem>Regular</asp:ListItem>
                 <asp:ListItem>Aprobado</asp:ListItem>
                 <asp:ListItem>Libre</asp:ListItem>

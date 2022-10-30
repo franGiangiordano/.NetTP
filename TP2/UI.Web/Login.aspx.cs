@@ -40,6 +40,7 @@ namespace UI.Web
                     if (usuarioEncontrado.Habilitado != false)
                     {
                         Session["usuario"] = usuarioEncontrado;
+                        Session["idPersona"] = usuarioEncontrado.IdPersona;
                         Response.Redirect("~/Principal.aspx");
                     }
                     else

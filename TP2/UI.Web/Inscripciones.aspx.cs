@@ -15,10 +15,24 @@ namespace UI.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+            PersonaLogic pl = new PersonaLogic();
+            Persona per = new Persona();
+            per = pl.GetOne(Int32.Parse(Session["idPersona"].ToString()));
+            if (per.Tipo == Persona.TipoPersonas.Alumno)
+            {
+                grdInscripciones.DataSourceID = "odsInscripciones2";
+            }
+            else if (per.Tipo == Persona.TipoPersonas.Docente)
+            {
+                grdInscripciones.DataSourceID = "odsInscripciones3";
+            }
+            else if (per.Tipo == Persona.TipoPersonas.Administrativo)
+            {
+                grdInscripciones.DataSourceID = "odsInscripciones";
+            }
+
             mostrarNotas();
-
-
-
         }
 
         private void mostrarNotas()

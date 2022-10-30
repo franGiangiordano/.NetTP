@@ -348,6 +348,57 @@ namespace Data.Database
 
             return inscripciones;
         }
+
+        public List<AlumnoInscripcion> GetInscripcionesDocente2(int idDocente)
+        {
+            List<AlumnoInscripcion> inscripciones = new List<AlumnoInscripcion>();
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdInscripciones = new SqlCommand("select ai.id_inscripcion,p.nombre, p.apellido, c.id_curso, ai.condicion, ai.nota, c.anio_calendario, m.desc_materia, co.desc_comision, esp.desc_especialidad from alumnos_inscripciones ai join personas p on ai.id_alumno=p.id_persona join cursos c on ai.id_curso=c.id_curso join materias m on m.id_materia=c.id_materia join comisiones co on co.id_comision=c.id_comision join planes pl on pl.id_plan=p.id_plan join especialidades esp on esp.id_especialidad=pl.id_especialidad join docentes_cursos dc on dc.id_curso = ai.id_curso where dc.id_docente = @idDocente", sqlconn);
+                cmdInscripciones.Parameters.Add("@idDocente", SqlDbType.Int).Value = idDocente;
+                SqlDataReader drInscripciones = cmdInscripciones.ExecuteReader();
+
+                while (drInscripciones.Read())
+                {
+                    Business.Entities.AlumnoInscripcion ins;
+                    ins = new Business.Entities.AlumnoInscripcion();
+                    ins.ID = (int)drInscripciones["id_inscripcion"];
+                    ins.NomAlumno = (string)drInscripciones["nombre"] + ' ' + (string)drInscripciones["apellido"];
+                    ins.IDCurso = (int)drInscripciones["id_curso"];
+                    ins.Condicion = (string)drInscripciones["condicion"];
+                    ins.Materia = (string)drInscripciones["desc_materia"];
+                    ins.Comision = (string)drInscripciones["desc_comision"];
+                    ins.Anio = (int)drInscripciones["anio_calendario"];
+                    ins.Especialidad = (string)drInscripciones["desc_especialidad"];
+
+                    if (!drInscripciones.IsDBNull(5))
+                    {
+                        ins.Nota = (int)drInscripciones["nota"];
+                    }
+                    else
+                    {
+                        ins.Nota = -1;
+                    }
+
+                    inscripciones.Add(ins);
+                }
+                drInscripciones.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de inscripciones", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+
+            return inscripciones;
+        }
+
         public List<AlumnoInscripcion> FiltrarPorComision(int idDocente, int idComision, int idMateria)
         {
             List<AlumnoInscripcion> inscripciones = new List<AlumnoInscripcion>();

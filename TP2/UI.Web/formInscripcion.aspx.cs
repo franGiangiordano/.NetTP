@@ -25,7 +25,7 @@ namespace UI.Web
                 cargarComboLegajos();
                 cargarComboMaterias(id);
                 cargarComboComisiones(id);
-                validarPermisos(id);
+
             }
             if (Session["estado"] == null)
             {
@@ -35,10 +35,12 @@ namespace UI.Web
             {
                 //Tenemos que guardar en el ViewState los datos ingresados para conservarlos entre postbacks
                 CargarViewStates();
-
+                int id = ((Usuario)Session["usuario"]).IdPersona;
                 MapearDeDatos();
+                validarPermisos(id);
 
                 this.txtNota.Enabled = false;
+                 
             }
         }
 
@@ -62,8 +64,11 @@ namespace UI.Web
             List<Materia> materias = null;
             List<Materia> materiasNoDisponibles = null;
 
+            //AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
+            //AlumnoInscripcionActual = ail.GetOne(((Usuario)Session["usuario"]).IdPersona);
+
             AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
-            AlumnoInscripcionActual = ail.GetOne(((Usuario)Session["usuario"]).IdPersona);
+            AlumnoInscripcionActual = ail.GetOne(Int32.Parse(Session["id"].ToString()));
 
             if (esAdmin())
             {
@@ -117,6 +122,8 @@ namespace UI.Web
                 this.cmbComision.DataValueField = "ID";
                 this.cmbComision.DataBind();
             }
+
+            this.cmbCondicion.SelectedIndexChanged += new System.EventHandler(cmbCondicion_SelectedIndexChanged); //asociamos el evento al combo
         }
 
         public void MapearDeDatos()
@@ -130,12 +137,11 @@ namespace UI.Web
             AlumnoInscripcionActual = ail.GetOne(Int32.Parse(Session["id"].ToString()));
 
             this.cmbLegajo.SelectedValue = this.AlumnoInscripcionActual.IDAlumno.ToString();
-            //Esta linea sirve para obtener el indice de una Materia            
-            this.cmbMateria.SelectedValue = cl.GetOne(AlumnoInscripcionActual.IDCurso).IDMateria.ToString(); 
-            //this.cmbMateria.SelectedValue = (int)this.cmbMateria.FindString(ml.GetOne((cl.GetOne(AlumnoInscripcionActual.IDCurso).IDMateria)).Descripcion);
-            this.cmbComision.SelectedValue = cl.GetOne(AlumnoInscripcionActual.IDCurso).IDComision.ToString(); 
-            //this.cmbComision.SelectedValue = this.cmbComision.FindString((col.GetOne((cl.GetOne(AlumnoInscripcionActual.IDCurso).IDComision)).Descripcion));
-            //this.cmbCondicion.SelectedIndex = this.cmbCondicion.FindString(AlumnoInscripcionActual.Condicion);
+            this.cmbMateria.SelectedValue = cl.GetOne(AlumnoInscripcionActual.IDCurso).IDMateria.ToString();
+            this.cmbComision.SelectedValue = cl.GetOne(AlumnoInscripcionActual.IDCurso).IDComision.ToString();
+
+
+
             if (this.alumnoInscripcionActual.Nota != -1)
             {
                 this.txtNota.Text = this.alumnoInscripcionActual.Nota.ToString();
@@ -418,6 +424,21 @@ namespace UI.Web
 
 
         }
+
+        private void cmbCondicion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.cmbCondicion.SelectedItem.ToString().Equals("Aprobado"))
+            {
+                this.txtNota.Enabled = true;
+
+            }
+            if (this.cmbCondicion.SelectedItem.ToString().Equals("Libre") || this.cmbCondicion.SelectedItem.ToString().Equals("Regular"))
+            {
+                this.txtNota.Enabled = false;
+            }
+
+        }
+
 
     }
 }
