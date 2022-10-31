@@ -444,9 +444,3 @@ C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desk
 C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.pdb
 C:\Users\user\Documents\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.DatosReportes.ReporteMaterias.resources
 C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.DatosReportes.ReporteMaterias.resources
-C:\Users\user\Documents\GitHub\.NetTP\TP2\UI.Desktop\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
-C:\Users\user\Documents\GitHub\.NetTP\TP2\UI.Desktop\bin\Debug\Microsoft.VisualStudio.Shell.Interop.8.0.dll
-C:\Users\user\Documents\GitHub\.NetTP\TP2\UI.Desktop\bin\Debug\Microsoft.VisualStudio.OLE.Interop.dll
-C:\Users\user\Documents\GitHub\.NetTP\TP2\UI.Desktop\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.dll
-C:\Users\user\Documents\GitHub\.NetTP\TP2\UI.Desktop\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.8.0.dll
-C:\Users\user\Documents\GitHub\.NetTP\TP2\UI.Desktop\bin\Debug\Microsoft.MSXML.dll

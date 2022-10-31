@@ -123,7 +123,10 @@ namespace UI.Web
         {
             EspecialidadLogic el = new EspecialidadLogic();
 
-            if (!Session["estado"].ToString().Equals("Baja") && el.GetEspecialidad(this.txtDescripcion.Text))
+            if ((Session["estado"].Equals("alta") && el.GetEspecialidad(this.txtDescripcion.Text)))
+            {
+                return false;
+            }else if (Session["estado"].Equals("modificacion") && el.GetEspecialidad(ViewState["descripcion"].ToString()))
             {
                 return false;
             }

@@ -42,8 +42,7 @@ namespace UI.Web
             PersonaLogic pl = new PersonaLogic();
             List<Persona> docentes = pl.GetLegajosDocentes();
 
-            DocenteCursoLogic ml = new DocenteCursoLogic();
-            DocenteCursoActual = ml.GetOne(Int32.Parse(Session["idDocenteCurso"].ToString()));
+
 
             DocenteCursoLogic dcl = new DocenteCursoLogic();
             List<DocenteCurso> docentesNoDisponibles = dcl.GetDocentesNoDisponibles(Int32.Parse(Session["id"].ToString()));
@@ -55,6 +54,8 @@ namespace UI.Web
             }
             else
             {
+                DocenteCursoLogic ml = new DocenteCursoLogic();
+                DocenteCursoActual = ml.GetOne(Int32.Parse(Session["idDocenteCurso"].ToString()));
                 //Materia materiaActual = ml.GetOne(cl.GetOne(AlumnoInscripcionActual.IDCurso).IDMateria);
                 this.cmbLegajo.DataSource = (docentes.Where(item => !docentesNoDisponibles.Any(e => (item.ID == e.IDDocente) && (item.ID != DocenteCursoActual.IDDocente))).ToList());
             }
@@ -86,7 +87,7 @@ namespace UI.Web
                     break;
 
                 case "modificacion":
-                    DocenteCursoActual.IDDocente = Int32.Parse((string)ViewState["legajo"]);
+                    DocenteCursoActual.IDDocente = Int32.Parse(ViewState["legajo"].ToString());
                     DocenteCursoActual.Cargo = (DocenteCurso.TiposCargos)Enum.Parse(typeof(DocenteCurso.TiposCargos), (string)ViewState["cargo"]);
                     DocenteCursoActual.IDCurso = Int32.Parse(Session["id"].ToString());
                     DocenteCursoActual.State = Usuario.States.Modified;
@@ -148,7 +149,7 @@ namespace UI.Web
                     }
                     else
                     {
-                        Response.Write("<script>alert('No se admiten tres ayudantes en un mismo curso sin un docente');</script>");
+                        throw new Exception("No se admiten tres ayudantes en un mismo curso sin un docente");
                     }
                 }
                 else
@@ -174,12 +175,11 @@ namespace UI.Web
                 GuardarCambios();
                 Session.Remove("estado"); //cerramos una sesion en particular
                 //Response.Write("<script>history.go(-1)</script>");
-                Response.Redirect("~/Docentes.aspx");
+                Response.Redirect("~/Docentes.aspx",true);
             }
             catch (Exception ex)
             {
-                Exception ExcepcionManejada = new Exception("Error al guardar datos del docente", ex);
-                Response.Write("<script>alert('" + ExcepcionManejada.Message + "');</script>");
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
 

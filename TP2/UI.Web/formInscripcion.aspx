@@ -16,7 +16,7 @@
         <div class="user-details">
           <div class="input-box">
             <asp:Label ID="lblMateria" class="details" runat="server" Text="Materia"></asp:Label>
-            <asp:DropDownList ID="cmbMateria" runat="server" AutoPostBack="true"></asp:DropDownList>
+            <asp:DropDownList ID="cmbMateria" runat="server" AutoPostBack="true" OnSelectedIndexChanged="cmbMateria_SelectedIndexChanged"></asp:DropDownList>
           </div>          
           <div class="input-box">
             <asp:Label ID="Label1" class="details" runat="server" Text="Comision"></asp:Label>
@@ -28,10 +28,7 @@
           </div>
           <div class="input-box">
             <asp:Label ID="lblCondicion" class="details" runat="server" Text="Condicion"></asp:Label>
-            <asp:DropDownList ID="cmbCondicion" AutoPostBack="true" runat="server">
-                <asp:ListItem>Regular</asp:ListItem>
-                <asp:ListItem>Aprobado</asp:ListItem>
-                <asp:ListItem>Libre</asp:ListItem>
+            <asp:DropDownList ID="cmbCondicion" AutoPostBack="true" runat="server" OnSelectedIndexChanged="cmbCondicion_SelectedIndexChanged1">
               </asp:DropDownList>
           </div>
             <div class="input-box">

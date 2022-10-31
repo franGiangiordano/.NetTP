@@ -33,6 +33,8 @@ namespace UI.Web
                 grdInscripciones.DataSourceID = "odsInscripciones";
             }
 
+            
+            validarPermisos();
             mostrarNotas();
         }
 
@@ -93,6 +95,25 @@ namespace UI.Web
         protected void btnAtras_Click(object sender, ImageClickEventArgs e)
         {
             Response.Redirect("~/Principal.aspx");
+        }
+
+        private void validarPermisos()
+        {
+            ModuloUsuarioLogic mul = new ModuloUsuarioLogic();
+            int idModulo = mul.GetIdModulo("AlumnoInscripciones");
+            ModuloUsuario mu = mul.GetModuloUsuario(idModulo, ((Usuario)Session["usuario"]).ID);
+
+            if (!mu.PermiteAlta) //es Docente
+            {
+                this.grdInscripciones.Columns[10].Visible = false;
+                this.btnInsertar.Visible = false;
+            }
+            else if (!mu.PermiteModificacion) //es Alumno
+            {
+                this.grdInscripciones.Columns[9].Visible = false;
+                this.btnInsertar.Visible = true;
+            }
+
         }
     }
 }

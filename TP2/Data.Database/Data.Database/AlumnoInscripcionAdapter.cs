@@ -185,7 +185,18 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@id_alumno", SqlDbType.Int, 50).Value = inscripcion.IDAlumno;
                 cmdSave.Parameters.Add("@id_curso", SqlDbType.Int, 50).Value = inscripcion.IDCurso;
                 cmdSave.Parameters.Add("@condicion", SqlDbType.VarChar).Value = inscripcion.Condicion;
-                cmdSave.Parameters.Add("@nota", SqlDbType.Int, 50).Value = inscripcion.Nota;
+
+
+                if (inscripcion.Condicion.Equals("Libre") || inscripcion.Condicion.Equals("Regular"))
+                {
+
+                    cmdSave.Parameters.Add("@nota", SqlDbType.Int, 50).Value = -1;
+                }
+                else
+                {
+                    cmdSave.Parameters.Add("@nota", SqlDbType.Int, 50).Value = inscripcion.Nota;
+                }
+
                 cmdSave.ExecuteNonQuery();
             }
             catch (Exception Ex)

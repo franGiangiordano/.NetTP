@@ -52,7 +52,7 @@
           </div>
           <div class="input-box">
             <asp:Label ID="lblClave" class="details" runat="server" Text="Clave"></asp:Label>
-            <asp:TextBox ID="txtClave" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtClave" runat="server" type="password"></asp:TextBox>
                 <div>
                     <!-- validamos que no este vacio-->
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="El campo Clave no puede estar vacio" ForeColor="Red" ControlToValidate="txtClave"></asp:RequiredFieldValidator>
@@ -76,7 +76,7 @@
           </div>
           <div class="input-box">
             <asp:Label ID="lblConfirmarClave" class="details" runat="server" Text="Confirmar Clave"></asp:Label>
-            <asp:TextBox ID="txtConfirmarClave" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtConfirmarClave" runat="server" type="password"></asp:TextBox>
                 <div>
                     <!-- validamos que no este vacio-->
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="El campo Confirmar Clave no puede estar vacio" ForeColor="Red" ControlToValidate="txtConfirmarClave"></asp:RequiredFieldValidator>

@@ -311,12 +311,11 @@ namespace UI.Web
                     GuardarCambios();
                     //Response.Write("<script>alert('Usuario añadido correctamente');</script>"); //esta alerta no funciona
                     Session.Remove("estado"); //cerramos una sesion en particular
-                    Response.Redirect("~/Usuarios.aspx");
+                    Response.Redirect("~/Usuarios.aspx",true);
                 }
-                catch (Exception Ex)
+                catch (Exception ex)
                 {
-                    Exception ExcepcionManejada = new Exception("Error al guardar datos usuario", Ex);
-                    Response.Write("<script>alert('" + ExcepcionManejada.Message + "');</script>");
+                    Response.Write("<script>alert('" + ex.Message + "');</script>");
                 }
             }
             else {

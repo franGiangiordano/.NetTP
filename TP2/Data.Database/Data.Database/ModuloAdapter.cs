@@ -90,11 +90,13 @@ namespace Data.Database
         public void cargarPermisos(List<ModuloUsuario> modulos)
         {
             int i = 0;
-                using (SqlConnection connection = new SqlConnection("Data Source=localhost\\SQLEXPRESS;Initial Catalog=academia;Integrated Security=SSPI;")) {
-                    connection.Open();
-                    SqlTransaction sqlTran = connection.BeginTransaction();
+            //using (SqlConnection connection = new SqlConnection("Data Source=localhost\\SQLEXPRESS;Initial Catalog=academia;Integrated Security=SSPI;")) {
+            //    connection.Open();
+            this.OpenConnection();
 
-                    SqlCommand command = connection.CreateCommand();
+            SqlTransaction sqlTran = sqlconn.BeginTransaction();
+
+                    SqlCommand command = sqlconn.CreateCommand();
                     command.Transaction = sqlTran;
                 try
                 {                  
@@ -119,8 +121,7 @@ namespace Data.Database
                     sqlTran.Rollback();
                     Exception ExcepcionManejada = new Exception("Error al cargar permisos", Ex);
                     throw ExcepcionManejada;
-                }                
-            }            
+                }                            
 
         }
 

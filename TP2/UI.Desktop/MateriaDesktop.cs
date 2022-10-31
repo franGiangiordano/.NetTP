@@ -158,7 +158,8 @@ namespace UI.Desktop
                 }
              }
 
-            if (!Modo.ToString().Equals("Baja") && ml.GetMateria(this.txtDescripcion.Text, (int)this.cmbPlan.SelectedValue)) {
+            if (!Modo.ToString().Equals("Baja") && ml.GetMateria(this.txtDescripcion.Text, (int)this.cmbPlan.SelectedValue) && this.txtDescripcion.Text != materiaActual.Descripcion && (int)this.cmbPlan.SelectedValue != this.materiaActual.IDPlan)
+            {
                 errores += "Ya existe una materia con esas caracteristicas\n";
             }
 

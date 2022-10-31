@@ -139,11 +139,11 @@ namespace UI.Web
                 Response.Write("<script>alert('Las horas Totales deben ser mayor que las Semanales');</script>");
                 return false;
             }
-            else
+            if (Session["estado"].Equals("modificacion"))
             {
                 if (ml.ValidarHs(ViewState["HsSemanales"].ToString(), ViewState["HsTotales"].ToString()).Equals(""))
                 {
-                    if (!Session["estado"].Equals("baja") && ml.GetMateria(ViewState["descripcion"].ToString(), Int32.Parse(ViewState["plan"].ToString())))
+                    if (!Session["estado"].Equals("baja") && ml.GetMateria(ViewState["descripcion"].ToString(), Int32.Parse(ViewState["plan"].ToString())) && (ViewState["descripcion"].ToString()!= MateriaActual.Descripcion) && (ViewState["plan"].ToString() != MateriaActual.IDPlan.ToString()))
                     {
                         Response.Write("<script>alert('La materia ya existe!');</script>");
                         return false;
@@ -156,6 +156,7 @@ namespace UI.Web
                 Response.Write("<script>alert('Las horas Totales deben ser mayor que las Semanales');</script>");
                 return false;
             }
+            return false;
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)

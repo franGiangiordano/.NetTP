@@ -194,13 +194,29 @@ namespace UI.Web
         {
             PersonaLogic pl = new PersonaLogic();
             //Validamos si la persona existe
-            if (this.txtLegajo.Enabled)
+            if (Session["estado"].Equals("alta"))
             {
-                if ( !this.txtLegajo.Text.Equals("1") && pl.GetPersona(Int32.Parse(this.txtLegajo.Text)))
+                if (this.txtLegajo.Enabled)
                 {
-                    return false;
+                    if (!this.txtLegajo.Text.Equals("1") && pl.GetPersona(Int32.Parse(this.txtLegajo.Text)))
+                    {
+                        return false;
+                    }
+
                 }
-             
+                return true;
+            }
+            else if (Session["estado"].Equals("modificacion"))
+            {
+                if (this.txtLegajo.Enabled)
+                {
+                    if (!Int32.Parse((string)ViewState["legajo"]).Equals("1") && pl.GetPersona(Int32.Parse((string)ViewState["legajo"])) && (Int32.Parse((string)ViewState["legajo"])!= PersonaActual.Legajo))
+                    {
+                        return false;
+                    }
+
+                }
+                return true;
             }
             return true;
         }
