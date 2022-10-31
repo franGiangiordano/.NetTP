@@ -80,6 +80,9 @@ namespace UI.Web
                 //Response.Redirect("~/Principal.aspx");
             }
         }
-
+        protected void btnAtras_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("~/Principal.aspx");
+        }
     }
 }

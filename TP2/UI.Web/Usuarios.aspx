@@ -7,11 +7,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Usuarios</title>
     <link rel="stylesheet" href="estilos/gridView.css">
+    <link rel="stylesheet" href="estilos/header.css">
 </head>
 <body>
     <form id="form1" runat="server">
+    <header>
+ <nav class="nav__hero">
+            <div class="container nav__container">
+                <div class="logo">
+                    <h2 class="logo__name">Academia<span class="point"> UTN </span></h2>
+                </div>
+                <div>
+                    <asp:ImageButton ID="btnAtras" runat="server" class="botonAtras" ImageUrl="~\Imagenes\atras.png" OnClick="btnAtras_Click"/>
+				</div>	 
+            </div>
+        </nav> 
+</header>
+
+    <h1>
+        Listado Usuarios
+    </h1>
         <div>
-             <h2><%: Title %><asp:ObjectDataSource ID="ObjectDataSource1" runat="server" DataObjectTypeName="Business.Entities.Usuario" DeleteMethod="EliminarWeb" InsertMethod="Insert" SelectMethod="GetAll" TypeName="Data.Database.UsuarioAdapter" UpdateMethod="Update">
+             <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" DataObjectTypeName="Business.Entities.Usuario" DeleteMethod="EliminarWeb" InsertMethod="Insert" SelectMethod="GetAll" TypeName="Data.Database.UsuarioAdapter" UpdateMethod="Update">
         </asp:ObjectDataSource>
         <asp:GridView ID="grdUsuarios" runat="server" Class="mGrid" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" ShowFooter="True" OnRowCommand="grdUsuarios_RowCommand" OnSelectedIndexChanged="grdUsuarios_SelectedIndexChanged" Font-Size="Large">
             <Columns>
@@ -60,7 +77,6 @@
                 <asp:ButtonField ButtonType="Image" ImageUrl="~\Imagenes\boton-editar.png" HeaderText="Editar" ShowHeader="True" Text="Editar" CommandName="Editar"/>                
             </Columns>
         </asp:GridView>
-    </h2>
         </div>
         <div>
             <asp:Button ID="btnInsertar" class="btn btn-bootstrap" runat="server" CommandName="Insertar" Text="Insertar" OnClick="btnInsertar_Click" />

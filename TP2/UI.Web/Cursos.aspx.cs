@@ -78,5 +78,10 @@ namespace UI.Web
             Session["estado"] = "alta";
             Response.Redirect("~/formCurso.aspx");
         }
+
+        protected void btnAtras_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("~/Principal.aspx");
+        }
     }
 }
