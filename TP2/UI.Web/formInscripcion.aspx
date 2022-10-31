@@ -16,7 +16,7 @@
         <div class="user-details">
           <div class="input-box">
             <asp:Label ID="lblMateria" class="details" runat="server" Text="Materia"></asp:Label>
-            <asp:DropDownList ID="cmbMateria" runat="server"></asp:DropDownList>
+            <asp:DropDownList ID="cmbMateria" runat="server" AutoPostBack="true"></asp:DropDownList>
           </div>          
           <div class="input-box">
             <asp:Label ID="Label1" class="details" runat="server" Text="Comision"></asp:Label>

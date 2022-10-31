@@ -21,11 +21,12 @@ namespace UI.Web
             per = pl.GetOne(Int32.Parse(Session["idPersona"].ToString()));
             if (per.Tipo == Persona.TipoPersonas.Alumno)
             {
-                grdInscripciones.DataSourceID = "odsInscripciones2";
+                grdInscripciones.DataSourceID = "odsInscripciones2";                
             }
             else if (per.Tipo == Persona.TipoPersonas.Docente)
             {
                 grdInscripciones.DataSourceID = "odsInscripciones3";
+                this.btnInsertar.Visible = false;
             }
             else if (per.Tipo == Persona.TipoPersonas.Administrativo)
             {

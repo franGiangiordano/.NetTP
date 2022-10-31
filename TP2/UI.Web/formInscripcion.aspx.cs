@@ -19,9 +19,9 @@ namespace UI.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            int id = ((Usuario)Session["usuario"]).IdPersona;
             if (!Page.IsPostBack)
-            {
-                int id = ((Usuario)Session["usuario"]).IdPersona;
+            {                
                 cargarComboLegajos();
                 cargarComboMaterias(id);
                 cargarComboComisiones(id);
@@ -34,14 +34,11 @@ namespace UI.Web
             else if (Session["estado"].Equals("modificacion"))
             {
                 //Tenemos que guardar en el ViewState los datos ingresados para conservarlos entre postbacks
-                CargarViewStates();
-                int id = ((Usuario)Session["usuario"]).IdPersona;
-                MapearDeDatos();
-                validarPermisos(id);
-
-                this.txtNota.Enabled = false;
-                 
-            }
+                CargarViewStates();                
+                MapearDeDatos();                
+                this.txtNota.Enabled = false;                 
+            }            
+            validarPermisos(id);
         }
 
         public void cargarComboLegajos()
@@ -63,12 +60,9 @@ namespace UI.Web
 
             List<Materia> materias = null;
             List<Materia> materiasNoDisponibles = null;
-
-            //AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
-            //AlumnoInscripcionActual = ail.GetOne(((Usuario)Session["usuario"]).IdPersona);
-
+                       
             AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
-            AlumnoInscripcionActual = ail.GetOne(Int32.Parse(Session["id"].ToString()));
+            AlumnoInscripcionActual = ail.GetOne(((Usuario)Session["usuario"]).IdPersona);
 
             if (esAdmin())
             {
@@ -98,7 +92,13 @@ namespace UI.Web
             this.cmbMateria.DataTextField = "Descripcion";
             this.cmbMateria.DataValueField = "ID";
             this.cmbMateria.DataBind();
-            //this.cmbMateria.SelectedIndexChanged += new System.EventHandler(ComboBox1_SelectedIndexChanged); //asociamos el evento al combo            
+            this.cmbMateria.SelectedIndexChanged += new System.EventHandler(ComboBox1_SelectedIndexChanged); //asociamos el evento al combo            
+        }
+
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = ((Usuario)Session["usuario"]).IdPersona;
+            cargarComboComisiones(id);            
         }
 
         private void cargarComboComisiones(int idPersona)
@@ -137,7 +137,9 @@ namespace UI.Web
             AlumnoInscripcionActual = ail.GetOne(Int32.Parse(Session["id"].ToString()));
 
             this.cmbLegajo.SelectedValue = this.AlumnoInscripcionActual.IDAlumno.ToString();
-            this.cmbMateria.SelectedValue = cl.GetOne(AlumnoInscripcionActual.IDCurso).IDMateria.ToString();
+
+            //Ver porqué no trae la materia correcta, el parametro del get esta bien
+            this.cmbMateria.SelectedValue = cl.GetOne(AlumnoInscripcionActual.IDCurso).IDMateria.ToString(); 
             this.cmbComision.SelectedValue = cl.GetOne(AlumnoInscripcionActual.IDCurso).IDComision.ToString();
 
 
@@ -373,7 +375,7 @@ namespace UI.Web
                 cmbCondicion.Enabled = true;
             }
             else if (!mu.PermiteModificacion)
-            { //es Alumno 
+            { //es Alumno                 
                 this.lblLegajo.Visible = false;
                 this.cmbLegajo.Visible = false;
                 this.lblCondicion.Visible = false;
