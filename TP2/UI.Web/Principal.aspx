@@ -62,7 +62,7 @@
                             <asp:LinkButton ID="LinkButtonInscripciones" runat="server" OnClick="LinkButtonInscripciones_Click">Inscripciones</asp:LinkButton>
 						</li>
 				<li>
-                    <asp:LinkButton ID="LinkButton1" runat="server">Reportes</asp:LinkButton>
+                    <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Reportes</asp:LinkButton>
 				</li>
 				<li>
                     <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Cerrar Sesion</asp:LinkButton>

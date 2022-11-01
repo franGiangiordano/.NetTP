@@ -257,7 +257,7 @@ namespace UI.Desktop
                 errores += "El campo apellido solo puede contener letras\n";
             }
             if (this.txtLeg.Enabled) {
-                if (!Modo.ToString().Equals("Baja") && !this.txtLeg.Text.Equals("1") && pl.GetPersona(Int32.Parse(this.txtLeg.Text)))
+                if (!Modo.ToString().Equals("Baja") && !this.txtLeg.Text.Equals("1") && pl.GetPersona(Int32.Parse(this.txtLeg.Text)) && (this.txtLeg.Text!=PersonaActual.Legajo.ToString()))
                 {
                     errores += "Ya existe una persona con ese legajo\n";
                 }

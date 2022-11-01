@@ -111,5 +111,25 @@ namespace UI.Web
             System.Web.Security.FormsAuthentication.SignOut();
             Response.Redirect("~/Login.aspx");
         }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            PersonaLogic pl = new PersonaLogic();
+            Persona per = new Persona();
+            per = pl.GetOne(Int32.Parse(Session["idPersona"].ToString()));
+            if (per.Tipo == Persona.TipoPersonas.Alumno)
+            {
+                Response.Redirect("~/Reportes/reporteWebAlumno.aspx");
+            }
+            else if (per.Tipo == Persona.TipoPersonas.Docente)
+            {
+                Response.Redirect("~/Reportes/reporteWebDocente.aspx");
+            }
+            else if (per.Tipo == Persona.TipoPersonas.Administrativo)
+            {
+                Response.Redirect("~/Reportes/reporteWeb2.aspx");
+            }
+            
+        }
     }
 }

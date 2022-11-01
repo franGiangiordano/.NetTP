@@ -77,12 +77,15 @@ namespace UI.Desktop
                 //mismos permisos, una forma es colocar en la tabla modulo_usuarios que el docecente pueda modificar
                 //en el principal y asi distinguirlo en el ultimo if y no cambiaria el funcionamiento
 
-
+                this.button5.Visible = false;
+                this.panel4.Visible = false;
                 this.txtRol.Text = "Docente"; //esto es para mostrar el rol del usuario Logueado
             } else if (!mu.PermiteAlta && !mu.PermiteModificacion) {
                 this.panel2.Visible = false;
                 this.btnListados.Visible = false;
                 this.txtRol.Text = "Alumno";
+                this.button5.Visible = false;
+                this.panel4.Visible = false;
             }
 
             if (mu.PermiteAlta && mu.PermiteModificacion && mu.PermiteBaja)
@@ -211,14 +214,13 @@ namespace UI.Desktop
             formComisiones.ShowDialog();    
         }
 
+
         private void button5_Click(object sender, EventArgs e)
         {
             //nombre carpeta.NombreForm
-            //DatosReportes.ReporteUsuarios formReporteUsuarios = new DatosReportes.ReporteUsuarios(Id);
-            //formReporteUsuarios.ShowDialog();
-            DatosReportes.ReporteMaterias formReporteMaterias = new DatosReportes.ReporteMaterias();
-            formReporteMaterias.ShowDialog();
-
+            DatosReportes.ReporteUsuarios formReporteUsuarios = new DatosReportes.ReporteUsuarios(Id);
+            formReporteUsuarios.ShowDialog();
         }
+
     }
 }
