@@ -188,7 +188,7 @@ namespace UI.Desktop
                     errores += cl.validaCupo(Int32.Parse(this.txtCupo.Text));
                     errores += cl.validaAnioCalendario(Int32.Parse(this.txtAnioCalendario.Text));
                 }                                
-                if (!Modo.ToString().Equals("Baja") && (cl.validaCursoExistente((int)this.cmbMaterias.SelectedValue, (int)this.cmbComisiones.SelectedValue, Int32.Parse(this.txtAnioCalendario.Text))))
+                if (!Modo.ToString().Equals("Baja") && (cl.validaCursoExistente((int)this.cmbMaterias.SelectedValue, (int)this.cmbComisiones.SelectedValue, Int32.Parse(this.txtAnioCalendario.Text)) && (CursoActual.IDMateria != (int)this.cmbMaterias.SelectedValue || CursoActual.IDComision != (int)this.cmbComisiones.SelectedValue) || CursoActual.AnioCalendario != Int32.Parse(this.txtAnioCalendario.Text)))
                 {
                     errores += "Ya existe un curso con esas caracteristicas\n";
                 }

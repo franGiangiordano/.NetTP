@@ -42,10 +42,10 @@ namespace UI.Web
                     Response.Redirect(Request.Url.ToString());
 
                 }
-                catch (Exception Ex)
+                catch (Exception ex)
                 {
-                    Exception ExcepcionManejada = new Exception("Error al eliminar curso", Ex);
-                    Response.Write("<script>alert(" + ExcepcionManejada.Message + ");</script>");
+                    Exception ExcepcionManejada = new Exception("Error al eliminar curso", ex);
+                    Response.Write("<script>alert('" + ExcepcionManejada.Message + "');</script>");
                 }
             }
             else if(e.CommandName == "Docentes")

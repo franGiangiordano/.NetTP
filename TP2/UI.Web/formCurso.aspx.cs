@@ -156,7 +156,7 @@ namespace UI.Web
             CursoLogic pl = new CursoLogic();
             if (Session["estado"].Equals("modificacion"))
             {
-                if ((pl.validaCursoExistente(Int32.Parse(ViewState["materia"].ToString()), Int32.Parse(ViewState["comision"].ToString()), Int32.Parse(ViewState["anioCalendario"].ToString()))))
+                if ((pl.validaCursoExistente(Int32.Parse(ViewState["materia"].ToString()), Int32.Parse(ViewState["comision"].ToString()), Int32.Parse(ViewState["anioCalendario"].ToString()))) && (CursoActual.IDMateria!= Int32.Parse(ViewState["materia"].ToString()) || CursoActual.IDComision != Int32.Parse(ViewState["comision"].ToString()) || CursoActual.AnioCalendario != Int32.Parse(ViewState["anioCalendario"].ToString())))
                 {
                     return false;
                 }
