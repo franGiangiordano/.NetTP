@@ -442,7 +442,6 @@ C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desk
 C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.csproj.CopyComplete
 C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.exe
 C:\Users\310M\OneDrive\Documentos\GitHub\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.pdb
-C:\Users\Gonzalo\Downloads\Repositorios\.NetTP\TP2\UI.Desktop\obj\Debug\UI.Desktop.DatosReportes.ReporteMaterias.resources
 F:\.NetTP-main\TP2\UI.Desktop\bin\Debug\UI.Desktop.exe.config
 F:\.NetTP-main\TP2\UI.Desktop\bin\Debug\UI.Desktop.exe
 F:\.NetTP-main\TP2\UI.Desktop\bin\Debug\UI.Desktop.pdb
