@@ -291,7 +291,7 @@ namespace UI.Web
             {
                 return false;
             }
-            else if (ul.GetUser(ViewState["usuario"].ToString()) && usuarioActual.NombreUsuario != ViewState["usuario"].ToString())
+            else if (!Session["estado"].Equals("alta") &&  ul.GetUser(ViewState["usuario"].ToString()) && usuarioActual.NombreUsuario != ViewState["usuario"].ToString())
             {
                 return false;
             }

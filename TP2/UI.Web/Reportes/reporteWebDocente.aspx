@@ -22,7 +22,7 @@
                 </DataSources>
             </LocalReport>
         </rsweb:ReportViewer>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnStringLocalCasa %>"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnStringLocal %>"></asp:SqlDataSource>
     </form>
 </body>
 </html>

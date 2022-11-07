@@ -79,3 +79,12 @@ D:\Descargas\.NetTP-main\TP2\Data.Database\Data.Database\obj\Debug\Data.Database
 D:\Descargas\.NetTP-main\TP2\Data.Database\Data.Database\obj\Debug\Data.Database.csproj.CopyComplete
 D:\Descargas\.NetTP-main\TP2\Data.Database\Data.Database\obj\Debug\Data.Database.dll
 D:\Descargas\.NetTP-main\TP2\Data.Database\Data.Database\obj\Debug\Data.Database.pdb
+F:\.NetTP-main\TP2\Data.Database\Data.Database\obj\Debug\Data.Database.csproj.AssemblyReference.cache
+F:\.NetTP-main\TP2\Data.Database\Data.Database\obj\Debug\Data.Database.csproj.CoreCompileInputs.cache
+F:\.NetTP-main\TP2\Data.Database\Data.Database\obj\Debug\Data.Database.dll
+F:\.NetTP-main\TP2\Data.Database\Data.Database\obj\Debug\Data.Database.pdb
+F:\.NetTP-main\TP2\Data.Database\Data.Database\bin\Debug\Data.Database.dll
+F:\.NetTP-main\TP2\Data.Database\Data.Database\bin\Debug\Data.Database.pdb
+F:\.NetTP-main\TP2\Data.Database\Data.Database\bin\Debug\Business.Entities.dll
+F:\.NetTP-main\TP2\Data.Database\Data.Database\bin\Debug\Business.Entities.pdb
+F:\.NetTP-main\TP2\Data.Database\Data.Database\obj\Debug\Data.Database.csproj.CopyComplete

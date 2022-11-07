@@ -143,7 +143,7 @@ namespace UI.Web
             {
                 if (ml.ValidarHs(ViewState["HsSemanales"].ToString(), ViewState["HsTotales"].ToString()).Equals(""))
                 {
-                    if (!Session["estado"].Equals("baja") && ml.GetMateria(ViewState["descripcion"].ToString(), Int32.Parse(ViewState["plan"].ToString())) && (ViewState["descripcion"].ToString()!= MateriaActual.Descripcion) && (ViewState["plan"].ToString() != MateriaActual.IDPlan.ToString()))
+                    if (!Session["estado"].Equals("baja") && ml.GetMateria(ViewState["descripcion"].ToString(), Int32.Parse(ViewState["plan"].ToString())) && ((ViewState["descripcion"].ToString()!= MateriaActual.Descripcion) || (ViewState["plan"].ToString() != MateriaActual.IDPlan.ToString())))
                     {
                         Response.Write("<script>alert('La materia ya existe!');</script>");
                         return false;

@@ -22,7 +22,7 @@
                 </DataSources>
             </LocalReport>
         </rsweb:ReportViewer>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnStringLocalCasa %>" SelectCommand="SELECT DISTINCT [id_usuario], [nombre_usuario], [nombre], [apellido], [email] FROM [usuarios] WHERE ([habilitado] = @habilitado)">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnStringLocal %>" SelectCommand="SELECT DISTINCT [id_usuario], [nombre_usuario], [nombre], [apellido], [email] FROM [usuarios] WHERE ([habilitado] = @habilitado)">
             <SelectParameters>
                 <asp:Parameter DefaultValue="0" Name="habilitado" Type="Byte" />
             </SelectParameters>

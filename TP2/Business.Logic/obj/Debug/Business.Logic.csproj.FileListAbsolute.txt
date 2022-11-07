@@ -86,3 +86,14 @@ D:\Descargas\.NetTP-main\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.Core
 D:\Descargas\.NetTP-main\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.CopyComplete
 D:\Descargas\.NetTP-main\TP2\Business.Logic\obj\Debug\Business.Logic.dll
 D:\Descargas\.NetTP-main\TP2\Business.Logic\obj\Debug\Business.Logic.pdb
+F:\.NetTP-main\TP2\Business.Logic\bin\Debug\Business.Logic.dll
+F:\.NetTP-main\TP2\Business.Logic\bin\Debug\Business.Logic.pdb
+F:\.NetTP-main\TP2\Business.Logic\bin\Debug\Business.Entities.dll
+F:\.NetTP-main\TP2\Business.Logic\bin\Debug\Data.Database.dll
+F:\.NetTP-main\TP2\Business.Logic\bin\Debug\Business.Entities.pdb
+F:\.NetTP-main\TP2\Business.Logic\bin\Debug\Data.Database.pdb
+F:\.NetTP-main\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.AssemblyReference.cache
+F:\.NetTP-main\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.CoreCompileInputs.cache
+F:\.NetTP-main\TP2\Business.Logic\obj\Debug\Business.Logic.csproj.CopyComplete
+F:\.NetTP-main\TP2\Business.Logic\obj\Debug\Business.Logic.dll
+F:\.NetTP-main\TP2\Business.Logic\obj\Debug\Business.Logic.pdb
